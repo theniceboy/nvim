@@ -121,7 +121,7 @@ let mapleader=" "
 " Column (:) mods
 map ; :
 map q; q:
-map <LEADER>/ :!
+map <LEADER>/ :set splitbelow<CR>:sp<CR>:term<CR>
 map <LEADER>r :r !
 map <LEADER>sr :%s/
 
@@ -150,7 +150,7 @@ noremap = nzz
 noremap - Nzz
 
 " Duplicate words
-map <LEADER>fd /\(\<\w\+\>\)\_s*\1
+map <LEADER>dw /\(\<\w\+\>\)\_s*\1
 
 " Others
 map <LEADER>o o<Esc>u
@@ -185,10 +185,10 @@ noremap B 5b
 noremap h e
 
 " Ctrl + U or E will move up/down the view port without moving the cursor
-noremap <C-U> 5<C-y>
-noremap <C-E> 5<C-e>
-inoremap <C-U> <Esc>5<C-y>a
-inoremap <C-E> <Esc>5<C-e>a
+"noremap <C-U> 5<C-y>
+"noremap <C-E> 5<C-e>
+"inoremap <C-U> <Esc>5<C-y>a
+"inoremap <C-E> <Esc>5<C-e>a
 
 
 " ===
@@ -280,8 +280,9 @@ func! CompileRunGcc()
   elseif &filetype == 'sh'
     :!time bash %
   elseif &filetype == 'python'
-    silent! exec "!clear"
-    exec "!time python3 %"
+    set splitbelow
+    :sp
+    :term python3 %
   elseif &filetype == 'html'
     exec "!chromium % &"
   elseif &filetype == 'markdown'
@@ -313,6 +314,7 @@ Plug 'connorholyday/vim-snazzy'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
 Plug 'bling/vim-bufferline'
+Plug 'liuchengxu/space-vim-theme'
 
 " File navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -338,13 +340,22 @@ Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-match-highlight'
 Plug 'ncm2/ncm2-markdown-subscope'
 
+" Language Server
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" (Optional) Multi-entry selection UI.
+Plug 'junegunn/fzf'
+
 " Undo Tree
 Plug 'mbbill/undotree/'
 
 " Other visual enhancement
 Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'itchyny/vim-cursorword'
-Plug 'tmhedberg/SimpylFold'
+"Plug 'tmhedberg/SimpylFold'
 Plug 'mhinz/vim-startify'
 
 " Git
@@ -362,9 +373,8 @@ Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
 Plug 'mattn/emmet-vim'
 
 " Python
-Plug 'vim-scripts/indentpython.vim'
+Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
-" Plug 'vim-python/python-syntax', { 'for' :['python', 'vim-plug'] }
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
@@ -385,6 +395,8 @@ Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to 
 Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'brooth/far.vim'
 
 " Dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -414,9 +426,11 @@ set termguicolors     " enable true colors support
 let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
-colorscheme snazzy
+"colorscheme snazzy
 let g:SnazzyTransparent = 1
+let g:space_vim_transp_bg = 1
 set background=dark
+colorscheme space_vim_theme
 let g:airline_theme='dracula'
 
 let g:lightline = {
@@ -467,6 +481,7 @@ let g:NERDTreeIndicatorMapCustom = {
 " ===
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>": "\<CR>")
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 let ncm2#popup_delay = 5
@@ -481,6 +496,12 @@ let g:ncm2#match_highlight = 'sans-serif'
 "let g:jedi#popup_on_dot = 1
 "let g:jedi#completion_command = ""
 "let g:jedi#show_call_signatures = "1"
+
+
+" Language Server
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['/usr/bin/pyls'],
+    \ }
 
 
 " Some testing features
@@ -618,13 +639,22 @@ let g:multi_cursor_quit_key            = '<Esc>'
 " My snippits
 source ~/.config/nvim/snippits.vim
 
+" comfortable-motion
+nnoremap <silent> <C-e> :call comfortable_motion#flick(50)<CR>
+nnoremap <silent> <C-u> :call comfortable_motion#flick(-50)<CR>
+let g:comfortable_motion_no_default_key_mappings = 1
+let g:comfortable_motion_interval = 1
 
+
+" Startify
 let g:startify_lists = [
       \ { 'type': 'files',     'header': ['   MRU']            },
       \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
       \ { 'type': 'commands',  'header': ['   Commands']       },
       \ ]
 
+" Far.vim
+nnoremap <silent> <LEADER>f :F  %<left><left>
 
 " Testring my own plugin
 if !empty(glob('~/Github/vim-calc/vim-calc.vim'))

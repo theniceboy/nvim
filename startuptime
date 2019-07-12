@@ -1,0 +1,475 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.008  000.008: --- NVIM STARTING ---
+000.226  000.218: locale set
+000.551  000.325: inits 1
+000.561  000.010: window checked
+000.713  000.152: parsing arguments
+000.769  000.056: expanding arguments
+000.835  000.066: inits 2
+001.573  000.738: init highlight
+001.846  000.021  000.021: sourcing /usr/share/nvim/archlinux.vim
+001.856  000.074  000.053: sourcing /etc/xdg//nvim/sysinit.vim
+010.450  000.032  000.032: sourcing /usr/share/vim/vimfiles/ftdetect/PKGBUILD.vim
+010.545  008.502  008.469: sourcing /usr/share/nvim/runtime/filetype.vim
+010.653  000.017  000.017: sourcing /usr/share/nvim/runtime/filetype.vim
+010.776  000.045  000.045: sourcing /usr/share/nvim/runtime/indent.vim
+010.872  000.013  000.013: sourcing /usr/share/nvim/runtime/filetype.vim
+010.990  000.042  000.042: sourcing /usr/share/nvim/runtime/ftplugin.vim
+011.096  000.015  000.015: sourcing /usr/share/nvim/runtime/filetype.vim
+011.190  000.014  000.014: sourcing /usr/share/nvim/runtime/ftplugin.vim
+011.279  000.013  000.013: sourcing /usr/share/nvim/runtime/indent.vim
+011.889  000.332  000.332: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+012.039  000.581  000.250: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+012.078  000.706  000.125: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+013.045  000.891  000.891: sourcing /usr/share/nvim/runtime/syntax/nosyntax.vim
+013.525  000.277  000.277: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+013.749  000.599  000.322: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+013.794  001.681  000.192: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+016.185  001.783  001.783: sourcing /home/david/.config/nvim/autoload/plug.vim
+022.390  000.562  000.562: sourcing /usr/share/nvim/runtime/ftoff.vim
+031.086  000.011  000.011: sourcing /home/david/.config/nvim/plugged/vim-fugitive/ftdetect/fugitive.vim
+031.137  000.011  000.011: sourcing /home/david/.config/nvim/plugged/vim-gitignore/ftdetect/gitignore.vim
+031.190  000.023  000.023: sourcing /home/david/.config/nvim/plugged/vim-json/ftdetect/json.vim
+031.299  000.067  000.067: sourcing /home/david/.config/nvim/plugged/vim-javascript/ftdetect/javascript.vim
+031.489  000.009  000.009: sourcing /usr/share/vim/vimfiles/ftdetect/PKGBUILD.vim
+031.529  004.736  004.615: sourcing /usr/share/nvim/runtime/filetype.vim
+031.712  000.009  000.009: sourcing /usr/share/nvim/runtime/ftplugin.vim
+031.886  000.007  000.007: sourcing /usr/share/nvim/runtime/indent.vim
+031.978  000.005  000.005: sourcing /home/david/.config/nvim/_machine_specific.vim
+032.546  000.129  000.129: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+033.242  000.127  000.127: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+033.732  000.120  000.120: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+034.508  002.479  002.104: sourcing /home/david/.config/nvim/plugged/vim-snazzy/colors/snazzy.vim
+035.035  000.122  000.122: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+035.528  000.119  000.119: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+036.252  001.716  001.475: sourcing /home/david/.config/nvim/plugged/vim-snazzy/colors/snazzy.vim
+036.469  000.029  000.029: sourcing /home/david/.config/nvim/snippits.vim
+036.519  000.009  000.009: sourcing /home/david/Github/vim-calc/vim-calc.vim
+036.529  034.647  012.262: sourcing /home/david/.config/nvim/init.vim
+036.531  000.237: sourcing vimrc file(s)
+036.828  000.065  000.065: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/init.vim
+037.087  000.053  000.053: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/parts.vim
+037.786  000.086  000.086: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/util.vim
+037.824  001.190  000.987: sourcing /home/david/.config/nvim/plugged/vim-airline/plugin/airline.vim
+037.891  000.012  000.012: sourcing /home/david/.config/nvim/plugged/vim-airline-themes/plugin/airline-themes.vim
+038.155  000.058  000.058: sourcing /home/david/.config/nvim/plugged/vim-bufferline/autoload/bufferline.vim
+038.225  000.275  000.217: sourcing /home/david/.config/nvim/plugged/vim-bufferline/plugin/bufferline.vim
+038.757  000.080  000.080: sourcing /home/david/.config/nvim/plugged/ale/autoload/ale/events.vim
+038.896  000.615  000.536: sourcing /home/david/.config/nvim/plugged/ale/plugin/ale.vim
+039.141  000.155  000.155: sourcing /home/david/.config/nvim/plugged/LanguageClient-neovim/plugin/LanguageClient.vim
+039.524  000.330  000.330: sourcing /home/david/.config/nvim/plugged/fzf/plugin/fzf.vim
+039.715  000.133  000.133: sourcing /home/david/.config/nvim/plugged/undotree/plugin/undotree.vim
+039.947  000.088  000.088: sourcing /home/david/.config/nvim/plugged/vim-indent-guides/autoload/indent_guides.vim
+040.196  000.432  000.344: sourcing /home/david/.config/nvim/plugged/vim-indent-guides/plugin/indent_guides.vim
+040.330  000.083  000.083: sourcing /home/david/.config/nvim/plugged/vim-startify/plugin/startify.vim
+040.567  000.187  000.187: sourcing /home/david/.config/nvim/plugged/conflict-marker.vim/plugin/conflict_marker.vim
+040.798  000.182  000.182: sourcing /home/david/.config/nvim/plugged/vim-fugitive/plugin/fugitive.vim
+041.059  000.210  000.210: sourcing /home/david/.config/nvim/plugged/vim-signify/plugin/signify.vim
+042.414  001.277  001.277: sourcing /home/david/.config/nvim/plugged/emmet-vim/plugin/emmet.vim
+042.751  000.269  000.269: sourcing /home/david/.config/nvim/plugged/semshi/plugin/semshi.vim
+042.914  000.116  000.116: sourcing /home/david/.config/nvim/plugged/vim-wordy/plugin/wordy.vim
+043.062  000.101  000.101: sourcing /home/david/.config/nvim/plugged/thesaurus_query.vim/plugin/thesaurus_query.vim
+043.295  000.067  000.067: sourcing /home/david/.config/nvim/plugged/vim-signature/autoload/signature/utils.vim
+043.843  000.735  000.668: sourcing /home/david/.config/nvim/plugged/vim-signature/plugin/signature.vim
+044.121  000.226  000.226: sourcing /home/david/.config/nvim/plugged/auto-pairs/plugin/auto-pairs.vim
+044.378  000.192  000.192: sourcing /home/david/.config/nvim/plugged/vim-multiple-cursors/plugin/multiple_cursors.vim
+044.443  000.015  000.015: sourcing /home/david/.config/nvim/plugged/goyo.vim/plugin/goyo.vim
+044.757  000.271  000.271: sourcing /home/david/.config/nvim/plugged/vim-surround/plugin/surround.vim
+044.941  000.129  000.129: sourcing /home/david/.config/nvim/plugged/tabular/plugin/Tabular.vim
+045.204  000.016  000.016: sourcing /home/david/.config/nvim/plugged/wildfire.vim/autoload/wildfire/triggers.vim
+045.366  000.368  000.352: sourcing /home/david/.config/nvim/plugged/wildfire.vim/plugin/wildfire.vim
+048.062  002.650  002.650: sourcing /home/david/.config/nvim/plugged/nerdcommenter/plugin/NERD_commenter.vim
+048.379  000.124  000.124: sourcing /usr/share/nvim/runtime/plugin/gzip.vim
+048.402  000.008  000.008: sourcing /usr/share/nvim/runtime/plugin/health.vim
+048.473  000.056  000.056: sourcing /usr/share/nvim/runtime/plugin/man.vim
+048.766  000.276  000.276: sourcing /usr/share/nvim/runtime/plugin/matchit.vim
+048.883  000.097  000.097: sourcing /usr/share/nvim/runtime/plugin/matchparen.vim
+049.241  000.339  000.339: sourcing /usr/share/nvim/runtime/plugin/netrwPlugin.vim
+049.615  000.102  000.102: sourcing /usr/share/nvim/runtime/autoload/remote/host.vim
+049.944  000.094  000.094: sourcing /usr/share/nvim/runtime/autoload/remote/define.vim
+050.555  001.194  000.997: sourcing /home/david/.local/share/nvim/rplugin.vim
+050.560  001.295  000.101: sourcing /usr/share/nvim/runtime/plugin/rplugin.vim
+050.665  000.083  000.083: sourcing /usr/share/nvim/runtime/plugin/shada.vim
+050.703  000.018  000.018: sourcing /usr/share/nvim/runtime/plugin/spellfile.vim
+050.837  000.111  000.111: sourcing /usr/share/nvim/runtime/plugin/tarPlugin.vim
+050.908  000.053  000.053: sourcing /usr/share/nvim/runtime/plugin/tohtml.vim
+050.939  000.014  000.014: sourcing /usr/share/nvim/runtime/plugin/tutor.vim
+051.070  000.116  000.116: sourcing /usr/share/nvim/runtime/plugin/zipPlugin.vim
+051.137  000.012  000.012: sourcing /usr/share/vim/vimfiles/plugin/fzf.vim
+051.151  001.864: loading plugins
+051.206  000.055: loading packages
+051.342  000.032  000.032: sourcing /home/david/.config/nvim/plugged/vim-signature/after/plugin/signature.vim
+051.690  000.129  000.129: sourcing /home/david/.config/nvim/plugged/tabular/autoload/tabular.vim
+052.940  001.553  001.425: sourcing /home/david/.config/nvim/plugged/tabular/after/plugin/TabularMaps.vim
+052.944  000.152: loading after plugins
+052.949  000.005: inits 3
+053.859  000.910: reading ShaDa
+054.425  000.566: clearing screen
+054.929  000.200  000.200: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions.vim
+055.013  000.033  000.033: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/quickfix.vim
+055.140  000.093  000.093: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline.vim
+055.271  000.045  000.045: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/netrw.vim
+055.387  000.040  000.040: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/term.vim
+055.477  000.018  000.018: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/undotree.vim
+055.570  000.045  000.045: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/hunks.vim
+055.661  000.024  000.024: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/csv.vim
+055.856  000.136  000.136: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/branch.vim
+055.970  000.020  000.020: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/bufferline.vim
+056.131  000.050  000.050: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/ale.vim
+056.479  000.055  000.055: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/languageclient.vim
+056.687  000.070  000.070: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/whitespace.vim
+056.827  000.032  000.032: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/po.vim
+056.935  000.053  000.053: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/wordcount.vim
+057.041  000.017  000.017: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/keymap.vim
+058.875  000.041  000.041: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/section.vim
+059.067  000.105  000.105: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/highlighter.vim
+060.845  000.032  000.032: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/themes.vim
+061.133  000.398  000.366: sourcing /home/david/.config/nvim/plugged/vim-airline-themes/autoload/airline/themes/dracula.vim
+063.620  000.341  000.341: sourcing /home/david/.config/nvim/plugged/vim-airline-themes/autoload/airline/themes/dracula.vim
+076.531  000.094  000.094: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/builder.vim
+076.814  000.053  000.053: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/default.vim
+089.829  000.225  000.225: sourcing /home/david/.config/nvim/plugged/ale/autoload/ale.vim
+089.885  033.272: opening buffers
+090.249  000.035  000.035: sourcing /home/david/.config/nvim/plugged/nvim-yarp/autoload/yarp.vim
+090.761  000.370  000.370: sourcing /home/david/.config/nvim/plugged/nvim-yarp/autoload/yarp/core.vim
+091.596  001.649  001.244: sourcing /home/david/.config/nvim/plugged/ncm2/autoload/ncm2.vim
+092.027  000.060  000.060: sourcing /home/david/.config/nvim/plugged/nvim-yarp/autoload/yarp/pyx.vim
+092.472  000.119  000.119: sourcing /usr/share/nvim/runtime/autoload/provider/pythonx.vim
+112.170  019.968  019.849: sourcing /usr/share/nvim/runtime/autoload/provider/python3.vim
+112.559  000.081  000.081: sourcing /usr/share/nvim/runtime/autoload/provider.vim
+159.046  000.314  000.314: sourcing /home/david/.config/nvim/plugged/vim-signature/autoload/signature/sign.vim
+159.548  000.254  000.254: sourcing /home/david/.config/nvim/plugged/vim-signature/autoload/signature/mark.vim
+162.601  050.389: BufEnter autocommands
+162.606  000.005: editing files in windows
+164.585  000.669  000.669: sourcing /home/david/.config/nvim/plugged/vim-startify/autoload/startify.vim
+165.833  001.119  001.119: sourcing /home/david/.config/nvim/plugged/LanguageClient-neovim/autoload/LanguageClient.vim
+166.072  000.102  000.102: sourcing /home/david/.config/nvim/plugged/LanguageClient-neovim/autoload/LSP.vim
+166.612  000.379  000.379: sourcing /home/david/.config/nvim/plugged/vim-startify/autoload/startify/fortune.vim
+171.015  000.173  000.173: sourcing /home/david/.config/nvim/plugged/vim-startify/syntax/startify.vim
+173.574  000.191  000.191: sourcing /home/david/.config/nvim/plugged/ale/autoload/ale/util.vim
+178.724  003.072  003.072: sourcing /home/david/.config/nvim/plugged/vim-fugitive/autoload/fugitive.vim
+179.781  011.470: VimEnter autocommands
+179.785  000.004: before starting main loop
+188.743  008.958: first screen update
+188.748  000.005: --- NVIM STARTED ---
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.013  000.013: --- NVIM STARTING ---
+000.491  000.478: locale set
+001.305  000.814: inits 1
+001.328  000.023: window checked
+001.676  000.348: parsing arguments
+001.811  000.135: expanding arguments
+001.974  000.163: inits 2
+003.858  001.883: init highlight
+004.438  000.067  000.067: sourcing /usr/share/nvim/archlinux.vim
+004.457  000.225  000.158: sourcing /etc/xdg//nvim/sysinit.vim
+021.431  000.028  000.028: sourcing /usr/share/vim/vimfiles/ftdetect/PKGBUILD.vim
+021.528  016.663  016.636: sourcing /usr/share/nvim/runtime/filetype.vim
+021.649  000.018  000.018: sourcing /usr/share/nvim/runtime/filetype.vim
+021.788  000.049  000.049: sourcing /usr/share/nvim/runtime/indent.vim
+021.901  000.015  000.015: sourcing /usr/share/nvim/runtime/filetype.vim
+022.035  000.045  000.045: sourcing /usr/share/nvim/runtime/ftplugin.vim
+022.143  000.014  000.014: sourcing /usr/share/nvim/runtime/filetype.vim
+022.242  000.013  000.013: sourcing /usr/share/nvim/runtime/ftplugin.vim
+022.338  000.011  000.011: sourcing /usr/share/nvim/runtime/indent.vim
+022.961  000.343  000.343: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+023.124  000.604  000.261: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+023.168  000.739  000.135: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+023.673  000.423  000.423: sourcing /usr/share/nvim/runtime/syntax/nosyntax.vim
+024.096  000.261  000.261: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+024.262  000.519  000.258: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+024.303  001.100  000.158: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+026.521  001.696  001.696: sourcing /home/david/.config/nvim/autoload/plug.vim
+034.721  001.410  001.410: sourcing /usr/share/nvim/runtime/ftoff.vim
+045.462  000.012  000.012: sourcing /home/david/.config/nvim/plugged/vim-fugitive/ftdetect/fugitive.vim
+045.513  000.012  000.012: sourcing /home/david/.config/nvim/plugged/vim-gitignore/ftdetect/gitignore.vim
+045.560  000.021  000.021: sourcing /home/david/.config/nvim/plugged/vim-json/ftdetect/json.vim
+045.691  000.095  000.095: sourcing /home/david/.config/nvim/plugged/vim-javascript/ftdetect/javascript.vim
+045.873  000.008  000.008: sourcing /usr/share/vim/vimfiles/ftdetect/PKGBUILD.vim
+045.916  005.172  005.024: sourcing /usr/share/nvim/runtime/filetype.vim
+046.092  000.008  000.008: sourcing /usr/share/nvim/runtime/ftplugin.vim
+046.258  000.006  000.006: sourcing /usr/share/nvim/runtime/indent.vim
+046.347  000.005  000.005: sourcing /home/david/.config/nvim/_machine_specific.vim
+046.843  000.118  000.118: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+047.529  000.118  000.118: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+048.009  000.118  000.118: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+050.222  003.179  002.943: sourcing /home/david/.config/nvim/plugged/space-vim-theme/colors/space_vim_theme.vim
+050.431  000.028  000.028: sourcing /home/david/.config/nvim/snippits.vim
+050.499  000.009  000.009: sourcing /home/david/Github/vim-calc/vim-calc.vim
+050.509  045.994  015.696: sourcing /home/david/.config/nvim/init.vim
+050.511  000.435: sourcing vimrc file(s)
+050.799  000.056  000.056: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/init.vim
+051.058  000.054  000.054: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/parts.vim
+051.734  000.089  000.089: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/util.vim
+051.768  001.152  000.954: sourcing /home/david/.config/nvim/plugged/vim-airline/plugin/airline.vim
+051.834  000.012  000.012: sourcing /home/david/.config/nvim/plugged/vim-airline-themes/plugin/airline-themes.vim
+052.099  000.056  000.056: sourcing /home/david/.config/nvim/plugged/vim-bufferline/autoload/bufferline.vim
+052.163  000.271  000.215: sourcing /home/david/.config/nvim/plugged/vim-bufferline/plugin/bufferline.vim
+052.671  000.072  000.072: sourcing /home/david/.config/nvim/plugged/ale/autoload/ale/events.vim
+052.823  000.601  000.529: sourcing /home/david/.config/nvim/plugged/ale/plugin/ale.vim
+053.058  000.148  000.148: sourcing /home/david/.config/nvim/plugged/LanguageClient-neovim/plugin/LanguageClient.vim
+053.409  000.306  000.306: sourcing /home/david/.config/nvim/plugged/fzf/plugin/fzf.vim
+053.584  000.116  000.116: sourcing /home/david/.config/nvim/plugged/undotree/plugin/undotree.vim
+053.804  000.085  000.085: sourcing /home/david/.config/nvim/plugged/vim-indent-guides/autoload/indent_guides.vim
+054.039  000.410  000.325: sourcing /home/david/.config/nvim/plugged/vim-indent-guides/plugin/indent_guides.vim
+054.174  000.084  000.084: sourcing /home/david/.config/nvim/plugged/vim-startify/plugin/startify.vim
+054.460  000.236  000.236: sourcing /home/david/.config/nvim/plugged/conflict-marker.vim/plugin/conflict_marker.vim
+054.683  000.176  000.176: sourcing /home/david/.config/nvim/plugged/vim-fugitive/plugin/fugitive.vim
+054.949  000.206  000.206: sourcing /home/david/.config/nvim/plugged/vim-signify/plugin/signify.vim
+056.242  001.219  001.219: sourcing /home/david/.config/nvim/plugged/emmet-vim/plugin/emmet.vim
+056.621  000.317  000.317: sourcing /home/david/.config/nvim/plugged/semshi/plugin/semshi.vim
+056.775  000.110  000.110: sourcing /home/david/.config/nvim/plugged/vim-wordy/plugin/wordy.vim
+056.899  000.080  000.080: sourcing /home/david/.config/nvim/plugged/thesaurus_query.vim/plugin/thesaurus_query.vim
+057.132  000.064  000.064: sourcing /home/david/.config/nvim/plugged/vim-signature/autoload/signature/utils.vim
+057.693  000.754  000.690: sourcing /home/david/.config/nvim/plugged/vim-signature/plugin/signature.vim
+058.009  000.261  000.261: sourcing /home/david/.config/nvim/plugged/auto-pairs/plugin/auto-pairs.vim
+058.251  000.187  000.187: sourcing /home/david/.config/nvim/plugged/vim-multiple-cursors/plugin/multiple_cursors.vim
+058.317  000.015  000.015: sourcing /home/david/.config/nvim/plugged/goyo.vim/plugin/goyo.vim
+058.655  000.296  000.296: sourcing /home/david/.config/nvim/plugged/vim-surround/plugin/surround.vim
+058.898  000.183  000.183: sourcing /home/david/.config/nvim/plugged/tabular/plugin/Tabular.vim
+059.168  000.015  000.015: sourcing /home/david/.config/nvim/plugged/wildfire.vim/autoload/wildfire/triggers.vim
+059.332  000.384  000.368: sourcing /home/david/.config/nvim/plugged/wildfire.vim/plugin/wildfire.vim
+062.033  002.653  002.653: sourcing /home/david/.config/nvim/plugged/nerdcommenter/plugin/NERD_commenter.vim
+062.116  000.031  000.031: sourcing /home/david/.config/nvim/plugged/comfortable-motion.vim/plugin/comfortable_motion.vim
+062.234  000.076  000.076: sourcing /home/david/.config/nvim/plugged/far.vim/plugin/far.vim
+062.553  000.125  000.125: sourcing /usr/share/nvim/runtime/plugin/gzip.vim
+062.584  000.009  000.009: sourcing /usr/share/nvim/runtime/plugin/health.vim
+062.654  000.055  000.055: sourcing /usr/share/nvim/runtime/plugin/man.vim
+062.949  000.279  000.279: sourcing /usr/share/nvim/runtime/plugin/matchit.vim
+063.071  000.099  000.099: sourcing /usr/share/nvim/runtime/plugin/matchparen.vim
+063.431  000.337  000.337: sourcing /usr/share/nvim/runtime/plugin/netrwPlugin.vim
+063.812  000.105  000.105: sourcing /usr/share/nvim/runtime/autoload/remote/host.vim
+064.106  000.090  000.090: sourcing /usr/share/nvim/runtime/autoload/remote/define.vim
+064.746  001.202  001.007: sourcing /home/david/.local/share/nvim/rplugin.vim
+064.751  001.294  000.093: sourcing /usr/share/nvim/runtime/plugin/rplugin.vim
+064.857  000.084  000.084: sourcing /usr/share/nvim/runtime/plugin/shada.vim
+064.896  000.017  000.017: sourcing /usr/share/nvim/runtime/plugin/spellfile.vim
+065.019  000.106  000.106: sourcing /usr/share/nvim/runtime/plugin/tarPlugin.vim
+065.089  000.051  000.051: sourcing /usr/share/nvim/runtime/plugin/tohtml.vim
+065.127  000.015  000.015: sourcing /usr/share/nvim/runtime/plugin/tutor.vim
+065.257  000.115  000.115: sourcing /usr/share/nvim/runtime/plugin/zipPlugin.vim
+065.324  000.012  000.012: sourcing /usr/share/vim/vimfiles/plugin/fzf.vim
+065.327  001.933: loading plugins
+065.396  000.069: loading packages
+065.534  000.033  000.033: sourcing /home/david/.config/nvim/plugged/vim-signature/after/plugin/signature.vim
+065.889  000.125  000.125: sourcing /home/david/.config/nvim/plugged/tabular/autoload/tabular.vim
+067.119  001.539  001.414: sourcing /home/david/.config/nvim/plugged/tabular/after/plugin/TabularMaps.vim
+067.123  000.154: loading after plugins
+067.128  000.005: inits 3
+068.142  001.014: reading ShaDa
+069.062  000.920: clearing screen
+069.511  000.182  000.182: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions.vim
+069.597  000.035  000.035: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/quickfix.vim
+069.727  000.095  000.095: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline.vim
+069.814  000.021  000.021: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/netrw.vim
+069.912  000.043  000.043: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/term.vim
+070.021  000.019  000.019: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/undotree.vim
+070.117  000.045  000.045: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/hunks.vim
+070.208  000.024  000.024: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/csv.vim
+070.381  000.114  000.114: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/branch.vim
+070.490  000.023  000.023: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/bufferline.vim
+070.713  000.089  000.089: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/ale.vim
+071.058  000.056  000.056: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/languageclient.vim
+071.286  000.070  000.070: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/whitespace.vim
+071.428  000.034  000.034: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/po.vim
+071.535  000.053  000.053: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/wordcount.vim
+071.640  000.017  000.017: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/keymap.vim
+073.512  000.043  000.043: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/section.vim
+073.714  000.112  000.112: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/highlighter.vim
+075.674  000.033  000.033: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/themes.vim
+075.956  000.394  000.361: sourcing /home/david/.config/nvim/plugged/vim-airline-themes/autoload/airline/themes/dracula.vim
+078.003  000.325  000.325: sourcing /home/david/.config/nvim/plugged/vim-airline-themes/autoload/airline/themes/dracula.vim
+091.877  000.097  000.097: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/builder.vim
+092.157  000.056  000.056: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/default.vim
+107.781  000.282  000.282: sourcing /home/david/.config/nvim/plugged/ale/autoload/ale.vim
+107.866  036.574: opening buffers
+108.291  000.053  000.053: sourcing /home/david/.config/nvim/plugged/nvim-yarp/autoload/yarp.vim
+109.153  000.697  000.697: sourcing /home/david/.config/nvim/plugged/nvim-yarp/autoload/yarp/core.vim
+110.301  002.355  001.605: sourcing /home/david/.config/nvim/plugged/ncm2/autoload/ncm2.vim
+110.969  000.110  000.110: sourcing /home/david/.config/nvim/plugged/nvim-yarp/autoload/yarp/pyx.vim
+111.470  000.128  000.128: sourcing /usr/share/nvim/runtime/autoload/provider/pythonx.vim
+137.354  026.173  026.045: sourcing /usr/share/nvim/runtime/autoload/provider/python3.vim
+137.854  000.109  000.109: sourcing /usr/share/nvim/runtime/autoload/provider.vim
+194.310  000.340  000.340: sourcing /home/david/.config/nvim/plugged/vim-signature/autoload/signature/sign.vim
+194.823  000.247  000.247: sourcing /home/david/.config/nvim/plugged/vim-signature/autoload/signature/mark.vim
+197.730  060.530: BufEnter autocommands
+197.733  000.004: editing files in windows
+199.558  000.600  000.600: sourcing /home/david/.config/nvim/plugged/vim-startify/autoload/startify.vim
+200.792  001.107  001.107: sourcing /home/david/.config/nvim/plugged/LanguageClient-neovim/autoload/LanguageClient.vim
+201.052  000.098  000.098: sourcing /home/david/.config/nvim/plugged/LanguageClient-neovim/autoload/LSP.vim
+201.540  000.324  000.324: sourcing /home/david/.config/nvim/plugged/vim-startify/autoload/startify/fortune.vim
+206.489  000.248  000.248: sourcing /home/david/.config/nvim/plugged/vim-startify/syntax/startify.vim
+209.073  000.196  000.196: sourcing /home/david/.config/nvim/plugged/ale/autoload/ale/util.vim
+214.196  002.968  002.968: sourcing /home/david/.config/nvim/plugged/vim-fugitive/autoload/fugitive.vim
+215.280  012.006: VimEnter autocommands
+215.285  000.005: before starting main loop
+224.707  009.421: first screen update
+224.712  000.005: --- NVIM STARTED ---
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.024  000.024: --- NVIM STARTING ---
+000.532  000.507: locale set
+001.334  000.802: inits 1
+001.356  000.023: window checked
+001.725  000.369: parsing arguments
+001.849  000.124: expanding arguments
+001.985  000.136: inits 2
+003.592  001.607: init highlight
+004.293  000.073  000.073: sourcing /usr/share/nvim/archlinux.vim
+004.329  000.280  000.207: sourcing /etc/xdg//nvim/sysinit.vim
+022.397  000.037  000.037: sourcing /usr/share/vim/vimfiles/ftdetect/PKGBUILD.vim
+022.522  017.706  017.668: sourcing /usr/share/nvim/runtime/filetype.vim
+022.685  000.027  000.027: sourcing /usr/share/nvim/runtime/filetype.vim
+022.871  000.065  000.065: sourcing /usr/share/nvim/runtime/indent.vim
+023.031  000.016  000.016: sourcing /usr/share/nvim/runtime/filetype.vim
+023.165  000.046  000.046: sourcing /usr/share/nvim/runtime/ftplugin.vim
+023.272  000.014  000.014: sourcing /usr/share/nvim/runtime/filetype.vim
+023.372  000.013  000.013: sourcing /usr/share/nvim/runtime/ftplugin.vim
+023.469  000.012  000.012: sourcing /usr/share/nvim/runtime/indent.vim
+024.089  000.341  000.341: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+024.263  000.609  000.268: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+024.308  000.750  000.140: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+024.813  000.423  000.423: sourcing /usr/share/nvim/runtime/syntax/nosyntax.vim
+025.236  000.261  000.261: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+025.392  000.508  000.248: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+025.431  001.086  000.155: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+028.361  002.409  002.409: sourcing /home/david/.config/nvim/autoload/plug.vim
+034.877  000.710  000.710: sourcing /usr/share/nvim/runtime/ftoff.vim
+044.969  000.012  000.012: sourcing /home/david/.config/nvim/plugged/vim-fugitive/ftdetect/fugitive.vim
+045.023  000.014  000.014: sourcing /home/david/.config/nvim/plugged/vim-gitignore/ftdetect/gitignore.vim
+045.075  000.023  000.023: sourcing /home/david/.config/nvim/plugged/vim-json/ftdetect/json.vim
+045.235  000.121  000.121: sourcing /home/david/.config/nvim/plugged/vim-javascript/ftdetect/javascript.vim
+045.431  000.009  000.009: sourcing /usr/share/vim/vimfiles/ftdetect/PKGBUILD.vim
+045.476  004.919  004.740: sourcing /usr/share/nvim/runtime/filetype.vim
+045.669  000.009  000.009: sourcing /usr/share/nvim/runtime/ftplugin.vim
+045.851  000.007  000.007: sourcing /usr/share/nvim/runtime/indent.vim
+045.949  000.005  000.005: sourcing /home/david/.config/nvim/_machine_specific.vim
+046.498  000.134  000.134: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+047.256  000.129  000.129: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+047.785  000.131  000.131: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+050.007  003.299  003.038: sourcing /home/david/.config/nvim/plugged/space-vim-theme/colors/space_vim_theme.vim
+050.219  000.029  000.029: sourcing /home/david/.config/nvim/snippits.vim
+050.288  000.009  000.009: sourcing /home/david/Github/vim-calc/vim-calc.vim
+050.299  045.895  014.632: sourcing /home/david/.config/nvim/init.vim
+050.301  000.535: sourcing vimrc file(s)
+050.598  000.058  000.058: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/init.vim
+050.863  000.060  000.060: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/parts.vim
+051.562  000.090  000.090: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/util.vim
+051.597  001.188  000.980: sourcing /home/david/.config/nvim/plugged/vim-airline/plugin/airline.vim
+051.664  000.013  000.013: sourcing /home/david/.config/nvim/plugged/vim-airline-themes/plugin/airline-themes.vim
+051.938  000.058  000.058: sourcing /home/david/.config/nvim/plugged/vim-bufferline/autoload/bufferline.vim
+051.989  000.264  000.206: sourcing /home/david/.config/nvim/plugged/vim-bufferline/plugin/bufferline.vim
+052.531  000.078  000.078: sourcing /home/david/.config/nvim/plugged/ale/autoload/ale/events.vim
+052.692  000.637  000.559: sourcing /home/david/.config/nvim/plugged/ale/plugin/ale.vim
+052.941  000.156  000.156: sourcing /home/david/.config/nvim/plugged/LanguageClient-neovim/plugin/LanguageClient.vim
+053.307  000.319  000.319: sourcing /home/david/.config/nvim/plugged/fzf/plugin/fzf.vim
+053.487  000.120  000.120: sourcing /home/david/.config/nvim/plugged/undotree/plugin/undotree.vim
+053.711  000.086  000.086: sourcing /home/david/.config/nvim/plugged/vim-indent-guides/autoload/indent_guides.vim
+053.947  000.415  000.329: sourcing /home/david/.config/nvim/plugged/vim-indent-guides/plugin/indent_guides.vim
+054.093  000.082  000.082: sourcing /home/david/.config/nvim/plugged/vim-startify/plugin/startify.vim
+054.400  000.259  000.259: sourcing /home/david/.config/nvim/plugged/conflict-marker.vim/plugin/conflict_marker.vim
+054.618  000.171  000.171: sourcing /home/david/.config/nvim/plugged/vim-fugitive/plugin/fugitive.vim
+054.874  000.199  000.199: sourcing /home/david/.config/nvim/plugged/vim-signify/plugin/signify.vim
+056.165  001.219  001.219: sourcing /home/david/.config/nvim/plugged/emmet-vim/plugin/emmet.vim
+056.541  000.313  000.313: sourcing /home/david/.config/nvim/plugged/semshi/plugin/semshi.vim
+056.690  000.106  000.106: sourcing /home/david/.config/nvim/plugged/vim-wordy/plugin/wordy.vim
+056.811  000.077  000.077: sourcing /home/david/.config/nvim/plugged/thesaurus_query.vim/plugin/thesaurus_query.vim
+057.043  000.062  000.062: sourcing /home/david/.config/nvim/plugged/vim-signature/autoload/signature/utils.vim
+057.610  000.758  000.696: sourcing /home/david/.config/nvim/plugged/vim-signature/plugin/signature.vim
+057.882  000.220  000.220: sourcing /home/david/.config/nvim/plugged/auto-pairs/plugin/auto-pairs.vim
+058.145  000.198  000.198: sourcing /home/david/.config/nvim/plugged/vim-multiple-cursors/plugin/multiple_cursors.vim
+058.210  000.015  000.015: sourcing /home/david/.config/nvim/plugged/goyo.vim/plugin/goyo.vim
+058.519  000.268  000.268: sourcing /home/david/.config/nvim/plugged/vim-surround/plugin/surround.vim
+058.701  000.125  000.125: sourcing /home/david/.config/nvim/plugged/tabular/plugin/Tabular.vim
+058.998  000.015  000.015: sourcing /home/david/.config/nvim/plugged/wildfire.vim/autoload/wildfire/triggers.vim
+059.172  000.419  000.404: sourcing /home/david/.config/nvim/plugged/wildfire.vim/plugin/wildfire.vim
+061.989  002.757  002.757: sourcing /home/david/.config/nvim/plugged/nerdcommenter/plugin/NERD_commenter.vim
+062.074  000.031  000.031: sourcing /home/david/.config/nvim/plugged/comfortable-motion.vim/plugin/comfortable_motion.vim
+062.192  000.075  000.075: sourcing /home/david/.config/nvim/plugged/far.vim/plugin/far.vim
+062.517  000.130  000.130: sourcing /usr/share/nvim/runtime/plugin/gzip.vim
+062.548  000.009  000.009: sourcing /usr/share/nvim/runtime/plugin/health.vim
+062.620  000.058  000.058: sourcing /usr/share/nvim/runtime/plugin/man.vim
+062.915  000.278  000.278: sourcing /usr/share/nvim/runtime/plugin/matchit.vim
+063.036  000.097  000.097: sourcing /usr/share/nvim/runtime/plugin/matchparen.vim
+063.399  000.341  000.341: sourcing /usr/share/nvim/runtime/plugin/netrwPlugin.vim
+063.780  000.103  000.103: sourcing /usr/share/nvim/runtime/autoload/remote/host.vim
+064.073  000.089  000.089: sourcing /usr/share/nvim/runtime/autoload/remote/define.vim
+064.750  001.236  001.043: sourcing /home/david/.local/share/nvim/rplugin.vim
+064.755  001.330  000.094: sourcing /usr/share/nvim/runtime/plugin/rplugin.vim
+064.864  000.086  000.086: sourcing /usr/share/nvim/runtime/plugin/shada.vim
+064.904  000.018  000.018: sourcing /usr/share/nvim/runtime/plugin/spellfile.vim
+065.029  000.108  000.108: sourcing /usr/share/nvim/runtime/plugin/tarPlugin.vim
+065.099  000.051  000.051: sourcing /usr/share/nvim/runtime/plugin/tohtml.vim
+065.138  000.015  000.015: sourcing /usr/share/nvim/runtime/plugin/tutor.vim
+065.268  000.115  000.115: sourcing /usr/share/nvim/runtime/plugin/zipPlugin.vim
+065.335  000.012  000.012: sourcing /usr/share/vim/vimfiles/plugin/fzf.vim
+065.339  001.986: loading plugins
+065.406  000.068: loading packages
+065.543  000.032  000.032: sourcing /home/david/.config/nvim/plugged/vim-signature/after/plugin/signature.vim
+065.892  000.125  000.125: sourcing /home/david/.config/nvim/plugged/tabular/autoload/tabular.vim
+067.092  001.503  001.378: sourcing /home/david/.config/nvim/plugged/tabular/after/plugin/TabularMaps.vim
+067.096  000.155: loading after plugins
+067.102  000.005: inits 3
+068.147  001.045: reading ShaDa
+068.834  000.687: clearing screen
+069.369  000.216  000.216: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions.vim
+069.459  000.037  000.037: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/quickfix.vim
+069.589  000.096  000.096: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline.vim
+069.677  000.022  000.022: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/netrw.vim
+069.792  000.041  000.041: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/term.vim
+069.883  000.019  000.019: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/undotree.vim
+069.978  000.045  000.045: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/hunks.vim
+070.070  000.023  000.023: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/csv.vim
+070.242  000.114  000.114: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/branch.vim
+070.351  000.023  000.023: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/bufferline.vim
+070.563  000.073  000.073: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/ale.vim
+070.915  000.058  000.058: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/languageclient.vim
+071.152  000.070  000.070: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/whitespace.vim
+071.295  000.034  000.034: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/po.vim
+071.403  000.053  000.053: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/wordcount.vim
+071.507  000.016  000.016: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/keymap.vim
+073.411  000.042  000.042: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/section.vim
+073.612  000.112  000.112: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/highlighter.vim
+075.410  000.032  000.032: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/themes.vim
+075.694  000.395  000.363: sourcing /home/david/.config/nvim/plugged/vim-airline-themes/autoload/airline/themes/dracula.vim
+077.813  000.343  000.343: sourcing /home/david/.config/nvim/plugged/vim-airline-themes/autoload/airline/themes/dracula.vim
+091.086  000.091  000.091: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/builder.vim
+091.362  000.053  000.053: sourcing /home/david/.config/nvim/plugged/vim-airline/autoload/airline/extensions/default.vim
+111.513  000.251  000.251: sourcing /home/david/.config/nvim/plugged/ale/autoload/ale.vim
+111.569  040.509: opening buffers
+111.960  000.037  000.037: sourcing /home/david/.config/nvim/plugged/nvim-yarp/autoload/yarp.vim
+112.547  000.429  000.429: sourcing /home/david/.config/nvim/plugged/nvim-yarp/autoload/yarp/core.vim
+113.393  001.758  001.292: sourcing /home/david/.config/nvim/plugged/ncm2/autoload/ncm2.vim
+113.829  000.068  000.068: sourcing /home/david/.config/nvim/plugged/nvim-yarp/autoload/yarp/pyx.vim
+114.710  000.239  000.239: sourcing /usr/share/nvim/runtime/autoload/provider/pythonx.vim
+134.851  020.729  020.490: sourcing /usr/share/nvim/runtime/autoload/provider/python3.vim
+135.258  000.103  000.103: sourcing /usr/share/nvim/runtime/autoload/provider.vim
+188.804  000.307  000.307: sourcing /home/david/.config/nvim/plugged/vim-signature/autoload/signature/sign.vim
+189.350  000.256  000.256: sourcing /home/david/.config/nvim/plugged/vim-signature/autoload/signature/mark.vim
+192.465  057.675: BufEnter autocommands
+192.471  000.006: editing files in windows
+194.373  000.639  000.639: sourcing /home/david/.config/nvim/plugged/vim-startify/autoload/startify.vim
+195.682  001.173  001.173: sourcing /home/david/.config/nvim/plugged/LanguageClient-neovim/autoload/LanguageClient.vim
+195.933  000.100  000.100: sourcing /home/david/.config/nvim/plugged/LanguageClient-neovim/autoload/LSP.vim
+196.420  000.324  000.324: sourcing /home/david/.config/nvim/plugged/vim-startify/autoload/startify/fortune.vim
+201.527  000.250  000.250: sourcing /home/david/.config/nvim/plugged/vim-startify/syntax/startify.vim
+204.061  000.192  000.192: sourcing /home/david/.config/nvim/plugged/ale/autoload/ale/util.vim
+209.016  002.913  002.913: sourcing /home/david/.config/nvim/plugged/vim-fugitive/autoload/fugitive.vim
+210.067  012.005: VimEnter autocommands
+210.072  000.005: before starting main loop
+219.543  009.471: first screen update
+219.548  000.005: --- NVIM STARTED ---
