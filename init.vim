@@ -44,7 +44,7 @@ let &t_ut=''
 " === Main code display
 " ===
 set number
-set relativenumber
+"set relativenumber
 set ruler
 set cursorline
 syntax enable
@@ -62,6 +62,16 @@ set list
 set listchars=tab:▸\ ,trail:▫
 set scrolloff=5
 set ttimeoutlen=0
+set noshowmode
+set viewoptions=cursor,folds,slash,unix
+
+" ===
+" === Terminal Behavior
+" ===
+let g:neoterm_autoscroll = 1
+autocmd TermOpen term://* startinsert
+"tnoremap <C-N> <C-\><C-N>:q<CR>
+
 
 " Prevent auto line split
 set wrap
@@ -152,8 +162,8 @@ noremap - Nzz
 " Duplicate words
 map <LEADER>dw /\(\<\w\+\>\)\_s*\1
 
-" Others
-map <LEADER>o o<Esc>u
+" Folding
+map <silent> <LEADER>o za
 
 
 " ===
@@ -185,8 +195,8 @@ noremap B 5b
 noremap h e
 
 " Ctrl + U or E will move up/down the view port without moving the cursor
-"noremap <C-U> 5<C-y>
-"noremap <C-E> 5<C-e>
+noremap <C-U> 5<C-y>
+noremap <C-E> 5<C-e>
 "inoremap <C-U> <Esc>5<C-y>a
 "inoremap <C-E> <Esc>5<C-e>a
 
@@ -325,7 +335,7 @@ Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
 
 " Error checking
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 
 " Auto Complete
 "Plug 'Valloric/YouCompleteMe'
@@ -395,8 +405,11 @@ Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to 
 Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
-Plug 'yuttie/comfortable-motion.vim'
+"Plug 'yuttie/comfortable-motion.vim'
 Plug 'brooth/far.vim'
+Plug 'tmhedberg/SimpylFold'
+Plug 'kassio/neoterm'
+Plug 'vim-scripts/restore_view.vim'
 
 " Dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -485,7 +498,7 @@ inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>": "\<CR>")
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 let ncm2#popup_delay = 5
-let g:ncm2#matcher = 'substrfuzzy'
+let g:ncm2#matcher = "substrfuzzy"
 let g:ncm2_jedi#python_version = 3
 let g:ncm2#match_highlight = 'sans-serif'
 
@@ -640,10 +653,10 @@ let g:multi_cursor_quit_key            = '<Esc>'
 source ~/.config/nvim/snippits.vim
 
 " comfortable-motion
-nnoremap <silent> <C-e> :call comfortable_motion#flick(50)<CR>
-nnoremap <silent> <C-u> :call comfortable_motion#flick(-50)<CR>
-let g:comfortable_motion_no_default_key_mappings = 1
-let g:comfortable_motion_interval = 1
+"nnoremap <silent> <C-e> :call comfortable_motion#flick(50)<CR>
+"nnoremap <silent> <C-u> :call comfortable_motion#flick(-50)<CR>
+"let g:comfortable_motion_no_default_key_mappings = 1
+"let g:comfortable_motion_interval = 1
 
 
 " Startify
