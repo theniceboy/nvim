@@ -27,33 +27,17 @@ endif
 " ===
 " === System
 " ===
-set nocompatible
-filetype on
-filetype indent on
-filetype plugin on
-filetype plugin indent on
-set mouse=a
-set encoding=utf-8
-
 "set clipboard=unnamed
-
-" Prevent incorrect backgroung rendering
 let &t_ut=''
+set autochdir
 
-" ===
-" === Main code display
-" ===
-set number
-"set relativenumber
-set ruler
-set cursorline
-syntax enable
-syntax on
 
 " ===
 " === Editor behavior
 " ===
-" Better tab
+set number
+"set relativenumber
+set cursorline
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -62,8 +46,22 @@ set list
 set listchars=tab:▸\ ,trail:▫
 set scrolloff=5
 set ttimeoutlen=0
-set noshowmode
 set viewoptions=cursor,folds,slash,unix
+set wrap
+set tw=0
+set indentexpr=
+set foldmethod=indent
+set foldlevel=99
+set formatoptions-=tc
+set splitright
+set splitbelow
+
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
 
 " ===
 " === Terminal Behavior
@@ -73,67 +71,27 @@ autocmd TermOpen term://* startinsert
 "tnoremap <C-N> <C-\><C-N>:q<CR>
 
 
-" Prevent auto line split
-set wrap
-set tw=0
-
-set indentexpr=
-" Better backspace
-set backspace=indent,eol,start
-
-set foldmethod=indent
-set foldlevel=99
-
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
 " ===
-" === Window behaviors
+" === Status bar behaviors
 " ===
-set splitright
-set splitbelow
-
-" ===
-" === Status/command bar
-" ===
-set laststatus=2
-set autochdir
+set noshowmode
 set showcmd
-set formatoptions-=tc
-
-" Show command autocomplete
-set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
-set wildmenu                                                 " show a navigable menu for tab completion
-set wildmode=longest,list,full
+" set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
+set wildmenu
 
 " Searching options
-set hlsearch
 exec "nohlsearch"
-set incsearch
 set ignorecase
 set smartcase
-
-
-" ===
-" === Restore Cursor Position
-" ===
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 
 " ===
 " === Basic Mappings
 " ===
 
-" Set <LEADER> as <SPACE>
+" Set <LEADER> as <SPACE>, ; as :
 let mapleader=" "
-
-" Column (:) mods
 map ; :
-map q; q:
-map <LEADER>/ :set splitbelow<CR>:sp<CR>:term<CR>
-map <LEADER>r :r !
-map <LEADER>sr :%s/
 
 " Save & quit
 map Q :q<CR>
@@ -210,7 +168,6 @@ map <LEADER>u <C-w>k
 map <LEADER>e <C-w>j
 map <LEADER>n <C-w>h
 map <LEADER>i <C-w>l
-"map <LEADER>r <C-w>r
 
 " Disabling the default s key
 noremap s <nop>
@@ -253,6 +210,9 @@ map tmi :+tabmove<CR>
 " ===
 " === Other useful stuff
 " ===
+
+" Opening a terminal window
+map <LEADER>/ :set splitbelow<CR>:sp<CR>:term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
 map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4i
@@ -320,9 +280,6 @@ call plug#begin('~/.config/nvim/plugged')
 " Pretty Dress
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'connorholyday/vim-snazzy'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'ayu-theme/ayu-vim'
 Plug 'bling/vim-bufferline'
 Plug 'liuchengxu/space-vim-theme'
 
@@ -349,6 +306,7 @@ Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-match-highlight'
 Plug 'ncm2/ncm2-markdown-subscope'
+
 
 " Language Server
 Plug 'autozimu/LanguageClient-neovim', {
@@ -432,17 +390,13 @@ source ~/.config/nvim/_machine_specific.vim
 " ===
 " === Dress up my vim
 " ===
-map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
-map <LEADER>c2 :set background=light<CR>:colorscheme ayu<CR>:AirlineTheme ayu_light<CR>
+"map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
+"map <LEADER>c2 :set background=light<CR>:colorscheme ayu<CR>:AirlineTheme ayu_light<CR>
 
 set termguicolors     " enable true colors support
-let ayucolor="light"  " for light version of theme
-" let ayucolor="mirage" " for mirage version of theme
-" let ayucolor="dark"   " for dark version of theme
 "colorscheme snazzy
-let g:SnazzyTransparent = 1
 let g:space_vim_transp_bg = 1
-set background=dark
+"set background=dark
 colorscheme space_vim_theme
 let g:airline_theme='dracula'
 
