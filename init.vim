@@ -10,6 +10,14 @@
 "   instead of doing `cd ~/Github/vim-calc/build-up` and then do `vim calc.py`
 " - hotkey to switch between light theme and dark theme (in progress, still
 "   some bugs
+"
+"
+"   Testing
+"fnew
+"call nvim_win_float_set_pos(0,5,10,20,5)
+"hi Floating guibg=#00044
+"set withhl=Normal:Floating
+
 
 " ===
 " === Auto load for first time uses
@@ -55,6 +63,7 @@ set foldlevel=99
 set formatoptions-=tc
 set splitright
 set splitbelow
+set mouse=a
 
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
@@ -250,8 +259,9 @@ func! CompileRunGcc()
   elseif &filetype == 'sh'
     :!time bash %
   elseif &filetype == 'python'
-    set splitbelow
-    :sp
+    set splitright
+    :vsp
+    :vertical resize-20
     :term python3 %
   elseif &filetype == 'html'
     exec "!chromium % &"
@@ -463,12 +473,6 @@ let g:ncm2#match_highlight = 'sans-serif'
 "let g:jedi#popup_on_dot = 1
 "let g:jedi#completion_command = ""
 "let g:jedi#show_call_signatures = "1"
-
-
-" Language Server
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['/usr/bin/pyls'],
-    \ }
 
 
 " Some testing features
