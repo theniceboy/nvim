@@ -109,6 +109,9 @@ map S :w<CR>
 " Open the vimrc file anytime
 map <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 
+" Open Startify
+map <LEADER>st :Startify<CR>
+
 " Undo operations
 noremap l u
 " Undo in Insert mode
