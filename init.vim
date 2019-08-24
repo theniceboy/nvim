@@ -317,7 +317,7 @@ Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-github'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-match-highlight'
+"Plug 'ncm2/ncm2-match-highlight'
 Plug 'ncm2/ncm2-markdown-subscope'
 
 
@@ -467,7 +467,7 @@ set completeopt=noinsert,menuone,noselect
 let ncm2#popup_delay = 5
 let g:ncm2#matcher = "substrfuzzy"
 let g:ncm2_jedi#python_version = 3
-let g:ncm2#match_highlight = 'sans-serif'
+let g:ncm2#match_highlight = 'bold'
 
 "let g:jedi#auto_initialization = 1
 ""let g:jedi#completion_enabled = 0
@@ -634,7 +634,7 @@ nnoremap <silent> <LEADER>f :F  %<left><left>
 if !empty(glob('~/Github/vim-calc/vim-calc.vim'))
   source ~/Github/vim-calc/vim-calc.vim
 endif
-" map <LEADER>a :call Calc()<CR>
+map <LEADER>a :call Calc()<CR>
 
 let g:user_emmet_leader_key='<C-f>'
 " Open the _machine_specific.vim file if it has just been created
