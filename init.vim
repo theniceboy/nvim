@@ -44,7 +44,7 @@ set autochdir
 " === Editor behavior
 " ===
 set number
-"set relativenumber
+set relativenumber
 set cursorline
 set expandtab
 set tabstop=2
@@ -54,6 +54,7 @@ set list
 set listchars=tab:▸\ ,trail:▫
 set scrolloff=5
 set ttimeoutlen=0
+set notimeout
 set viewoptions=cursor,folds,slash,unix
 set wrap
 set tw=0
@@ -64,6 +65,21 @@ set formatoptions-=tc
 set splitright
 set splitbelow
 set mouse=a
+set shortmess+=c
+set inccommand=split
+set ttyfast "should make scrolling faster
+set lazyredraw "same as above
+set visualbell
+"silent !mkdir -p ~/.config/nvim/tmp/backup
+"silent !mkdir -p ~/.config/nvim/tmp/undo
+set backupdir=~/.config/nvim/tmp/backup,.
+set directory=~/.config/nvim/tmp/backup,.
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.config/nvim/tmp/undo,.
+endif
+
+
 
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
@@ -124,6 +140,13 @@ noremap K I
 " Copy to system clipboard
 vnoremap Y :w !xclip -i -sel c<CR>
 
+" Joining lines
+noremap H J
+
+" Indentation
+nnoremap < <<
+nnoremap > >>
+
 " Search
 map <LEADER><CR> :nohlsearch<CR>
 noremap = nzz
@@ -146,17 +169,18 @@ map <silent> <LEADER>o za
 " < n   i >
 "     e
 "     v
-noremap u k
-noremap n h
-noremap e j
-noremap i l
+noremap <silent> u k
+noremap <silent> n h
+noremap <silent> e j
+noremap <silent> i l
 " U/E keys for 5 times u/e (faster navigation)
-noremap U 5k
-noremap E 5j
+noremap <silent> U 5k
+noremap <silent> E 5j
 " N key: go to the start of the line
-noremap N 0
+noremap <silent> N 0
 " I key: go to the end of the line
-noremap I $
+noremap <silent> I $
+
 
 " Faster in-line navigation
 noremap W 5w
@@ -263,8 +287,9 @@ func! CompileRunGcc()
     :!time bash %
   elseif &filetype == 'python'
     set splitright
-    :vsp
-    :vertical resize-20
+    ":vsp
+    ":vertical resize-10
+    :sp
     :term python3 %
   elseif &filetype == 'html'
     exec "!chromium % &"
@@ -290,6 +315,9 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Testing my own plugin
+Plug 'theniceboy/vim-calc'
+
 " Pretty Dress
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -299,7 +327,9 @@ Plug 'liuchengxu/space-vim-theme'
 " File navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
+"Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Taglist
 Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
@@ -309,39 +339,30 @@ Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
 
 " Auto Complete
 "Plug 'Valloric/YouCompleteMe'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'davidhalter/jedi-vim'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-jedi'
-Plug 'ncm2/ncm2-github'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
+"Plug 'ncm2/ncm2'
+"Plug 'ncm2/ncm2-jedi'
+"Plug 'ncm2/ncm2-github'
+"Plug 'ncm2/ncm2-bufword'
+"Plug 'ncm2/ncm2-path'
 "Plug 'ncm2/ncm2-match-highlight'
-Plug 'ncm2/ncm2-markdown-subscope'
-
-
-" Language Server
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-" (Optional) Multi-entry selection UI.
-Plug 'junegunn/fzf'
+"Plug 'ncm2/ncm2-markdown-subscope'
 
 " Undo Tree
 Plug 'mbbill/undotree/'
 
 " Other visual enhancement
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'itchyny/vim-cursorword'
 "Plug 'tmhedberg/SimpylFold'
+Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-startify'
 
 " Git
-Plug 'rhysd/conflict-marker.vim'
-Plug 'tpope/vim-fugitive'
+"Plug 'rhysd/conflict-marker.vim'
+"Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 
@@ -356,10 +377,12 @@ Plug 'mattn/emmet-vim'
 " Python
 Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+"Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
+Plug 'dkarter/bullets.vim', { 'for' :['markdown', 'vim-plug'] }
 
 " For general writing
 Plug 'reedes/vim-wordy'
@@ -371,16 +394,16 @@ Plug 'kshenoy/vim-signature'
 " Other useful utilities
 Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/goyo.vim' " distraction free writing mode
 Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to change 'word' to `word`
 Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
 "Plug 'yuttie/comfortable-motion.vim'
-Plug 'brooth/far.vim'
+Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 Plug 'tmhedberg/SimpylFold'
-Plug 'kassio/neoterm'
-Plug 'vim-scripts/restore_view.vim'
+"Plug 'vim-scripts/restore_view.vim'
+Plug 'AndrewRadev/switch.vim' " gs to switch
+Plug 'ryanoasis/vim-devicons'
 
 " Dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -411,14 +434,35 @@ set termguicolors     " enable true colors support
 let g:space_vim_transp_bg = 1
 "set background=dark
 colorscheme space_vim_theme
-let g:airline_theme='dracula'
 
-let g:lightline = {
-  \     'active': {
-  \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
-  \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
-  \     }
-  \ }
+
+" ===
+" === Airline
+" ===
+let g:airline_theme='dracula'
+let g:airline#extensions#coc#enabled = 0
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'Nm',
+      \ 'i'  : 'Is',
+      \ 'R'  : 'Rp',
+      \ 'c'  : 'Cg',
+      \ 'v'  : 'Vi',
+      \ 'V'  : 'Vl',
+      \ '' : 'Vb',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ }
+
+
 
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
@@ -430,15 +474,18 @@ let g:lightline = {
 " ===
 map tt :NERDTreeToggle<CR>
 let NERDTreeMapOpenExpl = ""
-let NERDTreeMapUpdir = ""
-let NERDTreeMapUpdirKeepOpen = "l"
+let NERDTreeMapUpdir = "N"
+let NERDTreeMapUpdirKeepOpen = "n"
 let NERDTreeMapOpenSplit = ""
-let NERDTreeOpenVSplit = ""
+let NERDTreeMapOpenVSplit = "I"
 let NERDTreeMapActivateNode = "i"
 let NERDTreeMapOpenInTab = "o"
+let NERDTreeMapOpenInTabSilent = "O"
 let NERDTreeMapPreview = ""
-let NERDTreeMapCloseDir = "n"
-let NERDTreeMapChangeRoot = "y"
+let NERDTreeMapCloseDir = ""
+let NERDTreeMapChangeRoot = "l"
+let NERDTreeMapMenu = ","
+let NERDTreeMapToggleHidden = "zh"
 
 
 " ==
@@ -459,15 +506,15 @@ let g:NERDTreeIndicatorMapCustom = {
 " ===
 " === NCM2
 " ===
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>": "\<CR>")
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-let ncm2#popup_delay = 5
-let g:ncm2#matcher = "substrfuzzy"
-let g:ncm2_jedi#python_version = 3
-let g:ncm2#match_highlight = 'bold'
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>": "\<CR>")
+"autocmd BufEnter * call ncm2#enable_for_buffer()
+"set completeopt=noinsert,menuone,noselect
+"let ncm2#popup_delay = 5
+"let g:ncm2#matcher = "substrfuzzy"
+"let g:ncm2_jedi#python_version = 3
+"let g:ncm2#match_highlight = 'bold'
 
 "let g:jedi#auto_initialization = 1
 ""let g:jedi#completion_enabled = 0
@@ -478,18 +525,41 @@ let g:ncm2#match_highlight = 'bold'
 "let g:jedi#show_call_signatures = "1"
 
 
-" Some testing features
-set shortmess+=c
-set notimeout
+" ===
+" === coc
+" ===
+" fix the most annoying bug that coc has
+"autocmd WinEnter * call timer_start(1000, { tid -> execute('unmap if')})
+"silent! autocmd BufEnter * silent! call silent! timer_start(600, { tid -> execute('unmap if')})
+"silent! autocmd WinEnter * silent! call silent! timer_start(600, { tid -> execute('unmap if')})
+silent! au BufEnter * silent! unmap if
+"au TextChangedI * GitGutter
+" Installing plugin
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-snippets', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-sh', 'coc-lists', 'coc-gitignore', 'coc-fish']
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
 
 
 " ===
-" === vim-indent-guide
+" === indentLine
 " ===
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_color_change_percent = 1
+let g:indentLine_char = '│'
+let g:indentLine_color_term = 238
+let g:indentLine_color_gui = '#333333'
 silent! unmap <LEADER>ig
 autocmd WinEnter * silent! unmap <LEADER>ig
 
@@ -547,23 +617,13 @@ map <LEADER>tm :TableModeToggle<CR>
 
 
 " ===
-" === Goyo
+" === FZF
 " ===
-map <LEADER>gy :Goyo<CR>
+map <C-p> :FZF<CR>
 
 
 " ===
-" === CtrlP
-" ===
-map <C-p> :CtrlP<CR>
-let g:ctrlp_prompt_mappings = {
-  \ 'PrtSelectMove("j")':   ['<c-e>', '<down>'],
-  \ 'PrtSelectMove("k")':   ['<c-u>', '<up>'],
-  \ }
-
-
-" ===
-" === vim-signiture
+" === vim-signature
 " ===
 let g:SignatureMap = {
         \ 'Leader'             :  "m",
@@ -593,8 +653,11 @@ let g:SignatureMap = {
 " ===
 " === Undotree
 " ===
-let g:undotree_DiffAutoOpen = 0
 map L :UndotreeToggle<CR>
+let g:undotree_DiffAutoOpen = 1
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_ShortIndicators = 1
+
 
 " ==
 " == vim-multiple-cursor
@@ -608,6 +671,13 @@ let g:multi_cursor_next_key            = '<c-k>'
 let g:multi_cursor_prev_key            = '<c-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
+
+
+" ==
+" == thesaurus_query
+" ==
+map <LEADER>th :ThesaurusQueryLookupCurrentWord<CR>
+
 
 
 " My snippits
@@ -631,12 +701,20 @@ let g:startify_lists = [
 nnoremap <silent> <LEADER>f :F  %<left><left>
 
 " Testring my own plugin
-if !empty(glob('~/Github/vim-calc/vim-calc.vim'))
-  source ~/Github/vim-calc/vim-calc.vim
-endif
+"if !empty(glob('~/Github/vim-calc/vim-calc.vim'))
+  "source ~/Github/vim-calc/vim-calc.vim
+"endif
 map <LEADER>a :call Calc()<CR>
 
 let g:user_emmet_leader_key='<C-f>'
+
+
+" ===
+" === Bullets.vim
+" ===
+let g:bullets_set_mappings = 0
+
+
 " Open the _machine_specific.vim file if it has just been created
 if has_machine_specific_file == 0
   exec "e ~/.config/nvim/_machine_specific.vim"

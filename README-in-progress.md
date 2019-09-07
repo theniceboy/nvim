@@ -1,28 +1,33 @@
-# My NeoVim Config
+# My NeoVim Config (A NeoVim Config for Colemak Users)
+
+#### Please, for Linus Torvalds' sake, don't just copy this config without really looking at it! Please, at least, read this README file!
 
 ## After Installation, You Need To:
 
-- [ ] Install `pynvim`
-- [ ] Install `Node`
+- [ ] Install `pynvim` (pip)
+- [ ] Install `nodejs`
+- [ ] Install nerd-font (actually it's optional but you really want it)
 
 ## After Installation, You Might Want To:
 
-### On MacOS:
+#### First of all
+- [ ] Do `:checkhealth`
 
-~~- [ ] Install MacVim and use Iterm2 if something is not working right~~
-
-### Config `Python` path
+#### Config `Python` path
+- [ ] Well, make sure you have python
 - [ ] See `_machine_specific.vim`
 
-### For Code AutoComplete (NCM2)
+#### For Code AutoComplete (coc)
 
-- [ ] Install `font-mathematica` for `ncm2-match-highlight`
-- [ ] Run `sudo python3 [your vim folder]/plugged/install.py`
-- [ ] For python: `sudo pip3 install pylint autopep8 yapf`
+Python:
+- [ ] Do `pip3 install flake8` (for linting)
 
-### For Taglist:
+#### For Taglist:
 
 - [ ] Install `ctags` for function/class/variable list
+
+#### For inputing text ASCII art
+- [ ] Install `figlet`
 
 ## Keyboard Shortcuts for `NORMAL` (`COMMAND`) Mode
 
@@ -40,25 +45,28 @@
 
   Since the `i` key has been mapped to `k`, every command (combination) that involves `i` should use `k` instead (for example, `ciw` should be `ckw`).
 
-#### 1.2 Cursor Movement
+#### 1.2 Remapped Cursor Movement
 
 | Command    | What it does                                              | Equivalent (QWERTY) |
 |------------|-----------------------------------------------------------|---------------------|
-| `u`        | cursor up a terminal line                                 | `k`                |
-| `e`        | cursor down a terminal line                               | `j`                |
-| `n`        | cursor left                                               | `h`                 |
-| `i`        | cursor right                                              | `l`                 |
-| `U`        | cursor up 5 terminal lines                                | `5k`               |
-| `E`        | cursor down 5 terminal lines                              | `5j`               |
-| `N`        | cursor to the start of the line                           | `0`                 |
-| `I`        | cursor to the end of the line                             | `$`                 |
-| `Ctrl` `u` | move the view port up 5 lines without moving the cursor   | `Ctrl` `y`          |
-| `Ctrl` `e` | move the view port down 5 lines without moving the cursor | `Ctrl` `e`          |
-| `w`        | next word                                                 |                     |
-| `h`        | move to the end of this word                              | `e`                 |
-| `b`        | previous word                                             |                     |
+| `u`        | Cursor up a terminal line                                 | `k`                 |
+| `e`        | Cursor down a terminal line                               | `j`                 |
+| `n`        | Cursor left                                               | `h`                 |
+| `i`        | Cursor right                                              | `l`                 |
+| `U`        | Cursor up 5 terminal lines                                | `5k`                |
+| `E`        | Cursor down 5 terminal lines                              | `5j`                |
+| `N`        | Cursor to the start of the line                           | `0`                 |
+| `I`        | Cursor to the end of the line                             | `$`                 |
+| `Ctrl` `u` | Move the view port up 5 lines without moving the cursor   | `Ctrl` `y`          |
+| `Ctrl` `e` | Move the view port down 5 lines without moving the cursor | `Ctrl` `e`          |
+| `h`        | Move to the end of this word                              | `e`                 |
 
-#### 1.3 Some Other Commands That Your Moms Don't Tell You
+#### 1.3 Remapped Editor Commands
+| Command | What it does |
+|---------|--------------|
+| `l`     | undo         |
+
+#### 1.4 Some Other Commands to Know
 
 | Command | What it does                          |
 |---------|---------------------------------------|
@@ -67,6 +75,9 @@
 | `<C-a>` | Increase the number under cursor by 1 |
 | `<C-x>` | Decrease the number under cursor by 1 |
 | `z=`    | Show spell suggestions                |
+| `H`     | Joins the current line with the next  |
+| `<`     | Un-indent                             |
+| `>`     | Indent                                |
 
 
 ### 2 Window Management
@@ -80,7 +91,9 @@
 | `sn`    | Create a new vertical split screen and place it left to the current window  |
 | `si`    | Create a new vertical split screen and place it right to the current window |
 | `sv`    | Set the two splits to be vertical                                           |
-| `sh     | Set the two splits to be horizontal                                         |
+| `sh`    | Set the two splits to be horizontal                                         |
+| `srv`   | Rotate splits and arrange splits vertically                                 |
+| `srh`   | Rotate splits and arrange splits horizontally
 
 #### 2.2 Moving the Cursor Between Different Windows
 
@@ -88,53 +101,56 @@
 |--------------------------------|------------|----------|
 | Move cursor to the next window | `<SPACE>w` | `<C-w>w` |
 
-### 3 Opening/Locating a File
+#### 2.3 Resizing Different Windows
+Use the arrow keys to resize the current window.
 
-#### 3.1 NERDTree
+## Plugins
 
-| Action          | Shortcut | Command           |
-|-----------------|----------|-------------------|
-| Toggle NerdTree | `tt`     | `:NERDTreeToggle` |
+#### COC (AutoCompletion)
+
+| Shortcut    | Action                |
+|-------------|-----------------------|
+| `Space` `y` | Get yank history list |
+| `gd`        | Go to definition      |
+| `gr`        | List references       |
+| `gi`        | List implementation   |
+| `gy`        | Go to type definition |
+
+#### NERDTree
+
+| Shortcut | Action          | Command           |
+|----------|-----------------|-------------------|
+| `tt`     | Toggle NerdTree | `:NERDTreeToggle` |
 
 
-#### 3.2 CtrlP (the fuzzy file finder)
+#### FZF (the fuzzy file finder)
 
-| Action           | Shortcut   | Command      |
-|------------------|------------|--------------|
-| Active CtrlP     | `Ctrl` `p` | `:CtrlP<CR>` |
-| Move up 1 item   | `Ctrl` `u` | ` `          |
-| Move down 1 item | `Ctrl` `e` | ` `          |
+| Shortcut   | Action           | Command       |
+|------------|------------------|---------------|
+| `Ctrl` `p` | Active FZF       | `:FZF<Enter>` |
+| `Ctrl` `u` | Move up 1 item   | ` `           |
+| `Ctrl` `e` | Move down 1 item | ` `           |
 
-### 4 AutoComplete (YCM)
 
-| Action            | Shortcut | Command                                           |
-|-------------------|----------|---------------------------------------------------|
-| Go to definition  | `gd`     | `:YcmCompleter GoToDefinitionElseDeclaration<CR>` |
-| Get documentation | `g/`     | `:YcmCompleter GetDoc<CR>`                        |
-| Get type          | `gt`     | `:YcmCompleter GetType<CR>`                       |
-| Go to references  | `gr`     | `:YcmCompleter GoToReferences`                    |
-
-### 5 Undotree
+#### Undotree
 
 Press `Shift` + `L` to open Undotree
 
-### 6 Bookmarks (vim-signiture)
+### vim-signiture (Bookmarks)
 
-| Action                          | Shortcut    | Command |
-|---------------------------------|-------------|---------|
-| Add/remove mark at current line | `m<letter>` |         |
-| List all marks                  | `m/`        |         |
-| Jump to the next mark in buffer | `m<SPACE>`  |         |
+| Shortcut    | Action                          | Command |
+|-------------|---------------------------------|---------|
+| `m<letter>` | Add/remove mark at current line |         |
+| `m/`        | List all marks                  |         |
+| `m<SPACE>`  | Jump to the next mark in buffer |         |
 
 For more commands, see [here](https://github.com/MattesGroeger/vim-bookmarks#usage)
 
-### 7 Markdown File Editing
-
-#### 7.1 Edit Table with `vim-table-mode`
+#### vim-table-mode
 
 Toggle "Table Editing Mode" with `<SPACE>tm` (equals to command `:TableModeToggle<CR>`)
 
-### Some Other Useful Stuff
+## Other Useful Stuff
 
 #### Press `<SPACE>fd` to highlight adjacent duplicated words
 
