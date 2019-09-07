@@ -70,8 +70,8 @@ set inccommand=split
 set ttyfast "should make scrolling faster
 set lazyredraw "same as above
 set visualbell
-"silent !mkdir -p ~/.config/nvim/tmp/backup
-"silent !mkdir -p ~/.config/nvim/tmp/undo
+silent !mkdir -p ~/.config/nvim/tmp/backup
+silent !mkdir -p ~/.config/nvim/tmp/undo
 set backupdir=~/.config/nvim/tmp/backup,.
 set directory=~/.config/nvim/tmp/backup,.
 if has('persistent_undo')
