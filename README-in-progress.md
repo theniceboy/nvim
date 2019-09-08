@@ -124,10 +124,15 @@ Use the arrow keys to resize the current window.
 
 #### NERDTree
 
-| Shortcut | Action          | Command           |
-|----------|-----------------|-------------------|
-| `tt`     | Toggle NerdTree | `:NERDTreeToggle` |
+| Shortcut          | Action          |
+|-------------------|-----------------|
+| `tt`              | Toggle NerdTree |
+| `,` (in NERDTREE) | Toggle menu     |
 
+#### Tagbar
+Press `T` (`Shift` + `t`) to open Taglist (function and variable list).
+
+Press `q` to leave Tagbar
 
 #### FZF (the fuzzy file finder)
 
@@ -137,12 +142,21 @@ Use the arrow keys to resize the current window.
 | `Ctrl` `u` | Move up 1 item   | ` `           |
 | `Ctrl` `e` | Move down 1 item | ` `           |
 
-
 #### Undotree
 
-Press `Shift` + `L` to open Undotree
+| Shortcut      | Action        |
+|---------------|---------------|
+| `Shift` + `L` | Open Undotree |
+| `Shift` + `K` | History go up |
+| `Shift` + `J` | History go down |
 
-### vim-signiture (Bookmarks)
+#### vim-startify (Startup screen)
+Press `Space` `s` `t` to openup `startify`
+
+#### thesaurus_query.vim
+Press `Space` `t` `h` to find synonyms
+
+#### vim-signiture (Bookmarks)
 
 | Shortcut    | Action                          | Command |
 |-------------|---------------------------------|---------|
@@ -155,6 +169,60 @@ For more commands, see [here](https://github.com/MattesGroeger/vim-bookmarks#usa
 #### vim-table-mode
 
 Toggle "Table Editing Mode" with `<SPACE>tm` (equals to command `:TableModeToggle<CR>`)
+
+#### vim-multiple-cursors
+| Shortcut   | Action                              |
+|------------|-------------------------------------|
+| `Ctrl`+`k` | Select next word (multiple cursors) |
+| `Ctrl`+`p` | Select previous word                |
+| `Ctrl`+`x` | Skip word                           |
+| `Esc`      | Quit mutiple cursors                |
+
+#### vim-surround
+To add surround (`string` -> `"string"`):
+```
+string
+```
+press: `yskw'`:
+```
+'string'
+```
+
+To change surround
+```
+'string'
+```
+press: `cs'"`:
+```
+"string"
+```
+
+#### vim-calc
+Press `Space` + `a` to calculate the equation in the current line
+
+## Custom Snippets
+#### Markdown
+| Shortcut | what it creates     |
+|----------|---------------------|
+| `,n`     | ---                 |
+| `,b`     | **Bold** text       |
+| `,s`     | ~~sliced~~ text     |
+| `,i`     | *italic* text       |
+| `,d`     | `code block`        |
+| `,c`     | big `block of code` |
+| `,m`     | - [ ] check mark    |
+| `,p`     | picture             |
+| `,a`     | [link]()            |
+| `,1`     | # H1                |
+| `,2`     | ## H2               |
+| `,3`     | ### H3              |
+| `,4`     | #### H4             |
+| `,l`     | --------            |
+
+`,f` to go to the next `` (placeholder)
+
+`,w` to go to the next `<++>` (placeholder) and then press `Enter` for you
+
 
 ## Other Useful Stuff
 
