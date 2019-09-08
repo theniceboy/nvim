@@ -65,6 +65,13 @@ set formatoptions-=tc
 set splitright
 set splitbelow
 set mouse=a
+set noshowmode
+set showcmd
+" set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
+set wildmenu
+exec "nohlsearch"
+set ignorecase
+set smartcase
 set shortmess+=c
 set inccommand=split
 set ttyfast "should make scrolling faster
@@ -79,8 +86,7 @@ if has('persistent_undo')
   set undodir=~/.config/nvim/tmp/undo,.
 endif
 
-
-
+" Cursor shape
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -97,23 +103,8 @@ autocmd TermOpen term://* startinsert
 
 
 " ===
-" === Status bar behaviors
-" ===
-set noshowmode
-set showcmd
-" set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
-set wildmenu
-
-" Searching options
-exec "nohlsearch"
-set ignorecase
-set smartcase
-
-
-" ===
 " === Basic Mappings
 " ===
-
 " Set <LEADER> as <SPACE>, ; as :
 let mapleader=" "
 map ; :
@@ -152,7 +143,7 @@ map <LEADER><CR> :nohlsearch<CR>
 noremap = nzz
 noremap - Nzz
 
-" Duplicate words
+" Adjacent duplicate words
 map <LEADER>dw /\(\<\w\+\>\)\_s*\1
 
 " Folding
@@ -162,7 +153,6 @@ map <silent> <LEADER>o za
 " ===
 " === Cursor Movement
 " ===
-"
 " New cursor movement (the default arrow keys are used for resizing windows)
 "     ^
 "     u
@@ -173,26 +163,26 @@ noremap <silent> u k
 noremap <silent> n h
 noremap <silent> e j
 noremap <silent> i l
+
 " U/E keys for 5 times u/e (faster navigation)
 noremap <silent> U 5k
 noremap <silent> E 5j
+
 " N key: go to the start of the line
 noremap <silent> N 0
 " I key: go to the end of the line
 noremap <silent> I $
 
-
 " Faster in-line navigation
 noremap W 5w
 noremap B 5b
+
 " set h (same as n, cursor left) to 'end of word'
 noremap h e
 
 " Ctrl + U or E will move up/down the view port without moving the cursor
 noremap <C-U> 5<C-y>
 noremap <C-E> 5<C-e>
-"inoremap <C-U> <Esc>5<C-y>a
-"inoremap <C-E> <Esc>5<C-e>a
 
 
 " ===
@@ -241,6 +231,12 @@ map ti :+tabnext<CR>
 " Move the tabs with tmn and tmi
 map tmn :-tabmove<CR>
 map tmi :+tabmove<CR>
+
+
+" ===
+" === My Snippets
+" ===
+source ~/.config/nvim/snippits.vim
 
 
 " ===
@@ -298,6 +294,7 @@ func! CompileRunGcc()
   endif
 endfunc
 
+" working on it...
 map R :call CompileBuildrrr()<CR>
 func! CompileBuildrrr()
   exec "w"
@@ -398,7 +395,6 @@ Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to 
 Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
-"Plug 'yuttie/comfortable-motion.vim'
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 Plug 'tmhedberg/SimpylFold'
 "Plug 'vim-scripts/restore_view.vim'
@@ -426,15 +422,12 @@ source ~/.config/nvim/_machine_specific.vim
 " ===
 " === Dress up my vim
 " ===
-"map <LEADER>c1 :set background=dark<CR>:colorscheme snazzy<CR>:AirlineTheme dracula<CR>
-"map <LEADER>c2 :set background=light<CR>:colorscheme ayu<CR>:AirlineTheme ayu_light<CR>
-
 set termguicolors     " enable true colors support
-"colorscheme snazzy
 let g:space_vim_transp_bg = 1
 "set background=dark
 colorscheme space_vim_theme
 
+" ===================== Start of Plugin Settings =====================
 
 " ===
 " === Airline
@@ -450,23 +443,17 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_mode_map = {
       \ '__' : '-',
-      \ 'n'  : 'Nm',
-      \ 'i'  : 'Is',
-      \ 'R'  : 'Rp',
-      \ 'c'  : 'Cg',
-      \ 'v'  : 'Vi',
-      \ 'V'  : 'Vl',
-      \ '' : 'Vb',
+      \ 'n'  : 'Nor',
+      \ 'i'  : 'Ins',
+      \ 'R'  : 'Rpl',
+      \ 'c'  : 'Cmd',
+      \ 'v'  : 'Vis',
+      \ 'V'  : 'Vli',
+      \ '' : 'Vbl',
       \ 's'  : 'S',
       \ 'S'  : 'S',
       \ '' : 'S',
       \ }
-
-
-
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
 
 
 " ===
@@ -503,6 +490,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
+
 " ===
 " === NCM2
 " ===
@@ -515,7 +503,6 @@ let g:NERDTreeIndicatorMapCustom = {
 "let g:ncm2#matcher = "substrfuzzy"
 "let g:ncm2_jedi#python_version = 3
 "let g:ncm2#match_highlight = 'bold'
-
 "let g:jedi#auto_initialization = 1
 ""let g:jedi#completion_enabled = 0
 ""let g:jedi#auto_vim_configuration = 0
@@ -534,7 +521,7 @@ let g:NERDTreeIndicatorMapCustom = {
 "silent! autocmd WinEnter * silent! call silent! timer_start(600, { tid -> execute('unmap if')})
 silent! au BufEnter * silent! unmap if
 "au TextChangedI * GitGutter
-" Installing plugin
+" Installing plugins
 let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-snippets', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-sh', 'coc-lists', 'coc-gitignore', 'coc-fish']
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -546,6 +533,7 @@ inoremap <silent><expr> <Tab>
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Useful commands
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -567,7 +555,7 @@ autocmd WinEnter * silent! unmap <LEADER>ig
 " ===
 " === some error checking
 " ===
-
+" I ain't need no ale!
 
 
 " ===
@@ -679,17 +667,6 @@ let g:multi_cursor_quit_key            = '<Esc>'
 map <LEADER>th :ThesaurusQueryLookupCurrentWord<CR>
 
 
-
-" My snippits
-source ~/.config/nvim/snippits.vim
-
-" comfortable-motion
-"nnoremap <silent> <C-e> :call comfortable_motion#flick(50)<CR>
-"nnoremap <silent> <C-u> :call comfortable_motion#flick(-50)<CR>
-"let g:comfortable_motion_no_default_key_mappings = 1
-"let g:comfortable_motion_interval = 1
-
-
 " Startify
 let g:startify_lists = [
       \ { 'type': 'files',     'header': ['   MRU']            },
@@ -697,15 +674,25 @@ let g:startify_lists = [
       \ { 'type': 'commands',  'header': ['   Commands']       },
       \ ]
 
-" Far.vim
+
+" ===
+" === Far.vim
+" ===
 nnoremap <silent> <LEADER>f :F  %<left><left>
 
-" Testring my own plugin
+" ===
+" === vim-calc
+" ===
+map <LEADER>a :call Calc()<CR>
+" Testing
 "if !empty(glob('~/Github/vim-calc/vim-calc.vim'))
   "source ~/Github/vim-calc/vim-calc.vim
 "endif
-map <LEADER>a :call Calc()<CR>
 
+
+" ===
+" === emmet
+" ===
 let g:user_emmet_leader_key='<C-f>'
 
 
@@ -714,6 +701,8 @@ let g:user_emmet_leader_key='<C-f>'
 " ===
 let g:bullets_set_mappings = 0
 
+
+" ===================== End of Plugin Settings =====================
 
 " Open the _machine_specific.vim file if it has just been created
 if has_machine_specific_file == 0

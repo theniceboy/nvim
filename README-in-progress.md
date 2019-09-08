@@ -1,12 +1,14 @@
 # My NeoVim Config (A NeoVim Config for Colemak Users)
 
-#### Please, for Linus Torvalds' sake, don't just copy this config without really looking at it! Please, at least, read this README file!
+![demo](./demo.png)
+
+Please **DO NOT** just copy this config without really looking at it! Please, at least, read this README file!
 
 ## After Installation, You Need To:
 
 - [ ] Install `pynvim` (pip)
 - [ ] Install `nodejs`
-- [ ] Install nerd-font (actually it's optional but you really want it)
+- [ ] Install nerd-font (actually it's optional but it looks real good)
 
 ## After Installation, You Might Want To:
 
@@ -97,9 +99,13 @@ Python:
 
 #### 2.2 Moving the Cursor Between Different Windows
 
-| Action                         | Shortcut   | Command  |
-|--------------------------------|------------|----------|
-| Move cursor to the next window | `<SPACE>w` | `<C-w>w` |
+| Shortcut   | Action                         |
+|------------|--------------------------------|
+| `<SPACE>w` | Move cursor to the next window |
+| `<SPACE>n` | Move cursor one window left    |
+| `<SPACE>i` | Move cursor one window right   |
+| `<SPACE>u` | Move cursor one window up      |
+| `<SPACE>e` | Move cursor one window down    |
 
 #### 2.3 Resizing Different Windows
 Use the arrow keys to resize the current window.
@@ -158,10 +164,10 @@ Toggle "Table Editing Mode" with `<SPACE>tm` (equals to command `:TableModeToggl
 
 `tx Hello<Enter>`
 ```
- _   _      _ _       
-| | | | ___| | | ___  
-| |_| |/ _ \ | |/ _ \ 
+ _   _      _ _
+| | | | ___| | | ___
+| |_| |/ _ \ | |/ _ \
 |  _  |  __/ | | (_) |
-|_| |_|\___|_|_|\___/ 
+|_| |_|\___|_|_|\___/
 ```
 
