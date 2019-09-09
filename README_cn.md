@@ -1,6 +1,8 @@
 
 # 我的NeoVim配置文件 (一个Colemak键位布局用户的NeoVim配置)
 
+#### [English Ver.](./README.md)
+
 ![demo](./demo.png)
 
 **请不要**只复制配置文件，而不看其内容! 请至少阅读本自述文件!

@@ -1,5 +1,7 @@
 # My NeoVim Config (A NeoVim Config for Colemak Users)
 
+#### [中文版README](./README_cn.md)
+
 ![demo](./demo.png)
 
 Please **DO NOT** just copy this config without really looking at it! Please, at least, read this README file!
