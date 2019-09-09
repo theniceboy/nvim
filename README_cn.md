@@ -158,7 +158,7 @@ Python:
 
 键入`Space`-`s`-`t`以打开`startify`
 
-#### thesaurus_query.vimo
+#### thesaurus_query.vim
 
 键入 `Space`-`t`-`h`查找近义词
 
