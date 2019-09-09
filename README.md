@@ -1,6 +1,6 @@
 # My NeoVim Config (A NeoVim Config for Colemak Users)
 
-#### [中文版README](./README_cn.md)
+#### [中文版README](./README_cn.md) by [@EvanMeek](https://github.com/EvanMeek)
 
 ![demo](./demo.png)
 
