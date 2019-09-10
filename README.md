@@ -10,7 +10,7 @@ Please **DO NOT** just copy this config without really looking at it! Please, at
 
 - [ ] Install `pynvim` (pip)
 - [ ] Install `nodejs`
-- [ ] Install nerd-font (actually it's optional but it looks real good)
+- [ ] Install nerd-fonts (actually it's optional but it looks real good)
 
 ## After Installation, You Might Want To:
 
@@ -22,23 +22,18 @@ Please **DO NOT** just copy this config without really looking at it! Please, at
 - [ ] See `_machine_specific.vim`
 
 #### For Code AutoComplete (coc)
-
 Python:
 - [ ] Do `pip3 install flake8` (for linting)
 
 #### For Taglist:
-
 - [ ] Install `ctags` for function/class/variable list
 
 #### For inputing text ASCII art
 - [ ] Install `figlet`
 
 ## Keyboard Shortcuts for `NORMAL` (`COMMAND`) Mode
-
 ### 1 Basic Commands
-
 #### 1.1 The Most Basics
-
 **`k`** : to switch to **`INSERT`** : mode, equals to key `i`
 
 **`Q`** : quit current vim window, equals to command `:q`
@@ -71,7 +66,6 @@ Python:
 | `l`     | undo         |
 
 #### 1.4 Some Other Commands to Know
-
 | Command | What it does                          |
 |---------|---------------------------------------|
 | `<C-i>` | Go to the next cursor position        |
@@ -85,9 +79,7 @@ Python:
 
 
 ### 2 Window Management
-
 #### 2.1 Creating Window Through Split Screen
-
 | Command | What it does                                                                |
 |---------|-----------------------------------------------------------------------------|
 | `su`    | Create a new horizontal split screen and place it above the current window  |
@@ -100,22 +92,19 @@ Python:
 | `srh`   | Rotate splits and arrange splits horizontally
 
 #### 2.2 Moving the Cursor Between Different Windows
-
-| Shortcut   | Action                         |
-|------------|--------------------------------|
-| `<SPACE>w` | Move cursor to the next window |
-| `<SPACE>n` | Move cursor one window left    |
-| `<SPACE>i` | Move cursor one window right   |
-| `<SPACE>u` | Move cursor one window up      |
-| `<SPACE>e` | Move cursor one window down    |
+| Shortcut        | Action                         |
+|-----------------|--------------------------------|
+| `<SPACE>` + `w` | Move cursor to the next window |
+| `<SPACE>` + `n` | Move cursor one window left    |
+| `<SPACE>` + `i` | Move cursor one window right   |
+| `<SPACE>` + `u` | Move cursor one window up      |
+| `<SPACE>` + `e` | Move cursor one window down    |
 
 #### 2.3 Resizing Different Windows
 Use the arrow keys to resize the current window.
 
 ## Plugins
-
 #### COC (AutoCompletion)
-
 | Shortcut    | Action                |
 |-------------|-----------------------|
 | `Space` `y` | Get yank history list |
@@ -125,7 +114,6 @@ Use the arrow keys to resize the current window.
 | `gy`        | Go to type definition |
 
 #### NERDTree
-
 | Shortcut          | Action          |
 |-------------------|-----------------|
 | `tt`              | Toggle NerdTree |
@@ -137,15 +125,13 @@ Press `T` (`Shift` + `t`) to open Taglist (function and variable list).
 Press `q` to leave Tagbar
 
 #### FZF (the fuzzy file finder)
-
-| Shortcut   | Action           | Command       |
-|------------|------------------|---------------|
-| `Ctrl` `p` | Active FZF       | `:FZF<Enter>` |
-| `Ctrl` `u` | Move up 1 item   | ` `           |
-| `Ctrl` `e` | Move down 1 item | ` `           |
+| Shortcut   | Action           |
+|------------|------------------|
+| `Ctrl` `p` | Active FZF       |
+| `Ctrl` `u` | Move up 1 item   |
+| `Ctrl` `e` | Move down 1 item |
 
 #### Undotree
-
 | Shortcut      | Action        |
 |---------------|---------------|
 | `Shift` + `L` | Open Undotree |
@@ -159,7 +145,6 @@ Press `Space` `s` `t` to openup `startify`
 Press `Space` `t` `h` to find synonyms
 
 #### vim-signiture (Bookmarks)
-
 | Shortcut    | Action                          | Command |
 |-------------|---------------------------------|---------|
 | `m<letter>` | Add/remove mark at current line |         |
@@ -169,7 +154,6 @@ Press `Space` `t` `h` to find synonyms
 For more commands, see [here](https://github.com/MattesGroeger/vim-bookmarks#usage)
 
 #### vim-table-mode
-
 Toggle "Table Editing Mode" with `<SPACE>tm` (equals to command `:TableModeToggle<CR>`)
 
 #### vim-multiple-cursors
@@ -204,12 +188,12 @@ Press `Space` + `a` to calculate the equation in the current line
 
 ## Custom Snippets
 #### Markdown
-| Shortcut | what it creates     |
+| Shortcut | What it creates     |
 |----------|---------------------|
 | `,n`     | ---                 |
-| `,b`     | **Bold** text       |
+| `,b`     | **Bold** text           |
 | `,s`     | ~~sliced~~ text     |
-| `,i`     | *italic* text       |
+| `,i`     | *italic* text         |
 | `,d`     | `code block`        |
 | `,c`     | big `block of code` |
 | `,m`     | - [ ] check mark    |
@@ -221,17 +205,14 @@ Press `Space` + `a` to calculate the equation in the current line
 | `,4`     | #### H4             |
 | `,l`     | --------            |
 
-`,f` to go to the next `` (placeholder)
+`,f` to go to the next `<++>` (placeholder)
 
 `,w` to go to the next `<++>` (placeholder) and then press `Enter` for you
 
-
 ## Other Useful Stuff
-
 #### Press `<SPACE>fd` to highlight adjacent duplicated words
 
 #### Press `tx` and enter your text
-
 `tx Hello<Enter>`
 ```
  _   _      _ _
