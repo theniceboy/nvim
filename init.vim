@@ -1,23 +1,10 @@
-"  __  __        __     _____ __  __ ____   ____
-" |  \/  |_   _  \ \   / /_ _|  \/  |  _ \ / ___|
-" | |\/| | | | |  \ \ / / | || |\/| | |_) | |
-" | |  | | |_| |   \ V /  | || |  | |  _ <| |___
-" |_|  |_|\__, |    \_/  |___|_|  |_|_| \_\\____|
-"         |___/
+"  __  ____   __  _   ___     _____ __  __ ____   ____
+" |  \/  \ \ / / | \ | \ \   / /_ _|  \/  |  _ \ / ___|
+" | |\/| |\ V /  |  \| |\ \ / / | || |\/| | |_) | |
+" | |  | | | |   | |\  | \ V /  | || |  | |  _ <| |___
+" |_|  |_| |_|   |_| \_|  \_/  |___|_|  |_|_| \_\\____|
 
-" Todos
-" - pylint reports error when doing `vim ~/Github/vim-calc/build-up/calc.py`
-"   instead of doing `cd ~/Github/vim-calc/build-up` and then do `vim calc.py`
-" - hotkey to switch between light theme and dark theme (in progress, still
-"   some bugs
-"
-"
-"   Testing
-"fnew
-"call nvim_win_float_set_pos(0,5,10,20,5)
-"hi Floating guibg=#00044
-"set withhl=Normal:Floating
-
+" Author: @theniceboy
 
 " ===
 " === Auto load for first time uses
@@ -264,7 +251,7 @@ nmap <C-c> zz
 autocmd BufEnter * silent! lcd %:p:h
 
 " Call figlet
-map tx :r !figlet
+map tx :r !figlet 
 
 " Compile function
 map r :call CompileRunGcc()<CR>
@@ -567,7 +554,6 @@ let g:mkdp_refresh_slow = 0
 let g:mkdp_command_for_global = 0
 let g:mkdp_open_to_the_world = 0
 let g:mkdp_open_ip = ''
-let g:mkdp_browser = 'chromium'
 let g:mkdp_echo_preview_url = 0
 let g:mkdp_browserfunc = ''
 let g:mkdp_preview_options = {
