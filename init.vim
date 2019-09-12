@@ -303,7 +303,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'theniceboy/vim-calc'
 
 " Pretty Dress
-Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline'
+Plug 'liuchengxu/eleline.vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 Plug 'liuchengxu/space-vim-theme'
@@ -316,7 +317,8 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Taglist
-Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
+"Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
+Plug 'liuchengxu/vista.vim'
 
 " Error checking
 "Plug 'w0rp/ale'
@@ -579,12 +581,6 @@ let g:python_highlight_all = 1
 
 
 " ===
-" === Taglist
-" ===
-map <silent> T :TagbarOpenAutoClose<CR>
-
-
-" ===
 " === vim-table-mode
 " ===
 map <LEADER>tm :TableModeToggle<CR>
@@ -686,6 +682,28 @@ let g:user_emmet_leader_key='<C-f>'
 " === Bullets.vim
 " ===
 let g:bullets_set_mappings = 0
+
+
+" ===
+" === Vista.vim
+" ===
+map <silent> T :Vista!!<CR>
+map <silent> <C-t> :Vista finder<CR>
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+" e.g., more compact: ["▸ ", ""]
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+"let g:vista_default_executive = 'ctags'
+" To enable fzf's preview window set g:vista_fzf_preview.
+" The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
+" For example:
+let g:vista_fzf_preview = ['right:50%']
+
 
 
 " ===================== End of Plugin Settings =====================

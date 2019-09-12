@@ -119,10 +119,12 @@ Use the arrow keys to resize the current window.
 | `tt`              | Toggle NerdTree |
 | `,` (in NERDTREE) | Toggle menu     |
 
-#### Tagbar
-Press `T` (`Shift` + `t`) to open Taglist (function and variable list).
+#### Vista.vim
+Press `T` (`Shift` + `t`) to open function and variable list.
 
-Press `q` to leave Tagbar
+Press `Ctrl` + `T` to open function/class/variable finder
+
+Press `q` to leave Vista.vim
 
 #### FZF (the fuzzy file finder)
 | Shortcut   | Action           |

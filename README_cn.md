@@ -119,10 +119,12 @@ Python:
 | `tt`              | 开关NerdTree |
 | `,` (in NERDTREE) | 开关菜单     |
 
-#### Tagbar
-键入`T`(`Shift`+`t`)打开Taglist(函数/类/变量列表)。
+#### Vista.vim
+键入`T`(`Shift`+`t`)打开函数/类/变量列表。
 
-键入`q`退出Tagbar
+键入`Ctrl`+`t`打开函数/类/变量查找窗口。
+
+键入`q`退出Vista.vim
 
 #### FZF (模糊查找文件器)
 | 快捷键     | 操作    |
