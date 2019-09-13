@@ -281,17 +281,6 @@ func! CompileRunGcc()
   endif
 endfunc
 
-" working on it...
-map R :call CompileBuildrrr()<CR>
-func! CompileBuildrrr()
-  exec "w"
-  if &filetype == 'vim'
-    exec "source $MYVIMRC"
-  elseif &filetype == 'markdown'
-    exec "echo"
-  endif
-endfunc
-
 
 " ===
 " === Install Plugins with Vim-Plug
@@ -309,12 +298,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 Plug 'liuchengxu/space-vim-theme'
 
+
 " File navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 "Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
-Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'francoiscabrol/ranger.vim'
 
 " Taglist
 "Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
@@ -351,6 +342,7 @@ Plug 'mhinz/vim-startify'
 "Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
+Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 
 " HTML, CSS, JavaScript, PHP, JSON, etc.
 Plug 'elzr/vim-json'
@@ -364,6 +356,7 @@ Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 "Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
+Plug 'tweekmonster/braceless.vim'
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
@@ -394,6 +387,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'kana/vim-textobj-user'
 Plug 'roxma/nvim-yarp'
+Plug 'rbgrouleff/bclose.vim' " For ranger.vim
 
 call plug#end()
 
@@ -703,6 +697,18 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
 " For example:
 let g:vista_fzf_preview = ['right:50%']
+
+
+" ===
+" === Ranger.vim
+" ===
+nnoremap R :Ranger<CR>
+
+
+" ===
+" === fzf-gitignore
+" ===
+map <LEADER>gi <Plug>(fzf-gitignore)
 
 
 

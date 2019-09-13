@@ -185,6 +185,9 @@ press: `cs'"`:
 "string"
 ```
 
+#### fzf-gitignore
+Press `Space` `g` `i` to create a `.gitignore` file
+
 #### vim-calc
 Press `Space` + `a` to calculate the equation in the current line
 

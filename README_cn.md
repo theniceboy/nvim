@@ -185,6 +185,9 @@ string
 "string"
 ```
 
+#### fzf-gitignore
+键入 `Space` `g` `i` 来创建新的`.gitignore`文件
+
 #### vim-calc
 键入`Space`+`a`计算当前行中的数学公式。
 
