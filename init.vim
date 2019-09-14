@@ -269,17 +269,18 @@ func! CompileRunGcc()
     exec "!g++ % -o %<"
     exec "!time ./%<"
   elseif &filetype == 'cpp'
-    exec "!g++ % -o %<"
-    exec "!time ./%<"
+    set splitbelow
+    exec "!g++ -std=c++11 % -Wall -o %<"
+    :sp
+    :res -15
+    :term ./%<
   elseif &filetype == 'java'
     exec "!javac %"
     exec "!time java %<"
   elseif &filetype == 'sh'
     :!time bash %
   elseif &filetype == 'python'
-    set splitright
-    ":vsp
-    ":vertical resize-10
+    set splitbelow
     :sp
     :term python3 %
   elseif &filetype == 'html'
