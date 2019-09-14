@@ -6,6 +6,12 @@
 
 " Author: @theniceboy
 
+" Checkout-list
+" vim-esearch
+" fmoralesc/worldslice
+" SidOfc/mkdx
+
+
 " ===
 " === Auto load for first time uses
 " ===
@@ -48,6 +54,7 @@ set tw=0
 set indentexpr=
 set foldmethod=indent
 set foldlevel=99
+set foldenable
 set formatoptions-=tc
 set splitright
 set splitbelow
@@ -72,6 +79,7 @@ if has('persistent_undo')
   set undofile
   set undodir=~/.config/nvim/tmp/undo,.
 endif
+set colorcolumn=80
 
 " Cursor shape
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -288,12 +296,14 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'chrisbra/Colorizer'
+
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
 
 " Pretty Dress
 "Plug 'vim-airline/vim-airline'
-Plug 'liuchengxu/eleline.vim'
+Plug 'theniceboy/eleline.vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 Plug 'liuchengxu/space-vim-theme'
@@ -304,7 +314,8 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 "Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+"Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf'
 Plug 'francoiscabrol/ranger.vim'
 
 " Taglist
@@ -391,6 +402,9 @@ Plug 'rbgrouleff/bclose.vim' " For ranger.vim
 
 call plug#end()
 
+let g:colorizer_syntax = 1
+
+
 " ===
 " === Create a _machine_specific.vim file to adjust machine specific stuff, like python interpreter location
 " ===
@@ -415,28 +429,30 @@ colorscheme space_vim_theme
 " ===
 " === Airline
 " ===
-let g:airline_theme='dracula'
-let g:airline#extensions#coc#enabled = 0
-let g:airline#extensions#branch#enabled = 0
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_mode_map = {
-      \ '__' : '-',
-      \ 'n'  : 'Nor',
-      \ 'i'  : 'Ins',
-      \ 'R'  : 'Rpl',
-      \ 'c'  : 'Cmd',
-      \ 'v'  : 'Vis',
-      \ 'V'  : 'Vli',
-      \ '' : 'Vbl',
-      \ 's'  : 'S',
-      \ 'S'  : 'S',
-      \ '' : 'S',
-      \ }
+"let g:airline_theme='dracula'
+"let g:airline#extensions#coc#enabled = 0
+"let g:airline#extensions#branch#enabled = 0
+"let g:airline#extensions#tabline#enabled = 0
+"let g:airline#extensions#tabline#formatter = 'unique_tail'
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#show_buffers = 0
+"let g:airline_left_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_mode_map = {
+      "\ '__' : '-',
+      "\ 'n'  : 'Nor',
+      "\ 'i'  : 'Ins',
+      "\ 'R'  : 'Rpl',
+      "\ 'c'  : 'Cmd',
+      "\ 'v'  : 'Vis',
+      "\ 'V'  : 'Vli',
+      "\ '' : 'Vbl',
+      "\ 's'  : 'S',
+      "\ 'S'  : 'S',
+      "\ '' : 'S',
+      "\ }
+
+let g:airline_powerline_fonts = 0
 
 
 " ===
@@ -507,6 +523,7 @@ silent! au BufEnter * silent! unmap if
 " Installing plugins
 let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-snippets', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore']
 " use <tab> for trigger completion and navigate to the next complete item
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
