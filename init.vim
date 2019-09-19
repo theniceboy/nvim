@@ -116,8 +116,6 @@ map <LEADER>st :Startify<CR>
 
 " Undo operations
 noremap l u
-" Undo in Insert mode
-inoremap <C-l> <C-u>
 
 " Insert Key
 noremap k i
@@ -252,7 +250,6 @@ inoremap <C-x> <Esc>ea<C-x>s
 " Press ` to change case (instead of ~)
 map ` ~
 
-imap <C-c> <Esc>zza
 nmap <C-c> zz
 
 " Auto change directory to current dir
@@ -287,6 +284,9 @@ func! CompileRunGcc()
     exec "!chromium % &"
   elseif &filetype == 'markdown'
     exec "MarkdownPreview"
+  elseif &filetype == 'tex'
+    silent! exec "VimtexStop"
+    silent! exec "VimtexCompile"
   endif
 endfunc
 
@@ -297,7 +297,23 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Testing
 Plug 'chrisbra/Colorizer'
+Plug 'metakirby5/codi.vim' " :Codi to do interactive scripting
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'airblade/vim-rooter'
+Plug 'wincent/ferret' " :Ack {something} or :Acks /{before}/{after}/
+Plug 'tpope/vim-eunuch' " do stuff like :SudoWrite
+Plug 'wsdjeg/FlyGrep.vim' " Ctrl+f (normal) to find file content
+Plug 'tpope/vim-fugitive' " gv dependency
+Plug 'junegunn/gv.vim' " gv (normal) to show git log
+Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
+Plug 'tpope/vim-capslock'  " Ctrl+L (insert) to toggle capslock
+
+
+" Tex
+Plug 'lervag/vimtex'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -362,7 +378,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
 Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
-Plug 'mattn/emmet-vim'
+"Plug 'mattn/emmet-vim'
 
 " Python
 Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
@@ -522,7 +538,7 @@ let g:NERDTreeIndicatorMapCustom = {
 silent! au BufEnter * silent! unmap if
 "au TextChangedI * GitGutter
 " Installing plugins
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-snippets', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore']
 " use <tab> for trigger completion and navigate to the next complete item
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 function! s:check_back_space() abort
@@ -551,6 +567,7 @@ let g:indentLine_color_term = 238
 let g:indentLine_color_gui = '#333333'
 silent! unmap <LEADER>ig
 autocmd WinEnter * silent! unmap <LEADER>ig
+let g:indentLine_fileTypeExclude = ['tex']
 
 
 " ===
@@ -611,18 +628,18 @@ let g:SignatureMap = {
         \ 'Leader'             :  "m",
         \ 'PlaceNextMark'      :  "m,",
         \ 'ToggleMarkAtLine'   :  "m.",
-        \ 'PurgeMarksAtLine'   :  "dm-",
-        \ 'DeleteMark'         :  "dm",
-        \ 'PurgeMarks'         :  "dm/",
-        \ 'PurgeMarkers'       :  "dm?",
+        \ 'PurgeMarksAtLine'   :  "dm",
+        \ 'DeleteMark'         :  "",
+        \ 'PurgeMarks'         :  "",
+        \ 'PurgeMarkers'       :  "",
         \ 'GotoNextLineAlpha'  :  "m<LEADER>",
         \ 'GotoPrevLineAlpha'  :  "",
         \ 'GotoNextSpotAlpha'  :  "m<LEADER>",
         \ 'GotoPrevSpotAlpha'  :  "",
         \ 'GotoNextLineByPos'  :  "",
         \ 'GotoPrevLineByPos'  :  "",
-        \ 'GotoNextSpotByPos'  :  "mn",
-        \ 'GotoPrevSpotByPos'  :  "mp",
+        \ 'GotoNextSpotByPos'  :  "",
+        \ 'GotoPrevSpotByPos'  :  "",
         \ 'GotoNextMarker'     :  "",
         \ 'GotoPrevMarker'     :  "",
         \ 'GotoNextMarkerAny'  :  "",
@@ -687,7 +704,7 @@ map <LEADER>a :call Calc()<CR>
 " ===
 " === emmet
 " ===
-let g:user_emmet_leader_key='<C-f>'
+let g:user_emmet_leader_key='<c-]'
 
 
 " ===
@@ -727,6 +744,40 @@ nnoremap R :Ranger<CR>
 " === fzf-gitignore
 " ===
 map <LEADER>gi <Plug>(fzf-gitignore)
+
+
+" ===
+" === Ultisnips
+" ===
+let g:tex_flavor = "latex"
+imap <c-n> <nop>
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-e>"
+let g:UltiSnipsJumpBackwardTrigger="<c-n>"
+
+
+" vim-latex-live-preview
+"let g:livepreview_previewer = "zathura"
+
+
+" ===
+" === vimtex
+" ===
+"let g:vimtex_view_method = ''
+let g:vimtex_view_general_viewer = 'llpp'
+let maplocalleader=' '
+
+
+" ===
+" === FlyGrep
+" ===
+nnoremap <c-f> :FlyGrep<CR>
+
+
+" ===
+" === GV
+" ===
+nnoremap gv :GV<CR>
 
 
 
