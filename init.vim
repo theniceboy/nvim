@@ -39,10 +39,11 @@ set autochdir
 set number
 set relativenumber
 set cursorline
-set expandtab
+set noexpandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+set autoindent
 set list
 set listchars=tab:▸\ ,trail:▫
 set scrolloff=5
@@ -58,7 +59,6 @@ set foldenable
 set formatoptions-=tc
 set splitright
 set splitbelow
-set mouse=a
 set noshowmode
 set showcmd
 " set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
@@ -94,7 +94,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " ===
 let g:neoterm_autoscroll = 1
 autocmd TermOpen term://* startinsert
-"tnoremap <C-N> <C-\><C-N>:q<CR>
+tnoremap <C-N> <C-\><C-N>
 
 
 " ===
@@ -133,8 +133,8 @@ nnoremap > >>
 
 " Search
 map <LEADER><CR> :nohlsearch<CR>
-noremap = nzz
-noremap - Nzz
+"noremap = nzz
+"noremap - Nzz
 
 " Adjacent duplicate words
 map <LEADER>dw /\(\<\w\+\>\)\_s*\1
@@ -227,9 +227,12 @@ map tmi :+tabmove<CR>
 
 
 " ===
-" === My Snippets
+" === Markdown Settings
 " ===
+" Snippets
 source ~/.config/nvim/snippits.vim
+" auto spell
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 
 " ===
@@ -281,12 +284,16 @@ func! CompileRunGcc()
     :sp
     :term python3 %
   elseif &filetype == 'html'
-    exec "!chromium % &"
+    silent! exec "!chromium % &"
   elseif &filetype == 'markdown'
     exec "MarkdownPreview"
   elseif &filetype == 'tex'
     silent! exec "VimtexStop"
     silent! exec "VimtexCompile"
+  elseif &filetype == 'go'
+    set splitbelow
+    :sp
+    :term go run %
   endif
 endfunc
 
@@ -303,13 +310,20 @@ Plug 'metakirby5/codi.vim' " :Codi to do interactive scripting
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'airblade/vim-rooter'
-Plug 'wincent/ferret' " :Ack {something} or :Acks /{before}/{after}/
+"Plug 'wincent/ferret' " :Ack {something} or :Acks /{before}/{after}/
 Plug 'tpope/vim-eunuch' " do stuff like :SudoWrite
 Plug 'wsdjeg/FlyGrep.vim' " Ctrl+f (normal) to find file content
 Plug 'tpope/vim-fugitive' " gv dependency
 Plug 'junegunn/gv.vim' " gv (normal) to show git log
 Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
 Plug 'tpope/vim-capslock'  " Ctrl+L (insert) to toggle capslock
+Plug 'glacambre/firenvim'
+Plug 'itchyny/calendar.vim'
+"Plug 'google/vim-searchindex'
+"Plug 'henrik/vim-indexed-search'
+Plug 'osyo-manga/vim-anzu'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 
 
 " Tex
@@ -324,6 +338,8 @@ Plug 'theniceboy/eleline.vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 Plug 'liuchengxu/space-vim-theme'
+Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
 
 
 " File navigation
@@ -362,7 +378,7 @@ Plug 'mbbill/undotree/'
 "Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'itchyny/vim-cursorword'
 "Plug 'tmhedberg/SimpylFold'
-Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine', { 'for': ['vim-plug', 'python'] }
 Plug 'mhinz/vim-startify'
 
 " Git
@@ -377,7 +393,8 @@ Plug 'elzr/vim-json'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
 Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
+Plug 'pangloss/vim-javascript' ", { 'for' :['javascript', 'vim-plug'] }
+Plug 'jelera/vim-javascript-syntax'
 "Plug 'mattn/emmet-vim'
 
 " Python
@@ -440,6 +457,19 @@ set termguicolors     " enable true colors support
 let g:space_vim_transp_bg = 1
 "set background=dark
 colorscheme space_vim_theme
+let ayucolor="mirage"
+color ayu
+
+nnoremap \d :call ChangeDress()<CR>
+func! ChangeDress()
+  if g:ayucolor == "mirage"
+    let g:ayucolor = "light"
+    color ayu
+  else
+    let g:ayucolor = "mirage"
+    color ayu
+  endif
+endfunc
 
 " ===================== Start of Plugin Settings =====================
 
@@ -535,10 +565,10 @@ let g:NERDTreeIndicatorMapCustom = {
 "autocmd WinEnter * call timer_start(1000, { tid -> execute('unmap if')})
 "silent! autocmd BufEnter * silent! call silent! timer_start(600, { tid -> execute('unmap if')})
 "silent! autocmd WinEnter * silent! call silent! timer_start(600, { tid -> execute('unmap if')})
-silent! au BufEnter * silent! unmap if
+silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 "au TextChangedI * GitGutter
 " Installing plugins
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-go']
 " use <tab> for trigger completion and navigate to the next complete item
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 function! s:check_back_space() abort
@@ -567,7 +597,7 @@ let g:indentLine_color_term = 238
 let g:indentLine_color_gui = '#333333'
 silent! unmap <LEADER>ig
 autocmd WinEnter * silent! unmap <LEADER>ig
-let g:indentLine_fileTypeExclude = ['tex']
+let g:indentLine_fileTypeExclude = ['tex', 'markdown']
 
 
 " ===
@@ -778,6 +808,50 @@ nnoremap <c-f> :FlyGrep<CR>
 " === GV
 " ===
 nnoremap gv :GV<CR>
+
+
+" ===
+" === vim-calendar
+" ===
+map \c :Calendar -position=here<CR>
+map \\ :Calendar -view=clock -position=here<CR>
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+augroup calendar-mappings
+  autocmd!
+  " diamond cursor
+  autocmd FileType calendar nmap <buffer> u <Plug>(calendar_up)
+  autocmd FileType calendar nmap <buffer> n <Plug>(calendar_left)
+  autocmd FileType calendar nmap <buffer> e <Plug>(calendar_down)
+  autocmd FileType calendar nmap <buffer> i <Plug>(calendar_right)
+  autocmd FileType calendar nmap <buffer> <c-u> <Plug>(calendar_move_up)
+  autocmd FileType calendar nmap <buffer> <c-n> <Plug>(calendar_move_left)
+  autocmd FileType calendar nmap <buffer> <c-e> <Plug>(calendar_move_down)
+  autocmd FileType calendar nmap <buffer> <c-i> <Plug>(calendar_move_right)
+  autocmd FileType calendar nmap <buffer> k <Plug>(calendar_start_insert)
+  autocmd FileType calendar nmap <buffer> K <Plug>(calendar_start_insert_head)
+  " unmap <C-n>, <C-p> for other plugins
+  autocmd FileType calendar nunmap <buffer> <C-n>
+  autocmd FileType calendar nunmap <buffer> <C-p>
+augroup END
+
+
+" ===
+" === Anzu
+" ===
+nmap = <Plug>(anzu-n-with-echo)
+nmap - <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+set statusline=%{anzu#search_status()}
+
+
+" ===
+" === vim-go
+" ===
+let g:go_textobj_enabled = 0
+"let g:go_def_mapping_enabled = 1
+map <LEADER>q <C-w>j:q<CR>
 
 
 
