@@ -323,7 +323,6 @@ Plug 'bling/vim-bufferline'
 "Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'ajmwagar/vim-deus'
 
-
 " File navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -571,7 +570,7 @@ let g:NERDTreeIndicatorMapCustom = {
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 "au TextChangedI * GitGutter
 " Installing plugins
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-go']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-go', 'coc-omnisharp']
 " use <tab> for trigger completion and navigate to the next complete item
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 function! s:check_back_space() abort
