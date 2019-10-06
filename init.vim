@@ -1,9 +1,9 @@
-" __  ____   __  _   ___     _____ __  __ ____   ____ 
+" __  ____   __  _   ___     _____ __  __ ____   ____
 "|  \/  \ \ / / | \ | \ \   / /_ _|  \/  |  _ \ / ___|
-"| |\/| |\ V /  |  \| |\ \ / / | || |\/| | |_) | |    
-"| |  | | | |   | |\  | \ V /  | || |  | |  _ <| |___ 
+"| |\/| |\ V /  |  \| |\ \ / / | || |\/| | |_) | |
+"| |  | | | |   | |\  | \ V /  | || |  | |  _ <| |___
 "|_|  |_| |_|   |_| \_|  \_/  |___|_|  |_|_| \_\\____|
-                                                     
+
 " Author: @theniceboy
 
 " Checkout-list
@@ -17,7 +17,7 @@
 " ===
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -262,7 +262,7 @@ noremap <C-c> zz
 autocmd BufEnter * silent! lcd %:p:h
 
 " Call figlet
-noremap tx :r !figlet 
+noremap tx :r !figlet
 
 " Compile function
 noremap r :call CompileRunGcc()<CR>
@@ -309,6 +309,12 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
+
+Plug 'sheerun/vim-polyglot'
+Plug 'Chiel92/vim-autoformat'
+Plug 'jaxbot/semantic-highlight.vim'
+Plug 'OmniSharp/omnisharp-vim'
+
 
 " Pretty Dress
 "Plug 'vim-airline/vim-airline'
@@ -527,16 +533,16 @@ let NERDTreeMapToggleHidden = "zh"
 " == NERDTree-git
 " ==
 let g:NERDTreeIndicatorMapCustom = {
-		\ "Modified"	: "✹",
-		\ "Staged"		: "✚",
-		\ "Untracked" : "✭",
-		\ "Renamed"	 : "➜",
-		\ "Unmerged"	: "═",
-		\ "Deleted"	 : "✖",
-		\ "Dirty"		 : "✗",
-		\ "Clean"		 : "✔︎",
-		\ "Unknown"	 : "?"
-		\ }
+			\ "Modified"	: "✹",
+			\ "Staged"		: "✚",
+			\ "Untracked" : "✭",
+			\ "Renamed"	 : "➜",
+			\ "Unmerged"	: "═",
+			\ "Deleted"	 : "✖",
+			\ "Dirty"		 : "✗",
+			\ "Clean"		 : "✔︎",
+			\ "Unknown"	 : "?"
+			\ }
 
 
 " ===
@@ -620,14 +626,14 @@ let g:mkdp_open_ip = ''
 let g:mkdp_echo_preview_url = 0
 let g:mkdp_browserfunc = ''
 let g:mkdp_preview_options = {
-		\ 'mkit': {},
-		\ 'katex': {},
-		\ 'uml': {},
-		\ 'maid': {},
-		\ 'disable_sync_scroll': 0,
-		\ 'sync_scroll_type': 'middle',
-		\ 'hide_yaml_meta': 1
-		\ }
+			\ 'mkit': {},
+			\ 'katex': {},
+			\ 'uml': {},
+			\ 'maid': {},
+			\ 'disable_sync_scroll': 0,
+			\ 'sync_scroll_type': 'middle',
+			\ 'hide_yaml_meta': 1
+			\ }
 let g:mkdp_markdown_css = ''
 let g:mkdp_highlight_css = ''
 let g:mkdp_port = ''
@@ -657,28 +663,28 @@ noremap <C-p> :FZF<CR>
 " === vim-signature
 " ===
 let g:SignatureMap = {
-				\ 'Leader'						 :	"m",
-				\ 'PlaceNextMark'			:	"m,",
-				\ 'ToggleMarkAtLine'	 :	"m.",
-				\ 'PurgeMarksAtLine'	 :	"dm",
-				\ 'DeleteMark'				 :	"",
-				\ 'PurgeMarks'				 :	"",
-				\ 'PurgeMarkers'			 :	"",
-				\ 'GotoNextLineAlpha'	:	"m<LEADER>",
-				\ 'GotoPrevLineAlpha'	:	"",
-				\ 'GotoNextSpotAlpha'	:	"m<LEADER>",
-				\ 'GotoPrevSpotAlpha'	:	"",
-				\ 'GotoNextLineByPos'	:	"",
-				\ 'GotoPrevLineByPos'	:	"",
-				\ 'GotoNextSpotByPos'	:	"",
-				\ 'GotoPrevSpotByPos'	:	"",
-				\ 'GotoNextMarker'		 :	"",
-				\ 'GotoPrevMarker'		 :	"",
-				\ 'GotoNextMarkerAny'	:	"",
-				\ 'GotoPrevMarkerAny'	:	"",
-				\ 'ListLocalMarks'		 :	"m/",
-				\ 'ListLocalMarkers'	 :	"m?"
-				\ }
+			\ 'Leader'						 :	"m",
+			\ 'PlaceNextMark'			:	"m,",
+			\ 'ToggleMarkAtLine'	 :	"m.",
+			\ 'PurgeMarksAtLine'	 :	"dm",
+			\ 'DeleteMark'				 :	"",
+			\ 'PurgeMarks'				 :	"",
+			\ 'PurgeMarkers'			 :	"",
+			\ 'GotoNextLineAlpha'	:	"m<LEADER>",
+			\ 'GotoPrevLineAlpha'	:	"",
+			\ 'GotoNextSpotAlpha'	:	"m<LEADER>",
+			\ 'GotoPrevSpotAlpha'	:	"",
+			\ 'GotoNextLineByPos'	:	"",
+			\ 'GotoPrevLineByPos'	:	"",
+			\ 'GotoNextSpotByPos'	:	"",
+			\ 'GotoPrevSpotByPos'	:	"",
+			\ 'GotoNextMarker'		 :	"",
+			\ 'GotoPrevMarker'		 :	"",
+			\ 'GotoNextMarkerAny'	:	"",
+			\ 'GotoPrevMarkerAny'	:	"",
+			\ 'ListLocalMarks'		 :	"m/",
+			\ 'ListLocalMarkers'	 :	"m?"
+			\ }
 
 
 " ===
@@ -729,7 +735,7 @@ nnoremap <silent> <LEADER>f :F	%<left><left>
 noremap <LEADER>a :call Calc()<CR>
 " Testing
 "if !empty(glob('~/Github/vim-calc/vim-calc.vim'))
-	"source ~/Github/vim-calc/vim-calc.vim
+"source ~/Github/vim-calc/vim-calc.vim
 "endif
 
 
@@ -855,6 +861,46 @@ let g:go_textobj_enabled = 0
 "let g:go_def_mapping_enabled = 1
 noremap <LEADER>q <C-w>j:q<CR>
 
+
+nnoremap <tab> :Autoformat<CR>
+let g:OmniSharp_highlight_types = 2
+let g:OmniSharp_highlight_groups = {
+			\ 'csUserIdentifier': [
+			\   'constant name', 'enum member name', 'field name', 'identifier',
+			\   'local name', 'parameter name', 'property name', 'static symbol'],
+			\ 'csUserInterface': ['interface name'],
+			\ 'csUserMethod': ['extension method name', 'method name'],
+			\ 'csUserType': ['class name', 'enum name', 'namespace name', 'struct name']
+			\}
+
+" Use the stdio OmniSharp-roslyn server
+let g:OmniSharp_server_stdio = 1
+
+" Set the type lookup function to use the preview window instead of echoing it
+"let g:OmniSharp_typeLookupInPreview = 1
+
+" Timeout in seconds to wait for a response from the server
+let g:OmniSharp_timeout = 5
+
+" Don't autoselect first omnicomplete option, show options even if there is only
+" one (so the preview documentation is accessible). Remove 'preview' if you
+" don't want to see any documentation whatsoever.
+set completeopt=longest,menuone,preview
+
+" Fetch full documentation during omnicomplete requests.
+" By default, only Type/Method signatures are fetched. Full documentation can
+" still be fetched when you need it with the :OmniSharpDocumentation command.
+"let g:omnicomplete_fetch_full_documentation = 1
+
+" Set desired preview window height for viewing documentation.
+" You might also want to look at the echodoc plugin.
+set previewheight=5
+
+" Tell ALE to use OmniSharp for linting C# files, and no other linters.
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+" Update semantic highlighting on BufEnter and InsertLeave
+let g:OmniSharp_highlight_types = 2
 
 
 " ===================== End of Plugin Settings =====================
