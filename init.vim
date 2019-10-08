@@ -133,8 +133,6 @@ nnoremap > >>
 
 " Search
 noremap <LEADER><CR> :nohlsearch<CR>
-"noremap = nzz
-"noremap - Nzz
 
 " Adjacent duplicate words
 noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
@@ -314,6 +312,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'Chiel92/vim-autoformat'
 Plug 'jaxbot/semantic-highlight.vim'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'tpope/vim-dispatch'
 
 
 " Pretty Dress
@@ -847,12 +846,13 @@ augroup END
 " ===
 " === Anzu
 " ===
-noremap = <Plug>(anzu-n-with-echo)
-noremap - <Plug>(anzu-N-with-echo)
-noremap * <Plug>(anzu-star-with-echo)
-noremap # <Plug>(anzu-sharp-with-echo)
+"noremap = <Plug>(anzu-n-with-echo)
+"noremap - <Plug>(anzu-N-with-echo)
+"noremap * <Plug>(anzu-star-with-echo)
+"noremap # <Plug>(anzu-sharp-with-echo)
 set statusline=%{anzu#search_status()}
-
+nnoremap = n
+nnoremap - N
 
 " ===
 " === vim-go
@@ -863,44 +863,74 @@ noremap <LEADER>q <C-w>j:q<CR>
 
 
 nnoremap <tab> :Autoformat<CR>
-let g:OmniSharp_highlight_types = 2
-let g:OmniSharp_highlight_groups = {
-			\ 'csUserIdentifier': [
-			\   'constant name', 'enum member name', 'field name', 'identifier',
-			\   'local name', 'parameter name', 'property name', 'static symbol'],
-			\ 'csUserInterface': ['interface name'],
-			\ 'csUserMethod': ['extension method name', 'method name'],
-			\ 'csUserType': ['class name', 'enum name', 'namespace name', 'struct name']
-			\}
+"let g:OmniSharp_highlight_types = 2
+"let g:OmniSharp_highlight_groups = {
+			"\ 'csUserIdentifier': [
+			"\   'constant name', 'enum member name', 'field name', 'identifier',
+			"\   'local name', 'parameter name', 'property name', 'static symbol'],
+			"\ 'csUserInterface': ['interface name'],
+			"\ 'csUserMethod': ['extension method name', 'method name'],
+			"\ 'csUserType': ['class name', 'enum name', 'namespace name', 'struct name']
+			"\}
 
-" Use the stdio OmniSharp-roslyn server
+"" Use the stdio OmniSharp-roslyn server
+
+"" Set the type lookup function to use the preview window instead of echoing it
+""let g:OmniSharp_typeLookupInPreview = 1
+
+"" Timeout in seconds to wait for a response from the server
+"let g:OmniSharp_timeout = 5
+
+"" Don't autoselect first omnicomplete option, show options even if there is only
+"" one (so the preview documentation is accessible). Remove 'preview' if you
+"" don't want to see any documentation whatsoever.
+"set completeopt=longest,menuone,preview
+
+"" Fetch full documentation during omnicomplete requests.
+"" By default, only Type/Method signatures are fetched. Full documentation can
+"" still be fetched when you need it with the :OmniSharpDocumentation command.
+""let g:omnicomplete_fetch_full_documentation = 1
+
+"" Set desired preview window height for viewing documentation.
+"" You might also want to look at the echodoc plugin.
+"set previewheight=5
+
+"" Tell ALE to use OmniSharp for linting C# files, and no other linters.
+"let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+"" Update semantic highlighting on BufEnter and InsertLeave
+"let g:OmniSharp_server_path = '/home/david/.cache/omnisharp-vim/omnisharp-roslyn/run'
+let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_highlight_types = 1
 
-" Set the type lookup function to use the preview window instead of echoing it
-"let g:OmniSharp_typeLookupInPreview = 1
+set updatetime=500
 
-" Timeout in seconds to wait for a response from the server
-let g:OmniSharp_timeout = 5
+sign define OmniSharpCodeActions text=💡
 
-" Don't autoselect first omnicomplete option, show options even if there is only
-" one (so the preview documentation is accessible). Remove 'preview' if you
-" don't want to see any documentation whatsoever.
-set completeopt=longest,menuone,preview
+augroup OSCountCodeActions
+  autocmd!
+  autocmd FileType cs set signcolumn=yes
+  autocmd CursorHold *.cs call OSCountCodeActions()
+augroup END
 
-" Fetch full documentation during omnicomplete requests.
-" By default, only Type/Method signatures are fetched. Full documentation can
-" still be fetched when you need it with the :OmniSharpDocumentation command.
-"let g:omnicomplete_fetch_full_documentation = 1
+function! OSCountCodeActions() abort
+  if bufname('%') ==# '' || OmniSharp#FugitiveCheck() | return | endif
+  if !OmniSharp#IsServerRunning() | return | endif
+  let opts = {
+  \ 'CallbackCount': function('s:CBReturnCount'),
+  \ 'CallbackCleanup': {-> execute('sign unplace 99')}
+  \}
+  call OmniSharp#CountCodeActions(opts)
+endfunction
 
-" Set desired preview window height for viewing documentation.
-" You might also want to look at the echodoc plugin.
-set previewheight=5
-
-" Tell ALE to use OmniSharp for linting C# files, and no other linters.
-let g:ale_linters = { 'cs': ['OmniSharp'] }
-
-" Update semantic highlighting on BufEnter and InsertLeave
-let g:OmniSharp_highlight_types = 2
+function! s:CBReturnCount(count) abort
+  if a:count
+    let l = getpos('.')[1]
+    let f = expand('%:p')
+    execute ':sign place 99 line='.l.' name=OmniSharpCodeActions file='.f
+  endif
+endfunction
 
 
 " ===================== End of Plugin Settings =====================
