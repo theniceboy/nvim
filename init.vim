@@ -178,6 +178,11 @@ noremap h e
 noremap <C-U> 5<C-y>
 noremap <C-E> 5<C-e>
 
+" ===
+" === Insert Mode Cursor Movement
+" ===
+inoremap <C-a> <ESC>A
+
 
 " ===
 " === Window management
@@ -239,6 +244,9 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 " ===
 " === Other useful stuff
 " ===
+
+" Move the next character to the end of the line with ctrl+9
+inoremap <C-u> <ESC>lx$p
 
 " Opening a terminal window
 noremap <LEADER>/ :set splitbelow<CR>:sp<CR>:term<CR>
@@ -312,13 +320,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'Chiel92/vim-autoformat'
 Plug 'jaxbot/semantic-highlight.vim'
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'tpope/vim-dispatch'
 
 
 " Pretty Dress
-"Plug 'vim-airline/vim-airline'
 Plug 'theniceboy/eleline.vim'
-"Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 "Plug 'liuchengxu/space-vim-theme'
 "Plug 'morhetz/gruvbox'
@@ -383,7 +388,6 @@ Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 "Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
 Plug 'tweekmonster/braceless.vim'
-"Plug 'Yggdroot/indentLine', { 'for': ['vim-plug', 'python'] }
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
@@ -480,32 +484,6 @@ endfunc
 
 " ===================== Start of Plugin Settings =====================
 
-" ===
-" === Airline
-" ===
-"let g:airline_theme='dracula'
-"let g:airline#extensions#coc#enabled = 0
-"let g:airline#extensions#branch#enabled = 0
-"let g:airline#extensions#tabline#enabled = 0
-"let g:airline#extensions#tabline#formatter = 'unique_tail'
-"let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tabline#show_buffers = 0
-"let g:airline_left_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_mode_map = {
-			"\ '__' : '-',
-			"\ 'n'	: 'Nor',
-			"\ 'i'	: 'Ins',
-			"\ 'R'	: 'Rpl',
-			"\ 'c'	: 'Cmd',
-			"\ 'v'	: 'Vis',
-			"\ 'V'	: 'Vli',
-			"\ '' : 'Vbl',
-			"\ 's'	: 'S',
-			"\ 'S'	: 'S',
-			"\ '' : 'S',
-			"\ }
-
 let g:airline_powerline_fonts = 0
 
 
@@ -545,27 +523,6 @@ let g:NERDTreeIndicatorMapCustom = {
 
 
 " ===
-" === NCM2
-" ===
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>": "\<CR>")
-"autocmd BufEnter * call ncm2#enable_for_buffer()
-"set completeopt=noinsert,menuone,noselect
-"let ncm2#popup_delay = 5
-"let g:ncm2#matcher = "substrfuzzy"
-"let g:ncm2_jedi#python_version = 3
-"let g:ncm2#match_highlight = 'bold'
-"let g:jedi#auto_initialization = 1
-""let g:jedi#completion_enabled = 0
-""let g:jedi#auto_vim_configuration = 0
-""let g:jedi#smart_auto_mapping = 0
-"let g:jedi#popup_on_dot = 1
-"let g:jedi#completion_command = ""
-"let g:jedi#show_call_signatures = "1"
-
-
-" ===
 " === coc
 " ===
 " fix the most annoying bug that coc has
@@ -576,8 +533,8 @@ silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 "au TextChangedI * GitGutter
 " Installing plugins
 let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-go', 'coc-omnisharp']
-" use <tab> for trigger completion and navigate to the next complete item
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]	=~ '\s'
@@ -587,6 +544,7 @@ inoremap <silent><expr> <Tab>
 			\ <SID>check_back_space() ? "\<Tab>" :
 			\ coc#refresh()
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <c-space> coc#refresh()
 " Useful commands
 nnoremap <silent> <space>y	:<C-u>CocList -A --normal yank<cr>
 nnoremap <silent> gd <Plug>(coc-definition)
@@ -594,17 +552,6 @@ nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> gi <Plug>(coc-implementation)
 nnoremap <silent> gr <Plug>(coc-references)
 nnoremap <leader>rn <Plug>(coc-rename)
-
-
-" ===
-" === indentLine
-" ===
-let g:indentLine_char = '│'
-let g:indentLine_color_term = 238
-let g:indentLine_color_gui = '#333333'
-silent! unmap <LEADER>ig
-autocmd WinEnter * silent! unmap <LEADER>ig
-let g:indentLine_fileTypeExclude = ['tex', 'markdown']
 
 
 " ===
@@ -858,8 +805,25 @@ nnoremap - N
 " === vim-go
 " ===
 let g:go_textobj_enabled = 0
+let g:go_auto_type_info = 1
 "let g:go_def_mapping_enabled = 1
 noremap <LEADER>q <C-w>j:q<CR>
+let g:go_highlight_array_whitespace_error    = 1
+let g:go_highlight_build_constraints         = 1
+let g:go_highlight_extra_types               = 1
+let g:go_highlight_fields                    = 1
+let g:go_highlight_function_calls            = 1
+let g:go_highlight_function_parameters       = 1
+let g:go_highlight_functions                 = 1
+let g:go_highlight_generate_tags             = 1
+let g:go_highlight_methods                   = 1
+let g:go_highlight_operators                 = 1
+let g:go_highlight_space_tab_error           = 1
+let g:go_highlight_structs                   = 1
+let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_types                     = 1
+let g:go_highlight_variable_assignments      = 0
+let g:go_highlight_variable_declarations     = 0
 
 
 nnoremap <tab> :Autoformat<CR>
