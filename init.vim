@@ -61,9 +61,7 @@ set splitright
 set splitbelow
 set noshowmode
 set showcmd
-" set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu
-exec "nohlsearch"
 set ignorecase
 set smartcase
 set shortmess+=c
@@ -308,6 +306,7 @@ func! CompileRunGcc()
 endfunc
 
 
+
 " ===
 " === Install Plugins with Vim-Plug
 " ===
@@ -445,7 +444,6 @@ Plug 'rbgrouleff/bclose.vim' " For ranger.vim
 
 call plug#end()
 
-let g:colorizer_syntax = 1
 
 
 " ===
@@ -465,13 +463,10 @@ source ~/.config/nvim/_machine_specific.vim
 set termguicolors	" enable true colors support
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-let ayucolor="mirage"
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-let g:one_allow_italics = 1
-
-set list
-"set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+"let ayucolor="mirage"
+"let g:oceanic_next_terminal_bold = 1
+"let g:oceanic_next_terminal_italic = 1
+"let g:one_allow_italics = 1
 
 
 "color ayu
@@ -481,17 +476,6 @@ color deus
 
 hi NonText ctermfg=gray guifg=grey10
 "hi SpecialKey ctermfg=blue guifg=grey70
-
-nnoremap \d :call ChangeDress()<CR>
-func! ChangeDress()
-	if g:ayucolor == "mirage"
-		let g:ayucolor = "light"
-		color ayu
-	else
-		let g:ayucolor = "mirage"
-		color ayu
-	endif
-endfunc
 
 " ===================== Start of Plugin Settings =====================
 
@@ -518,7 +502,7 @@ let NERDTreeMapToggleHidden = "zh"
 
 
 " ==
-" == NERDTree-git
+" == GitGutter
 " ==
 let g:gitgutter_map_keys = 0
 let g:gitgutter_override_sign_column_highlight = 0
@@ -550,13 +534,8 @@ let g:NERDTreeIndicatorMapCustom = {
 " === coc
 " ===
 " fix the most annoying bug that coc has
-"autocmd WinEnter * call timer_start(1000, { tid -> execute('unmap if')})
-"silent! autocmd BufEnter * silent! call silent! timer_start(600, { tid -> execute('unmap if')})
-"silent! autocmd WinEnter * silent! call silent! timer_start(600, { tid -> execute('unmap if')})
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-"au TextChangedI * GitGutter
-" Installing plugins
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-go'] ", 'coc-omnisharp']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-go', 'coc-omnisharp']
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -570,13 +549,12 @@ inoremap <silent><expr> <Tab>
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent><expr> <c-space> coc#refresh()
 " Useful commands
-nnoremap <silent> <space>y	:<C-u>CocList -A --normal yank<cr>
+nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 nnoremap <silent> gd <Plug>(coc-definition)
 nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> gi <Plug>(coc-implementation)
 nnoremap <silent> gr <Plug>(coc-references)
 nnoremap <leader>rn <Plug>(coc-rename)
-
 
 
 " ===
@@ -707,7 +685,8 @@ let g:startify_lists = [
 " ===
 " === Far.vim
 " ===
-nnoremap <silent> <LEADER>f :F	%<left><left>
+"nnoremap <silent> <LEADER>f :F	%<left><left>
+
 
 " ===
 " === vim-calc
@@ -717,12 +696,6 @@ noremap <LEADER>a :call Calc()<CR>
 "if !empty(glob('~/Github/vim-calc/vim-calc.vim'))
 "source ~/Github/vim-calc/vim-calc.vim
 "endif
-
-
-" ===
-" === emmet
-" ===
-let g:user_emmet_leader_key='<c-]'
 
 
 " ===
@@ -774,10 +747,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<c-n>"
 
 
-" vim-latex-live-preview
-"let g:livepreview_previewer = "zathura"
-
-
 " ===
 " === vimtex
 " ===
@@ -827,13 +796,10 @@ augroup END
 " ===
 " === Anzu
 " ===
-"noremap = <Plug>(anzu-n-with-echo)
-"noremap - <Plug>(anzu-N-with-echo)
-"noremap * <Plug>(anzu-star-with-echo)
-"noremap # <Plug>(anzu-sharp-with-echo)
 set statusline=%{anzu#search_status()}
 nnoremap = n
 nnoremap - N
+
 
 " ===
 " === vim-go
@@ -863,6 +829,7 @@ let g:go_highlight_variable_declarations     = 0
 " === AutoFormat
 " ===
 nnoremap <tab> :Autoformat<CR>
+silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-i>
 
 
 " ===
@@ -909,7 +876,18 @@ function! s:CBReturnCount(count) abort
 endfunction
 
 
+" ===
+" === Colorizer
+" ===
+let g:colorizer_syntax = 1
+
+
 " ===================== End of Plugin Settings =====================
+
+" ===
+" === Necessary Commands to Execute
+" ===
+exec "nohlsearch"
 
 " Open the _machine_specific.vim file if it has just been created
 if has_machine_specific_file == 0
