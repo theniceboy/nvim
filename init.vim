@@ -144,11 +144,11 @@ noremap <silent> <LEADER>o za
 " === Cursor Movement
 " ===
 " New cursor movement (the default arrow keys are used for resizing windows)
-"		 ^
-"		 u
-" < n	 i >
-"		 e
-"		 v
+"     ^
+"     u
+" < n   i >
+"     e
+"     v
 noremap <silent> u k
 noremap <silent> n h
 noremap <silent> e j
@@ -621,27 +621,27 @@ let g:ctrlp_cmd = 'CtrlP'
 " === vim-signature
 " ===
 let g:SignatureMap = {
-			\ 'Leader'						 :	"m",
-			\ 'PlaceNextMark'			:	"m,",
-			\ 'ToggleMarkAtLine'	 :	"m.",
-			\ 'PurgeMarksAtLine'	 :	"dm",
-			\ 'DeleteMark'				 :	"",
-			\ 'PurgeMarks'				 :	"",
-			\ 'PurgeMarkers'			 :	"",
-			\ 'GotoNextLineAlpha'	:	"m<LEADER>",
-			\ 'GotoPrevLineAlpha'	:	"",
-			\ 'GotoNextSpotAlpha'	:	"m<LEADER>",
-			\ 'GotoPrevSpotAlpha'	:	"",
-			\ 'GotoNextLineByPos'	:	"",
-			\ 'GotoPrevLineByPos'	:	"",
-			\ 'GotoNextSpotByPos'	:	"",
-			\ 'GotoPrevSpotByPos'	:	"",
-			\ 'GotoNextMarker'		 :	"",
-			\ 'GotoPrevMarker'		 :	"",
-			\ 'GotoNextMarkerAny'	:	"",
-			\ 'GotoPrevMarkerAny'	:	"",
-			\ 'ListLocalMarks'		 :	"m/",
-			\ 'ListLocalMarkers'	 :	"m?"
+			\ 'Leader':"m",
+			\ 'PlaceNextMark':"m,",
+			\ 'ToggleMarkAtLine':"m.",
+			\ 'PurgeMarksAtLine':"dm",
+			\ 'DeleteMark':"",
+			\ 'PurgeMarks':"",
+			\ 'PurgeMarkers':"",
+			\ 'GotoNextLineAlpha':"m<LEADER>",
+			\ 'GotoPrevLineAlpha':"",
+			\ 'GotoNextSpotAlpha':"m<LEADER>",
+			\ 'GotoPrevSpotAlpha':"",
+			\ 'GotoNextLineByPos':"",
+			\ 'GotoPrevLineByPos':"",
+			\ 'GotoNextSpotByPos':"",
+			\ 'GotoPrevSpotByPos':"",
+			\ 'GotoNextMarker':"",
+			\ 'GotoPrevMarker':"",
+			\ 'GotoNextMarkerAny':"",
+			\ 'GotoPrevMarkerAny':"",
+			\ 'ListLocalMarks':"m/",
+			\ 'ListLocalMarkers':"m?"
 			\ }
 
 
@@ -658,14 +658,14 @@ let g:undotree_ShortIndicators = 1
 " == vim-multiple-cursor
 " ==
 let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_start_word_key			= '<c-k>'
+let g:multi_cursor_start_word_key = '<c-k>'
 let g:multi_cursor_select_all_word_key = '<a-k>'
-let g:multi_cursor_start_key					 = 'g<c-k>'
-let g:multi_cursor_select_all_key			= 'g<a-k>'
-let g:multi_cursor_next_key						= '<c-k>'
-let g:multi_cursor_prev_key						= '<c-p>'
-let g:multi_cursor_skip_key						= '<C-x>'
-let g:multi_cursor_quit_key						= '<Esc>'
+let g:multi_cursor_start_key = 'g<c-k>'
+let g:multi_cursor_select_all_key = 'g<a-k>'
+let g:multi_cursor_next_key = '<c-k>'
+let g:multi_cursor_prev_key = '<c-p>'
+let g:multi_cursor_skip_key = '<C-x>'
+let g:multi_cursor_quit_key = '<Esc>'
 
 
 " ==
@@ -828,8 +828,8 @@ let g:go_highlight_variable_declarations     = 0
 " ===
 " === AutoFormat
 " ===
-nnoremap <tab> :Autoformat<CR>
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-i>
+nnoremap <tab> :Autoformat<CR>
 
 
 " ===
