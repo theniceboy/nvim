@@ -45,7 +45,7 @@ set shiftwidth=2
 set softtabstop=2
 set autoindent
 set list
-set listchars=tab:▸\ ,trail:▫
+set listchars=tab:\|\ ,trail:▫
 set scrolloff=4
 set ttimeoutlen=0
 set notimeout
@@ -80,6 +80,7 @@ if has('persistent_undo')
 	set undodir=~/.config/nvim/tmp/undo,.
 endif
 set colorcolumn=80
+set updatetime=1000
 
 " Cursor shape
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -317,9 +318,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'theniceboy/vim-calc'
 
 Plug 'sheerun/vim-polyglot'
-Plug 'Chiel92/vim-autoformat'
-Plug 'jaxbot/semantic-highlight.vim'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] }
 
 
 " Pretty Dress
@@ -333,6 +333,10 @@ Plug 'bling/vim-bufferline'
 "Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'ajmwagar/vim-deus'
 
+" Genreal Highlighter
+Plug 'jaxbot/semantic-highlight.vim'
+Plug 'chrisbra/Colorizer' " Show colors with :ColorHighlight
+
 " File navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -340,12 +344,13 @@ Plug 'junegunn/fzf.vim'
 "Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf'
 Plug 'francoiscabrol/ranger.vim'
+Plug 'mhinz/vim-startify'
 
 " Taglist
 Plug 'liuchengxu/vista.vim'
 
 " Error checking
-"Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -357,16 +362,12 @@ Plug 'honza/vim-snippets'
 " Undo Tree
 Plug 'mbbill/undotree'
 
-" Other visual enhancement
-"Plug 'tmhedberg/SimpylFold'
-Plug 'mhinz/vim-startify'
-
 " Git
-Plug 'mhinz/vim-signify'
 Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive' " gv dependency
 Plug 'junegunn/gv.vim' " gv (normal) to show git log
+Plug 'mhinz/vim-signify'
 
 " Tex
 Plug 'lervag/vimtex'
@@ -383,9 +384,10 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Python
-"Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
+Plug 'tmhedberg/SimpylFold'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+"Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
 "Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
 Plug 'tweekmonster/braceless.vim'
 
@@ -394,9 +396,22 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'f
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'dkarter/bullets.vim', { 'for' :['markdown', 'vim-plug'] }
 
+" Editor Enhancement
+Plug 'jiangmiao/auto-pairs'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
+Plug 'AndrewRadev/switch.vim' " gs to switch
+Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to change 'word' to `word`
+Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
+Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
+Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
+
+" Formatter
+Plug 'Chiel92/vim-autoformat'
+
 " For general writing
-Plug 'reedes/vim-wordy'
-Plug 'ron89/thesaurus_query.vim'
+"Plug 'reedes/vim-wordy'
+"Plug 'ron89/thesaurus_query.vim'
 
 " Bookmarks
 Plug 'kshenoy/vim-signature'
@@ -406,23 +421,18 @@ Plug 'wsdjeg/FlyGrep.vim' " Ctrl+f (normal) to find file content
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 Plug 'osyo-manga/vim-anzu'
 
-" Other useful utilities
-Plug 'jiangmiao/auto-pairs'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to change 'word' to `word`
-Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
-Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
-Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
-Plug 'tmhedberg/SimpylFold'
-"Plug 'vim-scripts/restore_view.vim'
-Plug 'AndrewRadev/switch.vim' " gs to switch
-Plug 'ryanoasis/vim-devicons'
-Plug 'chrisbra/Colorizer' " Show colors with :ColorHighlight
-Plug 'airblade/vim-rooter'
-Plug 'tpope/vim-eunuch' " do stuff like :SudoWrite
-Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
+" Documentation
 Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
+
+" Vim Applications
 Plug 'itchyny/calendar.vim'
+
+" Other visual enhancement
+Plug 'ryanoasis/vim-devicons'
+
+" Other useful utilities
+Plug 'airblade/vim-rooter' " auto change pwd
+Plug 'tpope/vim-eunuch' " do stuff like :SudoWrite
 
 " Dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -468,8 +478,6 @@ color deus
 
 hi NonText ctermfg=gray guifg=grey10
 "hi SpecialKey ctermfg=blue guifg=grey70
-
-set listchars=tab:\|\ ,
 
 nnoremap \d :call ChangeDress()<CR>
 func! ChangeDress()
@@ -532,7 +540,7 @@ let g:NERDTreeIndicatorMapCustom = {
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 "au TextChangedI * GitGutter
 " Installing plugins
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-go', 'coc-omnisharp']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-go'] ", 'coc-omnisharp']
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -554,10 +562,14 @@ nnoremap <silent> gr <Plug>(coc-references)
 nnoremap <leader>rn <Plug>(coc-rename)
 
 
+
 " ===
 " === some error checking
 " ===
-" I ain't need no ale!
+let g:ale_virtualtext_cursor = 1
+let g:ale_linters = {
+			\ 'cs': ['OmniSharp']
+			\}
 
 
 " ===
@@ -604,6 +616,12 @@ noremap <LEADER>tm :TableModeToggle<CR>
 " ===
 noremap <C-p> :FZF<CR>
 
+
+" ===
+" === CTRLP (Dependency for omnisharp)
+" ===
+let g:ctrlp_map = ''
+let g:ctrlp_cmd = 'CtrlP'
 
 " ===
 " === vim-signature
@@ -727,7 +745,7 @@ nnoremap R :Ranger<CR>
 " ===
 " === fzf-gitignore
 " ===
-noremap <LEADER>gi <Plug>(fzf-gitignore)
+noremap <LEADER>gi :FzfGitignore<CR>
 
 
 " ===
@@ -826,74 +844,53 @@ let g:go_highlight_variable_assignments      = 0
 let g:go_highlight_variable_declarations     = 0
 
 
+" ===
+" === AutoFormat
+" ===
 nnoremap <tab> :Autoformat<CR>
-"let g:OmniSharp_highlight_types = 2
-"let g:OmniSharp_highlight_groups = {
-			"\ 'csUserIdentifier': [
-			"\   'constant name', 'enum member name', 'field name', 'identifier',
-			"\   'local name', 'parameter name', 'property name', 'static symbol'],
-			"\ 'csUserInterface': ['interface name'],
-			"\ 'csUserMethod': ['extension method name', 'method name'],
-			"\ 'csUserType': ['class name', 'enum name', 'namespace name', 'struct name']
-			"\}
 
-"" Use the stdio OmniSharp-roslyn server
 
-"" Set the type lookup function to use the preview window instead of echoing it
-""let g:OmniSharp_typeLookupInPreview = 1
+" ===
+" === OmniSharp
+" ===
+let g:OmniSharp_typeLookupInPreview = 1
+let g:omnicomplete_fetch_full_documentation = 1
 
-"" Timeout in seconds to wait for a response from the server
-"let g:OmniSharp_timeout = 5
-
-"" Don't autoselect first omnicomplete option, show options even if there is only
-"" one (so the preview documentation is accessible). Remove 'preview' if you
-"" don't want to see any documentation whatsoever.
-"set completeopt=longest,menuone,preview
-
-"" Fetch full documentation during omnicomplete requests.
-"" By default, only Type/Method signatures are fetched. Full documentation can
-"" still be fetched when you need it with the :OmniSharpDocumentation command.
-""let g:omnicomplete_fetch_full_documentation = 1
-
-"" Set desired preview window height for viewing documentation.
-"" You might also want to look at the echodoc plugin.
-"set previewheight=5
-
-"" Tell ALE to use OmniSharp for linting C# files, and no other linters.
-"let g:ale_linters = { 'cs': ['OmniSharp'] }
-
-"" Update semantic highlighting on BufEnter and InsertLeave
-"let g:OmniSharp_server_path = '/home/david/.cache/omnisharp-vim/omnisharp-roslyn/run'
 let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_server_stdio = 1
-let g:OmniSharp_highlight_types = 1
+let g:OmniSharp_highlight_types = 2
+let g:OmniSharp_selector_ui = 'ctrlp'
 
-set updatetime=500
+autocmd Filetype cs nnoremap <buffer> gd :OmniSharpPreviewDocumentation<CR>
+autocmd Filetype cs nnoremap <buffer> gr :OmniSharpFindUsages<CR>
+autocmd Filetype cs nnoremap <buffer> gy :OmniSharpTypeLookup<CR>
+autocmd Filetype cs nnoremap <buffer> ga :OmniSharpGetCodeActions<CR>
+autocmd Filetype cs nnoremap <buffer> <LEADER>rn :OmniSharpRename<CR><C-N>:res +5<CR>
 
 sign define OmniSharpCodeActions text=💡
 
 augroup OSCountCodeActions
-  autocmd!
-  autocmd FileType cs set signcolumn=yes
-  autocmd CursorHold *.cs call OSCountCodeActions()
+	autocmd!
+	autocmd FileType cs set signcolumn=yes
+	autocmd CursorHold *.cs call OSCountCodeActions()
 augroup END
 
 function! OSCountCodeActions() abort
-  if bufname('%') ==# '' || OmniSharp#FugitiveCheck() | return | endif
-  if !OmniSharp#IsServerRunning() | return | endif
-  let opts = {
-  \ 'CallbackCount': function('s:CBReturnCount'),
-  \ 'CallbackCleanup': {-> execute('sign unplace 99')}
-  \}
-  call OmniSharp#CountCodeActions(opts)
+	if bufname('%') ==# '' || OmniSharp#FugitiveCheck() | return | endif
+	if !OmniSharp#IsServerRunning() | return | endif
+	let opts = {
+				\ 'CallbackCount': function('s:CBReturnCount'),
+				\ 'CallbackCleanup': {-> execute('sign unplace 99')}
+				\}
+	call OmniSharp#CountCodeActions(opts)
 endfunction
 
 function! s:CBReturnCount(count) abort
-  if a:count
-    let l = getpos('.')[1]
-    let f = expand('%:p')
-    execute ':sign place 99 line='.l.' name=OmniSharpCodeActions file='.f
-  endif
+	if a:count
+		let l = getpos('.')[1]
+		let f = expand('%:p')
+		execute ':sign place 99 line='.l.' name=OmniSharpCodeActions file='.f
+	endif
 endfunction
 
 

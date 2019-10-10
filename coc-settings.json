@@ -1,3 +1,6 @@
 {
-	"yank.enableCompletion" : false
+	"yank.enableCompletion" : false,
+	"diagnostic.virtualText": true,
+	"codeLens.enable": true,
+	"suggest.detailMaxLength": 60
 }
