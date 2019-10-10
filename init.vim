@@ -125,9 +125,6 @@ noremap K I
 " Copy to system clipboard
 vnoremap Y :w !xclip -i -sel c<CR>
 
-" Joining lines
-noremap H J
-
 " Indentation
 nnoremap < <<
 nnoremap > >>
@@ -218,6 +215,9 @@ noremap sv <C-w>t<C-w>H
 " Rotate screens
 noremap srh <C-w>b<C-w>K
 noremap srv <C-w>b<C-w>H
+
+" Press <SPACE> + q to close the window below the current window
+noremap <LEADER>q <C-w>j:q<CR>
 
 
 " ===
@@ -317,11 +317,6 @@ call plug#begin('~/.config/nvim/plugged')
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
 
-Plug 'sheerun/vim-polyglot'
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] }
-
-
 " Pretty Dress
 Plug 'theniceboy/eleline.vim'
 Plug 'bling/vim-bufferline'
@@ -367,10 +362,18 @@ Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive' " gv dependency
 Plug 'junegunn/gv.vim' " gv (normal) to show git log
-Plug 'mhinz/vim-signify'
+"Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
+
+" General Language Enhancement
+Plug 'sheerun/vim-polyglot'
 
 " Tex
 Plug 'lervag/vimtex'
+
+" CSharp
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] } " omnisharp-vim dependency
 
 " HTML, CSS, JavaScript, PHP, JSON, etc.
 Plug 'elzr/vim-json'
@@ -512,6 +515,19 @@ let NERDTreeMapCloseDir = ""
 let NERDTreeMapChangeRoot = "l"
 let NERDTreeMapMenu = ","
 let NERDTreeMapToggleHidden = "zh"
+
+
+" ==
+" == NERDTree-git
+" ==
+let g:gitgutter_map_keys = 0
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_preview_win_floating = 1
+"autocmd BufWritePost * GitGutter
+nnoremap <LEADER>gf :GitGutterFold<CR>
+nnoremap H :GitGutterPreviewHunk<CR>
+nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
+nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 
 
 " ==
@@ -825,7 +841,6 @@ nnoremap - N
 let g:go_textobj_enabled = 0
 let g:go_auto_type_info = 1
 "let g:go_def_mapping_enabled = 1
-noremap <LEADER>q <C-w>j:q<CR>
 let g:go_highlight_array_whitespace_error    = 1
 let g:go_highlight_build_constraints         = 1
 let g:go_highlight_extra_types               = 1
