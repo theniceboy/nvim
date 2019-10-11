@@ -120,6 +120,9 @@ noremap l u
 noremap k i
 noremap K I
 
+" make Y to copy till the end of the line
+nnoremap Y y$
+
 " Copy to system clipboard
 vnoremap Y :w !xclip -i -sel c<CR>
 
@@ -313,6 +316,8 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+
+
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
 
@@ -338,7 +343,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf'
 Plug 'francoiscabrol/ranger.vim'
-Plug 'mhinz/vim-startify'
+
 
 " Taglist
 Plug 'liuchengxu/vista.vim'
@@ -363,9 +368,6 @@ Plug 'tpope/vim-fugitive' " gv dependency
 Plug 'junegunn/gv.vim' " gv (normal) to show git log
 "Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
-
-" General Language Enhancement
-Plug 'sheerun/vim-polyglot'
 
 " Tex
 Plug 'lervag/vimtex'
@@ -425,6 +427,11 @@ Plug 'osyo-manga/vim-anzu'
 
 " Documentation
 Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
+
+" Mini Vim-APP
+Plug 'mhinz/vim-startify'
+Plug 'voldikss/vim-floaterm'
+Plug 'liuchengxu/vim-clap'
 
 " Vim Applications
 Plug 'itchyny/calendar.vim'
@@ -562,7 +569,8 @@ nnoremap <leader>rn <Plug>(coc-rename)
 " ===
 let g:ale_virtualtext_cursor = 1
 let g:ale_linters = {
-			\ 'cs': ['OmniSharp']
+			\ 'cs': ['OmniSharp'],
+			\ 'go': ['vim-go']
 			\}
 
 
@@ -745,6 +753,7 @@ inoremap <c-n> <nop>
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<c-n>"
+let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/', 'UltiSnips']
 
 
 " ===
@@ -752,6 +761,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-n>"
 " ===
 "let g:vimtex_view_method = ''
 let g:vimtex_view_general_viewer = 'llpp'
+let g:vimtex_mappings_enabled = 0
+let g:vimtex_text_obj_enabled = 0
+let g:vimtex_motion_enabled = 0
 let maplocalleader=' '
 
 
@@ -809,8 +821,10 @@ let g:go_auto_type_info = 1
 "let g:go_def_mapping_enabled = 1
 let g:go_highlight_array_whitespace_error    = 1
 let g:go_highlight_build_constraints         = 1
+let g:go_highlight_chan_whitespace_error     = 1
 let g:go_highlight_extra_types               = 1
 let g:go_highlight_fields                    = 1
+let g:go_highlight_format_strings            = 1
 let g:go_highlight_function_calls            = 1
 let g:go_highlight_function_parameters       = 1
 let g:go_highlight_functions                 = 1
@@ -818,8 +832,9 @@ let g:go_highlight_generate_tags             = 1
 let g:go_highlight_methods                   = 1
 let g:go_highlight_operators                 = 1
 let g:go_highlight_space_tab_error           = 1
+let g:go_highlight_string_spellcheck         = 1
 let g:go_highlight_structs                   = 1
-let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_trailing_whitespace_error = 1
 let g:go_highlight_types                     = 1
 let g:go_highlight_variable_assignments      = 0
 let g:go_highlight_variable_declarations     = 0
@@ -843,7 +858,7 @@ let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_highlight_types = 2
 let g:OmniSharp_selector_ui = 'ctrlp'
 
-autocmd Filetype cs nnoremap <buffer> gd :OmniSharpPreviewDocumentation<CR>
+autocmd Filetype cs nnoremap <buffer> gd :OmniSharpPreviewDefinition<CR>
 autocmd Filetype cs nnoremap <buffer> gr :OmniSharpFindUsages<CR>
 autocmd Filetype cs nnoremap <buffer> gy :OmniSharpTypeLookup<CR>
 autocmd Filetype cs nnoremap <buffer> ga :OmniSharpGetCodeActions<CR>
@@ -880,6 +895,35 @@ endfunction
 " === Colorizer
 " ===
 let g:colorizer_syntax = 1
+
+
+" ===
+" === vim-floaterm
+" ===
+nnoremap ? :FloatermToggle<CR>
+let g:floaterm_position = 'center'
+let g:floaterm_winblend = 20
+let g:floaterm_height = winheight(0)/3*2
+let g:floaterm_width = &columns/3*2
+
+
+" ===
+" === vim-clap
+" ===
+"nnoremap ,c :Clap bcommits<CR>
+"nnoremap ,l :Clap blines<CR>
+nnoremap ,b :Clap buffers<CR>
+nnoremap ,C :Clap colors<CR>
+"nnoremap ,h :Clap hist<CR>
+nnoremap ,c :Clap commits<CR>
+nnoremap ,f :Clap files<CR>
+nnoremap ,t :Clap filetypes<CR>
+nnoremap ,g :Clap gfiles<CR>
+"nnoremap , :Clap grep<CR>
+"nnoremap ,a :Clap jumps<CR>
+"nnoremap , :Clap marks<CR>
+"nnoremap ,t :Clap tags<CR>
+nnoremap ,w :Clap window<CR>
 
 
 " ===================== End of Plugin Settings =====================
