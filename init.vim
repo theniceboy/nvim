@@ -843,9 +843,7 @@ let g:go_highlight_variable_declarations     = 0
 " ===
 " === AutoFormat
 " ===
-silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-i>
-nnoremap <tab> :Autoformat<CR>
-
+nnoremap \f :Autoformat<CR>
 
 " ===
 " === OmniSharp
