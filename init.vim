@@ -137,7 +137,7 @@ noremap <LEADER><CR> :nohlsearch<CR>
 noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
 
 " Space to Tab
-noremap <LEADER>tt :%s/  /\t/g
+noremap <LEADER>tt :%s/    /\t/g
 
 " Folding
 noremap <silent> <LEADER>o za
@@ -514,7 +514,7 @@ let NERDTreeMapToggleHidden = "zh"
 let g:gitgutter_map_keys = 0
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_preview_win_floating = 1
-"autocmd BufWritePost * GitGutter
+autocmd BufWritePost * GitGutter
 nnoremap <LEADER>gf :GitGutterFold<CR>
 nnoremap H :GitGutterPreviewHunk<CR>
 nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
