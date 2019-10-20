@@ -193,7 +193,7 @@ noremap <LEADER>e <C-w>j
 noremap <LEADER>n <C-w>h
 noremap <LEADER>i <C-w>l
 
-" Disabling the default s key
+" Disable the default s key
 noremap s <nop>
 
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
@@ -246,6 +246,8 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 " ===
 " === Other useful stuff
 " ===
+" \p to show the current buffer file path
+nnoremap \p 1<C-G>
 
 " Move the next character to the end of the line with ctrl+9
 inoremap <C-u> <ESC>lx$p
@@ -325,8 +327,8 @@ Plug 'theniceboy/vim-calc'
 Plug 'theniceboy/eleline.vim'
 Plug 'bling/vim-bufferline'
 "Plug 'liuchengxu/space-vim-theme'
-"Plug 'morhetz/gruvbox'
-"Plug 'ayu-theme/ayu-vim'
+Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
 "Plug 'rakr/vim-one'
 "Plug 'mhartington/oceanic-next'
 "Plug 'kristijanhusak/vim-hybrid-material'
@@ -409,6 +411,7 @@ Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to 
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
 Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
+Plug 'easymotion/vim-easymotion'
 
 " Formatter
 Plug 'Chiel92/vim-autoformat'
@@ -432,6 +435,7 @@ Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
 Plug 'mhinz/vim-startify'
 Plug 'voldikss/vim-floaterm'
 Plug 'liuchengxu/vim-clap'
+Plug 'jceb/vim-orgmode'
 
 " Vim Applications
 Plug 'itchyny/calendar.vim'
@@ -476,10 +480,13 @@ set background=dark
 "let g:one_allow_italics = 1
 
 
-"color ayu
 "color dracula
 "color one
 color deus
+"color gruvbox
+"let ayucolor="light"
+"color ayu
+"set background=light
 
 hi NonText ctermfg=gray guifg=grey10
 "hi SpecialKey ctermfg=blue guifg=grey70
@@ -914,7 +921,7 @@ nnoremap ,b :Clap buffers<CR>
 nnoremap ,C :Clap colors<CR>
 "nnoremap ,h :Clap hist<CR>
 nnoremap ,c :Clap commits<CR>
-nnoremap ,f :Clap files<CR>
+"nnoremap ,f :Clap files<CR>
 nnoremap ,t :Clap filetypes<CR>
 nnoremap ,g :Clap gfiles<CR>
 "nnoremap , :Clap grep<CR>
@@ -922,6 +929,23 @@ nnoremap ,g :Clap gfiles<CR>
 "nnoremap , :Clap marks<CR>
 "nnoremap ,t :Clap tags<CR>
 nnoremap ,w :Clap window<CR>
+
+
+" ===
+" === vim-easymotion
+" ===
+let g:EasyMotion_smartcase = 1
+" 'f{char} to move to {char}
+map 'f <Plug>(easymotion-bd-f)
+nmap 'f <Plug>(easymotion-overwin-f)
+" 's{char}{char} to move to {char}{char}
+nmap 's <Plug>(easymotion-overwin-f2)
+" Move to line
+map 'l <Plug>(easymotion-bd-jk)
+nmap 'l <Plug>(easymotion-overwin-line)
+" Move to word
+map  'w <Plug>(easymotion-bd-w)
+nmap 'w <Plug>(easymotion-overwin-w)
 
 
 " ===================== End of Plugin Settings =====================
