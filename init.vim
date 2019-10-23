@@ -348,7 +348,7 @@ Plug 'francoiscabrol/ranger.vim'
 
 
 " Taglist
-"Plug 'liuchengxu/vista.vim'
+Plug 'liuchengxu/vista.vim'
 
 " Error checking
 Plug 'dense-analysis/ale'
@@ -722,22 +722,22 @@ let g:bullets_set_mappings = 0
 " ===
 " === Vista.vim
 " ===
-"noremap <silent> T :Vista!!<CR>
-"noremap <silent> <C-t> :Vista finder<CR>
-"function! NearestMethodOrFunction() abort
-	"return get(b:, 'vista_nearest_method_or_function', '')
-"endfunction
+noremap <silent> T :Vista!!<CR>
+noremap <silent> <C-t> :Vista finder<CR>
+function! NearestMethodOrFunction() abort
+	return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
 
-"set statusline+=%{NearestMethodOrFunction()}
-"autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+set statusline+=%{NearestMethodOrFunction()}
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
-"" e.g., more compact: ["▸ ", ""]
-"let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-""let g:vista_default_executive = 'ctags'
-"" To enable fzf's preview window set g:vista_fzf_preview.
-"" The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
-"" For example:
-"let g:vista_fzf_preview = ['right:50%']
+" e.g., more compact: ["▸ ", ""]
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+"let g:vista_default_executive = 'ctags'
+" To enable fzf's preview window set g:vista_fzf_preview.
+" The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
+" For example:
+let g:vista_fzf_preview = ['right:50%']
 
 
 " ===
