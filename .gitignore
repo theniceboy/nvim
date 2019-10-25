@@ -1,9 +1,6 @@
 *.swp
-
-
-
-view/
 .DS_Store
+view/
 plugged/
 sessions/
 autoload/
