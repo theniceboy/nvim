@@ -433,7 +433,7 @@ Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
 
 " Mini Vim-APP
 Plug 'mhinz/vim-startify'
-Plug 'voldikss/vim-floaterm'
+"Plug 'voldikss/vim-floaterm'
 Plug 'liuchengxu/vim-clap'
 Plug 'jceb/vim-orgmode'
 
@@ -549,7 +549,7 @@ let g:NERDTreeIndicatorMapCustom = {
 " ===
 " fix the most annoying bug that coc has
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-go', 'coc-omnisharp']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-emmet', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-omnisharp']
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -905,11 +905,11 @@ let g:colorizer_syntax = 1
 " ===
 " === vim-floaterm
 " ===
-nnoremap ? :FloatermToggle<CR>
-let g:floaterm_position = 'center'
-let g:floaterm_winblend = 20
-let g:floaterm_height = winheight(0)/3*2
-let g:floaterm_width = &columns/3*2
+"nnoremap ? :FloatermToggle<CR>
+"let g:floaterm_position = 'center'
+"let g:floaterm_winblend = 20
+"let g:floaterm_height = winheight(0)/3*2
+"let g:floaterm_width = &columns/3*2
 
 
 " ===
