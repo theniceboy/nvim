@@ -577,8 +577,16 @@ nnoremap <leader>rn <Plug>(coc-rename)
 let g:ale_virtualtext_cursor = 1
 let g:ale_linters = {
 			\ 'cs': ['OmniSharp'],
-			\ 'go': ['vim-go']
+			\ 'go': ['vim-go'],
+			\ 'c' : ['ccls']
 			\}
+let g:ale_cpp_ccls_init_options = {
+\   'cache': {
+\       'directory': '/tmp/ccls/cache'
+\   }
+\ }
+let g:ale_c_gcc_executable = '/usr/bin/gcc'
+let g:ale_c_gcc_options="-Wall -O2"
 
 
 " ===
@@ -761,6 +769,7 @@ let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<c-n>"
 let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/', 'UltiSnips']
+silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
 
 
 " ===
@@ -936,16 +945,16 @@ nnoremap ,w :Clap window<CR>
 " ===
 let g:EasyMotion_smartcase = 1
 " 'f{char} to move to {char}
-map 'f <Plug>(easymotion-bd-f)
-nmap 'f <Plug>(easymotion-overwin-f)
+map f <Plug>(easymotion-bd-f)
+nmap f <Plug>(easymotion-overwin-f)
 " 's{char}{char} to move to {char}{char}
-nmap 's <Plug>(easymotion-overwin-f2)
+"nmap 's <Plug>(easymotion-overwin-f2)
 " Move to line
-map 'l <Plug>(easymotion-bd-jk)
-nmap 'l <Plug>(easymotion-overwin-line)
+"map 'l <Plug>(easymotion-bd-jk)
+"nmap 'l <Plug>(easymotion-overwin-line)
 " Move to word
-map  'w <Plug>(easymotion-bd-w)
-nmap 'w <Plug>(easymotion-overwin-w)
+"map  'w <Plug>(easymotion-bd-w)
+"nmap 'w <Plug>(easymotion-overwin-w)
 
 
 " ===================== End of Plugin Settings =====================
