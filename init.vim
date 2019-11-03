@@ -119,7 +119,7 @@ noremap K I
 nnoremap Y y$
 
 " Copy to system clipboard
-vnoremap Y :w !xclip -i -sel c<CR>
+vnoremap Y "+y
 
 " Indentation
 nnoremap < <<
