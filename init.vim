@@ -313,8 +313,6 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-
-
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
 
@@ -439,7 +437,6 @@ Plug 'itchyny/calendar.vim'
 Plug 'ryanoasis/vim-devicons'
 
 " Other useful utilities
-Plug 'airblade/vim-rooter' " auto change pwd
 Plug 'tpope/vim-eunuch' " do stuff like :SudoWrite
 
 " Dependencies
@@ -449,6 +446,10 @@ Plug 'roxma/nvim-yarp'
 Plug 'rbgrouleff/bclose.vim' " For ranger.vim
 
 call plug#end()
+
+" experimental
+set lazyredraw
+set regexpengine=1
 
 
 
