@@ -266,12 +266,10 @@ inoremap <C-u> <ESC>lx$p
 noremap <LEADER>/ :set splitbelow<CR>:sp<CR>:term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
-noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4i
+noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 " Spelling Check with <space>sc
 noremap <LEADER>sc :set spell!<CR>
-noremap <C-x> ea<C-x>s
-inoremap <C-x> <Esc>ea<C-x>s
 
 " Press ` to change case (instead of ~)
 noremap ` ~
@@ -283,6 +281,9 @@ autocmd BufEnter * silent! lcd %:p:h
 
 " Call figlet
 noremap tx :r !figlet
+
+noremap <LEADER>- :lN<CR>
+noremap <LEADER>= :lne<CR>
 
 " Compile function
 noremap r :call CompileRunGcc()<CR>
@@ -327,6 +328,8 @@ endfunc
 " ===
 
 call plug#begin('~/.config/nvim/plugged')
+
+Plug 'junegunn/goyo.vim'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -408,7 +411,7 @@ Plug 'tweekmonster/braceless.vim'
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
-Plug 'dkarter/bullets.vim', { 'for' :['markdown', 'vim-plug'] }
+Plug 'theniceboy/bullets.vim'
 
 " Editor Enhancement
 Plug 'jiangmiao/auto-pairs'
@@ -442,8 +445,8 @@ Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
 " Mini Vim-APP
 Plug 'mhinz/vim-startify'
 "Plug 'voldikss/vim-floaterm'
-Plug 'liuchengxu/vim-clap'
-Plug 'jceb/vim-orgmode'
+"Plug 'liuchengxu/vim-clap'
+"Plug 'jceb/vim-orgmode'
 
 " Vim Applications
 Plug 'itchyny/calendar.vim'
@@ -597,7 +600,7 @@ let g:ale_cpp_ccls_init_options = {
 \   }
 \ }
 let g:ale_c_gcc_executable = '/usr/bin/gcc'
-let g:ale_c_gcc_options="-Wall -O2"
+"let g:ale_c_gcc_options="-Wall -O2"
 
 
 " ===
@@ -637,6 +640,8 @@ let g:python_highlight_all = 1
 " === vim-table-mode
 " ===
 noremap <LEADER>tm :TableModeToggle<CR>
+"let g:table_mode_disable_mappings = 1
+let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 
 
 " ===
@@ -702,12 +707,6 @@ let g:multi_cursor_skip_key = '<C-x>'
 let g:multi_cursor_quit_key = '<Esc>'
 
 
-" ==
-" == thesaurus_query
-" ==
-noremap <LEADER>th :ThesaurusQueryLookupCurrentWord<CR>
-
-
 " Startify
 let g:startify_lists = [
 			\ { 'type': 'files',		 'header': ['	 MRU']						},
@@ -719,7 +718,8 @@ let g:startify_lists = [
 " ===
 " === Far.vim
 " ===
-"nnoremap <silent> <LEADER>f :F	%<left><left>
+noremap <LEADER>fa :F	%<left><left>
+noremap <LEADER>fr :Farp<CR>
 
 
 " ===
@@ -735,7 +735,13 @@ noremap <LEADER>a :call Calc()<CR>
 " ===
 " === Bullets.vim
 " ===
-let g:bullets_set_mappings = 0
+"let g:bullets_set_mappings = 0
+let g:bullets_enabled_file_types = [
+    \ 'markdown',
+    \ 'text',
+    \ 'gitcommit',
+    \ 'scratch'
+    \]
 
 
 " ===
@@ -763,6 +769,7 @@ let g:vista_fzf_preview = ['right:50%']
 " === Ranger.vim
 " ===
 nnoremap R :Ranger<CR>
+let g:ranger_map_keys = 0
 
 
 " ===
@@ -935,20 +942,20 @@ let g:colorizer_syntax = 1
 " ===
 " === vim-clap
 " ===
-"nnoremap ,c :Clap bcommits<CR>
-"nnoremap ,l :Clap blines<CR>
-nnoremap ,b :Clap buffers<CR>
-nnoremap ,C :Clap colors<CR>
-"nnoremap ,h :Clap hist<CR>
-nnoremap ,c :Clap commits<CR>
-"nnoremap ,f :Clap files<CR>
-nnoremap ,t :Clap filetypes<CR>
-nnoremap ,g :Clap gfiles<CR>
-"nnoremap , :Clap grep<CR>
-"nnoremap ,a :Clap jumps<CR>
-"nnoremap , :Clap marks<CR>
-"nnoremap ,t :Clap tags<CR>
-nnoremap ,w :Clap window<CR>
+""nnoremap ,c :Clap bcommits<CR>
+""nnoremap ,l :Clap blines<CR>
+"nnoremap ,b :Clap buffers<CR>
+"nnoremap ,C :Clap colors<CR>
+""nnoremap ,h :Clap hist<CR>
+"nnoremap ,c :Clap commits<CR>
+""nnoremap ,f :Clap files<CR>
+"nnoremap ,t :Clap filetypes<CR>
+"nnoremap ,g :Clap gfiles<CR>
+""nnoremap , :Clap grep<CR>
+""nnoremap ,a :Clap jumps<CR>
+""nnoremap , :Clap marks<CR>
+""nnoremap ,t :Clap tags<CR>
+"nnoremap ,w :Clap window<CR>
 
 
 " ===
@@ -958,6 +965,7 @@ let g:EasyMotion_smartcase = 1
 " 'f{char} to move to {char}
 map f <Plug>(easymotion-bd-f)
 nmap f <Plug>(easymotion-overwin-f)
+map \; <Plug>(easymotion-prefix)
 " 's{char}{char} to move to {char}{char}
 "nmap 's <Plug>(easymotion-overwin-f2)
 " Move to line
@@ -966,6 +974,13 @@ nmap f <Plug>(easymotion-overwin-f)
 " Move to word
 "map  'w <Plug>(easymotion-bd-w)
 "nmap 'w <Plug>(easymotion-overwin-w)
+
+
+" ===
+" === goyo
+" ===
+map <LEADER>gy :Goyo<CR>
+
 
 
 " ===================== End of Plugin Settings =====================
