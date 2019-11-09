@@ -6,6 +6,55 @@
 
 Please **DO NOT** just copy this config without really looking at it! Please, at least, read this README file!
 
+## Index
+- [Things to Know After Installation](#after-installation%2C-you-need-to%3A)
+- [Keyboard Shortcuts](#keyboard-shortcuts)
+	- [1. Basic Keyboard Shortcuts](#1-basic-editor-features)
+		- [1.1 The Most Basics](#1.1-the-most-basics)
+		- [1.2 Remapped Cursor Movement](#1.2-remapped-cursor-movement)
+		- [1.3 Remapped Insert Mode Keys](#1.3-remapped-insert-mode-keys)
+		- [1.4 Remapped Text Manipulating Commands in Normal Mode](#1.4-remapped-text-manipulating-commands-in-normal-mode)
+		- [1.5 Other Useful Normal Mode Remapping](#1.5-other-useful-normal-mode-remapping)
+	- [2. Window Management](#2-window-management)
+		- [2.1 Creating Window Through Split Screen](#2.1-creating-window-through-split-screen)
+		- [2.2 Moving the Cursor Between Different Windows](#2.2-moving-the-cursor-between-different-windows)
+		- [2.3 Resizing Different Windows](#2.3-resizing-different-windows)
+		- [2.4 Closing Windows](#2.4-closing-windows)
+	- [3. Tab Management](#3-tab-management)
+	- [4. Terminal Keyboard Shortcuts](#4-terminal-keyboard-shortcuts)
+- [Plugin Shortcuts](#plugins)
+	- AutoComplete / Snippets
+		- [COC](#for-code-autocomplete---coc)
+		- [Ultisnips](#ultisnips)
+	- File Browsing/Management
+		- [NERDTree](#nerdtree)
+		- [Ranger.vim](#ranger.vim---file-browser)
+		- [FZF](#fzf---the-fuzzy-file-finder)
+	- Git
+		- [GV](#gv---commit-browser)
+		- [GitGutter](#gitgutter)
+		- [fzf-gitignore](#fzf-gitignore)
+	- Find / Replace
+		- [FlyGrep](#flygrep---search-in-files)
+		- [far.vim](#far.vim---find-and-replace)
+	- Text Editing
+		- [vim-table-mode](#vim-table-mode)
+		- [vim-multiple-cursors](#vim-multiple-cursors)
+		- [vim-surround](#vim-surround)
+	- Editor Enhancement
+		- [Vista.vim](#vista.vim) (Taglist)
+		- [Undotree](#undotree)
+		- [vim-startify](#vim-startify---startup-screen) (Startup Screen)
+		- [vim-signiture](#vim-signiture---bookmarks) (Bookmarks)
+		- [vim-calc](#vim-calc)
+		- [AutoFormat](#autoformat)
+		- [Goyo](#goyo---work-without-distraction) (Remove distractions)
+	- Vim Apps
+		- [vim-calendar](#vim-calendar)
+- [Custom Markdown Snippets](#custom-snippets)
+- [Other Weird Stuff](#other-weird-stuff)
+
+
 ## After Installation, You Need To:
 
 - [ ] Install `pynvim` (pip)
@@ -20,7 +69,7 @@ Please **DO NOT** just copy this config without really looking at it! Please, at
 - [ ] Well, make sure you have python
 - [ ] See `_machine_specific.vim`
 
-#### For Code AutoComplete (coc)
+#### For Code AutoComplete - coc
 Python:
 - [ ] Do `pip3 install flake8` (for linting)
 
@@ -67,7 +116,7 @@ Python:
 | `Ctrl` `a` | Move cursor to the end of the line                                   |
 | `Ctrl` `u` | Move the character on the right of the cursor to the end of the line |
 
-#### 1.4 Remapped Editing (Text Manipulating) Commands
+#### 1.4 Remapped Text Manipulating Commands in Normal Mode
 | Shortcut        | Action                                |
 |-----------------|---------------------------------------|
 | `l`             | **undo**                              |
@@ -131,7 +180,7 @@ Use the arrow keys to resize the current window.
 | `t` `m` `n` | Move tab left    |
 | `t` `m` `i` | Move tab right   |
 
-### 4 Terminal
+### 4 Terminal Keyboard Shortcuts
 | Shortcut    | Action                                                      |
 |-------------|-------------------------------------------------------------|
 | `SPACE` `/` | Create a new split with a terminal below the current window |
@@ -187,7 +236,7 @@ See `:help table-mode.txt` for more.
 | `T`        | toggle function and variable list   |
 | `Ctrl` `t` | open function/class/variable finder |
 
-#### FZF (the fuzzy file finder)
+#### FZF - the fuzzy file finder
 | Shortcut   | Action           |
 |------------|------------------|
 | `Ctrl` `p` | **Active FZF**   |
@@ -201,14 +250,14 @@ See `:help table-mode.txt` for more.
 | `Shift` + `K` | History go up |
 | `Shift` + `J` | History go down |
 
-#### Ranger.vim (file browser)
+#### Ranger.vim - file browser
 - [ ] Make sure you have ranger installed
 Press `R` to open Ranger (file selector)
 
-#### vim-startify (Startup screen)
+#### vim-startify - Startup screen
 Press `Space` `s` `t` to openup `startify`
 
-#### vim-signiture (Bookmarks)
+#### vim-signiture - Bookmarks
 | Shortcut    | Action                          | Command |
 |-------------|---------------------------------|---------|
 | `m<letter>` | Add/remove mark at current line |         |
@@ -244,19 +293,19 @@ press: `cs'"`:
 "string"
 ```
 
-#### far.vim (find and replace)
+#### far.vim - find and replace
 | Shortcut        | Action                   |
 |-----------------|--------------------------|
 | `SPACE` `f` `a` | Find in the current file |
 | `SPACE` `f` `r` | Find and replace         |
 
-#### FlyGrep (search in files)
+#### FlyGrep - search in files
 Press `Ctrl` `f` to search in files (content)
 
 #### fzf-gitignore
 Press `Space` `g` `i` to create a `.gitignore` file
 
-#### GV (commit browser)
+#### GV - commit browser
 | Shortcut | Action              |
 |----------|---------------------|
 | `g` `v`  | Open commit browser |
@@ -274,7 +323,7 @@ Press `Space` + `a` to calculate the equation in the current line
 #### AutoFormat
 Press `\` `f` to format code
 
-#### Goyo (Work without distraction)
+#### Goyo - Work without distraction
 Press `g` `y` to toggle Goyo
 
 ## Custom Snippets
