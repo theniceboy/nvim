@@ -239,6 +239,8 @@ noremap tu :tabe<CR>
 " Move around tabs with tn and ti
 noremap tn :-tabnext<CR>
 noremap ti :+tabnext<CR>
+nnoremap <c-n> :-tabnext<CR>
+nnoremap <c-i> :+tabnext<CR>
 " Move the tabs with tmn and tmi
 noremap tmn :-tabmove<CR>
 noremap tmi :+tabmove<CR>
@@ -850,6 +852,7 @@ nnoremap - N
 " ===
 " === vim-go
 " ===
+let g:go_template_autocreate = 0
 let g:go_textobj_enabled = 0
 let g:go_auto_type_info = 1
 "let g:go_def_mapping_enabled = 1

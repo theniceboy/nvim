@@ -175,6 +175,8 @@ Use the arrow keys to resize the current window.
 | Shortcut    | Action           |
 |-------------|------------------|
 | `t` `u`     | Create a new tab |
+| `Ctrl` `n`  | Go one tab left  |
+| `Ctrl` `i`  | Go One tab right |
 | `t` `n`     | Go one tab left  |
 | `t` `i`     | Go One tab right |
 | `t` `m` `n` | Move tab left    |
