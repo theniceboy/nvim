@@ -331,7 +331,6 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'junegunn/goyo.vim'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -383,6 +382,7 @@ Plug 'tpope/vim-fugitive' " gv dependency
 Plug 'junegunn/gv.vim' " gv (normal) to show git log
 "Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
+Plug 'lambdalisue/gina.vim'
 
 " Tex
 Plug 'lervag/vimtex'
@@ -397,6 +397,8 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
 Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 Plug 'pangloss/vim-javascript' ", { 'for' :['javascript', 'vim-plug'] }
+Plug 'yuezk/vim-js'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'jelera/vim-javascript-syntax'
 
 " Go
@@ -430,6 +432,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'Chiel92/vim-autoformat'
 
 " For general writing
+Plug 'junegunn/goyo.vim'
 "Plug 'reedes/vim-wordy'
 "Plug 'ron89/thesaurus_query.vim'
 
@@ -984,6 +987,11 @@ map \; <Plug>(easymotion-prefix)
 " ===
 map <LEADER>gy :Goyo<CR>
 
+
+" ===
+" === jsx
+" ===
+let g:vim_jsx_pretty_colorful_config = 1
 
 
 " ===================== End of Plugin Settings =====================
