@@ -35,7 +35,6 @@ Please **DO NOT** just copy this config without really looking at it! Please, at
 		- [GitGutter](#gitgutter)
 		- [fzf-gitignore](#fzf-gitignore)
 	- Find / Replace
-		- [FlyGrep](#flygrep---search-in-files)
 		- [far.vim](#far.vim---find-and-replace)
 	- Text Editing
 		- [vim-table-mode](#vim-table-mode)
@@ -75,6 +74,10 @@ Python:
 
 #### For Taglist:
 - [ ] Install `ctags` for function/class/variable list
+
+#### For Denite:
+- [ ] Install `ripgrep`
+- [ ] Install `fd`
 
 #### And also...
 - [ ] Install `figlet` for inputing text ASCII art
@@ -175,8 +178,6 @@ Use the arrow keys to resize the current window.
 | Shortcut    | Action           |
 |-------------|------------------|
 | `t` `u`     | Create a new tab |
-| `Ctrl` `n`  | Go one tab left  |
-| `Ctrl` `i`  | Go One tab right |
 | `t` `n`     | Go one tab left  |
 | `t` `i`     | Go One tab right |
 | `t` `m` `n` | Move tab left    |
@@ -300,9 +301,6 @@ press: `cs'"`:
 |-----------------|--------------------------|
 | `SPACE` `f` `a` | Find in the current file |
 | `SPACE` `f` `r` | Find and replace         |
-
-#### FlyGrep - search in files
-Press `Ctrl` `f` to search in files (content)
 
 #### fzf-gitignore
 Press `Space` `g` `i` to create a `.gitignore` file

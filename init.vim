@@ -239,8 +239,6 @@ noremap tu :tabe<CR>
 " Move around tabs with tn and ti
 noremap tn :-tabnext<CR>
 noremap ti :+tabnext<CR>
-nnoremap <c-n> :-tabnext<CR>
-nnoremap <c-i> :+tabnext<CR>
 " Move the tabs with tmn and tmi
 noremap tmn :-tabmove<CR>
 noremap tmi :+tabmove<CR>
@@ -331,6 +329,8 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/denite-git'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -440,7 +440,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'kshenoy/vim-signature'
 
 " Find & Replace
-Plug 'wsdjeg/FlyGrep.vim' " Ctrl+f (normal) to find file content
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 Plug 'osyo-manga/vim-anzu'
 
@@ -600,10 +599,10 @@ let g:ale_linters = {
 			\ 'c' : ['ccls']
 			\}
 let g:ale_cpp_ccls_init_options = {
-\   'cache': {
-\       'directory': '/tmp/ccls/cache'
-\   }
-\ }
+			\   'cache': {
+			\       'directory': '/tmp/ccls/cache'
+			\   }
+			\ }
 let g:ale_c_gcc_executable = '/usr/bin/gcc'
 "let g:ale_c_gcc_options="-Wall -O2"
 
@@ -742,18 +741,18 @@ noremap <LEADER>a :call Calc()<CR>
 " ===
 "let g:bullets_set_mappings = 0
 let g:bullets_enabled_file_types = [
-    \ 'markdown',
-    \ 'text',
-    \ 'gitcommit',
-    \ 'scratch'
-    \]
+			\ 'markdown',
+			\ 'text',
+			\ 'gitcommit',
+			\ 'scratch'
+			\]
 
 
 " ===
 " === Vista.vim
 " ===
 noremap <silent> T :Vista!!<CR>
-noremap <silent> <C-t> :Vista finder<CR>
+"noremap <silent> <C-t> :Vista finder<CR>
 function! NearestMethodOrFunction() abort
 	return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
@@ -807,12 +806,6 @@ let maplocalleader=' '
 
 
 " ===
-" === FlyGrep
-" ===
-nnoremap <c-f> :FlyGrep<CR>
-
-
-" ===
 " === GV
 " ===
 nnoremap gv :GV<CR>
@@ -821,7 +814,7 @@ nnoremap gv :GV<CR>
 " ===
 " === vim-calendar
 " ===
-noremap \c :Calendar -position=here<CR>
+"noremap \c :Calendar -position=here<CR>
 noremap \\ :Calendar -view=clock -position=here<CR>
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
@@ -967,6 +960,7 @@ let g:colorizer_syntax = 1
 " ===
 " === vim-easymotion
 " ===
+let g:EasyMotion_do_shade = 0
 let g:EasyMotion_smartcase = 1
 " 'f{char} to move to {char}
 map f <Plug>(easymotion-bd-f)
@@ -992,6 +986,63 @@ map <LEADER>gy :Goyo<CR>
 " === jsx
 " ===
 let g:vim_jsx_pretty_colorful_config = 1
+
+
+" ===
+" === denite
+" ===
+call denite#custom#option('default', {
+			\ 'prompt': '❯',
+			\ 'smartcase': 'true',
+			\ 'ignorecase': 'true'
+			\ })
+
+
+"call denite#custom#var('file/rec', 'command', ['grep', '-H', '--full-path'])
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts',
+			\ ['--hidden', '--vimgrep', '--smart-case'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+autocmd FileType denite call s:denite_settings()
+
+function! s:denite_settings() abort
+	nnoremap <silent><buffer><expr> <CR>  denite#do_map('do_action', 'vsplitswitch')
+	nnoremap <silent><buffer><expr> I denite#do_map('do_action', 'vsplit')
+	nnoremap <silent><buffer><expr> o denite#do_map('do_action', 'vsplitswitch')
+	nnoremap <silent><buffer><expr> dd denite#do_map('do_action', 'delete')
+	nnoremap <silent><buffer><expr> i denite#do_map('do_action', 'preview')
+	nnoremap <silent><buffer><expr> <Esc> denite#do_map('quit')
+	nnoremap <silent><buffer><expr> q denite#do_map('quit')
+	nnoremap <silent><buffer><expr> k denite#do_map('open_filter_buffer')
+	nnoremap <silent><buffer><expr> a denite#do_map('open_filter_buffer')
+	nnoremap <silent><buffer><expr> f denite#do_map('open_filter_buffer')
+endfunction
+
+autocmd FileType denite-filter call s:denite_filter_settings()
+
+function! s:denite_filter_settings() abort
+	nmap <silent><buffer> <Esc> <Plug>(denite_filter_quit)
+endfunction
+
+"nnoremap <C-p> :<C-u>Denite file/rec -start-filter<CR>
+nnoremap \b :Denite -smartcase=true buffer<CR>
+nnoremap \c :DeniteCursorWord grep:.<CR>
+nnoremap \s :DeniteBufferDir -smartcase=true grep:.<CR>
+nnoremap <c-f> :DeniteBufferDir -smartcase=true grep:.<CR>
+nnoremap \d :Denite -smartcase=true file/rec -start-filter<CR>
+nnoremap \r :Denite -smartcase=true -resume -cursor-pos=+1<CR>
+nnoremap \g :Denite -smartcase=true gitstatus<CR>
+nnoremap \t :Denite -smartcase=true filetype<CR>
+nnoremap \= :set spell<CR>:Denite -smartcase=true spell<CR>
+nnoremap <c-t> :Denite -smartcase=true outline -start-filter<CR>
+
+hi link deniteMatchedChar Special
+
+
 
 
 " ===================== End of Plugin Settings =====================
