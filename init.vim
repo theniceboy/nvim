@@ -154,6 +154,7 @@ noremap <silent> <LEADER>o za
 
 " Open up lazygit
 noremap \g :term lazygit<CR>
+noremap <c-g> :term lazygit<CR>
 
 
 " ===
@@ -332,10 +333,6 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-"Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'neoclide/denite-git'
-Plug 'Konfekt/FastFold'
-
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
 
@@ -363,7 +360,6 @@ Plug 'yuki-ycino/fzf-preview.vim'
 "Plug 'junegunn/fzf'
 Plug 'francoiscabrol/ranger.vim'
 
-
 " Taglist
 Plug 'liuchengxu/vista.vim'
 
@@ -383,11 +379,8 @@ Plug 'mbbill/undotree'
 " Git
 Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
-Plug 'tpope/vim-fugitive' " gv dependency
-Plug 'junegunn/gv.vim' " gv (normal) to show git log
 "Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
-Plug 'lambdalisue/gina.vim'
 
 " Tex
 Plug 'lervag/vimtex'
@@ -398,21 +391,20 @@ Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] } " omnisharp-vim depend
 
 " HTML, CSS, JavaScript, PHP, JSON, etc.
 Plug 'elzr/vim-json'
-Plug 'hail2u/vim-css3-syntax'
+Plug 'hail2u/vim-css3-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
-Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'pangloss/vim-javascript' ", { 'for' :['javascript', 'vim-plug'] }
-Plug 'yuezk/vim-js'
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 
 " Go
-Plug 'fatih/vim-go' " , { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'] }
 
 " Python
-Plug 'tmhedberg/SimpylFold'
+Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
 "Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
 "Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
 Plug 'tweekmonster/braceless.vim'
@@ -425,13 +417,14 @@ Plug 'theniceboy/bullets.vim'
 " Editor Enhancement
 Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
+Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
 Plug 'AndrewRadev/switch.vim' " gs to switch
-Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to change 'word' to `word`
-Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
+Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
+Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
 Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
 Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 Plug 'easymotion/vim-easymotion'
+Plug 'Konfekt/FastFold'
 
 " Formatter
 Plug 'Chiel92/vim-autoformat'
@@ -449,7 +442,7 @@ Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 Plug 'osyo-manga/vim-anzu'
 
 " Documentation
-Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
+"Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
 
 " Mini Vim-APP
 "Plug 'voldikss/vim-floaterm'
@@ -476,7 +469,6 @@ call plug#end()
 " experimental
 set lazyredraw
 set regexpengine=1
-
 
 
 " ===
@@ -746,6 +738,10 @@ noremap L :UndotreeToggle<CR>
 let g:undotree_DiffAutoOpen = 1
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators = 1
+function g:Undotree_CustomMap()
+	nmap <buffer> U <plug>UndotreeNextState
+	nmap <buffer> E <plug>UndotreePreviousState
+endfunc
 
 
 " ==
@@ -766,7 +762,6 @@ let g:multi_cursor_quit_key = '<Esc>'
 " === Far.vim
 " ===
 noremap <LEADER>f :F  %<left><left>
-"noremap <LEADER>fr :Farp<CR>
 
 
 " ===
