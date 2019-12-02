@@ -152,6 +152,9 @@ noremap <LEADER>tt :%s/    /\t/g
 " Folding
 noremap <silent> <LEADER>o za
 
+" Open up lazygit
+noremap \g :term lazygit<CR>
+
 
 " ===
 " === Cursor Movement
