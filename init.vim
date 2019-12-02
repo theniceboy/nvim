@@ -332,8 +332,8 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'neoclide/denite-git'
+"Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'neoclide/denite-git'
 Plug 'Konfekt/FastFold'
 
 " Testing my own plugin
@@ -995,58 +995,56 @@ let g:vim_jsx_pretty_colorful_config = 1
 " ===
 " === denite
 " ===
-call denite#custom#option('default', {
-			\ 'prompt': '❯',
-			\ 'smartcase': 'true',
-			\ 'ignorecase': 'true'
-			\ })
+"call denite#custom#option('default', {
+			"\ 'prompt': '❯',
+			"\ 'smartcase': 'true',
+			"\ 'ignorecase': 'true'
+			"\ })
 
 
-"call denite#custom#var('file/rec', 'command', ['grep', '-H', '--full-path'])
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts',
-			\ ['--hidden', '--vimgrep', '--smart-case'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
+""call denite#custom#var('file/rec', 'command', ['grep', '-H', '--full-path'])
+"call denite#custom#var('grep', 'command', ['ag'])
+"call denite#custom#var('grep', 'default_opts',
+			"\ ['--hidden', '--vimgrep', '--smart-case'])
+"call denite#custom#var('grep', 'recursive_opts', [])
+"call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+"call denite#custom#var('grep', 'separator', ['--'])
+"call denite#custom#var('grep', 'final_opts', [])
 
-autocmd FileType denite call s:denite_settings()
+"autocmd FileType denite call s:denite_settings()
 
-function! s:denite_settings() abort
-	nnoremap <silent><buffer><expr> <CR>  denite#do_map('do_action', 'vsplitswitch')
-	nnoremap <silent><buffer><expr> I denite#do_map('do_action', 'vsplit')
-	nnoremap <silent><buffer><expr> o denite#do_map('do_action', 'vsplitswitch')
-	nnoremap <silent><buffer><expr> dd denite#do_map('do_action', 'delete')
-	nnoremap <silent><buffer><expr> i denite#do_map('do_action', 'preview')
-	nnoremap <silent><buffer><expr> <Esc> denite#do_map('quit')
-	nnoremap <silent><buffer><expr> q denite#do_map('quit')
-	nnoremap <silent><buffer><expr> k denite#do_map('open_filter_buffer')
-	nnoremap <silent><buffer><expr> a denite#do_map('open_filter_buffer')
-	nnoremap <silent><buffer><expr> f denite#do_map('open_filter_buffer')
-endfunction
+"function! s:denite_settings() abort
+	"nnoremap <silent><buffer><expr> <CR>  denite#do_map('do_action', 'vsplitswitch')
+	"nnoremap <silent><buffer><expr> I denite#do_map('do_action', 'vsplit')
+	"nnoremap <silent><buffer><expr> o denite#do_map('do_action', 'vsplitswitch')
+	"nnoremap <silent><buffer><expr> dd denite#do_map('do_action', 'delete')
+	"nnoremap <silent><buffer><expr> i denite#do_map('do_action', 'preview')
+	"nnoremap <silent><buffer><expr> <Esc> denite#do_map('quit')
+	"nnoremap <silent><buffer><expr> q denite#do_map('quit')
+	"nnoremap <silent><buffer><expr> k denite#do_map('open_filter_buffer')
+	"nnoremap <silent><buffer><expr> a denite#do_map('open_filter_buffer')
+	"nnoremap <silent><buffer><expr> f denite#do_map('open_filter_buffer')
+"endfunction
 
-autocmd FileType denite-filter call s:denite_filter_settings()
+"autocmd FileType denite-filter call s:denite_filter_settings()
 
-function! s:denite_filter_settings() abort
-	nmap <silent><buffer> <Esc> <Plug>(denite_filter_quit)
-endfunction
+"function! s:denite_filter_settings() abort
+	"nmap <silent><buffer> <Esc> <Plug>(denite_filter_quit)
+"endfunction
 
-"nnoremap <C-p> :<C-u>Denite file/rec -start-filter<CR>
-nnoremap \b :Denite -smartcase=true buffer<CR>
-nnoremap \c :DeniteCursorWord grep:.<CR>
-nnoremap \s :DeniteBufferDir -smartcase=true grep:.<CR>
-nnoremap <c-f> :DeniteBufferDir -smartcase=true grep:.<CR>
-nnoremap \d :Denite -smartcase=true file/rec -start-filter<CR>
-nnoremap \r :Denite -smartcase=true -resume -cursor-pos=+1<CR>
-nnoremap \g :Denite -smartcase=true gitstatus<CR>
-nnoremap \t :Denite -smartcase=true filetype<CR>
-nnoremap \= :set spell<CR>:Denite -smartcase=true spell<CR>
-nnoremap <c-t> :Denite -smartcase=true outline -start-filter<CR>
+""nnoremap <C-p> :<C-u>Denite file/rec -start-filter<CR>
+""nnoremap \b :Denite -smartcase=true buffer<CR>
+"nnoremap \c :DeniteCursorWord grep:.<CR>
+"nnoremap \s :DeniteBufferDir -smartcase=true grep:.<CR>
+"nnoremap <c-f> :DeniteBufferDir -smartcase=true grep:.<CR>
+"nnoremap \d :Denite -smartcase=true file/rec -start-filter<CR>
+"nnoremap \r :Denite -smartcase=true -resume -cursor-pos=+1<CR>
+""nnoremap \g :Denite -smartcase=true gitstatus<CR>
+"nnoremap \t :Denite -smartcase=true filetype<CR>
+"nnoremap \= :set spell<CR>:Denite -smartcase=true spell<CR>
+"nnoremap <c-t> :Denite -smartcase=true outline -start-filter<CR>
 
-hi link deniteMatchedChar Special
-
-
+"hi link deniteMatchedChar Special
 nmap zuz <Plug>(FastFoldUpdate)
 let g:fastfold_savehook = 1
 let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
