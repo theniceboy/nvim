@@ -735,8 +735,8 @@ let g:multi_cursor_quit_key = '<Esc>'
 " ===
 " === Far.vim
 " ===
-noremap <LEADER>fa :F	%<left><left>
-noremap <LEADER>fr :Farp<CR>
+noremap <LEADER>f :F  %<left><left>
+"noremap <LEADER>fr :Farp<CR>
 
 
 " ===
@@ -1054,6 +1054,11 @@ let g:vim_jsx_pretty_colorful_config = 1
 "nnoremap <c-t> :Denite -smartcase=true outline -start-filter<CR>
 
 "hi link deniteMatchedChar Special
+
+
+" ===
+" === fastfold
+" ===
 nmap zuz <Plug>(FastFoldUpdate)
 let g:fastfold_savehook = 1
 let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
