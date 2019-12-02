@@ -452,7 +452,6 @@ Plug 'osyo-manga/vim-anzu'
 Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
 
 " Mini Vim-APP
-Plug 'mhinz/vim-startify'
 "Plug 'voldikss/vim-floaterm'
 "Plug 'liuchengxu/vim-clap'
 "Plug 'jceb/vim-orgmode'
@@ -731,14 +730,6 @@ let g:multi_cursor_next_key = '<c-k>'
 let g:multi_cursor_prev_key = '<c-p>'
 let g:multi_cursor_skip_key = '<C-x>'
 let g:multi_cursor_quit_key = '<Esc>'
-
-
-" Startify
-let g:startify_lists = [
-			\ { 'type': 'files',		 'header': ['	 MRU']						},
-			\ { 'type': 'bookmarks', 'header': ['	 Bookmarks']			},
-			\ { 'type': 'commands',	'header': ['	 Commands']			 },
-			\ ]
 
 
 " ===
