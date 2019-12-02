@@ -358,8 +358,9 @@ Plug 'chrisbra/Colorizer' " Show colors with :ColorHighlight
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf.vim'
+Plug 'yuki-ycino/fzf-preview.vim'
 "Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
-Plug 'junegunn/fzf'
+"Plug 'junegunn/fzf'
 Plug 'francoiscabrol/ranger.vim'
 
 
@@ -656,6 +657,23 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 " === FZF
 " ===
 noremap <C-p> :FZF<CR>
+noremap <C-f> :Ag<CR>
+noremap <C-w> :BuffersPreview<CR>
+noremap <C-h> :History<CR>
+noremap q; :History:<CR>
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:30%', 'ctrl-p'), <bang>0)
+
+
+" ===
+" === fzf-preview.vim
+" ===
+let g:fzf_preview_default_key_bindings = 'ctrl-e:down,ctrl-u:up'
+let g:fzf_preview_layout = 'belowright split new'
+let g:fzf_preview_rate = 0.4
+let g:fzf_full_preview_toggle_key = '<C-f>'
+let g:fzf_preview_command = 'ccat --color=always {-1}'
+let g:fzf_binary_preview_command = 'echo "It is a binary file"'
 
 
 " ===
