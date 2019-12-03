@@ -333,6 +333,7 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
 
@@ -425,6 +426,9 @@ Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
 Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 Plug 'easymotion/vim-easymotion'
 Plug 'Konfekt/FastFold'
+
+" Input Method Autoswitch
+Plug 'rlue/vim-barbaric'
 
 " Formatter
 Plug 'Chiel92/vim-autoformat'
