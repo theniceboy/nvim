@@ -267,7 +267,7 @@ nnoremap \p 1<C-G>
 inoremap <C-u> <ESC>lx$p
 
 " Opening a terminal window
-noremap <LEADER>/ :set splitbelow<CR>:sp<CR>:term<CR>
+noremap <LEADER>/ :term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
@@ -356,7 +356,7 @@ Plug 'chrisbra/Colorizer' " Show colors with :ColorHighlight
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf.vim'
-Plug 'yuki-ycino/fzf-preview.vim'
+"Plug 'yuki-ycino/fzf-preview.vim'
 "Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 "Plug 'junegunn/fzf'
 Plug 'francoiscabrol/ranger.vim'
@@ -655,14 +655,27 @@ noremap <C-p> :FZF<CR>
 noremap <C-f> :Ag<CR>
 noremap <C-h> :MRU<CR>
 noremap <C-t> :BTags<CR>
-noremap <C-l> :BLine<CR>
+noremap <C-l> :LinesWithPreview<CR>
+noremap <C-w> :Buffers<CR>
 noremap q; :History:<CR>
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:30%', 'ctrl-p'), <bang>0)
 
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noruler
   \| autocmd BufLeave <buffer> set laststatus=2 ruler
+
+command! -bang -nargs=* Buffers
+  \ call fzf#vim#buffers(
+  \   '',
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:0%', '?'),
+  \   <bang>0)
+
+
+command! -bang -nargs=* LinesWithPreview
+    \ call fzf#vim#grep(
+    \   'rg --with-filename --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
+    \   fzf#vim#with_preview({}, 'up:50%', '?'),
+    \   1)
 
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(
@@ -673,8 +686,6 @@ command! -bang -nargs=* Ag
 
 
 command! -bang -nargs=* MRU call fzf#vim#history(fzf#vim#with_preview())
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:30%', 'ctrl-p'), <bang>0)
 
 command! -bang BTags
   \ call fzf#vim#buffer_tags('', {
@@ -689,16 +700,16 @@ command! -bang BTags
   \ })
 
 
-" ===
-" === fzf-preview.vim
-" ===
-noremap <C-w> :BuffersPreview<CR>
-let g:fzf_preview_default_key_bindings = 'ctrl-e:down,ctrl-u:up'
-let g:fzf_preview_layout = 'belowright split new'
-let g:fzf_preview_rate = 0.4
-let g:fzf_full_preview_toggle_key = '<C-f>'
-let g:fzf_preview_command = 'ccat --color=always {-1}'
-let g:fzf_binary_preview_command = 'echo "It is a binary file"'
+"" ===
+"" === fzf-preview.vim
+"" ===
+"noremap <C-w> :BuffersPreview<CR>
+"let g:fzf_preview_default_key_bindings = 'ctrl-e:down,ctrl-u:up'
+"let g:fzf_preview_layout = 'belowright split new'
+"let g:fzf_preview_rate = 0.4
+"let g:fzf_full_preview_toggle_key = '<C-f>'
+"let g:fzf_preview_command = 'ccat --color=always {-1}'
+"let g:fzf_binary_preview_command = 'echo "It is a binary file"'
 
 
 " ===
@@ -1033,61 +1044,6 @@ map <LEADER>gy :Goyo<CR>
 " === jsx
 " ===
 let g:vim_jsx_pretty_colorful_config = 1
-
-
-" ===
-" === denite
-" ===
-"call denite#custom#option('default', {
-			"\ 'prompt': '❯',
-			"\ 'smartcase': 'true',
-			"\ 'ignorecase': 'true'
-			"\ })
-
-
-""call denite#custom#var('file/rec', 'command', ['grep', '-H', '--full-path'])
-"call denite#custom#var('grep', 'command', ['ag'])
-"call denite#custom#var('grep', 'default_opts',
-			"\ ['--hidden', '--vimgrep', '--smart-case'])
-"call denite#custom#var('grep', 'recursive_opts', [])
-"call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-"call denite#custom#var('grep', 'separator', ['--'])
-"call denite#custom#var('grep', 'final_opts', [])
-
-"autocmd FileType denite call s:denite_settings()
-
-"function! s:denite_settings() abort
-	"nnoremap <silent><buffer><expr> <CR>  denite#do_map('do_action', 'vsplitswitch')
-	"nnoremap <silent><buffer><expr> I denite#do_map('do_action', 'vsplit')
-	"nnoremap <silent><buffer><expr> o denite#do_map('do_action', 'vsplitswitch')
-	"nnoremap <silent><buffer><expr> dd denite#do_map('do_action', 'delete')
-	"nnoremap <silent><buffer><expr> i denite#do_map('do_action', 'preview')
-	"nnoremap <silent><buffer><expr> <Esc> denite#do_map('quit')
-	"nnoremap <silent><buffer><expr> q denite#do_map('quit')
-	"nnoremap <silent><buffer><expr> k denite#do_map('open_filter_buffer')
-	"nnoremap <silent><buffer><expr> a denite#do_map('open_filter_buffer')
-	"nnoremap <silent><buffer><expr> f denite#do_map('open_filter_buffer')
-"endfunction
-
-"autocmd FileType denite-filter call s:denite_filter_settings()
-
-"function! s:denite_filter_settings() abort
-	"nmap <silent><buffer> <Esc> <Plug>(denite_filter_quit)
-"endfunction
-
-""nnoremap <C-p> :<C-u>Denite file/rec -start-filter<CR>
-""nnoremap \b :Denite -smartcase=true buffer<CR>
-"nnoremap \c :DeniteCursorWord grep:.<CR>
-"nnoremap \s :DeniteBufferDir -smartcase=true grep:.<CR>
-"nnoremap <c-f> :DeniteBufferDir -smartcase=true grep:.<CR>
-"nnoremap \d :Denite -smartcase=true file/rec -start-filter<CR>
-"nnoremap \r :Denite -smartcase=true -resume -cursor-pos=+1<CR>
-""nnoremap \g :Denite -smartcase=true gitstatus<CR>
-"nnoremap \t :Denite -smartcase=true filetype<CR>
-"nnoremap \= :set spell<CR>:Denite -smartcase=true spell<CR>
-"nnoremap <c-t> :Denite -smartcase=true outline -start-filter<CR>
-
-"hi link deniteMatchedChar Special
 
 
 " ===
