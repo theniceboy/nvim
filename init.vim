@@ -333,6 +333,7 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -1067,6 +1068,11 @@ let g:r_syntax_folding = 1
 let g:rust_fold = 1
 let g:php_folding = 1
 
+
+" ===
+" === fzf-quickfix
+" ===
+nnoremap <c-q> :Quickfix!<CR>
 
 " ===================== End of Plugin Settings =====================
 
