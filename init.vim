@@ -416,7 +416,7 @@ Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'theniceboy/bullets.vim'
 
 " Editor Enhancement
-Plug 'jiangmiao/auto-pairs'
+Plug 'Raimondi/delimitMate'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
 Plug 'AndrewRadev/switch.vim' " gs to switch
@@ -1118,6 +1118,7 @@ let g:php_folding = 1
 " === Necessary Commands to Execute
 " ===
 exec "nohlsearch"
+
 
 " Open the _machine_specific.vim file if it has just been created
 if has_machine_specific_file == 0
