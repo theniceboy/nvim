@@ -289,6 +289,9 @@ noremap tx :r !figlet
 noremap <LEADER>- :lN<CR>
 noremap <LEADER>= :lne<CR>
 
+" find and replace
+noremap \s :%s//g<left><left>
+
 " Compile function
 noremap r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
@@ -453,6 +456,7 @@ Plug 'osyo-manga/vim-anzu'
 "Plug 'voldikss/vim-floaterm'
 "Plug 'liuchengxu/vim-clap'
 "Plug 'jceb/vim-orgmode'
+Plug 'mhinz/vim-startify'
 
 " Vim Applications
 Plug 'itchyny/calendar.vim'
