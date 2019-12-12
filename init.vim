@@ -336,7 +336,7 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
+
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -370,6 +370,7 @@ Plug 'liuchengxu/vista.vim'
 
 " Error checking
 Plug 'dense-analysis/ale'
+Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -405,7 +406,7 @@ Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javas
 Plug 'jaxbot/browserlink.vim'
 
 " Go
-Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'] }
+Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
 
 " Python
 Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
@@ -428,7 +429,8 @@ Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
 Plug 'AndrewRadev/switch.vim' " gs to switch
 Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
 Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
-Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
+Plug 'junegunn/vim-after-object' " da= to delete what's after =
+Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph, 
 Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 Plug 'easymotion/vim-easymotion'
 Plug 'Konfekt/FastFold'
@@ -1080,12 +1082,27 @@ let g:php_folding = 1
 " ===
 nnoremap <c-q> :Quickfix!<CR>
 
+
+" ===
+" === vim-easy-align
+" ===
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+
+" ===
+" === vim-after-object
+" ===
+autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
+
+
 " ===================== End of Plugin Settings =====================
 
 " ===
 " === Necessary Commands to Execute
 " ===
 exec "nohlsearch"
+
 
 
 " Open the _machine_specific.vim file if it has just been created
