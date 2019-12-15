@@ -48,7 +48,7 @@ set list
 set listchars=tab:\|\ ,trail:▫
 set scrolloff=4
 set ttimeoutlen=0
-"set notimeout
+set notimeout
 set viewoptions=cursor,folds,slash,unix
 set wrap
 set tw=0
@@ -331,15 +331,14 @@ func! CompileRunGcc()
 endfunc
 
 
-
 " ===
 " === Install Plugins with Vim-Plug
 " ===
 
 call plug#begin('~/.config/nvim/plugged')
 
-
 Plug 'makerj/vim-pdf'
+Plug 'theniceboy/vim-leader-mapper'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -508,7 +507,6 @@ set background=dark
 "let g:oceanic_next_terminal_bold = 1
 "let g:oceanic_next_terminal_italic = 1
 "let g:one_allow_italics = 1
-
 
 "color dracula
 "color one
@@ -1074,6 +1072,33 @@ nmap ga <Plug>(EasyAlign)
 " === vim-after-object
 " ===
 autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
+
+
+" ===
+" === vim-map-leader
+" ===
+let g:leaderMenu = {'name':  "Shortcut Menu",
+\'SPC f':  ['Advanced find'],
+\'SPC rc': ['Edit nvim config'],
+\'SPC Enter':  ['Clear search'],
+\'SPC dw':  ['Remove adj. dup. words'],
+\'SPC tt':  ['spc to tabs'],
+\'SPC o':  ['Open folds'],
+\'SPC q':  ['Close win below'],
+\'SPC /':  ['Open terminal'],
+\'SPC <SPC>':  ['Find <++>'],
+\'SPC sc':  ['Toggle spell-check'],
+\'SPC gf':  ['Fold unchanged'],
+\'SPC g-':  ['Previous hunk'],
+\'SPC g=':  ['Next Hunk'],
+\'SPC rn':  ['Rename variable'],
+\'SPC tm':  ['Toggle table-mode'],
+\'SPC a':  ['Calculate equation'],
+\'SPC gi':  ['New .gitignore'],
+\'SPC gy':  ['Toggle focus mode'],
+\}
+nnoremap <silent> ? :call leaderMapper#start() "<Space>"<CR>
+let g:leaderMapperWidth = 80
 
 
 " ===================== End of Plugin Settings =====================
