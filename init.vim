@@ -48,7 +48,7 @@ set list
 set listchars=tab:\|\ ,trail:▫
 set scrolloff=4
 set ttimeoutlen=0
-set notimeout
+"set notimeout
 set viewoptions=cursor,folds,slash,unix
 set wrap
 set tw=0
@@ -84,26 +84,27 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 
 " ===
-" === Terminal Behavior
+" === Terminal Behaviors
 " ===
 let g:neoterm_autoscroll = 1
 autocmd TermOpen term://* startinsert
 tnoremap <C-N> <C-\><C-N>
-let g:terminal_color_0   = '#000000'
-let g:terminal_color_1   = '#FF5555'
-let g:terminal_color_2   = '#50FA7B'
-let g:terminal_color_3   = '#F1FA8C'
-let g:terminal_color_4   = '#BD93F9'
-let g:terminal_color_5   = '#FF79C6'
-let g:terminal_color_6   = '#8BE9FD'
-let g:terminal_color_7   = '#BFBFBF'
-let g:terminal_color_8   = '#4D4D4D'
-let g:terminal_color_9   = '#FF6E67'
-let g:terminal_color_10  = '#5AF78E'
-let g:terminal_color_11  = '#F4F99D'
-let g:terminal_color_12  = '#CAA9FA'
-let g:terminal_color_13  = '#FF92D0'
-let g:terminal_color_14  = '#9AEDFE'
+tnoremap <C-O> <C-\><C-N><C-O>
+let g:terminal_color_0  = '#000000'
+let g:terminal_color_1  = '#FF5555'
+let g:terminal_color_2  = '#50FA7B'
+let g:terminal_color_3  = '#F1FA8C'
+let g:terminal_color_4  = '#BD93F9'
+let g:terminal_color_5  = '#FF79C6'
+let g:terminal_color_6  = '#8BE9FD'
+let g:terminal_color_7  = '#BFBFBF'
+let g:terminal_color_8  = '#4D4D4D'
+let g:terminal_color_9  = '#FF6E67'
+let g:terminal_color_10 = '#5AF78E'
+let g:terminal_color_11 = '#F4F99D'
+let g:terminal_color_12 = '#CAA9FA'
+let g:terminal_color_13 = '#FF92D0'
+let g:terminal_color_14 = '#9AEDFE'
 
 
 " ===
@@ -147,7 +148,8 @@ noremap <LEADER><CR> :nohlsearch<CR>
 noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
 
 " Space to Tab
-noremap <LEADER>tt :%s/    /\t/g
+nnoremap <LEADER>tt :%s/    /\t/g
+vnoremap <LEADER>tt :s/    /\t/g
 
 " Folding
 noremap <silent> <LEADER>o za
@@ -337,6 +339,7 @@ endfunc
 call plug#begin('~/.config/nvim/plugged')
 
 
+Plug 'makerj/vim-pdf'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -514,6 +517,7 @@ color deus
 "let ayucolor="light"
 "color ayu
 "set background=light
+"color xcodedark
 
 hi NonText ctermfg=gray guifg=grey10
 "hi SpecialKey ctermfg=blue guifg=grey70
@@ -523,23 +527,39 @@ hi NonText ctermfg=gray guifg=grey10
 let g:airline_powerline_fonts = 0
 
 
-" ===
-" === NERDTree
-" ===
-noremap tt :NERDTreeToggle<CR>
-let NERDTreeMapOpenExpl = ""
-let NERDTreeMapUpdir = "N"
-let NERDTreeMapUpdirKeepOpen = "n"
-let NERDTreeMapOpenSplit = ""
-let NERDTreeMapOpenVSplit = "I"
-let NERDTreeMapActivateNode = "i"
-let NERDTreeMapOpenInTab = "o"
-let NERDTreeMapOpenInTabSilent = "O"
-let NERDTreeMapPreview = ""
-let NERDTreeMapCloseDir = ""
-let NERDTreeMapChangeRoot = "l"
-let NERDTreeMapMenu = ","
-let NERDTreeMapToggleHidden = "zh"
+"" ===
+"" === NERDTree
+"" ===
+"noremap tt :NERDTreeToggle<CR>
+"let NERDTreeMapOpenExpl = ""
+"let NERDTreeMapUpdir = "N"
+"let NERDTreeMapUpdirKeepOpen = "n"
+"let NERDTreeMapOpenSplit = ""
+"let NERDTreeMapOpenVSplit = "I"
+"let NERDTreeMapActivateNode = "i"
+"let NERDTreeMapOpenInTab = "o"
+"let NERDTreeMapOpenInTabSilent = "O"
+"let NERDTreeMapPreview = ""
+"let NERDTreeMapCloseDir = ""
+"let NERDTreeMapChangeRoot = "l"
+"let NERDTreeMapMenu = ","
+"let NERDTreeMapToggleHidden = "zh"
+
+
+"" ==
+"" == NERDTree-git
+"" ==
+"let g:NERDTreeIndicatorMapCustom = {
+			"\ "Modified"	: "✹",
+			"\ "Staged"		: "✚",
+			"\ "Untracked" : "✭",
+			"\ "Renamed"	 : "➜",
+			"\ "Unmerged"	: "═",
+			"\ "Deleted"	 : "✖",
+			"\ "Dirty"		 : "✗",
+			"\ "Clean"		 : "✔︎",
+			"\ "Unknown"	 : "?"
+			"\ }
 
 
 " ==
@@ -553,22 +573,6 @@ nnoremap <LEADER>gf :GitGutterFold<CR>
 nnoremap H :GitGutterPreviewHunk<CR>
 nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
 nnoremap <LEADER>g= :GitGutterNextHunk<CR>
-
-
-" ==
-" == NERDTree-git
-" ==
-let g:NERDTreeIndicatorMapCustom = {
-			\ "Modified"	: "✹",
-			\ "Staged"		: "✚",
-			\ "Untracked" : "✭",
-			\ "Renamed"	 : "➜",
-			\ "Unmerged"	: "═",
-			\ "Deleted"	 : "✖",
-			\ "Dirty"		 : "✗",
-			\ "Clean"		 : "✔︎",
-			\ "Unknown"	 : "?"
-			\ }
 
 
 " ===
@@ -783,7 +787,7 @@ let g:multi_cursor_start_key = 'g<c-k>'
 let g:multi_cursor_select_all_key = 'g<a-k>'
 let g:multi_cursor_next_key = '<c-k>'
 let g:multi_cursor_prev_key = '<c-p>'
-let g:multi_cursor_skip_key = '<C-x>'
+let g:multi_cursor_skip_key = '<C-s>'
 let g:multi_cursor_quit_key = '<Esc>'
 
 
@@ -833,7 +837,7 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " To enable fzf's preview window set g:vista_fzf_preview.
 " The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
 " For example:
-let g:vista_fzf_preview = ['right:50%']
+"let g:vista_fzf_preview = ['right:50%']
 
 
 " ===
@@ -1006,42 +1010,18 @@ let g:colorizer_syntax = 1
 
 
 " ===
-" === vim-clap
-" ===
-""nnoremap ,c :Clap bcommits<CR>
-""nnoremap ,l :Clap blines<CR>
-"nnoremap ,b :Clap buffers<CR>
-"nnoremap ,C :Clap colors<CR>
-""nnoremap ,h :Clap hist<CR>
-"nnoremap ,c :Clap commits<CR>
-""nnoremap ,f :Clap files<CR>
-"nnoremap ,t :Clap filetypes<CR>
-"nnoremap ,g :Clap gfiles<CR>
-""nnoremap , :Clap grep<CR>
-""nnoremap ,a :Clap jumps<CR>
-""nnoremap , :Clap marks<CR>
-""nnoremap ,t :Clap tags<CR>
-"nnoremap ,w :Clap window<CR>
-
-
-" ===
 " === vim-easymotion
 " ===
 let g:EasyMotion_do_shade = 0
 let g:EasyMotion_smartcase = 1
-" 'f{char} to move to {char}
-map f <Plug>(easymotion-bd-f)
-nmap f <Plug>(easymotion-overwin-f)
-map \; <Plug>(easymotion-prefix)
-" 's{char}{char} to move to {char}{char}
-"nmap 's <Plug>(easymotion-overwin-f2)
-" Move to line
+"map f <Plug>(easymotion-bd-f)
+"nmap f <Plug>(easymotion-overwin-f)
+"map \; <Plug>(easymotion-prefix)
+nmap ' <Plug>(easymotion-overwin-f2)
 "map 'l <Plug>(easymotion-bd-jk)
 "nmap 'l <Plug>(easymotion-overwin-line)
-" Move to word
 "map  'w <Plug>(easymotion-bd-w)
 "nmap 'w <Plug>(easymotion-overwin-w)
-
 
 " ===
 " === goyo
@@ -1061,7 +1041,7 @@ let g:vim_jsx_pretty_colorful_config = 1
 nmap zuz <Plug>(FastFoldUpdate)
 let g:fastfold_savehook = 1
 let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
-let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+let g:fastfold_fold_movement_commands = [']z', '[z', 'ze', 'zu']
 
 let g:markdown_folding = 1
 let g:tex_fold_enabled = 1
