@@ -28,7 +28,7 @@ endif
 " ===
 " === System
 " ===
-"set clipboard=unnamed
+"set clipboard=unnamedplus
 let &t_ut=''
 set autochdir
 
@@ -339,6 +339,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'makerj/vim-pdf'
 Plug 'theniceboy/vim-leader-mapper'
+Plug 'junegunn/vim-peekaboo'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
