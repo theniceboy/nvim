@@ -337,9 +337,6 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'makerj/vim-pdf'
-Plug 'theniceboy/vim-leader-mapper'
-Plug 'junegunn/vim-peekaboo'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -437,6 +434,7 @@ Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph,
 Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 Plug 'easymotion/vim-easymotion'
 Plug 'Konfekt/FastFold'
+Plug 'junegunn/vim-peekaboo'
 
 " Input Method Autoswitch
 Plug 'rlue/vim-barbaric'
@@ -464,15 +462,18 @@ Plug 'osyo-manga/vim-anzu'
 "Plug 'liuchengxu/vim-clap'
 "Plug 'jceb/vim-orgmode'
 Plug 'mhinz/vim-startify'
+Plug 'theniceboy/vim-leader-mapper'
 
 " Vim Applications
 Plug 'itchyny/calendar.vim'
 
 " Other visual enhancement
 Plug 'ryanoasis/vim-devicons'
+Plug 'luochen1990/rainbow'
 
 " Other useful utilities
 Plug 'tpope/vim-eunuch' " do stuff like :SudoWrite
+Plug 'makerj/vim-pdf'
 
 " Dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -1100,6 +1101,12 @@ let g:leaderMenu = {'name':  "Shortcut Menu",
 \}
 nnoremap <silent> ? :call leaderMapper#start() "<Space>"<CR>
 let g:leaderMapperWidth = 80
+
+
+" ===
+" === rainbow
+" ===
+let g:rainbow_active = 1
 
 
 " ===================== End of Plugin Settings =====================
