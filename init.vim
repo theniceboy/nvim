@@ -369,7 +369,7 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'liuchengxu/vista.vim'
 
 " Error checking
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
 
 " Auto Complete
@@ -565,6 +565,7 @@ let g:airline_powerline_fonts = 0
 " ==
 " == GitGutter
 " ==
+let g:gitgutter_signs = 0
 let g:gitgutter_map_keys = 0
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_preview_win_floating = 1
@@ -580,7 +581,7 @@ nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 " ===
 " fix the most annoying bug that coc has
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-vimlsp', 'coc-tailwindcss', 'coc-stylelint']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-vimlsp', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-lists']
 "set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -592,7 +593,7 @@ inoremap <silent><expr> <Tab>
 			\ <SID>check_back_space() ? "\<Tab>" :
 			\ coc#refresh()
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <silent><expr> <CR> pumvisible() ? "\<C-y><CR>" : "\<CR>"
+"inoremap <silent><expr> <CR> pumvisible() ? "\<C-y><CR>" : "\<CR>"
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -605,23 +606,24 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
+nmap tt :CocCommand explorer<CR>
 
 
 " ===
 " === some error checking
 " ===
-let g:ale_virtualtext_cursor = 1
-let g:ale_linters = {
-			\ 'cs': ['OmniSharp'],
-			\ 'go': ['vim-go'],
-			\ 'c' : ['ccls']
-			\}
-let g:ale_cpp_ccls_init_options = {
-			\   'cache': {
-			\       'directory': '/tmp/ccls/cache'
-			\   }
-			\ }
-let g:ale_c_gcc_executable = '/usr/bin/gcc'
+"let g:ale_virtualtext_cursor = 1
+"let g:ale_linters = {
+			"\ 'cs': ['OmniSharp'],
+			"\ 'go': ['vim-go'],
+			"\ 'c' : ['ccls']
+			"\}
+"let g:ale_cpp_ccls_init_options = {
+			"\   'cache': {
+			"\       'directory': '/tmp/ccls/cache'
+			"\   }
+			"\ }
+"let g:ale_c_gcc_executable = '/usr/bin/gcc'
 "let g:ale_c_gcc_options="-Wall -O2"
 "
 
@@ -676,7 +678,7 @@ noremap <C-h> :MRU<CR>
 noremap <C-t> :BTags<CR>
 noremap <C-l> :LinesWithPreview<CR>
 noremap <C-w> :Buffers<CR>
-noremap q; :History:<CR>
+"noremap ; :History:<CR>
 
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noruler
@@ -1019,12 +1021,16 @@ let g:colorizer_syntax = 1
 " ===
 " === vim-easymotion
 " ===
+let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_do_shade = 0
 let g:EasyMotion_smartcase = 1
-"map f <Plug>(easymotion-bd-f)
+map ' <Plug>(easymotion-bd-f)
+nmap ' <Plug>(easymotion-bd-f)
+"map E <Plug>(easymotion-j)
+"map U <Plug>(easymotion-k)
 "nmap f <Plug>(easymotion-overwin-f)
 "map \; <Plug>(easymotion-prefix)
-nmap ' <Plug>(easymotion-overwin-f2)
+"nmap ' <Plug>(easymotion-overwin-f2)
 "map 'l <Plug>(easymotion-bd-jk)
 "nmap 'l <Plug>(easymotion-overwin-line)
 "map  'w <Plug>(easymotion-bd-w)

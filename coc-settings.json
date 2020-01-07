@@ -3,6 +3,137 @@
 	"diagnostic.virtualText": true,
 	"codeLens.enable": true,
 	"suggest.detailMaxLength": 60,
+	"suggest.noselect": true,
+	"suggest.triggerAfterInsertEnter": false,
+	"suggest.timeout": 5000,
+	"suggest.detailField": "preview",
+	"suggest.snippetIndicator": "🌟",
+	"suggest.triggerCompletionWait": 100,
+	"suggest.echodocSupport": true,
+	"suggest.completionItemKindLabels": {
+		"keyword": "\uf1de",
+		"variable": "\ue79b",
+		"value": "\uf89f",
+		"operator": "\u03a8",
+		"function": "\u2A15",
+		"reference": "\ufa46",
+		"constant": "\uf8fe",
+		"method": "\uf09a",
+		"struct": "\ufb44",
+		"class": "\uf0e8",
+		"interface": "\uf417",
+		"text": "\u2663",
+		"enum": "\uf435",
+		"enumMember": "\uf02b",
+		"module": "\uf530",
+		"color": "\ue22b",
+		"property": "\ue624",
+		"field": "\uf6a6",
+		"unit": "\uf475",
+		"event": "\ufacd",
+		"file": "\uf723",
+		"folder": "\uf114",
+		"snippet": "\ue60b",
+		"typeParameter": "\uf728",
+		"default": "\uf29c"
+	},
+	"explorer.file.column.indent.indentLine": true,
+  "explorer.file.showHiddenFiles": true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.file.column.git.showIgnored": true,
+	"explorer.keyMappingMode": "none",
+	"explorer.keyMappings": {
+    "u": "nodePrev",
+    "e": "nodeNext",
+
+    "*": "toggleSelection",
+    "<tab>": "actionMenu",
+
+    "n": "collapse",
+    "E": ["toggleSelection", "normal:j"],
+    "U": ["toggleSelection", "normal:k"],
+    "gl": "expandRecursive",
+    "gh": "collapseRecursive",
+    "i": "expandOrCollapse",
+    "<cr>": "open",
+    "I": "openInVsplit",
+    "o": "openInTab",
+    "<bs>": "gotoParent",
+    "l": "gotoParent",
+
+    "yp": "copyFilepath",
+    "yn": "copyFilename",
+    "yy": "copyFile",
+    "dd": "cutFile",
+    "pp": "pasteFile",
+    "dD": "delete",
+    "Dd": "deleteForever",
+
+    "a": "addFile",
+    "k": "addFile",
+    "M": "addDirectory",
+    "cw": "rename",
+
+    ".": "toggleHidden",
+    "zh": "toggleHidden",
+    "R": "refresh",
+
+    "?": "help",
+    "q": "quit",
+    "X": "systemExecute",
+    "gd": "listDrive",
+
+    "f": "search",
+    "F": "searchRecursive",
+
+    "gf": "gotoSource:file",
+    "b": "gotoSource:buffer",
+
+    "[[": "sourcePrev",
+    "]]": "sourceNext",
+
+    "[d": "diagnosticPrev",
+    "]d": "diagnosticNext",
+
+    "[c": "gitPrev",
+    "]c": "gitNext",
+    "<<": "gitStage",
+    ">>": "gitUnstage"
+  },
+	"list.previewHighlightGroup": "Statement",
+  "coc.preferences.hoverTarget": "preview",
+	"coc.preferences.enableFloatHighlight": true,
+  "suggest.floatEnable": true,
+  "signature.target": "echo",
+  "signature.enable": true,
+	"diagnostic.signOffset": 9999999,
+	"diagnostic.errorSign": "●",
+	"diagnostic.warningSign": "●",
+	"diagnostic.infoSign": "•",
+	"diagnostic.displayByAle": false,
+	"diagnostic.refreshOnInsertMode": true,
+	"diagnostic.checkCurrentLine": true,
+	"git.enableGutters": true,
+	"git.branchCharacter":"\uf408",
+	"git.addGBlameToBufferVar": false,
+	"git.addGBlameToVirtualText": false,
+	"git.virtualTextPrefix": " ❯❯❯ ",
+	"git.addedSign.hlGroup": "GitGutterAdd",
+	"git.changedSign.hlGroup": "GitGutterChange",
+	"git.removedSign.hlGroup": "GitGutterDelete",
+	"git.topRemovedSign.hlGroup": "GitGutterDelete",
+	"git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+	"git.addedSign.text":"▎",
+	"git.changedSign.text":"░",
+	"git.removedSign.text":"▏",
+	"git.topRemovedSign.text": "▔",
+	"git.changeRemovedSign.text": "▒",
+	"coc.preferences.snippetStatusText": "Ⓢ ",
+	"coc.preferences.extensionUpdateCheck": "daily",
+	"tslint.autoFixOnSave": true,
+	"coc.preferences.formatOnSaveFiletypes": ["css","markdown", "python"],
+	"python.autoComplete.addBrackets": true,
+	"python.jediEnabled": false,
 	"languageserver": {
 		"lua": {
 			"command": "lua-lsp",
@@ -11,7 +142,12 @@
 		"golang": {
 			"command": "gopls",
 			"rootPatterns": ["go.mod"],
-			"filetypes": ["go"]
+			"filetypes": ["go"],
+			"initializationOptions": {
+				"gocodeCompletionEnabled": true,
+				"diagnosticsEnabled": true,
+				"lintTool": "golint"
+			}
 		},
 		"bash": {
 			"command": "bash-language-server",
@@ -20,15 +156,15 @@
 			"ignoredRootPaths": []
 		},
 		"ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-      "rootPatterns": [".ccls-root", "compile_commands.json"],
-      "initializationOptions": {
-         "cache": {
-           "directory": ".ccls-cache"
-         }
-       }
-    }
+			"command": "ccls",
+			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+			"rootPatterns": [".ccls-root", "compile_commands.json"],
+			"initializationOptions": {
+				 "cache": {
+					 "directory": ".ccls-cache"
+				 }
+			 }
+		}
 	}
 }
 
