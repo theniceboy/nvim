@@ -205,15 +205,14 @@ inoremap <C-a> <ESC>A
 " ===
 " === Command Mode Cursor Movement
 " ===
-cnoremap <C-k> <Home>
-cnoremap <C-a> <End>
-cnoremap <C-u> <Up>
-cnoremap <C-e> <Down>
-cnoremap <C-n> <Left>
-cnoremap <C-i> <Right>
-cnoremap <C-b> <S-Left>
-cnoremap <C-w> <S-Right>
-cnoremap <M-b> <C-w>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-w> <S-Right>
 
 
 " ===
