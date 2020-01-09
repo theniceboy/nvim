@@ -114,6 +114,7 @@ let g:terminal_color_14 = '#9AEDFE'
 " Set <LEADER> as <SPACE>, ; as :
 let mapleader=" "
 noremap ; :
+noremap : q:i
 
 " Save & quit
 noremap Q :q<CR>
@@ -194,10 +195,25 @@ noremap h e
 noremap <C-U> 5<C-y>
 noremap <C-E> 5<C-e>
 
+
 " ===
 " === Insert Mode Cursor Movement
 " ===
 inoremap <C-a> <ESC>A
+
+
+" ===
+" === Command Mode Cursor Movement
+" ===
+cnoremap <C-k> <Home>
+cnoremap <C-a> <End>
+cnoremap <C-u> <Up>
+cnoremap <C-e> <Down>
+cnoremap <C-n> <Left>
+cnoremap <C-i> <Right>
+cnoremap <C-b> <S-Left>
+cnoremap <C-w> <S-Right>
+cnoremap <M-b> <C-w>
 
 
 " ===
