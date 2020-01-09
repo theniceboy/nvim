@@ -1,4 +1,8 @@
 {
+	"coc.preferences.hoverTarget": "preview",
+	"coc.preferences.enableFloatHighlight": true,
+	"coc.preferences.snippetStatusText": "Ⓢ ",
+	"coc.preferences.extensionUpdateCheck": "weekly",
 	"suggest.detailMaxLength": 60,
 	"suggest.noselect": true,
 	"suggest.enablePreselect": false,
@@ -52,10 +56,6 @@
 	"list.previewHighlightGroup": "Statement",
 	"list.nextKeymap": "<C-e>",
 	"list.previousKeymap": "<C-u>",
-	"coc.preferences.hoverTarget": "preview",
-	"coc.preferences.enableFloatHighlight": true,
-	"coc.preferences.snippetStatusText": "Ⓢ ",
-	"coc.preferences.extensionUpdateCheck": "daily",
 	"coc.preferences.formatOnSaveFiletypes": [
 		"javascript",
 		"html",
