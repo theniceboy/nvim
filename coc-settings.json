@@ -50,6 +50,8 @@
 	"diagnostic.virtualText": true,
 	"codeLens.enable": true,
 	"list.previewHighlightGroup": "Statement",
+	"list.nextKeymap": "<C-e>",
+	"list.previousKeymap": "<C-u>",
 	"coc.preferences.hoverTarget": "preview",
 	"coc.preferences.enableFloatHighlight": true,
 	"coc.preferences.snippetStatusText": "Ⓢ ",
