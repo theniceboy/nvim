@@ -66,6 +66,7 @@ set ignorecase
 set smartcase
 set shortmess+=c
 set inccommand=split
+set completeopt=longest,noinsert,menuone,noselect,preview
 set ttyfast "should make scrolling faster
 set lazyredraw "same as above
 set visualbell
@@ -607,6 +608,12 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 nmap tt :CocCommand explorer<CR>
+" coc-todolist
+noremap ta :CocCommand todolist.create<CR>
+noremap td :CocCommand todolist.download<CR>
+noremap tc :CocCommand todolist.clearNotice<CR>
+noremap tc :CocCommand todolist.clearNotice<CR>
+noremap tl :CocList todolist<CR>
 
 
 " ===
@@ -1130,7 +1137,6 @@ let g:rainbow_active = 1
 exec "nohlsearch"
 
 
-set completeopt=longest,noinsert,menuone,noselect,preview
 
 " Open the _machine_specific.vim file if it has just been created
 if has_machine_specific_file == 0
