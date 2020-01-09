@@ -679,6 +679,8 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 " ===
 " === FZF
 " ===
+set rtp+=/usr/local/opt/fzf
+set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 noremap <C-p> :FZF<CR>
 noremap <C-f> :Ag<CR>
 noremap <C-h> :MRU<CR>
