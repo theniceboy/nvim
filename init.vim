@@ -625,10 +625,11 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap tt :CocCommand explorer<CR>
 " coc-todolist
 noremap ta :CocCommand todolist.create<CR>
-noremap td :CocCommand todolist.download<CR>
+noremap td :CocCommand todolist.upload<CR>
+noremap tD :CocCommand todolist.download<CR>
 noremap tc :CocCommand todolist.clearNotice<CR>
 noremap tc :CocCommand todolist.clearNotice<CR>
-noremap tl :CocList todolist<CR>
+noremap tl :CocList --normal todolist<CR>
 
 
 " ===
