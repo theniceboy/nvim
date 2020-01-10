@@ -464,7 +464,8 @@ Plug 'junegunn/goyo.vim'
 "Plug 'ron89/thesaurus_query.vim'
 
 " Bookmarks
-Plug 'kshenoy/vim-signature'
+"Plug 'kshenoy/vim-signature'
+Plug 'MattesGroeger/vim-bookmarks'
 
 " Find & Replace
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
@@ -543,41 +544,6 @@ hi NonText ctermfg=gray guifg=grey10
 let g:airline_powerline_fonts = 0
 
 
-"" ===
-"" === NERDTree
-"" ===
-"noremap tt :NERDTreeToggle<CR>
-"let NERDTreeMapOpenExpl = ""
-"let NERDTreeMapUpdir = "N"
-"let NERDTreeMapUpdirKeepOpen = "n"
-"let NERDTreeMapOpenSplit = ""
-"let NERDTreeMapOpenVSplit = "I"
-"let NERDTreeMapActivateNode = "i"
-"let NERDTreeMapOpenInTab = "o"
-"let NERDTreeMapOpenInTabSilent = "O"
-"let NERDTreeMapPreview = ""
-"let NERDTreeMapCloseDir = ""
-"let NERDTreeMapChangeRoot = "l"
-"let NERDTreeMapMenu = ","
-"let NERDTreeMapToggleHidden = "zh"
-
-
-"" ==
-"" == NERDTree-git
-"" ==
-"let g:NERDTreeIndicatorMapCustom = {
-			"\ "Modified"	: "✹",
-			"\ "Staged"		: "✚",
-			"\ "Untracked" : "✭",
-			"\ "Renamed"	 : "➜",
-			"\ "Unmerged"	: "═",
-			"\ "Deleted"	 : "✖",
-			"\ "Dirty"		 : "✗",
-			"\ "Clean"		 : "✔︎",
-			"\ "Unknown"	 : "?"
-			"\ }
-
-
 " ==
 " == GitGutter
 " ==
@@ -597,7 +563,7 @@ nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 " ===
 " fix the most annoying bug that coc has
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-vimlsp', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-lists', 'coc-git', 'coc-explorer']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-vimlsp', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-lists', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator']
 "set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -630,6 +596,8 @@ noremap tD :CocCommand todolist.download<CR>
 noremap tc :CocCommand todolist.clearNotice<CR>
 noremap tc :CocCommand todolist.clearNotice<CR>
 noremap tl :CocList --normal todolist<CR>
+" coc-translator
+nmap ts <Plug>(coc-translator-p)
 
 
 " ===
@@ -764,32 +732,31 @@ command! -bang BTags
 let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlP'
 
+
+
 " ===
-" === vim-signature
+" === vim-bookmarks
 " ===
-let g:SignatureMap = {
-			\ 'Leader':"m",
-			\ 'PlaceNextMark':"m,",
-			\ 'ToggleMarkAtLine':"m.",
-			\ 'PurgeMarksAtLine':"dm",
-			\ 'DeleteMark':"",
-			\ 'PurgeMarks':"",
-			\ 'PurgeMarkers':"",
-			\ 'GotoNextLineAlpha':"m<LEADER>",
-			\ 'GotoPrevLineAlpha':"",
-			\ 'GotoNextSpotAlpha':"m<LEADER>",
-			\ 'GotoPrevSpotAlpha':"",
-			\ 'GotoNextLineByPos':"",
-			\ 'GotoPrevLineByPos':"",
-			\ 'GotoNextSpotByPos':"",
-			\ 'GotoPrevSpotByPos':"",
-			\ 'GotoNextMarker':"",
-			\ 'GotoPrevMarker':"",
-			\ 'GotoNextMarkerAny':"",
-			\ 'GotoPrevMarkerAny':"",
-			\ 'ListLocalMarks':"m/",
-			\ 'ListLocalMarkers':"m?"
-			\ }
+" coc-bookmark
+let g:bookmark_no_default_key_mappings = 1
+nmap mt <Plug>BookmarkToggle
+nmap ma <Plug>BookmarkAnnotate
+nmap ml <Plug>BookmarkShowAll
+nmap mi <Plug>BookmarkNext
+nmap mn <Plug>BookmarkPrev
+nmap mC <Plug>BookmarkClear
+nmap mX <Plug>BookmarkClearAll
+nmap mu <Plug>BookmarkMoveUp
+nmap me <Plug>BookmarkMoveDown
+nmap <Leader>g <Plug>BookmarkMoveToLine
+let g:bookmark_save_per_working_dir = 1
+let g:bookmark_auto_save = 1
+let g:bookmark_highlight_lines = 1
+let g:bookmark_manage_per_buffer = 1
+let g:bookmark_save_per_working_dir = 1
+let g:bookmark_center = 1
+let g:bookmark_auto_close = 1
+let g:bookmark_location_list = 1
 
 
 " ===
