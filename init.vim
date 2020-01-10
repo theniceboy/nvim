@@ -24,7 +24,6 @@ endif
 " ====================
 " === Editor Setup ===
 " ====================
-
 " ===
 " === System
 " ===
@@ -353,7 +352,6 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
 
@@ -384,8 +382,7 @@ Plug 'francoiscabrol/ranger.vim'
 " Taglist
 Plug 'liuchengxu/vista.vim'
 
-" Error checking
-"Plug 'dense-analysis/ale'
+" Error checking, handled by coc
 Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
 
 " Auto Complete
@@ -502,7 +499,7 @@ call plug#end()
 
 " experimental
 set lazyredraw
-set regexpengine=1
+"set regexpengine=1
 
 
 " ===
@@ -541,6 +538,10 @@ hi NonText ctermfg=gray guifg=grey10
 
 " ===================== Start of Plugin Settings =====================
 
+
+" ===
+" === eleline.vim
+" ===
 let g:airline_powerline_fonts = 0
 
 
@@ -598,25 +599,6 @@ noremap tc :CocCommand todolist.clearNotice<CR>
 noremap tl :CocList --normal todolist<CR>
 " coc-translator
 nmap ts <Plug>(coc-translator-p)
-
-
-" ===
-" === some error checking
-" ===
-"let g:ale_virtualtext_cursor = 1
-"let g:ale_linters = {
-			"\ 'cs': ['OmniSharp'],
-			"\ 'go': ['vim-go'],
-			"\ 'c' : ['ccls']
-			"\}
-"let g:ale_cpp_ccls_init_options = {
-			"\   'cache': {
-			"\       'directory': '/tmp/ccls/cache'
-			"\   }
-			"\ }
-"let g:ale_c_gcc_executable = '/usr/bin/gcc'
-"let g:ale_c_gcc_options="-Wall -O2"
-"
 
 
 " ===
@@ -737,7 +719,6 @@ let g:ctrlp_cmd = 'CtrlP'
 " ===
 " === vim-bookmarks
 " ===
-" coc-bookmark
 let g:bookmark_no_default_key_mappings = 1
 nmap mt <Plug>BookmarkToggle
 nmap ma <Plug>BookmarkAnnotate
@@ -780,7 +761,7 @@ endfunc
 " ==
 " == vim-multiple-cursor
 " ==
-let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_use_default_mapping = 0
 let g:multi_cursor_start_word_key = '<c-k>'
 let g:multi_cursor_select_all_word_key = '<a-k>'
 let g:multi_cursor_start_key = 'g<c-k>'
@@ -827,10 +808,8 @@ noremap <silent> T :Vista!!<CR>
 function! NearestMethodOrFunction() abort
 	return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
-
 set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-
 " e.g., more compact: ["▸ ", ""]
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 "let g:vista_default_executive = 'ctags'
@@ -877,12 +856,6 @@ let maplocalleader=' '
 
 
 " ===
-" === GV
-" ===
-nnoremap gv :GV<CR>
-
-
-" ===
 " === vim-calendar
 " ===
 "noremap \c :Calendar -position=here<CR>
@@ -924,31 +897,32 @@ let g:go_template_autocreate = 0
 let g:go_textobj_enabled = 0
 let g:go_auto_type_info = 1
 let g:go_def_mapping_enabled = 0
-let g:go_highlight_array_whitespace_error    = 1
-let g:go_highlight_build_constraints         = 1
-let g:go_highlight_chan_whitespace_error     = 1
-let g:go_highlight_extra_types               = 1
-let g:go_highlight_fields                    = 1
-let g:go_highlight_format_strings            = 1
-let g:go_highlight_function_calls            = 1
-let g:go_highlight_function_parameters       = 1
-let g:go_highlight_functions                 = 1
-let g:go_highlight_generate_tags             = 1
-let g:go_highlight_methods                   = 1
-let g:go_highlight_operators                 = 1
-let g:go_highlight_space_tab_error           = 1
-let g:go_highlight_string_spellcheck         = 1
-let g:go_highlight_structs                   = 1
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_chan_whitespace_error = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_space_tab_error = 1
+let g:go_highlight_string_spellcheck = 1
+let g:go_highlight_structs = 1
 let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_types                     = 1
-let g:go_highlight_variable_assignments      = 0
-let g:go_highlight_variable_declarations     = 0
+let g:go_highlight_types = 1
+let g:go_highlight_variable_assignments = 0
+let g:go_highlight_variable_declarations = 0
 
 
 " ===
 " === AutoFormat
 " ===
 nnoremap \f :Autoformat<CR>
+
 
 " ===
 " === OmniSharp
@@ -1028,6 +1002,7 @@ nmap ' <Plug>(easymotion-bd-f)
 "map  'w <Plug>(easymotion-bd-w)
 "nmap 'w <Plug>(easymotion-overwin-w)
 
+
 " ===
 " === goyo
 " ===
@@ -1047,7 +1022,6 @@ nmap zuz <Plug>(FastFoldUpdate)
 let g:fastfold_savehook = 1
 let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
 let g:fastfold_fold_movement_commands = [']z', '[z', 'ze', 'zu']
-
 let g:markdown_folding = 1
 let g:tex_fold_enabled = 1
 let g:vimsyn_folding = 'af'
@@ -1116,11 +1090,11 @@ let g:rainbow_active = 1
 
 " ===================== End of Plugin Settings =====================
 
+
 " ===
 " === Necessary Commands to Execute
 " ===
 exec "nohlsearch"
-
 
 
 " Open the _machine_specific.vim file if it has just been created
