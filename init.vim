@@ -450,7 +450,7 @@ Plug 'Konfekt/FastFold'
 Plug 'junegunn/vim-peekaboo'
 
 " Input Method Autoswitch
-Plug 'rlue/vim-barbaric'
+"Plug 'rlue/vim-barbaric' " slowing down vim-multiple-cursors
 
 " Formatter
 Plug 'Chiel92/vim-autoformat'
