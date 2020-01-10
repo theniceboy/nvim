@@ -804,19 +804,19 @@ let g:bullets_enabled_file_types = [
 " === Vista.vim
 " ===
 noremap <silent> T :Vista!!<CR>
-"noremap <silent> <C-t> :Vista finder<CR>
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_default_executive = 'ctags'
+let g:vista_fzf_preview = ['right:50%']
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 function! NearestMethodOrFunction() abort
 	return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-" e.g., more compact: ["▸ ", ""]
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-"let g:vista_default_executive = 'ctags'
-" To enable fzf's preview window set g:vista_fzf_preview.
-" The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
-" For example:
-"let g:vista_fzf_preview = ['right:50%']
 
 
 " ===
