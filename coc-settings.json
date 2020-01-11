@@ -86,56 +86,42 @@
 	"explorer.keyMappings": {
 		"u": "nodePrev",
 		"e": "nodeNext",
-
-		"*": "toggleSelection",
+		"h": "toggleSelection",
 		"<tab>": "actionMenu",
-
 		"n": "collapse",
-		"E": ["toggleSelection", "normal:j"],
-		"U": ["toggleSelection", "normal:k"],
 		"gl": "expandRecursive",
 		"gh": "collapseRecursive",
 		"i": "expand",
 		"<cr>": "open",
 		"I": "openInVsplit",
 		"o": "openInTab",
-		"<bs>": "gotoParent",
+		"N": "gotoParent",
 		"l": "gotoParent",
-
 		"yp": "copyFilepath",
 		"yn": "copyFilename",
 		"yy": "copyFile",
 		"dd": "cutFile",
 		"pp": "pasteFile",
-		"dD": "delete",
-		"Dd": "deleteForever",
-
+		"dD": "deleteForever",
 		"a": "addFile",
 		"k": "addFile",
 		"M": "addDirectory",
 		"cw": "rename",
-
 		".": "toggleHidden",
 		"zh": "toggleHidden",
 		"R": "refresh",
-
 		"?": "help",
 		"q": "quit",
 		"X": "systemExecute",
 		"gd": "listDrive",
-
 		"f": "search",
 		"F": "searchRecursive",
-
 		"B": "gotoSource:file",
 		"b": "gotoSource:buffer",
-
 		"[[": "sourcePrev",
 		"]]": "sourceNext",
-
 		"[d": "diagnosticPrev",
 		"]d": "diagnosticNext",
-
 		"[c": "gitPrev",
 		"]c": "gitNext",
 		"<<": "gitStage",
@@ -156,6 +142,7 @@
 	"git.removedSign.text":"▏",
 	"git.topRemovedSign.text": "▔",
 	"git.changeRemovedSign.text": "▒",
+	"git.enableGlobalStatus": false,
 	"tslint.autoFixOnSave": true,
 	"python.autoComplete.addBrackets": true,
 	"python.jediEnabled": false,
