@@ -71,6 +71,7 @@ set lazyredraw "same as above
 set visualbell
 silent !mkdir -p ~/.config/nvim/tmp/backup
 silent !mkdir -p ~/.config/nvim/tmp/undo
+silent !mkdir -p ~/.config/nvim/tmp/sessions
 set backupdir=~/.config/nvim/tmp/backup,.
 set directory=~/.config/nvim/tmp/backup,.
 if has('persistent_undo')
@@ -117,13 +118,14 @@ noremap : q:i
 
 " Save & quit
 noremap Q :q<CR>
+noremap <C-q> :qa<CR>
 noremap S :w<CR>
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 
 " Open Startify
-noremap <LEADER>st :Startify<CR>
+"noremap <LEADER>st :Startify<CR>
 
 " Undo operations
 noremap l u
@@ -277,9 +279,6 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 " ===
 " === Other useful stuff
 " ===
-" \p to show the current buffer file path
-nnoremap \p 1<C-G>
-
 " Move the next character to the end of the line with ctrl+9
 inoremap <C-u> <ESC>lx$p
 
@@ -352,6 +351,10 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'mg979/vim-xtabline'
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc' " vim-session dep
+
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
 
@@ -383,7 +386,6 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'liuchengxu/vista.vim'
 
 " Error checking, handled by coc
-Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -475,7 +477,7 @@ Plug 'osyo-manga/vim-anzu'
 "Plug 'voldikss/vim-floaterm'
 "Plug 'liuchengxu/vim-clap'
 "Plug 'jceb/vim-orgmode'
-Plug 'mhinz/vim-startify'
+"Plug 'mhinz/vim-startify'
 Plug 'theniceboy/vim-leader-mapper'
 
 " Vim Applications
@@ -1037,12 +1039,6 @@ let g:php_folding = 1
 
 
 " ===
-" === fzf-quickfix
-" ===
-nnoremap <c-q> :Quickfix!<CR>
-
-
-" ===
 " === vim-easy-align
 " ===
 xmap ga <Plug>(EasyAlign)
@@ -1086,6 +1082,35 @@ let g:leaderMapperWidth = 80
 " === rainbow
 " ===
 let g:rainbow_active = 1
+
+
+" ===
+" === xtabline
+" ===
+let g:xtabline_settings = {}
+let g:xtabline_settings.enable_mappings = 0
+let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
+let g:xtabline_settings.enable_persistance = 0
+let g:xtabline_settings.last_open_first = 1
+noremap to :XTabCycleMode<CR>
+noremap \p :XTabInfo<CR>
+
+
+" ===
+" === vim session
+" ===
+let g:session_directory = $HOME."/.config/nvim/tmp/sessions"
+"let g:session_autosave = 'yes'
+"let g:session_autoload = 'no'
+"let g:session_autosave_periodic = 1
+"let g:session_autosave_silent = 1
+set sessionoptions-=buffers
+set sessionoptions-=options
+noremap sl :OpenSession<CR>
+noremap ss :SaveSession<CR>
+noremap sc :CloseSession<CR>
+noremap sD :DeleteSession<CR>
+noremap sA :AppendTabSession<CR>
 
 
 " ===================== End of Plugin Settings =====================
