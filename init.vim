@@ -366,6 +366,9 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'mg979/vim-xtabline'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc' " vim-session dep
+Plug 'idanarye/vim-vebugger'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -430,7 +433,7 @@ Plug 'pangloss/vim-javascript', { 'for': ['vim-plug', 'php', 'html', 'javascript
 Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'jaxbot/browserlink.vim'
+"Plug 'jaxbot/browserlink.vim'
 
 " Go
 Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
@@ -786,7 +789,7 @@ noremap <LEADER>f :F  %<left><left>
 " ===
 " === vim-calc
 " ===
-noremap <LEADER>a :call Calc()<CR>
+"noremap <LEADER>a :call Calc()<CR>
 " Testing
 "if !empty(glob('~/Github/vim-calc/vim-calc.vim'))
 "source ~/Github/vim-calc/vim-calc.vim
@@ -1114,6 +1117,27 @@ noremap ss :SaveSession<CR>
 noremap sc :CloseSession<CR>
 noremap sD :DeleteSession<CR>
 noremap sA :AppendTabSession<CR>
+
+
+" ===
+" === vebugger
+" ===
+" Compile function
+let g:vebugger_leader='<leader>a'
+noremap <c-d> :call DebuggerRun()<CR>:VBGcontinue<CR>
+"noremap <f5> :call DebuggerRun()<CR>
+func! DebuggerRun()
+	exec "w"
+	if &filetype == 'python'
+		VBGstartPDB3 %
+	endif
+endfunc
+noremap <f3> :VBGkill<CR>
+noremap <f5> :VBGcontinue<CR>
+noremap <f9> :VBGtoggleBreakpointThisLine<CR>
+noremap <f10> :VBGstepOver<CR>
+noremap <f11> :VBGstepInto<CR>
+noremap <f12> :VBGstepOut<CR>
 
 
 " ===================== End of Plugin Settings =====================
