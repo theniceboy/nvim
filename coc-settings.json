@@ -146,7 +146,7 @@
 	"tslint.autoFixOnSave": true,
 	"python.autoComplete.addBrackets": true,
 	"python.jediEnabled": false,
-	"python.formatting.provider": "autopep8",
+	"python.formatting.provider": "yapf",
 	"html.format.enable": true,
 	"javascript.referencesCodeLens.enable": true,
 	"javascript.showUnused": true,
