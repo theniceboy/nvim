@@ -368,6 +368,7 @@ Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc' " vim-session dep
 Plug 'idanarye/vim-vebugger'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'wellle/context.vim'
 
 
 " Testing my own plugin
@@ -1138,6 +1139,14 @@ noremap <f9> :VBGtoggleBreakpointThisLine<CR>
 noremap <f10> :VBGstepOver<CR>
 noremap <f11> :VBGstepInto<CR>
 noremap <f12> :VBGstepOut<CR>
+
+
+" ===
+" === context.vim
+" ===
+let g:context_add_mappings = 0
+
+
 
 
 " ===================== End of Plugin Settings =====================
