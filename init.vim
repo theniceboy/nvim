@@ -366,10 +366,11 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'mg979/vim-xtabline'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc' " vim-session dep
-Plug 'idanarye/vim-vebugger'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+"Plug 'idanarye/vim-vebugger'
+"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'wellle/context.vim'
-
+Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
+"Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -504,7 +505,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'luochen1990/rainbow'
 
 " Other useful utilities
-Plug 'tpope/vim-eunuch' " do stuff like :SudoWrite
+Plug 'lambdalisue/suda.vim' " do stuff like :SudoWrite
 Plug 'makerj/vim-pdf'
 
 " Dependencies
@@ -1124,21 +1125,22 @@ noremap sA :AppendTabSession<CR>
 " === vebugger
 " ===
 " Compile function
-let g:vebugger_leader='<leader>a'
-noremap <c-d> :call DebuggerRun()<CR>:VBGcontinue<CR>
-"noremap <f5> :call DebuggerRun()<CR>
-func! DebuggerRun()
-	exec "w"
-	if &filetype == 'python'
-		VBGstartPDB3 %
-	endif
-endfunc
-noremap <f3> :VBGkill<CR>
-noremap <f5> :VBGcontinue<CR>
-noremap <f9> :VBGtoggleBreakpointThisLine<CR>
-noremap <f10> :VBGstepOver<CR>
-noremap <f11> :VBGstepInto<CR>
-noremap <f12> :VBGstepOut<CR>
+"let g:vebugger_leader='<leader>a'
+"noremap <c-d> :call DebuggerRun()<CR>:VBGcontinue<CR>
+""noremap <f5> :call DebuggerRun()<CR>
+"func! DebuggerRun()
+	"exec "w"
+	"if &filetype == 'python'
+		"VBGstartPDB3 %
+	"endif
+"endfunc
+"noremap <f3> :VBGkill<CR>
+"noremap <f5> :VBGcontinue<CR>
+"noremap <f9> :VBGtoggleBreakpointThisLine<CR>
+"noremap <f10> :VBGstepOver<CR>
+"noremap <f11> :VBGstepInto<CR>
+"noremap <f12> :VBGstepOut<CR>
+"let g:vimspector_enable_mappings = 'HUMAN'
 
 
 " ===
@@ -1147,6 +1149,10 @@ noremap <f12> :VBGstepOut<CR>
 let g:context_add_mappings = 0
 
 
+" ===
+" === suda.vim
+" ===
+cnoreabbrev sudowrite w suda://%
 
 
 " ===================== End of Plugin Settings =====================
