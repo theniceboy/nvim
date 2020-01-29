@@ -171,7 +171,7 @@ noremap <silent> <LEADER>o za
 
 " Open up lazygit
 noremap \g :term lazygit<CR>
-noremap <c-g> :term lazygit<CR>
+noremap <c-g> :tabe<CR>:term lazygit<CR>
 
 
 " ===
@@ -372,6 +372,7 @@ Plug 'wellle/context.vim'
 Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
 "Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
 "Plug 'arzg/vim-colors-xcode'
+Plug 'SkyLeach/pudb.vim'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -1142,6 +1143,7 @@ noremap sA :AppendTabSession<CR>
 "noremap <f11> :VBGstepInto<CR>
 "noremap <f12> :VBGstepOut<CR>
 "let g:vimspector_enable_mappings = 'HUMAN'
+let g:pudb_breakpoint_symbol='☠'
 
 
 " ===
