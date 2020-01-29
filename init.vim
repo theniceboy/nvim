@@ -371,6 +371,7 @@ Plug 'xolox/vim-misc' " vim-session dep
 Plug 'wellle/context.vim'
 Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
 "Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
+"Plug 'arzg/vim-colors-xcode'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
