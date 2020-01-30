@@ -371,8 +371,6 @@ Plug 'xolox/vim-misc' " vim-session dep
 Plug 'wellle/context.vim'
 Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
 "Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
-"Plug 'arzg/vim-colors-xcode'
-Plug 'SkyLeach/pudb.vim'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -387,6 +385,7 @@ Plug 'bling/vim-bufferline'
 "Plug 'mhartington/oceanic-next'
 "Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'ajmwagar/vim-deus'
+"Plug 'arzg/vim-colors-xcode'
 
 " Genreal Highlighter
 Plug 'jaxbot/semantic-highlight.vim'
@@ -1121,29 +1120,6 @@ noremap ss :SaveSession<CR>
 noremap sc :CloseSession<CR>
 noremap sD :DeleteSession<CR>
 noremap sA :AppendTabSession<CR>
-
-
-" ===
-" === vebugger
-" ===
-" Compile function
-"let g:vebugger_leader='<leader>a'
-"noremap <c-d> :call DebuggerRun()<CR>:VBGcontinue<CR>
-""noremap <f5> :call DebuggerRun()<CR>
-"func! DebuggerRun()
-	"exec "w"
-	"if &filetype == 'python'
-		"VBGstartPDB3 %
-	"endif
-"endfunc
-"noremap <f3> :VBGkill<CR>
-"noremap <f5> :VBGcontinue<CR>
-"noremap <f9> :VBGtoggleBreakpointThisLine<CR>
-"noremap <f10> :VBGstepOver<CR>
-"noremap <f11> :VBGstepInto<CR>
-"noremap <f12> :VBGstepOut<CR>
-"let g:vimspector_enable_mappings = 'HUMAN'
-let g:pudb_breakpoint_symbol='☠'
 
 
 " ===
