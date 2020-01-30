@@ -173,6 +173,9 @@ noremap <silent> <LEADER>o za
 noremap \g :term lazygit<CR>
 noremap <c-g> :tabe<CR>:term lazygit<CR>
 
+" Open up pudb
+noremap <c-d> :tab sp<CR>:term python3 -m pudb %<CR>
+noremap <f5> :tab sp<CR>:term python3 -m pudb %<CR>
 
 " ===
 " === Cursor Movement
