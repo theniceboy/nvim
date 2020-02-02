@@ -175,7 +175,9 @@ noremap <c-g> :tabe<CR>:term lazygit<CR>
 
 " Open up pudb
 noremap <c-d> :tab sp<CR>:term python3 -m pudb %<CR>
-noremap <f5> :tab sp<CR>:term python3 -m pudb %<CR>
+"noremap <f5> :tab sp<CR>:term python3 -m pudb %<CR>
+
+
 
 " ===
 " === Cursor Movement
@@ -373,7 +375,8 @@ Plug 'xolox/vim-misc' " vim-session dep
 "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'wellle/context.vim'
 Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
-"Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
+Plug 'semanser/vim-outdated-plugins'
+
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -405,6 +408,9 @@ Plug 'francoiscabrol/ranger.vim'
 
 " Taglist
 Plug 'liuchengxu/vista.vim'
+
+" Debugger
+Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
 
 " Error checking, handled by coc
 
@@ -1136,6 +1142,12 @@ noremap <leader>ct :ContextToggle<CR>
 " === suda.vim
 " ===
 cnoreabbrev sudowrite w suda://%
+
+
+" ===
+" === vimspector
+" ===
+let g:vimspector_enable_mappings = 'HUMAN'
 
 
 " ===================== End of Plugin Settings =====================
