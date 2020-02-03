@@ -175,7 +175,6 @@ endfunction
 " Set <LEADER> as <SPACE>, ; as :
 let mapleader=" "
 noremap ; :
-noremap : q:i
 
 " Save & quit
 noremap Q :q<CR>
@@ -417,14 +416,6 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'mg979/vim-xtabline'
-Plug 'xolox/vim-session'
-Plug 'xolox/vim-misc' " vim-session dep
-"Plug 'idanarye/vim-vebugger'
-"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'wellle/context.vim'
-Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
-Plug 'semanser/vim-outdated-plugins'
 
 
 " Testing my own plugin
@@ -515,6 +506,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'f
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'theniceboy/bullets.vim'
 
+" Other filetypes
+Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
+
 " Editor Enhancement
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
@@ -529,6 +523,8 @@ Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 Plug 'easymotion/vim-easymotion'
 Plug 'Konfekt/FastFold'
 Plug 'junegunn/vim-peekaboo'
+Plug 'bkad/CamelCaseMotion'
+"Plug 'wellle/context.vim'
 
 " Input Method Autoswitch
 "Plug 'rlue/vim-barbaric' " slowing down vim-multiple-cursors
@@ -565,10 +561,15 @@ Plug 'itchyny/calendar.vim'
 " Other visual enhancement
 Plug 'ryanoasis/vim-devicons'
 Plug 'luochen1990/rainbow'
+Plug 'mg979/vim-xtabline'
+Plug 'wincent/terminus'
 
 " Other useful utilities
 Plug 'lambdalisue/suda.vim' " do stuff like :SudoWrite
 Plug 'makerj/vim-pdf'
+"Plug 'xolox/vim-session'
+"Plug 'xolox/vim-misc' " vim-session dep
+Plug 'semanser/vim-outdated-plugins'
 
 " Dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -1200,6 +1201,18 @@ cnoreabbrev sudowrite w suda://%
 " === vimspector
 " ===
 let g:vimspector_enable_mappings = 'HUMAN'
+
+" ===
+" === camelcase
+" ===
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> h <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap h
+sunmap ge
 
 
 " ===
