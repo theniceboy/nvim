@@ -1200,6 +1200,7 @@ cnoreabbrev sudowrite w suda://%
 " ===
 " === vimspector
 " ===
+let g:vimspector_enable_mappings = 'HUMAN'
 function! s:read_template_into_buffer(template)
 	" has to be a function to avoid the extra space fzf#run insers otherwise
 	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
