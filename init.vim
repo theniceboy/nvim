@@ -416,6 +416,7 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'keith/swift.vim'
 
 
 " Testing my own plugin
@@ -848,7 +849,7 @@ let g:multi_cursor_quit_key = '<Esc>'
 " ===
 " === Far.vim
 " ===
-noremap <LEADER>f :F  %<left><left>
+noremap <LEADER>f :F  **/*<left><left>
 
 
 " ===
@@ -1211,6 +1212,9 @@ command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
 			\   'sink': function('<sid>read_template_into_buffer')
 			\ })
 noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
+sign define vimspectorBP text=☛ texthl=Normal
+sign define vimspectorBPDisabled text=☞ texthl=Normal
+sign define vimspectorPC text=🔶 texthl=SpellBad
 
 
 
