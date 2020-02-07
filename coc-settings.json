@@ -178,10 +178,10 @@
 		"ccls": {
 			"command": "ccls",
 			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-			"rootPatterns": [".ccls-root", "compile_commands.json"],
+			"rootPatterns": [".ccls", ".ccls-root", "compile_commands.json", ".git/", ".hg/"],
 			"initializationOptions": {
 				 "cache": {
-					 "directory": ".ccls-cache"
+					 "directory": "/tmp/ccls"
 				 }
 			 }
 		}
