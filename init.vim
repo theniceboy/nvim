@@ -417,6 +417,8 @@ endfunc
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'keith/swift.vim'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
 
 
 " Testing my own plugin
@@ -566,11 +568,10 @@ Plug 'mg979/vim-xtabline'
 Plug 'wincent/terminus'
 
 " Other useful utilities
-Plug 'lambdalisue/suda.vim' " do stuff like :SudoWrite
+Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 Plug 'makerj/vim-pdf'
 "Plug 'xolox/vim-session'
 "Plug 'xolox/vim-misc' " vim-session dep
-Plug 'semanser/vim-outdated-plugins'
 
 " Dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -1196,6 +1197,7 @@ noremap <leader>ct :ContextToggle<CR>
 " === suda.vim
 " ===
 cnoreabbrev sudowrite w suda://%
+cnoreabbrev sw w suda://%
 
 
 " ===
