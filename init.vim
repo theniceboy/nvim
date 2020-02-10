@@ -92,7 +92,6 @@ if has('persistent_undo')
 endif
 set colorcolumn=80
 set updatetime=1000
-set virtualedit=block
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -119,54 +118,6 @@ let g:terminal_color_11 = '#F4F99D'
 let g:terminal_color_12 = '#CAA9FA'
 let g:terminal_color_13 = '#FF92D0'
 let g:terminal_color_14 = '#9AEDFE'
-augroup TermHandling
-  autocmd!
-  " Turn off line numbers, listchars, auto enter insert mode and map esc to
-  " exit insert mode
-  autocmd TermOpen * setlocal listchars= nonumber norelativenumber
-    \ | startinsert
-    \ | tnoremap <Esc> <c-c>
-  autocmd FileType fzf call LayoutTerm(0.6, 'horizontal')
-augroup END
-
-function! LayoutTerm(size, orientation) abort
-  let timeout = 16.0
-  let animation_total = 120.0
-  let timer = {
-    \ 'size': a:size,
-    \ 'step': 1,
-    \ 'steps': animation_total / timeout
-  \}
-
-  if a:orientation == 'horizontal'
-    resize 1
-    function! timer.f(timer)
-      execute 'resize ' . string(&lines * self.size * (self.step / self.steps))
-      let self.step += 1
-    endfunction
-  else
-    vertical resize 1
-    function! timer.f(timer)
-      execute 'vertical resize ' . string(&columns * self.size * (self.step / self.steps))
-      let self.step += 1
-    endfunction
-  endif
-  call timer_start(float2nr(timeout), timer.f, {'repeat': float2nr(timer.steps)})
-endfunction
-
-" Open autoclosing terminal, with optional size and orientation
-function! OpenTerm(cmd, ...) abort
-  let orientation = get(a:, 2, 'horizontal')
-  if orientation == 'horizontal'
-    new | wincmd J
-  else
-    vnew | wincmd L
-  endif
-  call LayoutTerm(get(a:, 1, 0.5), orientation)
-  call termopen(a:cmd, {'on_exit': {j,c,e -> execute('if c == 0 | close | endif')}})
-endfunction
-" }}}
-" vim:fdm=marker
 
 
 " ===
@@ -175,6 +126,7 @@ endfunction
 " Set <LEADER> as <SPACE>, ; as :
 let mapleader=" "
 noremap ; :
+noremap : q:i
 
 " Save & quit
 noremap Q :q<CR>
@@ -188,11 +140,11 @@ noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 "noremap <LEADER>st :Startify<CR>
 
 " Undo operations
-noremap l u
+""noremap l u
 
 " Insert Key
-noremap k i
-noremap K I
+""noremap k i
+""noremap K I
 
 " make Y to copy till the end of the line
 nnoremap Y y$
@@ -219,12 +171,7 @@ noremap <silent> <LEADER>o za
 
 " Open up lazygit
 noremap \g :term lazygit<CR>
-noremap <c-g> :tabe<CR>:term lazygit<CR>
-
-" Open up pudb
-noremap <c-d> :tab sp<CR>:term python3 -m pudb %<CR>
-"noremap <f5> :tab sp<CR>:term python3 -m pudb %<CR>
-
+noremap <c-g> :term lazygit<CR>
 
 
 " ===
@@ -236,29 +183,29 @@ noremap <c-d> :tab sp<CR>:term python3 -m pudb %<CR>
 " < n   i >
 "     e
 "     v
-noremap <silent> u k
-noremap <silent> n h
-noremap <silent> e j
-noremap <silent> i l
+""noremap <silent> u k
+""noremap <silent> n h
+""noremap <silent> e j
+""noremap <silent> i l
 
 " U/E keys for 5 times u/e (faster navigation)
-noremap <silent> U 5k
-noremap <silent> E 5j
+noremap <silent> K 5k
+noremap <silent> J 5j
 
 " N key: go to the start of the line
-noremap <silent> N 0
+""noremap <silent> N 0
 " I key: go to the end of the line
-noremap <silent> I $
+""noremap <silent> I $
 
 " Faster in-line navigation
 noremap W 5w
 noremap B 5b
 
 " set h (same as n, cursor left) to 'end of word'
-noremap h e
+""noremap h e
 
 " Ctrl + U or E will move up/down the view port without moving the cursor
-noremap <C-U> 5<C-y>
+noremap <C-Y> 5<C-y>
 noremap <C-E> 5<C-e>
 
 
@@ -323,13 +270,13 @@ noremap <LEADER>q <C-w>j:q<CR>
 " === Tab management
 " ===
 " Create a new tab with tu
-noremap tu :tabe<CR>
+noremap th :tabe<CR>
 " Move around tabs with tn and ti
-noremap tn :-tabnext<CR>
+noremap tu :-tabnext<CR>
 noremap ti :+tabnext<CR>
 " Move the tabs with tmn and tmi
-noremap tmn :-tabmove<CR>
-noremap tmi :+tabmove<CR>
+noremap tmh :-tabmove<CR>
+noremap tml :+tabmove<CR>
 
 
 " ===
@@ -416,6 +363,12 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'mg979/vim-xtabline'
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc' " vim-session dep
+Plug 'idanarye/vim-vebugger'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'wellle/context.vim'
 
 
 " Testing my own plugin
@@ -431,7 +384,6 @@ Plug 'bling/vim-bufferline'
 "Plug 'mhartington/oceanic-next'
 "Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'ajmwagar/vim-deus'
-"Plug 'arzg/vim-colors-xcode'
 
 " Genreal Highlighter
 Plug 'jaxbot/semantic-highlight.vim'
@@ -448,12 +400,6 @@ Plug 'francoiscabrol/ranger.vim'
 
 " Taglist
 Plug 'liuchengxu/vista.vim'
-
-" Debugger
-Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
-
-" REPL
-Plug 'rhysd/reply.vim'
 
 " Error checking, handled by coc
 
@@ -506,9 +452,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'f
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'theniceboy/bullets.vim'
 
-" Other filetypes
-Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
-
 " Editor Enhancement
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
@@ -523,8 +466,6 @@ Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 Plug 'easymotion/vim-easymotion'
 Plug 'Konfekt/FastFold'
 Plug 'junegunn/vim-peekaboo'
-Plug 'bkad/CamelCaseMotion'
-"Plug 'wellle/context.vim'
 
 " Input Method Autoswitch
 "Plug 'rlue/vim-barbaric' " slowing down vim-multiple-cursors
@@ -561,15 +502,10 @@ Plug 'itchyny/calendar.vim'
 " Other visual enhancement
 Plug 'ryanoasis/vim-devicons'
 Plug 'luochen1990/rainbow'
-Plug 'mg979/vim-xtabline'
-Plug 'wincent/terminus'
 
 " Other useful utilities
-Plug 'lambdalisue/suda.vim' " do stuff like :SudoWrite
+Plug 'tpope/vim-eunuch' " do stuff like :SudoWrite
 Plug 'makerj/vim-pdf'
-"Plug 'xolox/vim-session'
-"Plug 'xolox/vim-misc' " vim-session dep
-Plug 'semanser/vim-outdated-plugins'
 
 " Dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -1185,54 +1121,32 @@ noremap sA :AppendTabSession<CR>
 
 
 " ===
+" === vebugger
+" ===
+" Compile function
+let g:vebugger_leader='<leader>a'
+noremap <c-d> :call DebuggerRun()<CR>:VBGcontinue<CR>
+"noremap <f5> :call DebuggerRun()<CR>
+func! DebuggerRun()
+	exec "w"
+	if &filetype == 'python'
+		VBGstartPDB3 %
+	endif
+endfunc
+noremap <f3> :VBGkill<CR>
+noremap <f5> :VBGcontinue<CR>
+noremap <f9> :VBGtoggleBreakpointThisLine<CR>
+noremap <f10> :VBGstepOver<CR>
+noremap <f11> :VBGstepInto<CR>
+noremap <f12> :VBGstepOut<CR>
+
+
+" ===
 " === context.vim
 " ===
 let g:context_add_mappings = 0
-noremap <leader>ct :ContextToggle<CR>
 
 
-" ===
-" === suda.vim
-" ===
-cnoreabbrev sudowrite w suda://%
-
-
-" ===
-" === vimspector
-" ===
-let g:vimspector_enable_mappings = 'HUMAN'
-function! s:read_template_into_buffer(template)
-	" has to be a function to avoid the extra space fzf#run insers otherwise
-	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
-endfunction
-command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
-			\   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
-			\   'down': 20,
-			\   'sink': function('<sid>read_template_into_buffer')
-			\ })
-noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
-
-
-
-" ===
-" === camelcase
-" ===
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> h <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap h
-sunmap ge
-
-
-" ===
-" === reply.vim
-" ===
-noremap <LEADER>rp :w<CR>:Repl<CR><C-\><C-N><C-w><C-h>
-noremap <LEADER>rs :ReplSend<CR><C-w><C-l>a<CR><C-\><C-N><C-w><C-h>
-noremap <LEADER>rt :ReplStop<CR>
 
 
 " ===================== End of Plugin Settings =====================
