@@ -419,6 +419,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'keith/swift.vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
 
 
 " Testing my own plugin
@@ -1239,6 +1240,17 @@ sunmap ge
 noremap <LEADER>rp :w<CR>:Repl<CR><C-\><C-N><C-w><C-h>
 noremap <LEADER>rs :ReplSend<CR><C-w><C-l>a<CR><C-\><C-N><C-w><C-h>
 noremap <LEADER>rt :ReplStop<CR>
+
+
+" ===
+" === vim-markdown-toc
+" ===
+"let g:vmt_auto_update_on_save = 0
+"let g:vmt_dont_insert_fence = 1
+let g:vmt_cycle_list_item_markers = 1
+let g:vmt_fence_text = 'TOC'
+let g:vmt_fence_closing_text = '/TOC'
+
 
 
 " ===================== End of Plugin Settings =====================
