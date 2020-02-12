@@ -12,10 +12,10 @@ Please **DO NOT** just copy this config without really looking at it! Please, at
 * [After Installation, You Need To](#after-installation-you-need-to)
 * [After Installation, You Might Want To](#after-installation-you-might-want-to)
 	- [First of all](#first-of-all)
+	- [For Python Debugger (via `vimspector`)](#for-python-debugger-via-vimspector)
 	- [Config `Python` path](#config-python-path)
-	- [For Code AutoComplete - coc](#for-code-autocomplete---coc)
 	- [For Taglist:](#for-taglist)
-	- [For Denite:](#for-denite)
+	- [For FZF](#for-fzf)
 	- [And also...](#and-also)
 * [Keyboard Shortcuts](#keyboard-shortcuts)
 	- [1 Basic Editor Features](#1-basic-editor-features)
@@ -23,7 +23,8 @@ Please **DO NOT** just copy this config without really looking at it! Please, at
 		+ [1.2 Remapped Cursor Movement](#12-remapped-cursor-movement)
 		+ [1.3 Remapped Insert Mode Keys](#13-remapped-insert-mode-keys)
 		+ [1.4 Remapped Text Manipulating Commands in Normal Mode](#14-remapped-text-manipulating-commands-in-normal-mode)
-		+ [1.5 Other Useful Normal Mode Remapping](#15-other-useful-normal-mode-remapping)
+		+ [1.5 Other Useful Normal Mode Remappings](#15-other-useful-normal-mode-remappings)
+		+ [1.6 Remapped Commands in Visual Mode](#16-remapped-commands-in-visual-mode)
 	- [2 Window Management](#2-window-management)
 		+ [2.1 Creating Window Through Split Screen](#21-creating-window-through-split-screen)
 		+ [2.2 Moving the Cursor Between Different Windows](#22-moving-the-cursor-between-different-windows)
@@ -33,25 +34,25 @@ Please **DO NOT** just copy this config without really looking at it! Please, at
 	- [4 Terminal Keyboard Shortcuts](#4-terminal-keyboard-shortcuts)
 * [Plugins](#plugins)
 	- [COC (AutoCompletion)](#coc-autocompletion)
+	- [coc-explorer (file browser)](#coc-explorer-file-browser)
+	- [coc-translator](#coc-translator)
 	- [Ultisnips](#ultisnips)
-	- [NERDTree](#nerdtree)
 	- [GitGutter](#gitgutter)
 	- [vim-table-mode](#vim-table-mode)
 	- [Vista.vim](#vistavim)
 	- [FZF - the fuzzy file finder](#fzf---the-fuzzy-file-finder)
 	- [Undotree](#undotree)
 	- [Ranger.vim - file browser](#rangervim---file-browser)
-	- [vim-startify - Startup screen](#vim-startify---startup-screen)
 	- [vim-signiture - Bookmarks](#vim-signiture---bookmarks)
 	- [vim-multiple-cursors](#vim-multiple-cursors)
 	- [vim-surround](#vim-surround)
-	- [far.vim - find and replace](#farvim---find-and-replace)
+	- [Far.vim - find and replace](#farvim---find-and-replace)
 	- [fzf-gitignore](#fzf-gitignore)
-	- [GV - commit browser](#gv---commit-browser)
-	- [vim-calc](#vim-calc)
 	- [vim-calendar](#vim-calendar)
 	- [AutoFormat](#autoformat)
 	- [Goyo - Work without distraction](#goyo---work-without-distraction)
+	- [vim-easy-align](#vim-easy-align)
+	- [xtabline (the fancy tab line)](#xtabline-the-fancy-tab-line)
 * [Custom Snippets](#custom-snippets)
 	- [Markdown](#markdown)
 * [Other Weird Stuff](#other-weird-stuff)
@@ -68,20 +69,19 @@ Please **DO NOT** just copy this config without really looking at it! Please, at
 ### First of all
 - [ ] Do `:checkhealth`
 
+### For Python Debugger (via `vimspector`)
+- [ ] Install `debugpy` (`pip`)
+
 ### Config `Python` path
 - [ ] Well, make sure you have python
 - [ ] See `_machine_specific.vim`
 
-### For Code AutoComplete - coc
-Python:
-- [ ] Do `pip3 install flake8` (for linting)
-
 ### For Taglist:
 - [ ] Install `ctags` for function/class/variable list
 
-### For Denite:
-- [ ] Install `ripgrep`
-- [ ] Install `fd`
+### For FZF
+- [ ] Install `fzf`
+- [ ] Install `ag` (`the_silver_searcher`)
 
 ### And also...
 - [ ] Install `figlet` for inputing text ASCII art
@@ -90,11 +90,11 @@ Python:
 ## Keyboard Shortcuts
 ### 1 Basic Editor Features
 #### 1.1 The Most Basics
-**`k`** : to switch to **`INSERT`** : mode, equals to key `i`
+**`k`** : switchs to **`INSERT`** : mode (same as key `i` in vanilla vim)
 
-**`Q`** : quit current vim window, equals to command `:q`
+**`Q`** : quits current vim window (same as command `:q` in vanilla vim)
 
-**`S`** : save the current file, equals to command `:w`
+**`S`** : saves the current file (same as command `:w` in vanilla vim)
 
 **_IMPORTANT_**
 
@@ -129,23 +129,26 @@ Python:
 | `l`             | **undo**                              |
 | `<`             | Un-indent                             |
 | `>`             | Indent                                |
-| `Ctrl` `a`      | Increase the number under cursor by 1 |
-| `Ctrl` `x`      | Decrease the number under cursor by 1 |
 | `SPACE` `SPACE` | Goto the next placeholder (`<++>`)    |
 
-#### 1.5 Other Useful Normal Mode Remapping
+#### 1.5 Other Useful Normal Mode Remappings
+| Shortcut        | Action                                         |
+|-----------------|------------------------------------------------|
+| `r`             | **Compile/Run the current file**               |
+| `SPACE` `s` `c` | Toggle spell suggestion a                      |
+| `SPACE` `d` `w` | Find adjacent duplicated word                  |
+| `SPACE` `t` `t` | Convert every 4 Spaces to a tab                |
+| `SPACE` `o`     | Fold                                           |
+| `SPACE` `-`     | Previous quick-fix position                    |
+| `SPACE` `+`     | Next quick-fix position                        |
+| `\` `p`         | Show the path of the current file              |
+| `SPACE` `/`     | Create a new terminal below the current window |
+
+#### 1.6 Remapped Commands in Visual Mode
 | Shortcut        | Action                                 |
 |-----------------|----------------------------------------|
-| `r`             | **Compile/Run the current file**       |
 | `Y`             | Copy selected text to system clipboard |
-| `z` `=`         | Show spell suggestions                 |
-| `SPACE` `s` `c` | Toggle spell suggestion a              |
-| `SPACE` `d` `w` | Find adjacent duplicated word          |
-| `SPACE` `t` `t` | Convert every 4 Spaces to a tab        |
-| `SPACE` `o`     | Fold                                   |
-| `SPACE` `-`     | Previous quick-fix position            |
-| `SPACE` `+`     | Next quick-fix position                |
-| `\` `p`         | Show the path of the current file      |
+
 
 ### 2 Window Management
 #### 2.1 Creating Window Through Split Screen
@@ -190,7 +193,6 @@ Use the arrow keys to resize the current window.
 ### 4 Terminal Keyboard Shortcuts
 | Shortcut    | Action                                                      |
 |-------------|-------------------------------------------------------------|
-| `SPACE` `/` | Create a new split with a terminal below the current window |
 | `Ctrl` `n`  | Escape from terminal input mode                             |
 
 ## Plugins
@@ -204,22 +206,21 @@ Use the arrow keys to resize the current window.
 | `gy`            | Go to type definition     |
 | `Space` `r` `n` | Rename a variable         |
 
+### coc-explorer (file browser)
+| Shortcut | Action                  |
+|----------|-------------------------|
+| `tt`     | **Open file browser**   |
+| `?`      | show help (in explorer) |
+
+### coc-translator
+Press `ts` to **translate word under cursor**.
+
 ### Ultisnips
 | Shortcut   | Action                                           |
 |------------|--------------------------------------------------|
 | `Ctrl` `e` | Expand a snippet                                 |
 | `Ctrl` `n` | (in snippet) Previous Cursor position in snippet |
 | `Ctrl` `e` | (in snippet) Next Cursor position in snippet     |
-
-### NERDTree
-| Shortcut          | Action              |
-|-------------------|---------------------|
-| `tt`              | **Toggle NerdTree** |
-| `I`               | Open in new split   |
-| `O`               | Open in new tab     |
-| `l`               | Change root         |
-| `z` `h`           | Toggle hidden       |
-| `,` (in NERDTREE) | Toggle menu         |
 
 ### GitGutter
 | Shortcut        | Action                            |
@@ -238,31 +239,29 @@ Use the arrow keys to resize the current window.
 See `:help table-mode.txt` for more.
 
 ### Vista.vim
-| Shortcut   | Action                              |
-|------------|-------------------------------------|
-| `T`        | toggle function and variable list   |
-| `Ctrl` `t` | open function/class/variable finder |
+Press `T` to toggle function and variable list
 
 ### FZF - the fuzzy file finder
-| Shortcut   | Action           |
-|------------|------------------|
-| `Ctrl` `p` | **Active FZF**   |
-| `Ctrl` `u` | Move up 1 item   |
-| `Ctrl` `e` | Move down 1 item |
+| Shortcut   | Action             |
+|------------|--------------------|
+| `Ctrl` `p` | **FZF Files**      |
+| `Ctrl` `u` | Move up 1 item     |
+| `Ctrl` `e` | Move down 1 item   |
+| `Ctrl` `w` | FZF Buffers        |
+| `Ctrl` `f` | FZF Files' Content |
+| `Ctrl` `h` | FZF Recent Files   |
+| `Ctrl` `t` | FZF Tags           |
 
 ### Undotree
 | Shortcut      | Action        |
 |---------------|---------------|
 | `Shift` + `L` | Open Undotree |
-| `Shift` + `K` | History go up |
-| `Shift` + `J` | History go down |
+| `u`           | Newer Version |
+| `e`           | Older Version |
 
 ### Ranger.vim - file browser
 - [ ] Make sure you have ranger installed
 Press `R` to open Ranger (file selector)
-
-### vim-startify - Startup screen
-Press `Space` `s` `t` to openup `startify`
 
 ### vim-signiture - Bookmarks
 | Shortcut    | Action                          | Command |
@@ -274,12 +273,13 @@ Press `Space` `s` `t` to openup `startify`
 For more commands, see [here](https://github.com/MattesGroeger/vim-bookmarks#usage)
 
 ### vim-multiple-cursors
-| Shortcut   | Action                              |
-|------------|-------------------------------------|
-| `Ctrl`+`k` | Select next word (multiple cursors) |
-| `Ctrl`+`p` | Select previous word                |
-| `Ctrl`+`x` | Skip word                           |
-| `Esc`      | Quit mutiple cursors                |
+| Shortcut   | Action                                 |
+|------------|----------------------------------------|
+| `Ctrl`+`k` | **Select next key (multiple cursors)** |
+| `Alt`+`k`  | **Select all keys (multiple cursors)** |
+| `Ctrl`+`p` | Select previous key                    |
+| `Ctrl`+`s` | Skip key                               |
+| `Esc`      | Quit mutiple cursors                   |
 
 ### vim-surround
 To add surround (`string` -> `"string"`):
@@ -300,23 +300,11 @@ press: `cs'"`:
 "string"
 ```
 
-### far.vim - find and replace
-| Shortcut        | Action                   |
-|-----------------|--------------------------|
-| `SPACE` `f` `a` | Find in the current file |
-| `SPACE` `f` `r` | Find and replace         |
+### Far.vim - find and replace
+Press `SPACE` `f` `r` to search in cwd.
 
 ### fzf-gitignore
 Press `Space` `g` `i` to create a `.gitignore` file
-
-### GV - commit browser
-| Shortcut | Action              |
-|----------|---------------------|
-| `g` `v`  | Open commit browser |
-| `q`      | Quit GV window      |
-
-### vim-calc
-Press `Space` + `a` to calculate the equation in the current line
 
 ### vim-calendar
 | Shortcut | Action        |
@@ -329,6 +317,16 @@ Press `\` `f` to format code
 
 ### Goyo - Work without distraction
 Press `g` `y` to toggle Goyo
+
+### vim-easy-align
+Press `ga` + **symbol** in normal or visual mode to align text based on **symbol**
+
+### xtabline (the fancy tab line)
+| Shortcut | What it creates   |
+|----------|-------------------|
+| `to`     | Cycle tab mode    |
+| `\p`     | Show current path |
+
 
 ## Custom Snippets
 ### Markdown

@@ -348,7 +348,7 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 inoremap <C-u> <ESC>lx$p
 
 " Opening a terminal window
-noremap <LEADER>/ :term<CR>
+noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
@@ -420,6 +420,8 @@ Plug 'keith/swift.vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
+"Plug 'camspiers/animate.vim'
+
 
 
 " Testing my own plugin
@@ -557,7 +559,6 @@ Plug 'osyo-manga/vim-anzu'
 "Plug 'liuchengxu/vim-clap'
 "Plug 'jceb/vim-orgmode'
 "Plug 'mhinz/vim-startify'
-Plug 'theniceboy/vim-leader-mapper'
 
 " Vim Applications
 Plug 'itchyny/calendar.vim'
@@ -664,18 +665,8 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 nmap tt :CocCommand explorer<CR>
-" coc-todolist
-noremap ta :CocCommand todolist.create<CR>
-noremap td :CocCommand todolist.upload<CR>
-noremap tD :CocCommand todolist.download<CR>
-noremap tc :CocCommand todolist.clearNotice<CR>
-noremap tc :CocCommand todolist.clearNotice<CR>
-noremap tl :CocList --normal todolist<CR>
 " coc-translator
 nmap ts <Plug>(coc-translator-p)
-" coc-markmap
-command! Markmap CocCommand markmap.create
-
 
 " ===
 " === MarkdownPreview
@@ -701,13 +692,6 @@ let g:mkdp_markdown_css = ''
 let g:mkdp_highlight_css = ''
 let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
-
-
-" ===
-" === Python-syntax
-" ===
-let g:python_highlight_all = 1
-" let g:python_slow_sync = 0
 
 
 " ===
@@ -851,7 +835,7 @@ let g:multi_cursor_quit_key = '<Esc>'
 " ===
 " === Far.vim
 " ===
-noremap <LEADER>f :F  **/*<left><left>
+noremap <LEADER>f :F  **/*<left><left><left><left><left>
 
 
 " ===
@@ -1051,16 +1035,6 @@ let g:colorizer_syntax = 1
 
 
 " ===
-" === vim-floaterm
-" ===
-"nnoremap ? :FloatermToggle<CR>
-"let g:floaterm_position = 'center'
-"let g:floaterm_winblend = 20
-"let g:floaterm_height = winheight(0)/3*2
-"let g:floaterm_width = &columns/3*2
-
-
-" ===
 " === vim-easymotion
 " ===
 let g:EasyMotion_do_mapping = 0
@@ -1126,33 +1100,6 @@ autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
 
 
 " ===
-" === vim-map-leader
-" ===
-let g:leaderMenu = {'name':  "Shortcut Menu",
-\'SPC f':  ['Advanced find'],
-\'SPC rc': ['Edit nvim config'],
-\'SPC Enter':  ['Clear search'],
-\'SPC dw':  ['Remove adj. dup. words'],
-\'SPC tt':  ['spc to tabs'],
-\'SPC o':  ['Open folds'],
-\'SPC q':  ['Close win below'],
-\'SPC /':  ['Open terminal'],
-\'SPC <SPC>':  ['Find <++>'],
-\'SPC sc':  ['Toggle spell-check'],
-\'SPC gf':  ['Fold unchanged'],
-\'SPC g-':  ['Previous hunk'],
-\'SPC g=':  ['Next Hunk'],
-\'SPC rn':  ['Rename variable'],
-\'SPC tm':  ['Toggle table-mode'],
-\'SPC a':  ['Calculate equation'],
-\'SPC gi':  ['New .gitignore'],
-\'SPC gy':  ['Toggle focus mode'],
-\}
-nnoremap <silent> ? :call leaderMapper#start() "<Space>"<CR>
-let g:leaderMapperWidth = 80
-
-
-" ===
 " === rainbow
 " ===
 let g:rainbow_active = 1
@@ -1171,20 +1118,21 @@ noremap \p :XTabInfo<CR>
 
 
 " ===
-" === vim session
+" === vim-session
 " ===
-let g:session_directory = $HOME."/.config/nvim/tmp/sessions"
-let g:session_autosave = 'no'
-let g:session_autoload = 'no'
-"let g:session_autosave_periodic = 1
-"let g:session_autosave_silent = 1
-set sessionoptions-=buffers
-set sessionoptions-=options
-noremap sl :OpenSession<CR>
-noremap ss :SaveSession<CR>
-noremap sc :CloseSession<CR>
-noremap sD :DeleteSession<CR>
-noremap sA :AppendTabSession<CR>
+"let g:session_directory = $HOME."/.config/nvim/tmp/sessions"
+"let g:session_autosave = 'no'
+"let g:session_autoload = 'no'
+"let g:session_command_aliases = 1
+"set sessionoptions-=buffers
+"set sessionoptions-=options
+"noremap sl :OpenSession<CR>
+"noremap sS :SaveSession<CR>
+"noremap ss :SaveSession 
+"noremap sc :SaveSession<CR>:CloseSession<CR>:q<CR>
+"noremap so :OpenSession default<CR>
+"noremap sD :DeleteSession<CR>
+""noremap sA :AppendTabSession<CR>
 
 
 " ===
