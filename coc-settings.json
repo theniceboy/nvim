@@ -62,8 +62,7 @@
 		"css",
 		"python"
 	],
-	"signature.target": "echo",
-	"signature.enable": true,
+	"signature.target": "float",
 	"yank.enableCompletion" : false,
 	"explorer.width": 38,
 	"explorer.quitOnOpen": true,

@@ -459,7 +459,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
 
 " REPL
-Plug 'rhysd/reply.vim'
+"Plug 'rhysd/reply.vim'
 
 " Error checking, handled by coc
 
@@ -641,6 +641,8 @@ nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-vimlsp', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-lists', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator']
 "set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
 	let col = col('.') - 1
@@ -657,6 +659,11 @@ function! s:check_back_space() abort
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
+" Text Objects
+xmap kf <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap kf <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
 " Useful commands
 nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 nmap <silent> gd <Plug>(coc-definition)
@@ -667,6 +674,9 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap tt :CocCommand explorer<CR>
 " coc-translator
 nmap ts <Plug>(coc-translator-p)
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " ===
 " === MarkdownPreview
@@ -1138,8 +1148,8 @@ noremap \p :XTabInfo<CR>
 " ===
 " === context.vim
 " ===
-let g:context_add_mappings = 0
-noremap <leader>ct :ContextToggle<CR>
+"let g:context_add_mappings = 0
+"noremap <leader>ct :ContextToggle<CR>
 
 
 " ===
@@ -1185,9 +1195,9 @@ sunmap ge
 " ===
 " === reply.vim
 " ===
-noremap <LEADER>rp :w<CR>:Repl<CR><C-\><C-N><C-w><C-h>
-noremap <LEADER>rs :ReplSend<CR><C-w><C-l>a<CR><C-\><C-N><C-w><C-h>
-noremap <LEADER>rt :ReplStop<CR>
+"noremap <LEADER>rp :w<CR>:Repl<CR><C-\><C-N><C-w><C-h>
+"noremap <LEADER>rs :ReplSend<CR><C-w><C-l>a<CR><C-\><C-N><C-w><C-h>
+"noremap <LEADER>rt :ReplStop<CR>
 
 
 " ===
