@@ -147,7 +147,11 @@
 	"tslint.autoFixOnSave": true,
 	"python.autoComplete.addBrackets": true,
 	"python.jediEnabled": false,
-	"python.formatting.provider": "none",
+	"python.formatting.provider": "yapf",
+	"python.formatting.yapfArgs": [
+        "--style",
+        "{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
+    ],
 	"html.format.enable": true,
 	"javascript.referencesCodeLens.enable": true,
 	"javascript.showUnused": true,
