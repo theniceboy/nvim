@@ -416,13 +416,7 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'keith/swift.vim'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'thosakwe/vim-flutter'
-Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
 "Plug 'camspiers/animate.vim'
-
-
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -507,9 +501,17 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-p
 "Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
 Plug 'tweekmonster/braceless.vim'
 
+" Flutter
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
+
+" Swift
+Plug 'keith/swift.vim'
+
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
 Plug 'theniceboy/bullets.vim'
 
 " Other filetypes
