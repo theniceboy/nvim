@@ -83,7 +83,7 @@ set lazyredraw "same as above
 set visualbell
 silent !mkdir -p ~/.config/nvim/tmp/backup
 silent !mkdir -p ~/.config/nvim/tmp/undo
-silent !mkdir -p ~/.config/nvim/tmp/sessions
+"silent !mkdir -p ~/.config/nvim/tmp/sessions
 set backupdir=~/.config/nvim/tmp/backup,.
 set directory=~/.config/nvim/tmp/backup,.
 if has('persistent_undo')
