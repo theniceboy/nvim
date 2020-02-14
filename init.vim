@@ -416,7 +416,6 @@ endfunc
 call plug#begin('~/.config/nvim/plugged')
 
 "Plug 'camspiers/animate.vim'
-Plug 'kevinhwang91/rnvimr', {'do': 'make install; make sync'}
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -444,7 +443,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'yuki-ycino/fzf-preview.vim'
 "Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 "Plug 'junegunn/fzf'
-"Plug 'francoiscabrol/ranger.vim'
+Plug 'kevinhwang91/rnvimr', {'do': 'make install'}
 
 " Taglist
 Plug 'liuchengxu/vista.vim'
@@ -581,7 +580,6 @@ Plug 'makerj/vim-pdf'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'kana/vim-textobj-user'
 Plug 'roxma/nvim-yarp'
-"Plug 'rbgrouleff/bclose.vim' " For ranger.vim
 
 call plug#end()
 
@@ -889,13 +887,6 @@ function! NearestMethodOrFunction() abort
 endfunction
 set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-
-
-" ===
-" === Ranger.vim
-" ===
-"nnoremap R :Ranger<CR>
-"let g:ranger_map_keys = 0
 
 
 " ===

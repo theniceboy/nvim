@@ -37,7 +37,7 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 		+ [vimspector (debugger-plugin)](#vimspector-debugger-plugin)
 	- [File Navigation](#file-navigation)
 		+ [coc-explorer (file browser)](#coc-explorer-file-browser)
-		+ [Ranger.vim - file browser](#rangervim---file-browser)
+		+ [rnvimr - file browser](#rnvimr---file-browser)
 		+ [FZF - the fuzzy file finder](#fzf---the-fuzzy-file-finder)
 		+ [xtabline (the fancy tab line)](#xtabline-the-fancy-tab-line)
 	- [Text Editing Plugins](#text-editing-plugins)
@@ -252,11 +252,19 @@ Use the arrow keys to resize the current window.
 
 <img alt="Png" src="https://user-images.githubusercontent.com/1709861/64966850-1e9f5100-d8d2-11e9-9490-438c6d1cf378.png" width="60%" />
 
-#### Ranger.vim - file browser
+#### rnvimr - file browser
 - [ ] Make sure you have ranger installed
+
 Press `R` to open Ranger (file selector)
 
-<img alt="Gif" src="https://raw.githubusercontent.com/francoiscabrol/ranger.vim/master/ranger.gif" width="60%" />
+And Within rnvimr (ranger), you can:
+| Shortcut   | Action                             |
+|------------|------------------------------------|
+| `Ctrl` `t` | Open the file in a new tab         |
+| `Ctrl` `x` | Split up and down with the file    |
+| `Ctrl` `v` | Split left and right with the file |
+
+<img alt="Gif" src="https://user-images.githubusercontent.com/17562139/74416173-b0aa8600-4e7f-11ea-83b5-31c07c384af1.gif" width="60%" />
 
 #### FZF - the fuzzy file finder
 | Shortcut   | Action             |
