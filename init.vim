@@ -125,7 +125,6 @@ augroup TermHandling
   " exit insert mode
   autocmd TermOpen * setlocal listchars= nonumber norelativenumber
     \ | startinsert
-    \ | tnoremap <Esc> <c-c>
   autocmd FileType fzf call LayoutTerm(0.6, 'horizontal')
 augroup END
 
@@ -417,6 +416,7 @@ endfunc
 call plug#begin('~/.config/nvim/plugged')
 
 "Plug 'camspiers/animate.vim'
+Plug 'kevinhwang91/rnvimr', {'do': 'make install; make sync'}
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -444,7 +444,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'yuki-ycino/fzf-preview.vim'
 "Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 "Plug 'junegunn/fzf'
-Plug 'francoiscabrol/ranger.vim'
+"Plug 'francoiscabrol/ranger.vim'
 
 " Taglist
 Plug 'liuchengxu/vista.vim'
@@ -581,7 +581,7 @@ Plug 'makerj/vim-pdf'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'kana/vim-textobj-user'
 Plug 'roxma/nvim-yarp'
-Plug 'rbgrouleff/bclose.vim' " For ranger.vim
+"Plug 'rbgrouleff/bclose.vim' " For ranger.vim
 
 call plug#end()
 
@@ -894,8 +894,8 @@ autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 " ===
 " === Ranger.vim
 " ===
-nnoremap R :Ranger<CR>
-let g:ranger_map_keys = 0
+"nnoremap R :Ranger<CR>
+"let g:ranger_map_keys = 0
 
 
 " ===
@@ -1211,6 +1211,14 @@ let g:vmt_cycle_list_item_markers = 1
 let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
 
+
+" ===
+" === rnvimr
+" ===
+let g:rnvimr_ex_enable = 1
+let g:rnvimr_pick_enable = 1
+nnoremap <silent> R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 
 
 " ===================== End of Plugin Settings =====================
