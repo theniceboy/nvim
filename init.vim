@@ -218,7 +218,7 @@ noremap <silent> <LEADER>o za
 
 " Open up lazygit
 noremap \g :term lazygit<CR>
-noremap <c-g> :tabe<CR>:term lazygit<CR>
+noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
 
 " Open up pudb
 noremap <c-d> :tab sp<CR>:term python3 -m pudb %<CR>
