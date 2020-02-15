@@ -422,6 +422,7 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'RRethy/vim-illuminate'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -536,7 +537,6 @@ Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 Plug 'easymotion/vim-easymotion'
 Plug 'Konfekt/FastFold'
 Plug 'junegunn/vim-peekaboo'
-Plug 'bkad/CamelCaseMotion'
 "Plug 'wellle/context.vim'
 Plug 'svermeulen/vim-subversive'
 
@@ -1180,20 +1180,6 @@ sign define vimspectorBPDisabled text=☞ texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
 
 
-
-" ===
-" === camelcase
-" ===
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> h <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap h
-sunmap ge
-
-
 " ===
 " === reply.vim
 " ===
@@ -1227,6 +1213,12 @@ let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 nmap s <plug>(SubversiveSubstitute)
 nmap ss <plug>(SubversiveSubstituteLine)
 
+
+" ===
+" === vim-illuminate
+" ===
+let g:Illuminate_delay = 750
+hi illuminatedWord cterm=inverse gui=inverse
 
 
 " ===================== End of Plugin Settings =====================
