@@ -343,6 +343,9 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 " ===
 " === Other useful stuff
 " ===
+" Open a new instance of st with the cwd
+nnoremap \t :tabe<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
+
 " Move the next character to the end of the line with ctrl+9
 inoremap <C-u> <ESC>lx$p
 
