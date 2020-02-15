@@ -42,10 +42,10 @@
 		"variable": "\ue71b"
 	},
 	"diagnostic.signOffset": 1,
-	"diagnostic.errorSign": "●",
-	"diagnostic.warningSign": "●",
-	"diagnostic.infoSign": "🛈",
-	"diagnostic.hintSign": "•",
+	"diagnostic.errorSign": "×",
+	"diagnostic.warningSign": "»",
+	"diagnostic.infoSign": "ღ",
+	"diagnostic.hintSign": "ஐ",
 	"diagnostic.displayByAle": false,
 	"diagnostic.refreshOnInsertMode": false,
 	"diagnostic.refreshAfterSave": false,
@@ -60,7 +60,8 @@
 		"javascript",
 		"html",
 		"css",
-		"python"
+		"python",
+		"dart"
 	],
 	"signature.target": "float",
 	"yank.enableCompletion" : false,
@@ -76,7 +77,6 @@
 			"expand": true
 		}
 	],
-	"todolist.autoUpload": true,
 	"explorer.file.column.indent.indentLine": true,
 	"explorer.file.showHiddenFiles": true,
 	"explorer.icon.enableNerdfont": true,
