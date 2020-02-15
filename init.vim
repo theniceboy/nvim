@@ -424,7 +424,6 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-"Plug 'camspiers/animate.vim'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -452,7 +451,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'yuki-ycino/fzf-preview.vim'
 "Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 "Plug 'junegunn/fzf'
-Plug 'kevinhwang91/rnvimr', {'do': 'make install'}
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 
 " Taglist
 Plug 'liuchengxu/vista.vim'
@@ -541,6 +540,7 @@ Plug 'Konfekt/FastFold'
 Plug 'junegunn/vim-peekaboo'
 Plug 'bkad/CamelCaseMotion'
 "Plug 'wellle/context.vim'
+Plug 'svermeulen/vim-subversive'
 
 " Input Method Autoswitch
 "Plug 'rlue/vim-barbaric' " slowing down vim-multiple-cursors
@@ -1219,6 +1219,14 @@ let g:rnvimr_ex_enable = 1
 let g:rnvimr_pick_enable = 1
 nnoremap <silent> R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
 let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
+
+
+" ===
+" === vim-subversive
+" ===
+nmap s <plug>(SubversiveSubstitute)
+nmap ss <plug>(SubversiveSubstituteLine)
+
 
 
 " ===================== End of Plugin Settings =====================

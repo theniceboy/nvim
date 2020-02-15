@@ -45,6 +45,7 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 		+ [Undotree](#undotree)
 		+ [vim-multiple-cursors](#vim-multiple-cursors)
 		+ [vim-surround](#vim-surround)
+		+ [vim-subversive](#vim-subversive)
 		+ [vim-easy-align](#vim-easy-align)
 		+ [AutoFormat](#autoformat)
 		+ [vim-markdown-toc (generate table of contents for markdown files)](#vim-markdown-toc-generate-table-of-contents-for-markdown-files)
@@ -339,6 +340,13 @@ press: `cs'"`:
 ```
 
 <img alt="Gif" src="https://two-wrongs.com/image/surround_vim.gif" width="60%" />
+
+#### vim-subversive
+New operator: `s`:
+
+You can execute `s<motion>` to substitute the text object provided by the motion with the contents of the default register (or an explicit register if provided). For example, you could execute `skw` to replace the current word under the cursor with the current yank, or `skp` to replace the paragraph, etc.
+
+
 
 #### vim-easy-align
 Press `ga` + **symbol** in normal or visual mode to align text based on **symbol**
