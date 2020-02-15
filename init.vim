@@ -401,10 +401,16 @@ func! CompileRunGcc()
 	elseif &filetype == 'tex'
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"
+	elseif &filetype == 'dart'
+		set splitright
+		:vsp
+		:term cd ..; flutter run
 	elseif &filetype == 'go'
 		set splitbelow
 		:sp
 		:term go run %
+		exec "<C-\><C-N>"
+		exec "<C-w>h"
 	endif
 endfunc
 
@@ -641,8 +647,8 @@ nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-vimlsp', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-lists', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator']
 "set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
+"nmap <silent> <TAB> <Plug>(coc-range-select)
+"xmap <silent> <TAB> <Plug>(coc-range-select)
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
 	let col = col('.') - 1
