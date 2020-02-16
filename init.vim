@@ -1218,7 +1218,7 @@ nmap ss <plug>(SubversiveSubstituteLine)
 " === vim-illuminate
 " ===
 let g:Illuminate_delay = 750
-hi illuminatedWord cterm=inverse gui=inverse
+hi illuminatedWord cterm=undercurl gui=undercurl
 
 
 " ===================== End of Plugin Settings =====================
