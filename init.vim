@@ -410,8 +410,6 @@ func! CompileRunGcc()
 		set splitbelow
 		:sp
 		:term go run %
-		exec "<C-\><C-N>"
-		exec "<C-w>h"
 	endif
 endfunc
 
@@ -526,7 +524,8 @@ Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
 " Editor Enhancement
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
 Plug 'AndrewRadev/switch.vim' " gs to switch
 Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
@@ -840,15 +839,36 @@ endfunc
 " ==
 " == vim-multiple-cursor
 " ==
-let g:multi_cursor_use_default_mapping = 0
-let g:multi_cursor_start_word_key = '<c-k>'
-let g:multi_cursor_select_all_word_key = '<a-k>'
-let g:multi_cursor_start_key = 'g<c-k>'
-let g:multi_cursor_select_all_key = 'g<a-k>'
-let g:multi_cursor_next_key = '<c-k>'
-let g:multi_cursor_prev_key = '<c-p>'
-let g:multi_cursor_skip_key = '<C-s>'
-let g:multi_cursor_quit_key = '<Esc>'
+"let g:multi_cursor_use_default_mapping = 0
+"let g:multi_cursor_start_word_key = '<c-k>'
+"let g:multi_cursor_select_all_word_key = '<a-k>'
+"let g:multi_cursor_start_key = 'g<c-k>'
+"let g:multi_cursor_select_all_key = 'g<a-k>'
+"let g:multi_cursor_next_key = '<c-k>'
+"let g:multi_cursor_prev_key = '<c-p>'
+"let g:multi_cursor_skip_key = '<C-s>'
+"let g:multi_cursor_quit_key = '<Esc>'
+
+
+" ===
+" === vim-visual-multi
+" ===
+"let g:VM_theme             = 'iceblue'
+"let g:VM_default_mappings = 0
+let g:VM_leader = {'default': ',', 'visual': ',', 'buffer': ','}
+let g:VM_maps = {}
+let g:VM_custom_motions  = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'k': 'i', 'N': '0', 'I': '$', 'h': 'e'}
+let g:VM_maps['Find Under']         = '<C-k>'
+let g:VM_maps['Find Subword Under'] = '<C-k>'
+let g:VM_maps['Find Next']         = ''
+let g:VM_maps['Find Prev']         = ''
+let g:VM_maps['Remove Region'] = 'q'
+let g:VM_maps['Skip Region'] = ''
+let g:VM_maps["Undo"]      = 'l'
+let g:VM_maps["Redo"]      = '<C-r>'
+
+
+
 
 
 " ===
