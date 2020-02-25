@@ -420,6 +420,7 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'tiagofumo/dart-vim-flutter-layout'
 Plug 'RRethy/vim-illuminate'
 
 " Testing my own plugin
@@ -524,7 +525,6 @@ Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
 " Editor Enhancement
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
-"Plug 'terryma/vim-multiple-cursors'
 Plug 'mg979/vim-visual-multi'
 Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
 Plug 'AndrewRadev/switch.vim' " gs to switch
@@ -874,6 +874,9 @@ let g:VM_maps["Redo"]      = '<C-r>'
 " === Far.vim
 " ===
 noremap <LEADER>f :F  **/*<left><left><left><left><left>
+let g:far#mapping = {
+		\ "replace_undo" : ["l"],
+		\ }
 
 
 " ===
