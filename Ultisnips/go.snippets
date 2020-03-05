@@ -4,8 +4,20 @@ if err != nil {
 }
 ${0}
 endsnippet
-	
-snippet fp "Println"
+
+snippet st "Println"
 fmt.Println(${1})${0}
 endsnippet
-	
+
+snippet start "Starting code"
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println("hello")
+}
+endsnippet
+
