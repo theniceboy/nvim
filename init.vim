@@ -409,7 +409,7 @@ func! CompileRunGcc()
 	elseif &filetype == 'go'
 		set splitbelow
 		:sp
-		:term go run %
+		:term go run .
 	endif
 endfunc
 
@@ -422,6 +422,9 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'tiagofumo/dart-vim-flutter-layout'
 Plug 'RRethy/vim-illuminate'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'KabbAmine/vCoolor.vim'
+Plug 'pechorin/any-jump.vim'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -440,7 +443,7 @@ Plug 'ajmwagar/vim-deus'
 
 " Genreal Highlighter
 Plug 'jaxbot/semantic-highlight.vim'
-Plug 'chrisbra/Colorizer' " Show colors with :ColorHighlight
+"Plug 'norcalli/nvim-colorizer.lua'
 
 " File navigation
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -464,6 +467,7 @@ Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'wellle/tmux-complete.vim'
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -535,7 +539,7 @@ Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph,
 Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 Plug 'easymotion/vim-easymotion'
 Plug 'Konfekt/FastFold'
-Plug 'junegunn/vim-peekaboo'
+"Plug 'junegunn/vim-peekaboo'
 "Plug 'wellle/context.vim'
 Plug 'svermeulen/vim-subversive'
 
@@ -1226,6 +1230,12 @@ let g:vmt_fence_closing_text = '/TOC'
 let g:rnvimr_ex_enable = 1
 let g:rnvimr_pick_enable = 1
 nnoremap <silent> R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+let g:rnvimr_layout = { 'relative': 'editor',
+            \ 'width': &columns,
+            \ 'height': &lines,
+            \ 'col': 0,
+            \ 'row': 0,
+            \ 'style': 'minimal' }
 let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 
 

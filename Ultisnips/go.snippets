@@ -5,6 +5,13 @@ if err != nil {
 ${0}
 endsnippet
 
+snippet ie "Check Error"
+if err != nil {
+	panic(err)
+}
+${0}
+endsnippet
+
 snippet st "Println"
 fmt.Println(${1})${0}
 endsnippet
