@@ -119,53 +119,6 @@ let g:terminal_color_11 = '#F4F99D'
 let g:terminal_color_12 = '#CAA9FA'
 let g:terminal_color_13 = '#FF92D0'
 let g:terminal_color_14 = '#9AEDFE'
-augroup TermHandling
-  autocmd!
-  " Turn off line numbers, listchars, auto enter insert mode and map esc to
-  " exit insert mode
-  autocmd TermOpen * setlocal listchars= nonumber norelativenumber
-    \ | startinsert
-  autocmd FileType fzf call LayoutTerm(0.6, 'horizontal')
-augroup END
-
-function! LayoutTerm(size, orientation) abort
-  let timeout = 16.0
-  let animation_total = 120.0
-  let timer = {
-    \ 'size': a:size,
-    \ 'step': 1,
-    \ 'steps': animation_total / timeout
-  \}
-
-  if a:orientation == 'horizontal'
-    resize 1
-    function! timer.f(timer)
-      execute 'resize ' . string(&lines * self.size * (self.step / self.steps))
-      let self.step += 1
-    endfunction
-  else
-    vertical resize 1
-    function! timer.f(timer)
-      execute 'vertical resize ' . string(&columns * self.size * (self.step / self.steps))
-      let self.step += 1
-    endfunction
-  endif
-  call timer_start(float2nr(timeout), timer.f, {'repeat': float2nr(timer.steps)})
-endfunction
-
-" Open autoclosing terminal, with optional size and orientation
-function! OpenTerm(cmd, ...) abort
-  let orientation = get(a:, 2, 'horizontal')
-  if orientation == 'horizontal'
-    new | wincmd J
-  else
-    vnew | wincmd L
-  endif
-  call LayoutTerm(get(a:, 1, 0.5), orientation)
-  call termopen(a:cmd, {'on_exit': {j,c,e -> execute('if c == 0 | close | endif')}})
-endfunction
-" }}}
-" vim:fdm=marker
 
 
 " ===
@@ -911,7 +864,7 @@ let g:bullets_enabled_file_types = [
 " === Vista.vim
 " ===
 noremap <silent> T :Vista!!<CR>
-noremap <silent> <c-t> :Vista finder<CR>
+noremap <c-t> :silent! Vista finder<CR>
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'ctags'
 let g:vista_fzf_preview = ['right:50%']
