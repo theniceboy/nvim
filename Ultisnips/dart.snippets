@@ -1,0 +1,162 @@
+snippet wh "Width and height"
+width: ${1},
+height: ${0},
+endsnippet
+snippet br "BorderRadius"
+borderRadius: BorderRadius.all(Radius.circular(${0})),
+endsnippet
+
+snippet dec "BoxDecoration"
+decoration: BoxDecoration(
+  color: ${1},
+),${0}
+endsnippet
+
+snippet ba "BorderRadius"
+border: Border.all(
+  width: ${1},
+  color: ${2},
+),
+endsnippet
+
+snippet row "Row"
+Row(children: [
+  ${0}
+]),
+endsnippet
+
+snippet rowa "Row with alignment"
+Row(
+  mainAxisAlignment: MainAxisAlignment.${1:start},
+  crossAxisAlignment: CrossAxisAlignment.${2:start},
+  children: [
+    ${0}
+  ],
+),
+endsnippet
+
+snippet col "Column"
+Column(children: [
+  ${0}
+]),
+endsnippet
+
+snippet cola "Column with alignment"
+Column(
+  mainAxisAlignment: MainAxisAlignment.${1:start},
+  crossAxisAlignment: CrossAxisAlignment.${2:start},
+  children: [
+    ${0}
+  ],
+),
+endsnippet
+
+snippet con "Container"
+Container(
+  child: ${0},
+)
+endsnippet
+
+snippet cons "Container Sized"
+Container(
+  width: ${1},
+  height: ${2},
+  child: ${0},
+)
+endsnippet
+
+
+snippet ts "Text with text style"
+Text(${1}, style: ${2}),${0}
+endsnippet
+
+snippet sw "SizedBox with width"
+SizedBox(width: ${1}),${0}
+endsnippet
+
+snippet sh "SizedBox with height"
+SizedBox(height: ${1}),${0}
+endsnippet
+
+snippet swh "SizedBox with width and height"
+SizedBox(width: ${1}, height: ${2}),${0}
+endsnippet
+
+snippet nw "New Widget" b
+class ${1} extends StatefulWidget {
+  @override
+  createState() {
+    return _`!p
+snip.rv = t[1]
+`State();
+  }
+}
+
+class _`!p
+snip.rv = t[1]
+`State extends State<`!p
+snip.rv = t[1]
+`> {
+  @override
+  Widget build(BuildContext context) {
+    return ${0:${VISUAL}};
+  }
+}
+
+endsnippet
+
+
+snippet nwp "New Widget With Parameters" b
+class ${1} extends StatefulWidget {
+  final ${2};
+  `!p
+snip.rv = t[1]
+`({`!p
+snip.rv = ", this.".join([""] + [x.strip() for x in t[2].split(',')])[2:]
+`});
+
+  @override
+  createState() {
+    return _`!p
+snip.rv = t[1]
+`State(`!p
+snip.rv=", ".join([x.strip() + ": " + x.strip() for x in t[2].split(',')])
+`);
+  }
+}
+
+class _`!p
+snip.rv = t[1]
+`State extends State<`!p
+snip.rv = t[1]
+`> {
+  // Copy and paste parameters when finished
+  _`!p
+snip.rv = t[1]
+`State({`!p
+snip.rv = ", this.".join([""] + [x.strip() for x in t[2].split(',')])[2:]
+`});
+  @override
+  Widget build(BuildContext context) {
+    return ${0:${VISUAL}};
+  }
+}
+
+endsnippet
+
+
+snippet slp "New Stateless Widget With Parameters" b
+class ${1} extends StatelessWidget {
+  final ${2};
+  `!p
+snip.rv = t[1]
+`({`!p
+snip.rv = ", this.".join([""] + [x.strip() for x in t[2].split(',')])[2:]
+`});
+  @override
+  Widget build(BuildContext context) {
+    return ${0:${VISUAL}};
+  }
+}
+
+endsnippet

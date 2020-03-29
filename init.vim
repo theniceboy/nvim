@@ -542,6 +542,7 @@ Plug 'Konfekt/FastFold'
 "Plug 'junegunn/vim-peekaboo'
 "Plug 'wellle/context.vim'
 Plug 'svermeulen/vim-subversive'
+Plug 'theniceboy/argtextobj.vim'
 
 " Input Method Autoswitch
 "Plug 'rlue/vim-barbaric' " slowing down vim-multiple-cursors
@@ -601,9 +602,9 @@ set lazyredraw
 " ===
 " === Dress up my vim
 " ===
-set termguicolors	" enable true colors support
+set termguicolors " enable true colors support
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=dark
+"set background=dark
 "let ayucolor="mirage"
 "let g:oceanic_next_terminal_bold = 1
 "let g:oceanic_next_terminal_italic = 1
@@ -615,8 +616,9 @@ color deus
 "color gruvbox
 "let ayucolor="light"
 "color ayu
+"color xcodelighthc
 "set background=light
-"color xcodedark
+"set cursorcolumn
 
 hi NonText ctermfg=gray guifg=grey10
 "hi SpecialKey ctermfg=blue guifg=grey70
@@ -658,11 +660,12 @@ function! s:check_back_space() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]	=~ '\s'
 endfunction
-inoremap <silent><expr> <Tab>
-			\ pumvisible() ? "\<C-n>" :
-			\ <SID>check_back_space() ? "\<Tab>" :
-			\ coc#refresh()
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <TAB>
+	\ pumvisible() ? "\<C-n>" :
+	\ <SID>check_back_space() ? "\<TAB>" :
+	\ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 function! s:check_back_space() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~# '\s'
@@ -732,7 +735,7 @@ set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 noremap <C-p> :FZF<CR>
 noremap <C-f> :Ag<CR>
 noremap <C-h> :MRU<CR>
-noremap <C-t> :BTags<CR>
+"noremap <C-t> :BTags<CR>
 noremap <C-l> :LinesWithPreview<CR>
 noremap <C-w> :Buffers<CR>
 "noremap ; :History:<CR>
@@ -795,7 +798,6 @@ command! -bang BTags
 " ===
 let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlP'
-
 
 
 " ===
@@ -869,7 +871,7 @@ let g:VM_maps['Find Subword Under'] = '<C-k>'
 let g:VM_maps['Find Next']         = ''
 let g:VM_maps['Find Prev']         = ''
 let g:VM_maps['Remove Region'] = 'q'
-let g:VM_maps['Skip Region'] = ''
+let g:VM_maps['Skip Region'] = '<c-n>'
 let g:VM_maps["Undo"]      = 'l'
 let g:VM_maps["Redo"]      = '<C-r>'
 
@@ -908,7 +910,8 @@ let g:bullets_enabled_file_types = [
 " ===
 " === Vista.vim
 " ===
-noremap <silent> T :Vista!!<CR>
+noremap <silent> T :Vista!! coc<CR>
+noremap <silent> <c-t> :Vista finder coc<CR>
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'ctags'
 let g:vista_fzf_preview = ['right:50%']
@@ -938,7 +941,7 @@ inoremap <c-n> <nop>
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<c-n>"
-let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/', 'UltiSnips']
+let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/', './UltiSnips']
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
 
 
