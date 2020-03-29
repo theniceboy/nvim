@@ -910,8 +910,8 @@ let g:bullets_enabled_file_types = [
 " ===
 " === Vista.vim
 " ===
-noremap <silent> T :Vista!! coc<CR>
-noremap <silent> <c-t> :Vista finder coc<CR>
+noremap <silent> T :Vista!!<CR>
+noremap <silent> <c-t> :Vista finder<CR>
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'ctags'
 let g:vista_fzf_preview = ['right:50%']
