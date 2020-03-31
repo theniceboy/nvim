@@ -370,6 +370,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'tiagofumo/dart-vim-flutter-layout'
 Plug 'RRethy/vim-illuminate'
+"Plug 'liuchengxu/vim-clap'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'pechorin/any-jump.vim'
@@ -1207,6 +1208,24 @@ nmap ss <plug>(SubversiveSubstituteLine)
 " ===
 let g:Illuminate_delay = 750
 hi illuminatedWord cterm=undercurl gui=undercurl
+
+
+"" ===
+"" === vim-clap
+"" ===
+"let g:clap_multi_selection_warning_silent = 1
+"nnoremap <silent> <c-w> :Clap buffers<CR>
+"nnoremap <silent> <c-f> :Clap grep<CR>
+"nnoremap <silent> <c-p> :Clap filer<CR>
+"nnoremap <silent> : :Clap command<CR>
+"nnoremap <silent> <c-h> :Clap history<CR>
+"nnoremap <silent> ? :Clap search_history<CR>
+"nnoremap <silent> <c-y> :Clap yanks<CR>
+"nnoremap <silent> <c-l> :Clap lines<CR>
+"nnoremap <silent> <c-d> :Clap command_history<CR>
+"let g:clap_theme = 'material_design_dark.vim'
+
+
 
 
 " ===================== End of Plugin Settings =====================
