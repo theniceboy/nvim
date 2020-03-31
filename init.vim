@@ -894,8 +894,14 @@ inoremap <c-n> <nop>
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<c-n>"
-let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/', './UltiSnips']
+let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/Ultisnips/']
 silent! au BufEnter,BufRead,BufNewFile * silent! unmap <c-r>
+" Solve extreme insert-mode lag on macOS (by disabling autotrigger)
+augroup ultisnips_no_auto_expansion
+    au!
+    au VimEnter * au! UltiSnips_AutoTrigger
+augroup END
+
 
 
 " ===
