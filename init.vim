@@ -644,6 +644,7 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 " coctodolist
 nnoremap <leader>tn :CocCommand todolist.create<CR>
 nnoremap <leader>tl :CocList todolist<CR>
+nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
 
 
 " ===

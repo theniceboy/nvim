@@ -157,6 +157,8 @@
 	"javascript.suggest.names": true,
 	"javascript.suggestionActions.enabled": true,
 	"json.format.enable": true,
+	"todolist.autoUpload": true,
+	"todolist.promptForReminder":false,
 	"languageserver": {
 		"lua": {
 			"command": "lua-lsp",
