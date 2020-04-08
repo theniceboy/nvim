@@ -163,3 +163,9 @@ snip.rv = ", this.".join([""] + [x.strip() for x in t[2].split(',')])[2:]
 }
 
 endsnippet
+
+snippet this "this.{} = {};"
+this.${1} = `!p
+snip.rv = t[1]
+`;
+endsnippet

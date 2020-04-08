@@ -373,6 +373,10 @@ Plug 'RRethy/vim-illuminate'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'pechorin/any-jump.vim'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'airblade/vim-rooter'
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -606,7 +610,7 @@ nnoremap gb :Gblame<CR>
 " ===
 " fix the most annoying bug that coc has
 "silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-gitignore', 'coc-vimlsp', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-lists', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-flutter', 'coc-todolist']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-gitignore', 'coc-vimlsp', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-lists', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-flutter', 'coc-todolist', 'coc-yaml', 'coc-tasks']
 "set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "nmap <silent> <TAB> <Plug>(coc-range-select)
 "xmap <silent> <TAB> <Plug>(coc-range-select)
@@ -652,6 +656,8 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 nnoremap <leader>tn :CocCommand todolist.create<CR>
 nnoremap <leader>tl :CocList todolist<CR>
 nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
+" coc-tasks
+noremap <silent> T :CocList tasks<CR>
 
 
 " ===
@@ -703,6 +709,28 @@ noremap <leader>; :History:<CR>
 
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+function! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunction
+
+function! s:delete_buffers(lines)
+  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+\ }))
+
+noremap <c-d> :BD<CR>
+
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+
 
 
 " ===
@@ -822,8 +850,7 @@ let g:bullets_enabled_file_types = [
 " ===
 " === Vista.vim
 " ===
-noremap <silent> T :Vista!!<CR>
-noremap <c-t> :silent! Vista finder<CR>
+noremap <c-t> :silent! Vista finder coc<CR>
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'ctags'
 let g:vista_fzf_preview = ['right:50%']
@@ -1173,6 +1200,24 @@ nmap ss <plug>(SubversiveSubstituteLine)
 " ===
 let g:Illuminate_delay = 750
 hi illuminatedWord cterm=undercurl gui=undercurl
+
+
+" ===
+" === nvim-colorizer.lua
+" ===
+lua require'colorizer'.setup()
+
+
+" ===
+" === vim-rooter
+" ===
+let g:rooter_patterns = ['__vim_project_root', '.git/']
+
+
+" ===
+" === AsyncTasks
+" ===
+let g:asyncrun_open = 6
 
 
 " ===================== End of Plugin Settings =====================
