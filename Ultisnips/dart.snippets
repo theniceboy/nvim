@@ -65,6 +65,9 @@ Container(
 )
 endsnippet
 
+snippet cen "Center"
+Center(child: ${0})
+endsnippet
 
 snippet ts "Text with text style"
 Text(${1}, style: ${2}),${0}
@@ -159,4 +162,10 @@ snip.rv = ", this.".join([""] + [x.strip() for x in t[2].split(',')])[2:]
   }
 }
 
+endsnippet
+
+snippet this "this.{} = {};"
+this.${1} = `!p
+snip.rv = t[1]
+`;
 endsnippet

@@ -70,7 +70,7 @@
 	"explorer.sources": [
 		{
 			"name": "buffer",
-			"expand": true
+			"expand": false
 		},
 		{
 			"name": "file",
@@ -82,19 +82,21 @@
 	"explorer.icon.enableNerdfont": true,
 	"explorer.file.column.git.showIgnored": true,
 	"explorer.keyMappingMode": "none",
+	"explorer.buffer.showHiddenBuffers": false,
 	"explorer.keyMappings": {
 		"u": "nodePrev",
 		"e": "nodeNext",
 		"h": "toggleSelection",
 		"<tab>": "actionMenu",
-		"n": "collapse",
+		"N": "collapse",
 		"gl": "expandRecursive",
 		"gh": "collapseRecursive",
-		"i": "expand",
+		"i": "open",
 		"<cr>": "open",
 		"I": "openInVsplit",
-		"o": "openInTab",
-		"N": "gotoParent",
+		"o": "expand",
+		"O": "openInTab",
+		"n": "gotoParent",
 		"l": "gotoParent",
 		"yp": "copyFilepath",
 		"yn": "copyFilename",
