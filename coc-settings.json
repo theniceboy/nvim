@@ -161,6 +161,8 @@
 	"json.format.enable": true,
 	"todolist.autoUpload": true,
 	"todolist.promptForReminder":false,
+	"coc-actions.hideCursor": false,
+	"coc-actions.showActionKind": true,
 	"languageserver": {
 		"lua": {
 			"command": "lua-lsp",
