@@ -2,6 +2,7 @@ snippet wh "Width and height"
 width: ${1},
 height: ${0},
 endsnippet
+
 snippet br "BorderRadius"
 borderRadius: BorderRadius.all(Radius.circular(${0})),
 endsnippet
@@ -53,6 +54,18 @@ endsnippet
 
 snippet con "Container"
 Container(
+  child: ${0},
+)
+endsnippet
+
+snippet exp "Expanded"
+Expanded(
+  child: ${0},
+)
+endsnippet
+
+snippet flx "Flexible"
+Flexible(
   child: ${0},
 )
 endsnippet
@@ -168,4 +181,8 @@ snippet this "this.{} = {};"
 this.${1} = `!p
 snip.rv = t[1]
 `;
+endsnippet
+
+snippet wt "Colors.white"
+color: Colors.white,
 endsnippet

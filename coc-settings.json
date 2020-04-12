@@ -2,7 +2,7 @@
 	"coc.preferences.hoverTarget": "preview",
 	"coc.preferences.enableFloatHighlight": true,
 	"coc.preferences.snippetStatusText": "Ⓢ ",
-	"coc.preferences.extensionUpdateCheck": "weekly",
+	"coc.preferences.extensionUpdateCheck": "daily",
 	"suggest.detailMaxLength": 60,
 	"suggest.noselect": true,
 	"suggest.enablePreselect": false,
