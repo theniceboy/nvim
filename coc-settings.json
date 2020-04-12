@@ -150,9 +150,9 @@
 	"python.jediEnabled": false,
 	"python.formatting.provider": "yapf",
 	"python.formatting.yapfArgs": [
-        "--style",
-        "{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
-    ],
+				"--style",
+				"{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
+		],
 	"html.format.enable": true,
 	"javascript.referencesCodeLens.enable": true,
 	"javascript.showUnused": true,
@@ -163,6 +163,21 @@
 	"todolist.promptForReminder":false,
 	"coc-actions.hideCursor": false,
 	"coc-actions.showActionKind": true,
+	"diagnostic-languageserver.filetypes": {
+		"vim": "vint",
+		"email": "languagetool",
+		"markdown": [ "write-good", "markdownlint" ],
+		"sh": "shellcheck",
+		"elixir": ["mix_credo", "mix_credo_compile"],
+		"eelixir": ["mix_credo", "mix_credo_compile"],
+		"php": ["phpstan", "psalm"],
+		"dart": "dartfmt"
+	},
+	"diagnostic-languageserver.formatFiletypes": {
+		"dart": "dartfmt",
+		"elixir": "mix_format",
+		"eelixir": "mix_format"
+	},
 	"languageserver": {
 		"lua": {
 			"command": "lua-lsp",
@@ -193,6 +208,71 @@
 					 "directory": "/tmp/ccls"
 				 }
 			 }
+		},
+		"dls": {
+			"command": "diagnostic-languageserver",
+			"args": ["--stdio"],
+			"filetypes": [ "sh", "email", "dart" ],
+			"initializationOptions": {
+				"linters": {
+					"dartanalyzer": {
+						"command": "dartanalyzer",
+					},
+					"shellcheck": {
+						"command": "shellcheck",
+						"debounce": 100,
+						"args": [ "--format=gcc", "-"],
+						"offsetLine": 0,
+						"offsetColumn": 0,
+						"sourceName": "shellcheck",
+						"formatLines": 1,
+						"formatPattern": [
+							"^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
+							{
+								"line": 1,
+								"column": 2,
+								"message": 4,
+								"security": 3
+							}
+						],
+						"securities": {
+							"error": "error",
+							"warning": "warning",
+							"note": "info"
+						}
+					},
+					"languagetool": {
+						"command": "languagetool",
+						"debounce": 200,
+						"args": ["-"],
+						"offsetLine": 0,
+						"offsetColumn": 0,
+						"sourceName": "languagetool",
+						"formatLines": 2,
+						"formatPattern": [
+							"^\\d+?\\.\\)\\s+Line\\s+(\\d+),\\s+column\\s+(\\d+),\\s+([^\\n]+)\nMessage:\\s+(.*)$",
+							{
+								"line": 1,
+								"column": 2,
+								"message": [4, 3]
+							}
+						],
+					}
+				},
+				"formatters": {
+					"dartfmt": {
+						"command": "dartfmt",
+						"args": [ "--fix" ],
+					}
+				},
+				"filetypes": {
+					"sh": "shellcheck",
+					"email": "languagetool"
+				},
+				"formatFiletypes": {
+					"dart": "dartfmt"
+				}
+			}
 		}
 	}
 }
