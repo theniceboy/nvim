@@ -498,6 +498,7 @@ Plug 'Konfekt/FastFold'
 "Plug 'wellle/context.vim'
 Plug 'svermeulen/vim-subversive'
 Plug 'theniceboy/argtextobj.vim'
+Plug 'rhysd/clever-f.vim'
 
 " Input Method Autoswitch
 "Plug 'rlue/vim-barbaric' " slowing down vim-multiple-cursors
