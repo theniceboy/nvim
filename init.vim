@@ -375,7 +375,6 @@ Plug 'RRethy/vim-illuminate'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'pechorin/any-jump.vim'
-Plug 'norcalli/nvim-colorizer.lua'
 Plug 'airblade/vim-rooter'
 Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
@@ -397,7 +396,7 @@ Plug 'ajmwagar/vim-deus'
 
 " Genreal Highlighter
 Plug 'jaxbot/semantic-highlight.vim'
-"Plug 'norcalli/nvim-colorizer.lua'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " File navigation
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -523,7 +522,6 @@ Plug 'osyo-manga/vim-anzu'
 "Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
 
 " Mini Vim-APP
-"Plug 'voldikss/vim-floaterm'
 "Plug 'liuchengxu/vim-clap'
 "Plug 'jceb/vim-orgmode'
 "Plug 'mhinz/vim-startify'
@@ -705,6 +703,7 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 " ===
 set rtp+=/usr/local/opt/fzf
 set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
+set rtp+=/home/david/.linuxbrew/opt/fzf
 noremap <C-p> :Files<CR>
 noremap <C-f> :Rg<CR>
 noremap <C-h> :History<CR>
@@ -1023,12 +1022,6 @@ endfunction
 
 
 " ===
-" === Colorizer
-" ===
-let g:colorizer_syntax = 1
-
-
-" ===
 " === vim-easymotion
 " ===
 let g:EasyMotion_do_mapping = 0
@@ -1207,12 +1200,6 @@ nmap ss <plug>(SubversiveSubstituteLine)
 " ===
 let g:Illuminate_delay = 750
 hi illuminatedWord cterm=undercurl gui=undercurl
-
-
-" ===
-" === nvim-colorizer.lua
-" ===
-lua require'colorizer'.setup()
 
 
 " ===
