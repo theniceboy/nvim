@@ -378,6 +378,7 @@ Plug 'pechorin/any-jump.vim'
 Plug 'airblade/vim-rooter'
 Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'junkblocker/git-time-lapse'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
@@ -1204,6 +1205,12 @@ hi illuminatedWord cterm=undercurl gui=undercurl
 " === vim-rooter
 " ===
 let g:rooter_patterns = ['__vim_project_root', '.git/']
+
+
+" ===
+" === AsyncRun
+" ===
+noremap gp :AsyncRun git push<CR>
 
 
 " ===
