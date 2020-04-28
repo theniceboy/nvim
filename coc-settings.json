@@ -120,13 +120,13 @@
 		"B": "gotoSource:file",
 		"b": "gotoSource:buffer",
 		"[[": "sourcePrev",
-		"]]": "sourceNext",
-		"[d": "diagnosticPrev",
-		"]d": "diagnosticNext",
-		"[c": "gitPrev",
-		"]c": "gitNext",
-		"<<": "gitStage",
-		">>": "gitUnstage"
+			"]]": "sourceNext",
+			"[d": "diagnosticPrev",
+				"]d": "diagnosticNext",
+				"[c": "gitPrev",
+					"]c": "gitNext",
+					"<<": "gitStage",
+					">>": "gitUnstage"
 	},
 	"git.enableGutters": true,
 	"git.branchCharacter":"\uf408",
@@ -150,9 +150,9 @@
 	"python.jediEnabled": false,
 	"python.formatting.provider": "yapf",
 	"python.formatting.yapfArgs": [
-				"--style",
-				"{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
-		],
+		"--style",
+		"{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
+	],
 	"html.format.enable": true,
 	"javascript.referencesCodeLens.enable": true,
 	"javascript.showUnused": true,
@@ -204,10 +204,10 @@
 			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
 			"rootPatterns": [".ccls", ".ccls-root", "compile_commands.json", ".git/", ".hg/"],
 			"initializationOptions": {
-				 "cache": {
-					 "directory": "/tmp/ccls"
-				 }
-			 }
+				"cache": {
+					"directory": "/tmp/ccls"
+				}
+			}
 		},
 		"dls": {
 			"command": "diagnostic-languageserver",
