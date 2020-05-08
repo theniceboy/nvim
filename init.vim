@@ -90,7 +90,7 @@ if has('persistent_undo')
 	set undofile
 	set undodir=~/.config/nvim/tmp/undo,.
 endif
-set colorcolumn=80
+set colorcolumn=100
 set updatetime=1000
 set virtualedit=block
 
@@ -371,7 +371,7 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'tiagofumo/dart-vim-flutter-layout'
+"Plug 'tiagofumo/dart-vim-flutter-layout'
 Plug 'RRethy/vim-illuminate'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'KabbAmine/vCoolor.vim'
@@ -467,7 +467,7 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-p
 Plug 'tweekmonster/braceless.vim'
 
 " Flutter
-Plug 'dart-lang/dart-vim-plugin'
+Plug 'theniceboy/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
 
 " Swift
