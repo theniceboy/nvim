@@ -355,7 +355,8 @@ func! CompileRunGcc()
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"
 	elseif &filetype == 'dart'
-		CocCommand flutter.run
+		CocCommand flutter.run -d iPhone\ 11\ Pro
+		CocCommand flutter.dev.openDevLog
 	elseif &filetype == 'go'
 		set splitbelow
 		:sp
