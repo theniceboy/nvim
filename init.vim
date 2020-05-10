@@ -945,6 +945,7 @@ nnoremap - N
 " ===
 " === vim-go
 " ===
+let g:go_echo_go_info = 0
 let g:go_doc_popup_window = 1
 let g:go_def_mapping_enabled = 0
 let g:go_template_autocreate = 0
