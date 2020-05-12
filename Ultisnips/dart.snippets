@@ -86,6 +86,14 @@ snippet ts "Text with text style"
 Text(${1}, style: ${2}),${0}
 endsnippet
 
+snippet ss "TextStyle"
+TextStyle(
+  color: ${1},
+  fontSize: ${2},
+  fontWeight: w[${3}],
+),${0}
+endsnippet
+
 snippet sw "SizedBox with width"
 SizedBox(width: ${1}),${0}
 endsnippet
@@ -187,12 +195,46 @@ snippet wt "Colors.white"
 color: Colors.white,
 endsnippet
 
-snippet ss "TextStyle"
-TextStyle(
-  color: ${1},
-  fontSize: ${2},
-  fontWeight: w[${3}],
-),${0}
+snippet inits "initState"
+@override
+void initState() {
+  super.initState();
+  ${0}
+}
 endsnippet
 
+snippet dispose "dispose"
+@override
+void initState() {
+  super.initState();
+  ${0:}
+}
+endsnippet
+
+snippet listv "ListView.builder"
+ListView.builder(
+  itemCount: ${1:1},
+  itemBuilder: (BuildContext context, int index) {
+    return ${2:Container()};
+  },
+)
+endsnippet
+
+snippet future "Future Builder"
+FutureBuilder(
+  future: ${1:Future},
+  initialData: ${2:InitialData},
+  builder: (BuildContext context, AsyncSnapshot snapshot) {
+    if (snapshot.connectionState == ConnectionState.done)
+      return ${3:Container();}
+    return ${4:Container();}
+  },
+)
+endsnippet
+
+snippet try "try catch"
+try {
+} catch (e) {
+}${0}
+endsnippet
 

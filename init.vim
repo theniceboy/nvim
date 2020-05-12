@@ -90,7 +90,7 @@ if has('persistent_undo')
 	set undofile
 	set undodir=~/.config/nvim/tmp/undo,.
 endif
-set colorcolumn=80
+set colorcolumn=100
 set updatetime=1000
 set virtualedit=block
 
@@ -355,7 +355,8 @@ func! CompileRunGcc()
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"
 	elseif &filetype == 'dart'
-		CocCommand flutter.run
+		CocCommand flutter.run -d iPhone\ 11\ Pro
+		CocCommand flutter.dev.openDevLog
 	elseif &filetype == 'go'
 		set splitbelow
 		:sp
@@ -370,7 +371,7 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'tiagofumo/dart-vim-flutter-layout'
+"Plug 'tiagofumo/dart-vim-flutter-layout'
 Plug 'RRethy/vim-illuminate'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'KabbAmine/vCoolor.vim'
@@ -466,7 +467,7 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-p
 Plug 'tweekmonster/braceless.vim'
 
 " Flutter
-Plug 'dart-lang/dart-vim-plugin'
+Plug 'theniceboy/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
 
 " Swift
@@ -944,6 +945,7 @@ nnoremap - N
 " ===
 " === vim-go
 " ===
+let g:go_echo_go_info = 0
 let g:go_doc_popup_window = 1
 let g:go_def_mapping_enabled = 0
 let g:go_template_autocreate = 0
@@ -1219,6 +1221,14 @@ noremap gp :AsyncRun git push<CR>
 " === AsyncTasks
 " ===
 let g:asyncrun_open = 6
+
+
+" ===
+" === dart-vim-plugin
+" ===
+let g:dart_style_guide = 2
+let g:dart_format_on_save = 1
+let g:dartfmt_options = " -l 100 --fix"
 
 
 " ===================== End of Plugin Settings =====================
