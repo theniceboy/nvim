@@ -30,7 +30,7 @@ if empty(glob('~/.config/nvim/_machine_specific.vim'))
 	let has_machine_specific_file = 0
 	silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
 endif
-source ~/.config/nvim/_machine_specific.vim
+source $XDG_CONFIG_HOME/nvim/_machine_specific.vim
 
 
 " ====================
@@ -285,7 +285,7 @@ noremap tmi :+tabmove<CR>
 " === Markdown Settings
 " ===
 " Snippets
-source ~/.config/nvim/md-snippets.vim
+source $XDG_CONFIG_HOME/nvim/md-snippets.vim
 " auto spell
 autocmd BufRead,BufNewFile *.md setlocal spell
 
