@@ -357,6 +357,10 @@ func! CompileRunGcc()
 	elseif &filetype == 'dart'
 		CocCommand flutter.run -d iPhone\ 11\ Pro
 		CocCommand flutter.dev.openDevLog
+	elseif &filetype == 'javascript'
+		set splitbelow
+		:sp
+		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
 	elseif &filetype == 'go'
 		set splitbelow
 		:sp
