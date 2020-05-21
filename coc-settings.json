@@ -58,13 +58,21 @@
 	"list.previousKeymap": "<C-u>",
 	"coc.preferences.formatOnSaveFiletypes": [
 		"javascript",
+		"typescript",
 		"html",
 		"css",
+		"json",
 		"python",
 	],
 	"yaml.format.enable": true,
 	"signature.target": "float",
-	"yank.enableCompletion" : false,
+	"yank.enableCompletion": false,
+	"prettier.eslintIntegration": true,
+	"prettier.disableLanguages": [],
+	"prettier.useTabs": true,
+	"typescript.suggestionActions.enabled": true,
+	"prettier.formatterPriority": 1,
+	"typescript.format.enabled": true,
 	"explorer.width": 38,
 	"explorer.quitOnOpen": true,
 	"explorer.sources": [
@@ -120,16 +128,16 @@
 		"B": "gotoSource:file",
 		"b": "gotoSource:buffer",
 		"[[": "sourcePrev",
-			"]]": "sourceNext",
-			"[d": "diagnosticPrev",
-				"]d": "diagnosticNext",
-				"[c": "gitPrev",
-					"]c": "gitNext",
-					"<<": "gitStage",
-					">>": "gitUnstage"
+		"]]": "sourceNext",
+		"[d": "diagnosticPrev",
+		"]d": "diagnosticNext",
+		"[c": "gitPrev",
+		"]c": "gitNext",
+		"<<": "gitStage",
+		">>": "gitUnstage"
 	},
 	"git.enableGutters": true,
-	"git.branchCharacter":"\uf408",
+	"git.branchCharacter": "\uf408",
 	"git.addGBlameToBufferVar": false,
 	"git.addGBlameToVirtualText": false,
 	"git.virtualTextPrefix": " ❯❯❯ ",
@@ -138,9 +146,9 @@
 	"git.removedSign.hlGroup": "GitGutterDelete",
 	"git.topRemovedSign.hlGroup": "GitGutterDelete",
 	"git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
-	"git.addedSign.text":"▎",
-	"git.changedSign.text":"░",
-	"git.removedSign.text":"▏",
+	"git.addedSign.text": "▎",
+	"git.changedSign.text": "░",
+	"git.removedSign.text": "▏",
 	"git.topRemovedSign.text": "▔",
 	"git.changeRemovedSign.text": "▒",
 	"git.enableGlobalStatus": false,
@@ -160,17 +168,17 @@
 	"javascript.suggestionActions.enabled": true,
 	"json.format.enable": true,
 	"todolist.autoUpload": true,
-	"todolist.promptForReminder":false,
+	"todolist.promptForReminder": false,
 	"coc-actions.hideCursor": false,
 	"coc-actions.showActionKind": true,
 	"diagnostic-languageserver.filetypes": {
 		"vim": "vint",
 		"email": "languagetool",
-		"markdown": [ "write-good", "markdownlint" ],
+		"markdown": ["write-good", "markdownlint"],
 		"sh": "shellcheck",
 		"elixir": ["mix_credo", "mix_credo_compile"],
 		"eelixir": ["mix_credo", "mix_credo_compile"],
-		"php": ["phpstan", "psalm"],
+		"php": ["phpstan", "psalm"]
 	},
 	"diagnostic-languageserver.formatFiletypes": {
 		"elixir": "mix_format",
@@ -200,13 +208,18 @@
 		"ccls": {
 			"command": "ccls",
 			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-			"rootPatterns": [".ccls", ".ccls-root", "compile_commands.json", ".git/", ".hg/"],
+			"rootPatterns": [
+				".ccls",
+				".ccls-root",
+				"compile_commands.json",
+				".git/",
+				".hg/"
+			],
 			"initializationOptions": {
 				"cache": {
 					"directory": "/tmp/ccls"
 				}
 			}
-		},
+		}
 	}
 }
-

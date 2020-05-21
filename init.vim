@@ -325,6 +325,9 @@ noremap <LEADER>= :lne<CR>
 " find and replace
 noremap \s :%s//g<left><left>
 
+" set wrap
+noremap <LEADER>sw :set wrap<CR>
+
 " Compile function
 noremap r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
@@ -451,12 +454,14 @@ Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] } " omnisharp-vim depend
 
 " HTML, CSS, JavaScript, PHP, JSON, etc.
 Plug 'elzr/vim-json'
-Plug 'hail2u/vim-css3-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
-Plug 'pangloss/vim-javascript', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'othree/html5.vim'
+Plug 'alvan/vim-closetag'
+" Plug 'hail2u/vim-css3-syntax' " , { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+" Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
+" Plug 'pangloss/vim-javascript', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+" Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+" Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+" Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 "Plug 'jaxbot/browserlink.vim'
 
 " Go
@@ -481,7 +486,7 @@ Plug 'keith/swift.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
-Plug 'theniceboy/bullets.vim'
+Plug 'dkarter/bullets.vim'
 
 " Other filetypes
 Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
@@ -490,12 +495,12 @@ Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi'
-Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
+Plug 'tomtom/tcomment_vim' " in <space>cn to comment a line
 Plug 'theniceboy/antovim' " gs to switch
 Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
 Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
 Plug 'junegunn/vim-after-object' " da= to delete what's after =
-Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph, 
+Plug 'godlygeek/tabular' " :Tabularize <regex> to align
 Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 Plug 'easymotion/vim-easymotion'
 Plug 'Konfekt/FastFold'
@@ -617,7 +622,7 @@ nnoremap gb :Gblame<CR>
 " ===
 " fix the most annoying bug that coc has
 "silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-gitignore', 'coc-vimlsp', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-lists', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-flutter', 'coc-todolist', 'coc-yaml', 'coc-tasks', 'coc-actions', 'coc-diagnostic']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-yank', 'coc-gitignore', 'coc-vimlsp', 'coc-tailwindcss', 'coc-stylelint', 'coc-tslint', 'coc-lists', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-flutter', 'coc-todolist', 'coc-yaml', 'coc-tasks', 'coc-actions', 'coc-diagnostic', "coc-prettier"]
 "set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "nmap <silent> <TAB> <Plug>(coc-range-select)
 "xmap <silent> <TAB> <Plug>(coc-range-select)
@@ -849,7 +854,7 @@ let g:far#mapping = {
 " ===
 " === Bullets.vim
 " ===
-"let g:bullets_set_mappings = 0
+" let g:bullets_set_mappings = 0
 let g:bullets_enabled_file_types = [
 			\ 'markdown',
 			\ 'text',
@@ -1081,10 +1086,9 @@ let g:php_folding = 1
 
 
 " ===
-" === vim-easy-align
+" === tabular
 " ===
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+vmap ga :Tabularize /
 
 
 " ===
@@ -1233,6 +1237,17 @@ let g:asyncrun_open = 6
 let g:dart_style_guide = 2
 let g:dart_format_on_save = 1
 let g:dartfmt_options = " -l 100 --fix"
+
+
+" ===
+" === tcomment_vim
+" ===
+nnoremap ci cl
+let g:tcomment_textobject_inlinecomment = ''
+nmap <LEADER>cn g>c
+vmap <LEADER>cn g>
+nmap <LEADER>cu g<c
+vmap <LEADER>cu g<
 
 
 " ===================== End of Plugin Settings =====================
