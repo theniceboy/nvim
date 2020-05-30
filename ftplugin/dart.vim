@@ -21,3 +21,10 @@ fu! CreateConstructor()
 endfunction
 
 noremap <leader>cf :call CreateConstructor()<CR>
+
+nnoremap \f :call SaveDartWithFix()<CR>
+function SaveDartWithFix()
+	let g:dartfmt_options = " -l 100 --fix"
+	:DartFmt
+	let g:dartfmt_options = " -l 100 "
+endfunction

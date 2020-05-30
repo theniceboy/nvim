@@ -672,7 +672,7 @@ nnoremap <leader>tn :CocCommand todolist.create<CR>
 nnoremap <leader>tl :CocList todolist<CR>
 nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
 " coc-tasks
-noremap <silent> T :CocList tasks<CR>
+noremap <silent> <leader>ts :CocList tasks<CR>
 
 
 " ===
@@ -1236,7 +1236,7 @@ let g:asyncrun_open = 6
 " ===
 let g:dart_style_guide = 2
 let g:dart_format_on_save = 1
-let g:dartfmt_options = " -l 100 --fix"
+let g:dartfmt_options = " -l 100"
 
 
 " ===
