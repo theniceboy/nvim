@@ -167,6 +167,7 @@
 	"javascript.suggest.names": true,
 	"javascript.suggestionActions.enabled": true,
 	"json.format.enable": true,
+	"eslint.autoFixOnSave": true,
 	"todolist.autoUpload": true,
 	"todolist.promptForReminder": false,
 	"coc-actions.hideCursor": false,
