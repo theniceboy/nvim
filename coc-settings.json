@@ -56,13 +56,17 @@
 	"list.previewHighlightGroup": "Statement",
 	"list.nextKeymap": "<C-e>",
 	"list.previousKeymap": "<C-u>",
+	"snippets.ultisnips.directories": [
+		"$HOME/.config/nvim/Ultisnips/",
+		"$HOME/.config/nvim/plugged/vim-snippets/UltiSnips/"
+	],
 	"coc.preferences.formatOnSaveFiletypes": [
 		"javascript",
 		"typescript",
 		"html",
 		"css",
 		"json",
-		"python",
+		"python"
 	],
 	"yaml.format.enable": true,
 	"signature.target": "float",
