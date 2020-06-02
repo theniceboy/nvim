@@ -404,7 +404,6 @@ Plug 'ajmwagar/vim-deus'
 "Plug 'arzg/vim-colors-xcode'
 
 " Genreal Highlighter
-Plug 'jaxbot/semantic-highlight.vim'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " File navigation
