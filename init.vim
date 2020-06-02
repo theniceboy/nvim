@@ -404,7 +404,6 @@ Plug 'ajmwagar/vim-deus'
 "Plug 'arzg/vim-colors-xcode'
 
 " Genreal Highlighter
-Plug 'jaxbot/semantic-highlight.vim'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " File navigation
@@ -459,7 +458,7 @@ Plug 'alvan/vim-closetag'
 " Plug 'hail2u/vim-css3-syntax' " , { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 " Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
 " Plug 'pangloss/vim-javascript', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-" Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 " Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 " Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 "Plug 'jaxbot/browserlink.vim'
