@@ -387,6 +387,7 @@ Plug 'airblade/vim-rooter'
 Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'junkblocker/git-time-lapse'
+Plug 'chrisbra/NrrwRgn'
 
 " Testing my own plugin
 Plug 'theniceboy/vim-calc'
