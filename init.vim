@@ -365,7 +365,7 @@ func! CompileRunGcc()
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"
 	elseif &filetype == 'dart'
-		CocCommand flutter.run -d iPhone\ 11\ Pro
+		exec "CocCommand flutter.run -d ".g:flutter_default_device
 		CocCommand flutter.dev.openDevLog
 	elseif &filetype == 'javascript'
 		set splitbelow
@@ -404,7 +404,7 @@ Plug 'RRethy/vim-illuminate'
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf.vim'
-" Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 Plug 'airblade/vim-rooter'
 Plug 'pechorin/any-jump.vim'
 
