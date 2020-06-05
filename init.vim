@@ -1266,6 +1266,14 @@ nmap <LEADER>cu g<c
 vmap <LEADER>cu g<
 
 
+" ===
+" === NrrwRgn
+" ===
+let g:nrrw_rgn_nomap_nr = 1
+let g:nrrw_rgn_nomap_Nr = 1
+noremap <c-y> :NR<CR>
+
+
 " ===================== End of Plugin Settings =====================
 
 
