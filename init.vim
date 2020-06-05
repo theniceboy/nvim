@@ -231,6 +231,13 @@ cnoremap <M-w> <S-Right>
 
 
 " ===
+" === Searching
+" ===
+noremap - N
+noremap = n
+
+
+" ===
 " === Window management
 " ===
 " Use <space> + new arrow keys for moving the cursor around windows
@@ -378,54 +385,34 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-"Plug 'tiagofumo/dart-vim-flutter-layout'
-Plug 'RRethy/vim-illuminate'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'KabbAmine/vCoolor.vim'
-Plug 'pechorin/any-jump.vim'
-Plug 'airblade/vim-rooter'
-Plug 'skywind3000/asynctasks.vim'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'junkblocker/git-time-lapse'
-Plug 'chrisbra/NrrwRgn'
-
 " Testing my own plugin
-Plug 'theniceboy/vim-calc'
+" Plug 'theniceboy/vim-calc'
 
 " Pretty Dress
-Plug 'theniceboy/eleline.vim'
-Plug 'bling/vim-bufferline'
-"Plug 'liuchengxu/space-vim-theme'
-"Plug 'morhetz/gruvbox'
-"Plug 'ayu-theme/ayu-vim'
-"Plug 'rakr/vim-one'
-"Plug 'mhartington/oceanic-next'
-"Plug 'kristijanhusak/vim-hybrid-material'
+" Plug 'bling/vim-bufferline'
 Plug 'ajmwagar/vim-deus'
 "Plug 'arzg/vim-colors-xcode'
 
-" Genreal Highlighter
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+" Status line
+Plug 'theniceboy/eleline.vim'
+
+" General Highlighter
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'RRethy/vim-illuminate'
 
 " File navigation
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf.vim'
-"Plug 'yuki-ycino/fzf-preview.vim'
-"Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
-"Plug 'junegunn/fzf'
-Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+" Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+Plug 'airblade/vim-rooter'
+Plug 'pechorin/any-jump.vim'
 
 " Taglist
 Plug 'liuchengxu/vista.vim'
 
 " Debugger
-Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
-
-" REPL
-"Plug 'rhysd/reply.vim'
-
-" Error checking, handled by coc
+" Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -439,7 +426,6 @@ Plug 'theniceboy/vim-snippets'
 Plug 'mbbill/undotree'
 
 " Git
-Plug 'tpope/vim-fugitive'
 Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 "Plug 'mhinz/vim-signify'
@@ -468,28 +454,27 @@ Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', '
 Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
 
 " Python
-Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
+" Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
 "Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
 "Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
-Plug 'tweekmonster/braceless.vim'
+Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
 
 " Flutter
 Plug 'theniceboy/dart-vim-plugin'
-Plug 'thosakwe/vim-flutter'
 
 " Swift
 Plug 'keith/swift.vim'
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
-Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
-Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'dkarter/bullets.vim'
 
 " Other filetypes
-Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
+" Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
 
 " Editor Enhancement
 "Plug 'Raimondi/delimitMate'
@@ -500,42 +485,37 @@ Plug 'theniceboy/antovim' " gs to switch
 Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
 Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
 Plug 'junegunn/vim-after-object' " da= to delete what's after =
-Plug 'godlygeek/tabular' " :Tabularize <regex> to align
+Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
 Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 Plug 'easymotion/vim-easymotion'
-Plug 'Konfekt/FastFold'
+" Plug 'Konfekt/FastFold'
 "Plug 'junegunn/vim-peekaboo'
 "Plug 'wellle/context.vim'
 Plug 'svermeulen/vim-subversive'
 Plug 'theniceboy/argtextobj.vim'
 Plug 'rhysd/clever-f.vim'
-
-" Input Method Autoswitch
-"Plug 'rlue/vim-barbaric' " slowing down vim-multiple-cursors
-
-" Formatter
-Plug 'Chiel92/vim-autoformat'
+Plug 'chrisbra/NrrwRgn'
+Plug 'AndrewRadev/splitjoin.vim'
 
 " For general writing
-Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/goyo.vim'
 "Plug 'reedes/vim-wordy'
 "Plug 'ron89/thesaurus_query.vim'
 
 " Bookmarks
-"Plug 'kshenoy/vim-signature'
 Plug 'MattesGroeger/vim-bookmarks'
 
 " Find & Replace
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
-Plug 'osyo-manga/vim-anzu'
 
 " Documentation
 "Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
 
 " Mini Vim-APP
-"Plug 'liuchengxu/vim-clap'
 "Plug 'jceb/vim-orgmode'
 "Plug 'mhinz/vim-startify'
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
 
 " Vim Applications
 Plug 'itchyny/calendar.vim'
@@ -548,14 +528,14 @@ Plug 'wincent/terminus'
 
 " Other useful utilities
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
-Plug 'makerj/vim-pdf'
+" Plug 'makerj/vim-pdf'
 "Plug 'xolox/vim-session'
 "Plug 'xolox/vim-misc' " vim-session dep
 
 " Dependencies
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'kana/vim-textobj-user'
-Plug 'roxma/nvim-yarp'
+" Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'kana/vim-textobj-user'
+" Plug 'roxma/nvim-yarp'
 
 call plug#end()
 
@@ -604,17 +584,11 @@ let g:gitgutter_signs = 0
 let g:gitgutter_map_keys = 0
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_preview_win_floating = 1
-autocmd BufWritePost * GitGutter
+" autocmd BufWritePost * GitGutter
 nnoremap <LEADER>gf :GitGutterFold<CR>
 nnoremap H :GitGutterPreviewHunk<CR>
 nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
 nnoremap <LEADER>g= :GitGutterNextHunk<CR>
-
-
-" ===
-" === vim-fugitive
-" ===
-nnoremap gb :Gblame<CR>
 
 
 " ===
@@ -891,11 +865,11 @@ let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
 \  }
-function! NearestMethodOrFunction() abort
-	return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-set statusline+=%{NearestMethodOrFunction()}
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+" function! NearestMethodOrFunction() abort
+" 	return get(b:, 'vista_nearest_method_or_function', '')
+" endfunction
+" set statusline+=%{NearestMethodOrFunction()}
+" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 
 " ===
@@ -957,14 +931,6 @@ augroup calendar-mappings
 	autocmd FileType calendar nunmap <buffer> <C-n>
 	autocmd FileType calendar nunmap <buffer> <C-p>
 augroup END
-
-
-" ===
-" === Anzu
-" ===
-set statusline=%{anzu#search_status()}
-nnoremap = n
-nnoremap - N
 
 
 " ===
@@ -1055,8 +1021,8 @@ endfunction
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_do_shade = 0
 let g:EasyMotion_smartcase = 1
-map ' <Plug>(easymotion-bd-f)
-nmap ' <Plug>(easymotion-bd-f)
+map ' <Plug>(easymotion-overwin-f2)
+nmap ' <Plug>(easymotion-overwin-f2)
 "map E <Plug>(easymotion-j)
 "map U <Plug>(easymotion-k)
 "nmap f <Plug>(easymotion-overwin-f)
@@ -1083,22 +1049,22 @@ let g:vim_jsx_pretty_colorful_config = 1
 " ===
 " === fastfold
 " ===
-nmap zuz <Plug>(FastFoldUpdate)
-let g:fastfold_savehook = 1
-let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
-let g:fastfold_fold_movement_commands = [']z', '[z', 'ze', 'zu']
-let g:markdown_folding = 1
-let g:tex_fold_enabled = 1
-let g:vimsyn_folding = 'af'
-let g:xml_syntax_folding = 1
-let g:javaScript_fold = 1
-let g:sh_fold_enabled= 7
-let g:ruby_fold = 1
-let g:perl_fold = 1
-let g:perl_fold_blocks = 1
-let g:r_syntax_folding = 1
-let g:rust_fold = 1
-let g:php_folding = 1
+" nmap zuz <Plug>(FastFoldUpdate)
+" let g:fastfold_savehook = 1
+" let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+" let g:fastfold_fold_movement_commands = [']z', '[z', 'ze', 'zu']
+" let g:markdown_folding = 1
+" let g:tex_fold_enabled = 1
+" let g:vimsyn_folding = 'af'
+" let g:xml_syntax_folding = 1
+" let g:javaScript_fold = 1
+" let g:sh_fold_enabled= 7
+" let g:ruby_fold = 1
+" let g:perl_fold = 1
+" let g:perl_fold_blocks = 1
+" let g:r_syntax_folding = 1
+" let g:rust_fold = 1
+" let g:php_folding = 1
 
 
 " ===
@@ -1272,6 +1238,14 @@ vmap <LEADER>cu g<
 let g:nrrw_rgn_nomap_nr = 1
 let g:nrrw_rgn_nomap_Nr = 1
 noremap <c-y> :NR<CR>
+
+
+" ===
+" === any-jump
+" ===
+nnoremap j :AnyJump<CR>
+let g:any_jump_window_width_ratio  = 0.8
+let g:any_jump_window_height_ratio = 0.9
 
 
 " ===================== End of Plugin Settings =====================
