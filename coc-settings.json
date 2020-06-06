@@ -60,22 +60,15 @@
 		"$HOME/.config/nvim/Ultisnips/",
 		"$HOME/.config/nvim/plugged/vim-snippets/UltiSnips/"
 	],
-	"coc.preferences.formatOnSaveFiletypes": [
-		"javascript",
-		"typescript",
-		"html",
-		"css",
-		"json",
-		"python"
-	],
+	"coc.preferences.formatOnSaveFiletypes": ["typescript", "html", "css", "json", "python"],
 	"yaml.format.enable": true,
 	"signature.target": "float",
 	"yank.enableCompletion": false,
 	"prettier.eslintIntegration": true,
 	"prettier.disableLanguages": [],
 	"prettier.useTabs": true,
-	"typescript.suggestionActions.enabled": true,
 	"prettier.formatterPriority": 1,
+	"typescript.suggestionActions.enabled": true,
 	"typescript.format.enabled": true,
 	"explorer.width": 38,
 	"explorer.quitOnOpen": true,
@@ -157,7 +150,7 @@
 	"git.changeRemovedSign.text": "▒",
 	"git.enableGlobalStatus": false,
 	"git.signOffset": 2,
-	"tslint.autoFixOnSave": true,
+	"tslint.autoFixOnSave": false,
 	"python.autoComplete.addBrackets": true,
 	"python.jediEnabled": false,
 	"python.formatting.provider": "yapf",
@@ -171,7 +164,8 @@
 	"javascript.suggest.names": true,
 	"javascript.suggestionActions.enabled": true,
 	"json.format.enable": true,
-	"eslint.autoFixOnSave": true,
+	"eslint.autoFixOnSave": false,
+	"prettier.printWidth": 100,
 	"todolist.autoUpload": true,
 	"todolist.promptForReminder": false,
 	"coc-actions.hideCursor": false,
@@ -213,13 +207,7 @@
 		"ccls": {
 			"command": "ccls",
 			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-			"rootPatterns": [
-				".ccls",
-				".ccls-root",
-				"compile_commands.json",
-				".git/",
-				".hg/"
-			],
+			"rootPatterns": [".ccls", ".ccls-root", "compile_commands.json", ".git/", ".hg/"],
 			"initializationOptions": {
 				"cache": {
 					"directory": "/tmp/ccls"

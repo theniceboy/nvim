@@ -431,6 +431,9 @@ Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 "Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
 
+" Autoformat
+Plug 'Chiel92/vim-autoformat'
+
 " Tex
 Plug 'lervag/vimtex'
 
@@ -856,6 +859,7 @@ let g:bullets_enabled_file_types = [
 " ===
 " === Vista.vim
 " ===
+noremap <LEADER>v :Vista coc<CR>
 noremap <c-t> :silent! Vista finder coc<CR>
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'ctags'
@@ -969,6 +973,9 @@ let g:go_doc_keywordprg_enabled = 0
 " === AutoFormat
 " ===
 nnoremap \f :Autoformat<CR>
+let g:formatdef_custom_js = '"js-beautify -t"'
+let g:formatters_javascript = ['custom_js']
+au BufWrite *.js :Autoformat
 
 
 " ===
@@ -1142,7 +1149,7 @@ command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
 			\   'down': 20,
 			\   'sink': function('<sid>read_template_into_buffer')
 			\ })
-noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
+" noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
 sign define vimspectorBP text=☛ texthl=Normal
 sign define vimspectorBPDisabled text=☞ texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
@@ -1246,7 +1253,6 @@ noremap <c-y> :NR<CR>
 nnoremap j :AnyJump<CR>
 let g:any_jump_window_width_ratio  = 0.8
 let g:any_jump_window_height_ratio = 0.9
-
 
 " ===================== End of Plugin Settings =====================
 
