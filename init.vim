@@ -172,6 +172,7 @@ noremap <silent> <LEADER>o za
 " Open up lazygit
 noremap \g :Git 
 noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
+nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
 
 
 " ===
@@ -1178,7 +1179,17 @@ let g:vmt_fence_closing_text = '/TOC'
 " ===
 let g:rnvimr_ex_enable = 1
 let g:rnvimr_pick_enable = 1
+let g:rnvimr_draw_border = 0
+" let g:rnvimr_bw_enable = 1
+highlight link RnvimrNormal CursorLine
 nnoremap <silent> R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+let g:rnvimr_action = {
+            \ '<C-t>': 'NvimEdit tabedit',
+            \ '<C-x>': 'NvimEdit split',
+            \ '<C-v>': 'NvimEdit vsplit',
+            \ 'gw': 'JumpNvimCwd',
+            \ 'yw': 'EmitRangerCwd'
+            \ }
 let g:rnvimr_layout = { 'relative': 'editor',
             \ 'width': &columns,
             \ 'height': &lines,
@@ -1253,6 +1264,7 @@ noremap <c-y> :NR<CR>
 nnoremap j :AnyJump<CR>
 let g:any_jump_window_width_ratio  = 0.8
 let g:any_jump_window_height_ratio = 0.9
+
 
 " ===================== End of Plugin Settings =====================
 
