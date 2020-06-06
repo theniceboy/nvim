@@ -336,6 +336,11 @@ noremap \s :%s//g<left><left>
 " set wrap
 noremap <LEADER>sw :set wrap<CR>
 
+" press f10 to show hlgroup
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " Compile function
 noremap r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
@@ -391,7 +396,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress
 " Plug 'bling/vim-bufferline'
-Plug 'ajmwagar/vim-deus'
+Plug 'theniceboy/vim-deus'
 "Plug 'arzg/vim-colors-xcode'
 
 " Status line
