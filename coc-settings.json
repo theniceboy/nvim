@@ -150,6 +150,7 @@
 	"git.changeRemovedSign.text": "▒",
 	"git.enableGlobalStatus": false,
 	"git.signOffset": 2,
+	"flutter.openDevLogSplitCommand": "botright 12split",
 	"tslint.autoFixOnSave": false,
 	"python.autoComplete.addBrackets": true,
 	"python.jediEnabled": false,
