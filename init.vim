@@ -192,8 +192,10 @@ noremap <silent> gu gk
 noremap <silent> ge gj
 
 " U/E keys for 5 times u/e (faster navigation)
-noremap <silent> U 5k
-noremap <silent> E 5j
+" noremap <silent> U 5k
+" noremap <silent> E 5j
+noremap <silent> U <nop>
+noremap <silent> E <nop>
 
 " N key: go to the start of the line
 noremap <silent> N 0
@@ -211,6 +213,8 @@ noremap h e
 noremap <C-U> 5<C-y>
 noremap <C-E> 5<C-e>
 
+
+source $XDG_CONFIG_HOME/nvim/cursor.vim
 
 " ===
 " === Insert Mode Cursor Movement
@@ -395,7 +399,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'theniceboy/vim-calc'
 
 " Pretty Dress
-" Plug 'bling/vim-bufferline'
+Plug 'bling/vim-bufferline'
 Plug 'theniceboy/vim-deus'
 "Plug 'arzg/vim-colors-xcode'
 
@@ -512,7 +516,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 "Plug 'ron89/thesaurus_query.vim'
 
 " Bookmarks
-Plug 'MattesGroeger/vim-bookmarks'
+" Plug 'MattesGroeger/vim-bookmarks'
 
 " Find & Replace
 Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
@@ -758,25 +762,25 @@ let g:ctrlp_cmd = 'CtrlP'
 " ===
 " === vim-bookmarks
 " ===
-let g:bookmark_no_default_key_mappings = 1
-nmap mt <Plug>BookmarkToggle
-nmap ma <Plug>BookmarkAnnotate
-nmap ml <Plug>BookmarkShowAll
-nmap mi <Plug>BookmarkNext
-nmap mn <Plug>BookmarkPrev
-nmap mC <Plug>BookmarkClear
-nmap mX <Plug>BookmarkClearAll
-nmap mu <Plug>BookmarkMoveUp
-nmap me <Plug>BookmarkMoveDown
-nmap <Leader>g <Plug>BookmarkMoveToLine
-let g:bookmark_save_per_working_dir = 1
-let g:bookmark_auto_save = 1
-let g:bookmark_highlight_lines = 1
-let g:bookmark_manage_per_buffer = 1
-let g:bookmark_save_per_working_dir = 1
-let g:bookmark_center = 1
-let g:bookmark_auto_close = 1
-let g:bookmark_location_list = 1
+" let g:bookmark_no_default_key_mappings = 1
+" nmap mt <Plug>BookmarkToggle
+" nmap ma <Plug>BookmarkAnnotate
+" nmap ml <Plug>BookmarkShowAll
+" nmap mi <Plug>BookmarkNext
+" nmap mn <Plug>BookmarkPrev
+" nmap mC <Plug>BookmarkClear
+" nmap mX <Plug>BookmarkClearAll
+" nmap mu <Plug>BookmarkMoveUp
+" nmap me <Plug>BookmarkMoveDown
+" nmap <Leader>g <Plug>BookmarkMoveToLine
+" let g:bookmark_save_per_working_dir = 1
+" let g:bookmark_auto_save = 1
+" let g:bookmark_highlight_lines = 1
+" let g:bookmark_manage_per_buffer = 1
+" let g:bookmark_save_per_working_dir = 1
+" let g:bookmark_center = 1
+" let g:bookmark_auto_close = 1
+" let g:bookmark_location_list = 1
 
 
 " ===
@@ -1034,8 +1038,8 @@ endfunction
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_do_shade = 0
 let g:EasyMotion_smartcase = 1
-map ' <Plug>(easymotion-overwin-f2)
-nmap ' <Plug>(easymotion-overwin-f2)
+" map ' <Plug>(easymotion-overwin-f2)
+" nmap ' <Plug>(easymotion-overwin-f2)
 "map E <Plug>(easymotion-j)
 "map U <Plug>(easymotion-k)
 "nmap f <Plug>(easymotion-overwin-f)
