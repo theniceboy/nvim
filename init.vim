@@ -744,7 +744,7 @@ command! BD call fzf#run(fzf#wrap({
 
 noremap <c-d> :BD<CR>
 
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 
 
 
