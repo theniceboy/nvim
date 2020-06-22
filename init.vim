@@ -609,7 +609,34 @@ nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 " ===
 " fix the most annoying bug that coc has
 "silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-html', 'coc-json', 'coc-css', 'coc-tsserver', 'coc-snippets', 'coc-yank', 'coc-gitignore', 'coc-vimlsp', 'coc-stylelint', 'coc-tslint', 'coc-lists', 'coc-git', 'coc-explorer', 'coc-pyright', 'coc-sourcekit', 'coc-translator', 'coc-flutter', 'coc-todolist', 'coc-yaml', 'coc-tasks', 'coc-actions', 'coc-diagnostic', 'coc-prettier', 'coc-syntax', 'coc-eslint']
+let g:coc_global_extensions = [
+  \ 'coc-actions',
+  \ 'coc-css',
+  \ 'coc-diagnostic',
+  \ 'coc-eslint',
+  \ 'coc-explorer',
+  \ 'coc-flutter',
+  \ 'coc-git',
+  \ 'coc-gitignore',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-lists',
+  \ 'coc-prettier',
+  \ 'coc-pyright',
+  \ 'coc-python',
+  \ 'coc-snippets',
+  \ 'coc-sourcekit',
+  \ 'coc-stylelint',
+  \ 'coc-syntax',
+  \ 'coc-tasks',
+  \ 'coc-todolist',
+  \ 'coc-translator',
+  \ 'coc-tslint',
+  \ 'coc-tsserver',
+  \ 'coc-vimlsp',
+  \ 'coc-vimlsp',
+  \ 'coc-yaml',
+  \ 'coc-yank']
 "set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "nmap <silent> <TAB> <Plug>(coc-range-select)
 "xmap <silent> <TAB> <Plug>(coc-range-select)
@@ -820,19 +847,19 @@ endfunc
 " ===
 "let g:VM_theme             = 'iceblue'
 "let g:VM_default_mappings = 0
-let g:VM_leader = {'default': ',', 'visual': ',', 'buffer': ','}
-let g:VM_maps = {}
-let g:VM_custom_motions  = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
-let g:VM_maps['i']         = 'k'
-let g:VM_maps['I']         = 'K'
+let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
+let g:VM_maps                       = {}
+let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
+let g:VM_maps['i']                  = 'k'
+let g:VM_maps['I']                  = 'K'
 let g:VM_maps['Find Under']         = '<C-k>'
 let g:VM_maps['Find Subword Under'] = '<C-k>'
-let g:VM_maps['Find Next']         = ''
-let g:VM_maps['Find Prev']         = ''
-let g:VM_maps['Remove Region'] = 'q'
-let g:VM_maps['Skip Region'] = '<c-n>'
-let g:VM_maps["Undo"]      = 'l'
-let g:VM_maps["Redo"]      = '<C-r>'
+let g:VM_maps['Find Next']          = ''
+let g:VM_maps['Find Prev']          = ''
+let g:VM_maps['Remove Region']      = 'q'
+let g:VM_maps['Skip Region']        = '<c-n>'
+let g:VM_maps["Undo"]               = 'l'
+let g:VM_maps["Redo"]               = '<C-r>'
 
 
 " ===
