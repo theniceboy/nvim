@@ -1,5 +1,7 @@
 ## <center>The Ultimate NeoVim Config for [Colemak](https://colemak.com/) Users</center>
 
+#### [中文版](./README_cn.md)
+
 <center><img src="https://raw.githubusercontent.com/theniceboy/nvim/master/demo.png"></center>
 
 Please **DO NOT** just copy this configuration folder without really looking at it! Please, at least, read this README file!
