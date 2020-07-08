@@ -4,7 +4,7 @@ height: ${0},
 endsnippet
 
 snippet pa "Padding"
-padding: EdgeInsets.only(${1:left: ${2:0}, }${3:right: ${4:0}, }${5:top: ${6:0}, }${7:bottom: ${8:0}}),
+padding: EdgeInsets.only(${1:left: ${2:0}}${3:, right: ${4:0}}${5:, top: ${6:0}}${7:, bottom: ${8:0}}),
 endsnippet
 
 snippet paa "Padding All"
@@ -12,15 +12,15 @@ pagging: EdgeInsets.all(${1:8.0}),
 endsnippet
 
 snippet pah "Padding Horizontal"
-padding: EdgeInsets.only(${1:left: ${2:0}, }${3:right: ${4:0}}),
+padding: EdgeInsets.only(${1:left: ${2:0}}${3:, right: ${4:0}}),
 endsnippet
 
 snippet pav "Padding Vertical"
-padding: EdgeInsets.only(${1:top: ${2:0}, }${3:bottom: ${4:0}}),
+padding: EdgeInsets.only(${1:top: ${2:0}}${3:, bottom: ${4:0}}),
 endsnippet
 
 snippet mar "Margin"
-margin: EdgeInsets.only(${1:left: ${2:0}, }${3:right: ${4:0}, }${5:top: ${6:0}, }${7:bottom: ${8:0}}),
+margin: EdgeInsets.only(${1:left: ${2:0}}${3:, right: ${4:0}}${5:, top: ${6:0}}${7:, bottom: ${8:0}}),
 endsnippet
 
 snippet mara "Margin All"
@@ -28,11 +28,11 @@ margin: EdgeInsets.all(${1:8.0}),
 endsnippet
 
 snippet marh "Margin Horizontal"
-margin: EdgeInsets.only(${1:left: ${2:0}, }${3:right: ${4:0}}),
+margin: EdgeInsets.only(${1:left: ${2:0}}${3:, right: ${4:0}}),
 endsnippet
 
 snippet marv "Margin Vertical"
-margin: EdgeInsets.only(${1:top: ${2:0}, }${3:bottom: ${4:0}}),
+margin: EdgeInsets.only(${1:top: ${2:0}}${3:, bottom: ${4:0}}),
 endsnippet
 
 snippet br "BorderRadius"
@@ -84,6 +84,10 @@ Column(
 ),
 endsnippet
 
+snippet co "Container"
+Container()${0}
+endsnippet
+
 snippet con "Container"
 Container(
   child: ${0},
@@ -122,8 +126,8 @@ snippet ss "TextStyle"
 TextStyle(
   color: ${1},
   fontSize: ${2},
-  fontWeight: w[${3}],
-),${0}
+  fontWeight: w[${3}]
+);${0}
 endsnippet
 
 snippet sw "SizedBox with width"
@@ -247,6 +251,12 @@ for (var ${1:i} = 0; ${1:i} < ${2:n}; ++${1:i}) {
 }
 endsnippet
 
+snippet fori "For in loop"
+for (var ${1:item} in ${2:object}) {
+  ${3:// TODO}
+}
+endsnippet
+
 snippet ssm "Multi-line Set State"
 setState(() {
   ${1:// TODO}
@@ -256,3 +266,34 @@ endsnippet
 snippet sss "Single-line Set State"
 setState(() => ${1:/* TODO */} );
 endsnippet
+
+snippet rf "Request focus"
+FocusScope.of(context).requestFocus(${0});
+endsnippet
+
+snippet push "Navigator push"
+Navigator.of(context).push(
+  MaterialPageRoute(builder: (context) => ${1:Page()}),${0}
+);
+endsnippet
+
+snippet pop "Navigator pop"
+Navigator.of(context).pop(${1});
+endsnippet
+
+snippet rmb "RawMaterialButton"
+RawMaterialButton(
+  elevation: ${1:0},
+	onPressed: () {},
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(${2:5})),
+  ),
+  fillColor: ${3:Colors.transparent},
+  child: ${5:Container()},
+),
+endsnippet
+
+snippet st "print();"
+print(${0});
+endsnippet
+
