@@ -331,9 +331,6 @@ autocmd BufEnter * silent! lcd %:p:h
 " Call figlet
 noremap tx :r !figlet
 
-noremap <LEADER>- :lN<CR>
-noremap <LEADER>= :lne<CR>
-
 " find and replace
 noremap \s :%s//g<left><left>
 
@@ -707,6 +704,8 @@ let g:coc_snippet_prev = '<c-n>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-e> <Plug>(coc-snippets-expand-jump)
+nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
+nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
 
 
 
