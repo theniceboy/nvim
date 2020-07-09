@@ -192,10 +192,8 @@ noremap <silent> gu gk
 noremap <silent> ge gj
 
 " U/E keys for 5 times u/e (faster navigation)
-" noremap <silent> U 5k
-" noremap <silent> E 5j
-noremap <silent> U <nop>
-noremap <silent> E <nop>
+noremap <silent> U 5k
+noremap <silent> E 5j
 
 " N key: go to the start of the line
 noremap <silent> N 0
@@ -398,6 +396,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Pretty Dress
 Plug 'bling/vim-bufferline'
 Plug 'theniceboy/vim-deus'
+
 "Plug 'arzg/vim-colors-xcode'
 
 " Status line
@@ -548,7 +547,9 @@ Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 " Plug 'kana/vim-textobj-user'
 " Plug 'roxma/nvim-yarp'
 
+
 call plug#end()
+set re=0
 
 " experimental
 set lazyredraw
@@ -701,20 +702,13 @@ nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload
 " coc-tasks
 noremap <silent> <leader>ts :CocList tasks<CR>
 " coc-snippets
-" Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
-
-" Use <C-j> for select text for visual placeholder of snippet.
 vmap <C-e> <Plug>(coc-snippets-select)
-
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<c-e>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-n>'
-
-" Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-e> <Plug>(coc-snippets-expand-jump)
+let g:snips_author = 'David'
+
 nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
 nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
 
