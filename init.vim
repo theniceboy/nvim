@@ -448,7 +448,7 @@ Plug 'lervag/vimtex'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] } " omnisharp-vim dependency
 
-" HTML, CSS, JavaScript, PHP, JSON, etc.
+" HTML, CSS, JavaScript, Typescript, PHP, JSON, etc.
 Plug 'elzr/vim-json'
 Plug 'othree/html5.vim'
 Plug 'alvan/vim-closetag'
@@ -459,6 +459,7 @@ Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', '
 " Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 " Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 "Plug 'jaxbot/browserlink.vim'
+Plug 'HerringtonDarkholme/yats.vim'
 
 " Go
 Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
@@ -616,7 +617,6 @@ let g:coc_global_extensions = [
   \ 'coc-actions',
   \ 'coc-css',
   \ 'coc-diagnostic',
-  \ 'coc-eslint',
   \ 'coc-explorer',
   \ 'coc-flutter',
   \ 'coc-gitignore',
@@ -633,7 +633,7 @@ let g:coc_global_extensions = [
   \ 'coc-tasks',
   \ 'coc-todolist',
   \ 'coc-translator',
-  \ 'coc-tslint',
+  \ 'coc-tslint-plugin',
   \ 'coc-tsserver',
   \ 'coc-vimlsp',
   \ 'coc-vimlsp',
@@ -1305,6 +1305,11 @@ nnoremap j :AnyJump<CR>
 let g:any_jump_window_width_ratio  = 0.8
 let g:any_jump_window_height_ratio = 0.9
 
+
+" ===
+" === typescript-vim
+" ===
+let g:typescript_ignore_browserwords = 1
 
 " ===================== End of Plugin Settings =====================
 
