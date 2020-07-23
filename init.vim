@@ -395,6 +395,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress
 Plug 'bling/vim-bufferline'
+Plug 'bpietravalle/vim-bolt'
 Plug 'theniceboy/vim-deus'
 
 "Plug 'arzg/vim-colors-xcode'
@@ -472,7 +473,7 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-p
 Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
 
 " Flutter
-Plug 'theniceboy/dart-vim-plugin'
+Plug 'dart-lang/dart-vim-plugin'
 
 " Swift
 Plug 'keith/swift.vim'

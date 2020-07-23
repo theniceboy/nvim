@@ -281,6 +281,10 @@ snippet rf "Request focus"
 FocusScope.of(context).requestFocus(${0});
 endsnippet
 
+snippet rfn "Request focusnode (new)"
+FocusScope.of(context).requestFocus(FocusNode());
+endsnippet
+
 snippet push "Navigator push"
 Navigator.of(context).push(
   MaterialPageRoute(builder: (context) => ${1:Page()}),${0}
@@ -304,5 +308,11 @@ RawMaterialButton(
 endsnippet
 
 snippet st "print();"
-print(${0});
+print("${0}");
+endsnippet
+
+snippet sbj "Behavior subject"
+Stream<${1:int}> get ${2:my}Stream => _${2:my}Subject.stream;
+BehaviorSubject<${1}> _${2:my}Subject;
+_${2:my}Subject = BehaviorSubject<${1}>();
 endsnippet
