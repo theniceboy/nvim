@@ -6,3 +6,5 @@ function SaveDartWithFix()
 	:DartFmt
 	let g:dartfmt_options = " -l 100 "
 endfunction
+
+noremap <c-c> :CocList --input=flutter commands<CR>
