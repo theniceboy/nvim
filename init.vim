@@ -390,6 +390,7 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+
 " Testing my own plugin
 " Plug 'theniceboy/vim-calc'
 
@@ -437,6 +438,7 @@ Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 "Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
+Plug 'cohama/agit.vim'
 
 " Autoformat
 Plug 'Chiel92/vim-autoformat'
@@ -1316,6 +1318,12 @@ let g:any_jump_window_height_ratio = 0.9
 " === typescript-vim
 " ===
 let g:typescript_ignore_browserwords = 1
+
+" ===
+" === Agit
+" ===
+nnoremap <LEADER>gl :Agit<CR>
+let g:agit_no_default_mappings = 1
 
 " ===================== End of Plugin Settings =====================
 
