@@ -207,7 +207,7 @@ Use the arrow keys to resize the current window.
 
 ## Plugins Keybindings (Screenshots/GIF provided!)
 ### AutoCompletion
-#### [COC (AutoCompletion)](https://github.com/SirVer/ultisnips)
+#### [COC (AutoCompletion)](https://github.com/neoclide/coc.nvim)
 | Shortcut        | Action                    |
 |-----------------|---------------------------|
 | `Space` `y`     | **Get yank history list** |
@@ -367,7 +367,7 @@ Press `'` and a `character` jump to `character` (similar to Emacs' [AceJump](htt
 
 <img alt="Gif" src="https://f.cloud.github.com/assets/3797062/2039359/a8e938d6-899f-11e3-8789-60025ea83656.gif" width="60%" />
 
-#### [Vista.vim](https://github.com/liuchengxu/vista.vim#show-the-nearest-methodfunction-in-the-statusline)
+#### [Vista.vim](https://github.com/liuchengxu/vista.vim)
 Press `T` to toggle function and variable list
 
 <img alt="Gif" src="https://user-images.githubusercontent.com/8850248/56469894-14d40780-6472-11e9-802f-729ac53bd4d5.gif" width="60%" />
