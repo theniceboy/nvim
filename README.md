@@ -207,7 +207,7 @@ Use the arrow keys to resize the current window.
 
 ## Plugins Keybindings (Screenshots/GIF provided!)
 ### AutoCompletion
-#### COC (AutoCompletion)
+#### [COC (AutoCompletion)](https://github.com/SirVer/ultisnips)
 | Shortcut        | Action                    |
 |-----------------|---------------------------|
 | `Space` `y`     | **Get yank history list** |
@@ -219,7 +219,7 @@ Use the arrow keys to resize the current window.
 
 <img alt="Gif" src="https://user-images.githubusercontent.com/251450/55285193-400a9000-53b9-11e9-8cff-ffe4983c5947.gif" width="60%" />
 
-#### Ultisnips
+#### [Ultisnips](https://github.com/SirVer/ultisnips)
 | Shortcut   | Action                                           |
 |------------|--------------------------------------------------|
 | `Ctrl` `e` | Expand a snippet                                 |
@@ -229,7 +229,7 @@ Use the arrow keys to resize the current window.
 ![GIF Demo](https://raw.github.com/SirVer/ultisnips/master/doc/demo.gif)
 
 ### Debugger
-#### vimspector (debugger-plugin)
+#### [vimspector (debugger-plugin)](https://github.com/puremourning/vimspector)
 | Key   | Function                                                  |
 |-------|-----------------------------------------------------------|
 | `F5`  | When debugging, continue. Otherwise start debugging.      |
@@ -245,7 +245,7 @@ Use the arrow keys to resize the current window.
 <img alt="Gif" src="https://puremourning.github.io/vimspector-web/img/vimspector-overview.png" width="60%" />
 
 ### File Navigation
-#### coc-explorer (file browser)
+#### [coc-explorer (file browser)](https://github.com/weirongxu/coc-explorer)
 | Shortcut | Action                  |
 |----------|-------------------------|
 | `tt`     | **Open file browser**   |
@@ -253,7 +253,7 @@ Use the arrow keys to resize the current window.
 
 <img alt="Png" src="https://user-images.githubusercontent.com/1709861/64966850-1e9f5100-d8d2-11e9-9490-438c6d1cf378.png" width="60%" />
 
-#### rnvimr - file browser
+#### [rnvimr - file browser](https://github.com/kevinhwang91/rnvimr)
 - [ ] Make sure you have ranger installed
 
 Press `R` to open Ranger (file selector)
@@ -267,7 +267,7 @@ And Within rnvimr (ranger), you can:
 
 <img alt="Gif" src="https://user-images.githubusercontent.com/17562139/74416173-b0aa8600-4e7f-11ea-83b5-31c07c384af1.gif" width="60%" />
 
-#### FZF - the fuzzy file finder
+#### [FZF - the fuzzy file finder](https://github.com/junegunn/fzf.vim)
 | Shortcut   | Action             |
 |------------|--------------------|
 | `Ctrl` `p` | **FZF Files**      |
@@ -280,7 +280,7 @@ And Within rnvimr (ranger), you can:
 
 <img alt="Gif" src="https://jesseleite.com/uploads/posts/2/tag-finder-opt.gif" width="60%" />
 
-#### xtabline (the fancy tab line)
+#### [xtabline (the fancy tab line)](https://github.com/mg979/vim-xtabline)
 | Shortcut | What it creates   |
 |----------|-------------------|
 | `to`     | Cycle tab mode    |
@@ -289,7 +289,7 @@ And Within rnvimr (ranger), you can:
 <img alt="Gif" src="https://i.imgur.com/yU6qbU5.gif" width="60%" />
 
 ### Text Editing Plugins
-#### vim-table-mode
+#### [vim-table-mode](https://github.com/dhruvasagar/vim-table-mode)
 | Shortcut        | Action            |
 |-----------------|-------------------|
 | `SPACE` `t` `m` | Toggle table mode |
@@ -297,7 +297,7 @@ And Within rnvimr (ranger), you can:
 
 See `:help table-mode.txt` for more.
 
-#### Undotree
+#### [Undotree](https://github.com/mbbill/undotree)
 | Shortcut      | Action        |
 |---------------|---------------|
 | `Shift` + `L` | Open Undotree |
@@ -306,7 +306,7 @@ See `:help table-mode.txt` for more.
 
 <img alt="Png" src="https://camo.githubusercontent.com/56430626a5444ea2f0249d71f9288775277c7f5d/68747470733a2f2f73697465732e676f6f676c652e636f6d2f736974652f6d6262696c6c2f756e646f747265655f6e65772e706e67" width="60%" />
 
-#### vim-multiple-cursors
+#### [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)
 | Shortcut   | Action                                 |
 |------------|----------------------------------------|
 | `Ctrl`+`k` | **Select next key (multiple cursors)** |
@@ -320,7 +320,7 @@ See `:help table-mode.txt` for more.
 <img alt="Gif" src="https://raw.githubusercontent.com/terryma/vim-multiple-cursors/master/assets/example3.gif" width="60%" />
 <img alt="Gif" src="https://raw.githubusercontent.com/terryma/vim-multiple-cursors/master/assets/example4.gif" width="60%" />
 
-#### vim-surround
+#### [vim-surround](https://github.com/tpope/vim-surround)
 To add surround (`string` -> `"string"`):
 ```
 string
@@ -341,38 +341,38 @@ press: `cs'"`:
 
 <img alt="Gif" src="https://two-wrongs.com/image/surround_vim.gif" width="60%" />
 
-#### vim-subversive
+#### [vim-subversive](https://github.com/svermeulen/vim-subversive)
 New operator: `s`:
 
 You can execute `s<motion>` to substitute the text object provided by the motion with the contents of the default register (or an explicit register if provided). For example, you could execute `skw` to replace the current word under the cursor with the current yank, or `skp` to replace the paragraph, etc.
 
 
 
-#### vim-easy-align
+#### [vim-easy-align](https://github.com/junegunn/vim-easy-align)
 Press `ga` + **symbol** in normal or visual mode to align text based on **symbol**
 
 <img alt="Gif" src="https://raw.githubusercontent.com/junegunn/i/master/easy-align/equals.gif" width="60%" />
 
-#### AutoFormat
+#### [AutoFormat](https://github.com/Chiel92/vim-autoformat)
 Press `\` `f` to format code
 
-#### vim-markdown-toc (generate table of contents for markdown files)
+#### [vim-markdown-toc (generate table of contents for markdown files)](https://github.com/mzlogin/vim-markdown-toc)
 In `markdown` files, type `:Gen` then tab, you'll see your options.
 
 <img alt="Gif" src="https://raw.githubusercontent.com/mzlogin/vim-markdown-toc/master/screenshots/english.gif" width="60%" />
 
 ### Navigation Within Buffer
-#### vim-easy-motion
+#### [vim-easy-motion](https://github.com/easymotion/vim-easymotion)
 Press `'` and a `character` jump to `character` (similar to Emacs' [AceJump](https://www.emacswiki.org/emacs/AceJump))
 
 <img alt="Gif" src="https://f.cloud.github.com/assets/3797062/2039359/a8e938d6-899f-11e3-8789-60025ea83656.gif" width="60%" />
 
-#### Vista.vim
+#### [Vista.vim](https://github.com/liuchengxu/vista.vim#show-the-nearest-methodfunction-in-the-statusline)
 Press `T` to toggle function and variable list
 
 <img alt="Gif" src="https://user-images.githubusercontent.com/8850248/56469894-14d40780-6472-11e9-802f-729ac53bd4d5.gif" width="60%" />
 
-#### vim-signiture - Bookmarks
+#### [vim-signiture - Bookmarks](https://github.com/kshenoy/vim-signature)
 | Shortcut    | Action                          |
 |-------------|---------------------------------|
 | `m<letter>` | Add/remove mark at current line |
@@ -392,13 +392,13 @@ Press `T` to toggle function and variable list
 <img alt="Gif" src="https://camo.githubusercontent.com/bc2bf1746e30c72d7ff5b79331231e8c388d068a/68747470733a2f2f7261772e6769746875622e636f6d2f4d617474657347726f656765722f76696d2d626f6f6b6d61726b732f6d61737465722f707265766965772e676966" width="60%" />
 
 ### Find and Replace
-#### Far.vim - find and replace
+#### [Far.vim - find and replace](https://github.com/brooth/far.vim)
 Press `SPACE` `f` `r` to search in cwd.
 
 <img alt="Gif" src="https://cloud.githubusercontent.com/assets/9823254/20861878/77dd1882-b9b4-11e6-9b48-8bc60f3d7ec0.gif" width="60%" />
 
 ### Git Related
-#### vim-gitgutter
+#### [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 | Shortcut        | Action                            |
 |-----------------|-----------------------------------|
 | `H`             | **Show git hunk at current line** |
@@ -406,7 +406,7 @@ Press `SPACE` `f` `r` to search in cwd.
 | `SPACE` `g` `+` | Go to next git hunk               |
 | `SPACE` `g` `f` | Fold everything except hunks      |
 
-#### fzf-gitignore
+#### [fzf-gitignore](https://github.com/fszymanski/fzf-gitignore)
 Press `Space` `g` `i` to create a `.gitignore` file
 
 <img alt="Png" src="https://user-images.githubusercontent.com/25827968/42945393-96c662da-8b68-11e8-8279-5bcd2e956ca9.png" width="60%" />
@@ -414,7 +414,7 @@ Press `Space` `g` `i` to create a `.gitignore` file
 <img alt="Png" src="https://raw.githubusercontent.com/airblade/vim-gitgutter/master/screenshot.png" width="60%" />
 
 ### Others
-#### vim-calendar
+#### [vim-calendar](https://github.com/itchyny/calendar.vim)
 | Shortcut | Action        |
 |----------|---------------|
 | `\` `\`  | Show clock    |
@@ -422,15 +422,15 @@ Press `Space` `g` `i` to create a `.gitignore` file
 
 <img alt="Png" src="https://raw.githubusercontent.com/wiki/itchyny/calendar.vim/image/image.png" width="60%" />
 
-#### Goyo - Work without distraction
+#### [Goyo - Work without distraction](https://github.com/junegunn/goyo.vim)
 Press `g` `y` to toggle Goyo
 
 <img alt="Png" src="https://raw.github.com/junegunn/i/master/goyo.png" width="60%" />
 
-#### suda.vim
+#### [suda.vim](https://github.com/lambdalisue/suda.vim)
 Forgot to `sudo vim ...`? Just do `:sudowrite` or `:sw`
 
-#### coc-translator
+#### [coc-translator](https://github.com/voldikss/coc-translator)
 Press `ts` to **translate word under cursor**.
 
 <img alt="Png" src="https://user-images.githubusercontent.com/20282795/72232547-b56be800-35fc-11ea-980a-3402fea13ec1.png" width="60%" />
