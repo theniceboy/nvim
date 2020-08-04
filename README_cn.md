@@ -2,7 +2,15 @@
 
 <center><img src="https://raw.githubusercontent.com/theniceboy/nvim/master/demo.png"></center>
 
+[English Version](./README.md)
+
 请不要只复制这份配置文件夹而不认真看它！请至少阅读一下这份自述文件！
+
+---
+
+第一版翻译: [**EvanMeek**](https://github.com/EvanMeek)
+
+第二版翻译 (当前版本): [**KiteAB**](https://github.com/KiteAB)
 
 <!-- TOC GFM -->
 
