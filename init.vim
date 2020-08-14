@@ -172,7 +172,7 @@ noremap <silent> <LEADER>o za
 " Open up lazygit
 noremap \g :Git 
 noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
-nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
+" nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
 
 
 " ===
@@ -412,6 +412,7 @@ Plug 'RRethy/vim-illuminate'
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'kevinhwang91/rnvimr'
 Plug 'airblade/vim-rooter'
 Plug 'pechorin/any-jump.vim'
@@ -743,7 +744,8 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 set rtp+=/usr/local/opt/fzf
 set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 set rtp+=/home/david/.linuxbrew/opt/fzf
-noremap <silent> <C-p> :Files<CR>
+" noremap <silent> <C-p> :Files<CR>
+noremap <silent> <C-p> :Leaderf file<CR>
 noremap <silent> <C-f> :Rg<CR>
 noremap <silent> <C-h> :History<CR>
 "noremap <C-t> :BTags<CR>
@@ -775,6 +777,21 @@ noremap <c-d> :BD<CR>
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 
+
+" ===
+" === Leaderf
+" ===
+" let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_PreviewCode = 1
+let g:Lf_ShowHidden = 1
+let g:Lf_ShowDevIcons = 1
+let g:Lf_CommandMap = {
+\   '<C-k>': ['<C-u>'],
+\   '<C-j>': ['<C-e>'],
+\   '<C-]>': ['<C-v>'],
+\   '<C-p>': ['<C-n>'],
+\}
 
 
 " ===
