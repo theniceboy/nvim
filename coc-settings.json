@@ -134,6 +134,8 @@
 		"<<": "gitStage",
 		">>": "gitUnstage"
 	},
+	"flutter.outlineWidth": 40,
+	"flutter.UIPath": true,
 	"flutter.openDevLogSplitCommand": "botright 12split",
 	"flutter.lsp.initialization.onlyAnalyzeProjectsWithOpenFiles": false,
 	"tslint.autoFixOnSave": false,
