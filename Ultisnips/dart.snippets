@@ -128,6 +128,10 @@ snippet cen "Center"
 Center(child: ${0})
 endsnippet
 
+snippet t "Text"
+Text("${1}"),${0}
+endsnippet
+
 snippet ts "Text with text style"
 Text(${1}, style: ${2}),${0}
 endsnippet
@@ -316,3 +320,8 @@ Stream<${1:int}> get ${2:my}Stream => _${2:my}Subject.stream;
 BehaviorSubject<${1}> _${2:my}Subject;
 _${2:my}Subject = BehaviorSubject<${1}>();
 endsnippet
+
+snippet f "Function"
+() => 
+endsnippet
+
