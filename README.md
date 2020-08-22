@@ -69,6 +69,7 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 	- [Markdown](#markdown)
 * [Some Weird Stuff](#some-weird-stuff)
 	- [Press `tx` and enter your text](#press-tx-and-enter-your-text)
+	- [Customized Vertical Cursor Movement](#customized-vertical-cursor-movement)
 
 <!-- /TOC -->
 
@@ -470,4 +471,21 @@ Press `ts` to **translate word under cursor**.
 |  _  |  __/ | | (_) |
 |_| |_|\___|_|_|\___/
 ```
+
+### Customized Vertical Cursor Movement
+
+This NeoVim configuration includes a customized vertical cursor movement tailored for Colemak users. It can be located in `cursor.vim`, and it serves as an alternative to the "number + up/down" key combination.
+
+In order to move the cursor up `x` lines, press the `[` key, and treat the middle row of the Colemak keyboard layout ("arstdhneio") as number 1 to 0. Press the numbers that you'd like your cursor to move (`x`) and press the space bar.
+
+To move the cursor down, press the `'` key instead of the `[` key, and the rest would be the same.
+
+Example:
+| Shortcut                | Action                         |
+|-------------------------|--------------------------------|
+| `[` `a` `o` `o` `SPACE` | Move the cursor up 100 lines   |
+| `'` `a` `r` `s` `SPACE` | Move the cursor down 123 lines |
+| `[` `d` `o` `SPACE`     | Move the cursor up 50 lines    |
+
+**Note: As of now, you may only move vertically up to 199 lines with this key configuration!**
 
