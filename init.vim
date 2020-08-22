@@ -50,6 +50,7 @@ set autochdir
 set number
 set relativenumber
 set cursorline
+set hidden
 set noexpandtab
 set tabstop=2
 set shiftwidth=2
@@ -135,9 +136,6 @@ noremap S :w<CR>
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
-
-" Open Startify
-"noremap <LEADER>st :Startify<CR>
 
 " Undo operations
 noremap l u
@@ -394,6 +392,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Testing my own plugin
 " Plug 'theniceboy/vim-calc'
 
+Plug 'arzg/vim-swift'
 " Pretty Dress
 Plug 'bling/vim-bufferline'
 Plug 'bpietravalle/vim-bolt'
