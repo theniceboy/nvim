@@ -392,7 +392,6 @@ call plug#begin('~/.config/nvim/plugged')
 " Testing my own plugin
 " Plug 'theniceboy/vim-calc'
 
-Plug 'arzg/vim-swift'
 " Pretty Dress
 Plug 'bling/vim-bufferline'
 Plug 'bpietravalle/vim-bolt'
@@ -479,6 +478,7 @@ Plug 'dart-lang/dart-vim-plugin'
 
 " Swift
 Plug 'keith/swift.vim'
+Plug 'arzg/vim-swift'
 
 " Markdown
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
@@ -637,7 +637,6 @@ let g:coc_global_extensions = [
 	\ 'coc-translator',
 	\ 'coc-tslint-plugin',
 	\ 'coc-tsserver',
-	\ 'coc-vimlsp',
 	\ 'coc-vimlsp',
 	\ 'coc-yaml',
 	\ 'coc-yank']
