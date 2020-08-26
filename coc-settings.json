@@ -61,7 +61,7 @@
 		"$HOME/.config/nvim/Ultisnips/",
 		"$HOME/.config/nvim/plugged/vim-snippets/UltiSnips/"
 	],
-	"coc.preferences.formatOnSaveFiletypes": ["typescript", "html", "css", "json", "python"],
+	"coc.preferences.formatOnSaveFiletypes": ["typescript", "html", "css", "json", "python", "vue"],
 	"yaml.format.enable": true,
 	"signature.target": "float",
 	"yank.enableCompletion": false,

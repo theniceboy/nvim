@@ -461,6 +461,7 @@ Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', '
 " Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 "Plug 'jaxbot/browserlink.vim'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'posva/vim-vue'
 
 " Go
 Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
@@ -638,6 +639,7 @@ let g:coc_global_extensions = [
 	\ 'coc-tslint-plugin',
 	\ 'coc-tsserver',
 	\ 'coc-vimlsp',
+	\ 'coc-vetur',
 	\ 'coc-yaml',
 	\ 'coc-yank']
 inoremap <silent><expr> <TAB>
