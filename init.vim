@@ -451,6 +451,7 @@ Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] } " omnisharp-vim depend
 
 " HTML, CSS, JavaScript, Typescript, PHP, JSON, etc.
 Plug 'elzr/vim-json'
+Plug 'neoclide/jsonc.vim'
 Plug 'othree/html5.vim'
 Plug 'alvan/vim-closetag'
 " Plug 'hail2u/vim-css3-syntax' " , { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
@@ -476,6 +477,7 @@ Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
 
 " Flutter
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'f-person/pubspec-assist-nvim', { 'for' : ['pubspec.yaml'] }
 
 " Swift
 Plug 'keith/swift.vim'
@@ -706,6 +708,7 @@ let g:coc_snippet_next = '<c-e>'
 let g:coc_snippet_prev = '<c-n>'
 imap <C-e> <Plug>(coc-snippets-expand-jump)
 let g:snips_author = 'David Chen'
+autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 
 " ===
@@ -782,6 +785,7 @@ let g:Lf_CommandMap = {
 \   '<C-]>': ['<C-v>'],
 \   '<C-p>': ['<C-n>'],
 \}
+let g:Lf_UseVersionControlTool = 0
 
 
 " ===
