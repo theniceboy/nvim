@@ -787,6 +787,13 @@ let g:Lf_CommandMap = {
 \   '<C-p>': ['<C-n>'],
 \}
 let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+let g:Lf_WildIgnore = {
+        \ 'dir': ['.git'],
+        \ 'file': ['__vim_project_root']
+        \}
+let g:Lf_UseMemoryCache = 0
+let g:Lf_UseCache = 0
 
 
 " ===
