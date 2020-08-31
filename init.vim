@@ -401,6 +401,7 @@ Plug 'theniceboy/vim-deus'
 
 " Status line
 Plug 'theniceboy/eleline.vim'
+Plug 'ojroques/vim-scrollstatus'
 
 " General Highlighter
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
@@ -921,6 +922,7 @@ let g:vista#renderer#icons = {
 " set statusline+=%{NearestMethodOrFunction()}
 " autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
+let g:scrollstatus_size = 15
 
 " ===
 " === fzf-gitignore
