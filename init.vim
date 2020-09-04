@@ -789,7 +789,7 @@ let g:Lf_CommandMap = {
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 let g:Lf_WildIgnore = {
-        \ 'dir': ['.git'],
+        \ 'dir': ['.git', 'vendor'],
         \ 'file': ['__vim_project_root']
         \}
 let g:Lf_UseMemoryCache = 0
