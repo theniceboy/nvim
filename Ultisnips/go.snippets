@@ -5,6 +5,18 @@ if err != nil {
 ${0}
 endsnippet
 
+snippet forr "For loop range"
+for _, ${1:thing} := range ${2:things} {
+	${3://TODO}
+}
+endsnippet
+
+snippet fori "For loop i"
+for i := 0; i < n; i++ {
+	${1://TODO}
+}
+endsnippet
+
 snippet ie "Check Error"
 if err != nil {
 	panic(err)
