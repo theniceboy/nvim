@@ -2,6 +2,10 @@ snippet st "console.log"
 console.log(${0});
 endsnippet
 
+snippet fl "Firebase Function Log"
+/*LOG*/ functions.logger.log(${0});
+endsnippet
+
 snippet f "function"
 const ${1:newFunction} = (${2:arg}) => {
 	${0}
