@@ -393,11 +393,12 @@ call plug#begin('~/.config/nvim/plugged')
 " Testing my own plugin
 " Plug 'theniceboy/vim-calc'
 
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter'
+
 " Pretty Dress
-Plug 'bling/vim-bufferline'
 Plug 'bpietravalle/vim-bolt'
 Plug 'theniceboy/vim-deus'
-
 "Plug 'arzg/vim-colors-xcode'
 
 " Status line
@@ -463,7 +464,7 @@ Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', '
 " Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 " Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 "Plug 'jaxbot/browserlink.vim'
-Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'HerringtonDarkholme/yats.vim'
 Plug 'posva/vim-vue'
 
 " Go
@@ -539,9 +540,9 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'itchyny/calendar.vim'
 
 " Other visual enhancement
-Plug 'ryanoasis/vim-devicons'
 Plug 'luochen1990/rainbow'
 Plug 'mg979/vim-xtabline'
+Plug 'ryanoasis/vim-devicons'
 Plug 'wincent/terminus'
 
 " Other useful utilities
@@ -642,8 +643,8 @@ let g:coc_global_extensions = [
 	\ 'coc-translator',
 	\ 'coc-tslint-plugin',
 	\ 'coc-tsserver',
-	\ 'coc-vimlsp',
 	\ 'coc-vetur',
+	\ 'coc-vimlsp',
 	\ 'coc-yaml',
 	\ 'coc-yank']
 inoremap <silent><expr> <TAB>
@@ -739,8 +740,8 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 set rtp+=/usr/local/opt/fzf
 set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 set rtp+=/home/david/.linuxbrew/opt/fzf
+nnoremap <c-p> :Leaderf file<CR>
 " noremap <silent> <C-p> :Files<CR>
-noremap <silent> <C-p> :Leaderf file<CR>
 noremap <silent> <C-f> :Rg<CR>
 noremap <silent> <C-h> :History<CR>
 "noremap <C-t> :BTags<CR>
@@ -1327,11 +1328,27 @@ let g:any_jump_window_height_ratio = 0.9
 " ===
 let g:typescript_ignore_browserwords = 1
 
+
 " ===
 " === Agit
 " ===
 nnoremap <LEADER>gl :Agit<CR>
 let g:agit_no_default_mappings = 1
+
+
+" ===
+" === nvim-treesitter
+" ===
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {typescript},     -- one of "all", "language", or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+}
+EOF
+
 
 " ===================== End of Plugin Settings =====================
 
