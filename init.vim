@@ -389,6 +389,7 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Plug 'LoricAndre/fzterm.nvim'
 
 " Testing my own plugin
 " Plug 'theniceboy/vim-calc'
@@ -426,6 +427,7 @@ Plug 'liuchengxu/vista.vim'
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release', 'tag': 'v0.0.78'}
 Plug 'wellle/tmux-complete.vim'
 
 " Snippets
@@ -465,7 +467,10 @@ Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', '
 " Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 "Plug 'jaxbot/browserlink.vim'
 " Plug 'HerringtonDarkholme/yats.vim'
-Plug 'posva/vim-vue'
+" Plug 'posva/vim-vue'
+" Plug 'evanleck/vim-svelte', {'branch': 'main'}
+" Plug 'leafOfTree/vim-svelte-plugin'
+" Plug 'leafgarland/typescript-vim'
 
 " Go
 Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
@@ -668,6 +673,10 @@ function! Show_documentation()
 	endif
 endfunction
 nnoremap <LEADER>h :call Show_documentation()<CR>
+" set runtimepath^=~/.config/nvim/coc-extensions/coc-flutter-tools/
+" let g:coc_node_args = ['--nolazy', '--inspect-brk=6045']
+" let $NVIM_COC_LOG_LEVEL = 'debug'
+" let $NVIM_COC_LOG_FILE = '/Users/david/Desktop/log.txt'
 
 nnoremap <silent><nowait> <LEADER>d :CocList diagnostics<cr>
 nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
