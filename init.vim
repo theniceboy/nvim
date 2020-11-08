@@ -188,6 +188,7 @@ noremap <silent> e j
 noremap <silent> i l
 noremap <silent> gu gk
 noremap <silent> ge gj
+noremap <silent> \v v$h
 
 " U/E keys for 5 times u/e (faster navigation)
 noremap <silent> U 5k
