@@ -326,7 +326,7 @@ noremap <C-c> zz
 autocmd BufEnter * silent! lcd %:p:h
 
 " Call figlet
-noremap tx :r !figlet
+noremap tx :r !figlet 
 
 " find and replace
 noremap \s :%s//g<left><left>
@@ -335,9 +335,11 @@ noremap \s :%s//g<left><left>
 noremap <LEADER>sw :set wrap<CR>
 
 " press f10 to show hlgroup
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+function! SynGroup()
+	let l:s = synID(line('.'), col('.'), 1)
+	echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
+map <F10> :call SynGroup()<CR>
 
 " Compile function
 noremap r :call CompileRunGcc()<CR>
@@ -396,10 +398,11 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/playground'
 
 " Pretty Dress
 Plug 'bpietravalle/vim-bolt'
-Plug 'theniceboy/vim-deus'
+Plug 'theniceboy/nvim-deus'
 "Plug 'arzg/vim-colors-xcode'
 
 " Status line
@@ -1350,7 +1353,7 @@ let g:agit_no_default_mappings = 1
 " ===
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {typescript},     -- one of "all", "language", or a list of languages
+  ensure_installed = {"typescript", "dart"},     -- one of "all", "language", or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust" },  -- list of language that will be disabled
