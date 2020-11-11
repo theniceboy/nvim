@@ -8,6 +8,7 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 
 <!-- TOC GFM -->
 
+* [Requirements](#requirements)
 * [After Installation, You Need To](#after-installation-you-need-to)
 * [After Installation, You Might Want To](#after-installation-you-might-want-to)
 	- [First of all](#first-of-all)
@@ -34,9 +35,7 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 * [Plugins Keybindings (Screenshots/GIF provided!)](#plugins-keybindings-screenshotsgif-provided)
 	- [AutoCompletion](#autocompletion)
 		+ [COC (AutoCompletion)](#coc-autocompletion)
-		+ [Ultisnips](#ultisnips)
-	- [Debugger](#debugger)
-		+ [vimspector (debugger-plugin)](#vimspector-debugger-plugin)
+		+ [coc-snippets](#coc-snippets)
 	- [File Navigation](#file-navigation)
 		+ [coc-explorer (file browser)](#coc-explorer-file-browser)
 		+ [rnvimr - file browser](#rnvimr---file-browser)
@@ -45,7 +44,7 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 	- [Text Editing Plugins](#text-editing-plugins)
 		+ [vim-table-mode](#vim-table-mode)
 		+ [Undotree](#undotree)
-		+ [vim-multiple-cursors](#vim-multiple-cursors)
+		+ [vim-visual-multi](#vim-visual-multi)
 		+ [vim-surround](#vim-surround)
 		+ [vim-subversive](#vim-subversive)
 		+ [vim-easy-align](#vim-easy-align)
@@ -54,7 +53,6 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 	- [Navigation Within Buffer](#navigation-within-buffer)
 		+ [vim-easy-motion](#vim-easy-motion)
 		+ [Vista.vim](#vistavim)
-		+ [vim-signiture - Bookmarks](#vim-signiture---bookmarks)
 	- [Find and Replace](#find-and-replace)
 		+ [Far.vim - find and replace](#farvim---find-and-replace)
 	- [Git Related](#git-related)
@@ -73,32 +71,35 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 
 <!-- /TOC -->
 
+## Requirements
+- This nvim configuration **REQUIRES** NeoVim 0.5.0+
 ## After Installation, You Need To
-- [ ] Install `pynvim` (pip)
-- [ ] Install `nodejs`, and do `npm install -g neovim`
-- [ ] Install nerd-fonts (actually it's optional but it looks real good)
+- Install `pip`, and do `pip install pynvim`
+- Install `pip3`, and do `pip3 install pynvim`
+- Install `node`, and do `npm install -g neovim`
+- Install nerd-fonts (actually it's optional but it looks real good)
 
 ## After Installation, You Might Want To
 ### First of all
-- [ ] Do `:checkhealth`
+- Do `:checkhealth`
 
 ### For Python Debugger (via `vimspector`)
-- [ ] Install `debugpy` (`pip`)
+- Install `debugpy` (`pip`)
 
 ### Config `Python` path
-- [ ] Well, make sure you have python
-- [ ] See `_machine_specific.vim`
+- Well, make sure you have python
+- See `_machine_specific.vim`
 
 ### For Taglist:
-- [ ] Install `ctags` for function/class/variable list
+- Install `ctags` for function/class/variable list
 
 ### For FZF
-- [ ] Install `fzf`
-- [ ] Install `ag` (`the_silver_searcher`)
+- Install `fzf`
+- Install `ag` (`the_silver_searcher`)
 
 ### And also...
-- [ ] Install `figlet` for inputing text ASCII art
-- [ ] Install `xclip` for system clipboard access (`Linux` and `xorg` only)
+- Install `figlet` for inputing text ASCII art
+- Install `xclip` for system clipboard access (`Linux` and `xorg` only)
 
 ## Keyboard Shortcuts
 ### 1 Basic Editor Features
@@ -222,7 +223,7 @@ Use the arrow keys to resize the current window.
 
 <img alt="Gif" src="https://user-images.githubusercontent.com/251450/55285193-400a9000-53b9-11e9-8cff-ffe4983c5947.gif" width="60%" />
 
-#### [Ultisnips](https://github.com/SirVer/ultisnips)
+#### [coc-snippets](https://github.com/neoclide/coc-snippets)
 | Shortcut   | Action                                           |
 |------------|--------------------------------------------------|
 | `Ctrl` `e` | Expand a snippet                                 |
@@ -230,22 +231,6 @@ Use the arrow keys to resize the current window.
 | `Ctrl` `e` | (in snippet) Next Cursor position in snippet     |
 
 ![GIF Demo](https://raw.github.com/SirVer/ultisnips/master/doc/demo.gif)
-
-### Debugger
-#### [vimspector (debugger-plugin)](https://github.com/puremourning/vimspector)
-| Key   | Function                                                  |
-|-------|-----------------------------------------------------------|
-| `F5`  | When debugging, continue. Otherwise start debugging.      |
-| `F3`  | Stop debugging.                                           |
-| `F4`  | Restart debugging with the same configuration.            |
-| `F6`  | Pause debugee.                                            |
-| `F9`  | Toggle line breakpoint on the current line.               |
-| `F8`  | Add a function breakpoint for the expression under cursor |
-| `F10` | Step Over                                                 |
-| `F11` | Step Into                                                 |
-| `F12` | Step out of current function scope                        |
-
-<img alt="Gif" src="https://puremourning.github.io/vimspector-web/img/vimspector-overview.png" width="60%" />
 
 ### File Navigation
 #### [coc-explorer (file browser)](https://github.com/weirongxu/coc-explorer)
@@ -309,14 +294,14 @@ See `:help table-mode.txt` for more.
 
 <img alt="Png" src="https://camo.githubusercontent.com/56430626a5444ea2f0249d71f9288775277c7f5d/68747470733a2f2f73697465732e676f6f676c652e636f6d2f736974652f6d6262696c6c2f756e646f747265655f6e65772e706e67" width="60%" />
 
-#### [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)
-| Shortcut   | Action                                 |
-|------------|----------------------------------------|
-| `Ctrl`+`k` | **Select next key (multiple cursors)** |
-| `Alt`+`k`  | **Select all keys (multiple cursors)** |
-| `Ctrl`+`p` | Select previous key                    |
-| `Ctrl`+`s` | Skip key                               |
-| `Esc`      | Quit mutiple cursors                   |
+#### [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
+| Shortcut   | Action                                           |
+|------------|--------------------------------------------------|
+| `Ctrl`+`k` | **Select next key (multiple cursors)**           |
+| `q`        | **Deselect the current keys (multiple cursors)** |
+| `-`        | Select the previous key                          |
+| `=`        | Select the next key                              |
+| `Esc`      | Quit mutiple cursors                             |
 
 <img alt="Gif" src="https://raw.githubusercontent.com/terryma/vim-multiple-cursors/master/assets/example1.gif" width="60%" />
 <img alt="Gif" src="https://raw.githubusercontent.com/terryma/vim-multiple-cursors/master/assets/example2.gif" width="60%" />
@@ -349,8 +334,6 @@ New operator: `s`:
 
 You can execute `s<motion>` to substitute the text object provided by the motion with the contents of the default register (or an explicit register if provided). For example, you could execute `skw` to replace the current word under the cursor with the current yank, or `skp` to replace the paragraph, etc.
 
-
-
 #### [vim-easy-align](https://github.com/junegunn/vim-easy-align)
 Press `ga` + **symbol** in normal or visual mode to align text based on **symbol**
 
@@ -374,25 +357,6 @@ Press `'` and a `character` jump to `character` (similar to Emacs' [AceJump](htt
 Press `T` to toggle function and variable list
 
 <img alt="Gif" src="https://user-images.githubusercontent.com/8850248/56469894-14d40780-6472-11e9-802f-729ac53bd4d5.gif" width="60%" />
-
-#### [vim-signiture - Bookmarks](https://github.com/kshenoy/vim-signature)
-| Shortcut    | Action                          |
-|-------------|---------------------------------|
-| `m<letter>` | Add/remove mark at current line |
-| `m/`        | List all marks                  |
-| `mSPACE`    | Jump to the next mark in buffer |
-| `mt`        | Add/remove mark at current line |
-| `ma`        | Add annotation at current line  |
-| `ml`        | Show all bookmarks              |
-| `mi`        | Next bookmark                   |
-| `mn`        | Previous bookmark               |
-| `mC`        | Clear bookmarks                 |
-| `mX`        | Clear all bookmarks             |
-| `mu`        | Move bookmark up a line         |
-| `me`        | Move bookmark down a line       |
-| `SPC` `g`   | Move bookmark to line...        |
-
-<img alt="Gif" src="https://camo.githubusercontent.com/bc2bf1746e30c72d7ff5b79331231e8c388d068a/68747470733a2f2f7261772e6769746875622e636f6d2f4d617474657347726f656765722f76696d2d626f6f6b6d61726b732f6d61737465722f707265766965772e676966" width="60%" />
 
 ### Find and Replace
 #### [Far.vim - find and replace](https://github.com/brooth/far.vim)
