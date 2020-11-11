@@ -51,7 +51,6 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 		+ [AutoFormat](#autoformat)
 		+ [vim-markdown-toc (generate table of contents for markdown files)](#vim-markdown-toc-generate-table-of-contents-for-markdown-files)
 	- [Navigation Within Buffer](#navigation-within-buffer)
-		+ [vim-easy-motion](#vim-easy-motion)
 		+ [Vista.vim](#vistavim)
 	- [Find and Replace](#find-and-replace)
 		+ [Far.vim - find and replace](#farvim---find-and-replace)
@@ -74,8 +73,8 @@ Please **DO NOT** just copy this configuration folder without really looking at 
 ## Requirements
 - This nvim configuration **REQUIRES** NeoVim 0.5.0+
 ## After Installation, You Need To
-- Install `pip`, and do `pip install pynvim`
-- Install `pip3`, and do `pip3 install pynvim`
+- Install `pip`, and do `pip install --user pynvim`
+- Install `pip3`, and do `pip3 install --user pynvim`
 - Install `node`, and do `npm install -g neovim`
 - Install nerd-fonts (actually it's optional but it looks real good)
 
@@ -348,11 +347,6 @@ In `markdown` files, type `:Gen` then tab, you'll see your options.
 <img alt="Gif" src="https://raw.githubusercontent.com/mzlogin/vim-markdown-toc/master/screenshots/english.gif" width="60%" />
 
 ### Navigation Within Buffer
-#### [vim-easy-motion](https://github.com/easymotion/vim-easymotion)
-Press `'` and a `character` jump to `character` (similar to Emacs' [AceJump](https://www.emacswiki.org/emacs/AceJump))
-
-<img alt="Gif" src="https://f.cloud.github.com/assets/3797062/2039359/a8e938d6-899f-11e3-8789-60025ea83656.gif" width="60%" />
-
 #### [Vista.vim](https://github.com/liuchengxu/vista.vim)
 Press `T` to toggle function and variable list
 
