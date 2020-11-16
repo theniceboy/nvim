@@ -1353,7 +1353,7 @@ let g:agit_no_default_mappings = 1
 " ===
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"typescript", "dart"},     -- one of "all", "language", or a list of languages
+  ensure_installed = {"typescript", "dart", "java"},     -- one of "all", "language", or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust" },  -- list of language that will be disabled
