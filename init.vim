@@ -371,7 +371,7 @@ func! CompileRunGcc()
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"
 	elseif &filetype == 'dart'
-		exec "CocCommand flutter.run -d ".g:flutter_default_device
+		exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
 		silent! exec "CocCommand flutter.dev.openDevLog"
 	elseif &filetype == 'javascript'
 		set splitbelow
