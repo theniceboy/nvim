@@ -448,7 +448,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
 
 " Autoformat
-Plug 'Chiel92/vim-autoformat'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
 
 " Tex
 " Plug 'lervag/vimtex'
@@ -1041,10 +1042,19 @@ let g:go_doc_keywordprg_enabled = 0
 " ===
 " === AutoFormat
 " ===
-nnoremap \f :Autoformat<CR>
-let g:formatdef_custom_js = '"js-beautify -t"'
-let g:formatters_javascript = ['custom_js']
-au BufWrite *.js :Autoformat
+augroup autoformat_settings
+	" autocmd FileType bzl AutoFormatBuffer buildifier
+	" autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+	" autocmd FileType dart AutoFormatBuffer dartfmt
+	" autocmd FileType go AutoFormatBuffer gofmt
+	" autocmd FileType gn AutoFormatBuffer gn
+	" autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+	autocmd FileType java AutoFormatBuffer google-java-format
+	" autocmd FileType python AutoFormatBuffer yapf
+	" Alternative: autocmd FileType python AutoFormatBuffer autopep8
+	" autocmd FileType rust AutoFormatBuffer rustfmt
+	" autocmd FileType vue AutoFormatBuffer prettier
+augroup END
 
 
 " ===
