@@ -804,7 +804,7 @@ function! s:syntax()
   syn match plugNumber /[0-9]\+[0-9.]*/ contained
   syn match plugBracket /[[\]]/ contained
   syn match plugX /x/ contained
-  syn match plugDash /^-/
+  syn match plugDash /^-\{1}\ /
   syn match plugPlus /^+/
   syn match plugStar /^*/
   syn match plugMessage /\(^- \)\@<=.*/
@@ -822,6 +822,7 @@ function! s:syntax()
   syn match plugError /^x.*/
   syn region plugDeleted start=/^\~ .*/ end=/^\ze\S/
   syn match plugH2 /^.*:\n-\+$/
+  syn match plugH2 /^-\{2,}/
   syn keyword Function PlugInstall PlugStatus PlugUpdate PlugClean
   hi def link plug1       Title
   hi def link plug2       Repeat
@@ -1077,8 +1078,9 @@ function! s:checkout(spec)
   let sha = a:spec.commit
   let output = s:git_revision(a:spec.dir)
   if !empty(output) && !s:hash_match(sha, s:lines(output)[0])
+    let credential_helper = s:git_version_requirement(2) ? '-c credential.helper= ' : ''
     let output = s:system(
-          \ 'git fetch --depth 999999 && git checkout '.plug#shellescape(sha).' --', a:spec.dir)
+          \ 'git '.credential_helper.'fetch --depth 999999 && git checkout '.plug#shellescape(sha).' --', a:spec.dir)
   endif
   return output
 endfunction
