@@ -295,12 +295,12 @@ endsnippet
 
 snippet push "Navigator push"
 Navigator.of(context).push(
-  MaterialPageRoute(builder: (context) => ${1:Page()}),${0}
-);
+  MaterialPageRoute(builder: (context) => ${1:Page()}),
+)${0}
 endsnippet
 
 snippet pop "Navigator pop"
-Navigator.of(context).pop(${1});
+Navigator.of(context).pop(${1})${0}
 endsnippet
 
 snippet rmb "RawMaterialButton"
@@ -333,3 +333,8 @@ snippet f "Function"
 () => 
 endsnippet
 
+snippet delay "Future.delayed"
+Future.delayed(const Duration(milliseconds: ${1:300})).then((_) {
+	${2}
+});
+endsnippet
