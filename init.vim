@@ -432,7 +432,7 @@ Plug 'liuchengxu/vista.vim'
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neoclide/coc.nvim', {'branch': 'release', 'tag': 'v0.0.78'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release', 'tag': 'v0.0.79'}
 Plug 'wellle/tmux-complete.vim'
 
 " Snippets
