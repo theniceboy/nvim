@@ -47,6 +47,8 @@ set autochdir
 " ===
 " === Editor behavior
 " ===
+set exrc
+set secure
 set number
 set relativenumber
 set cursorline
