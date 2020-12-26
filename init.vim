@@ -138,6 +138,7 @@ noremap S :w<CR>
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
+noremap <LEADER>rv :e .nvimrc<CR>
 
 " Undo operations
 noremap l u
@@ -633,7 +634,6 @@ nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 " === coc.nvim
 " ===
 let g:coc_global_extensions = [
-	\ 'coc-actions',
 	\ 'coc-css',
 	\ 'coc-diagnostic',
 	\ 'coc-explorer',
@@ -650,7 +650,6 @@ let g:coc_global_extensions = [
 	\ 'coc-stylelint',
 	\ 'coc-syntax',
 	\ 'coc-tasks',
-	\ 'coc-todolist',
 	\ 'coc-translator',
 	\ 'coc-tslint-plugin',
 	\ 'coc-tsserver',
@@ -711,12 +710,12 @@ nmap ts <Plug>(coc-translator-p)
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>aw  <Plug>(coc-codeaction-selected)w
 " coctodolist
-nnoremap <leader>tn :CocCommand todolist.create<CR>
-nnoremap <leader>tl :CocList todolist<CR>
-nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
+" nnoremap <leader>tn :CocCommand todolist.create<CR>
+" nnoremap <leader>tl :CocList todolist<CR>
+" nnoremap <leader>tu :CocCommand todolist.download<CR>:CocCommand todolist.upload<CR>
 " coc-tasks
 noremap <silent> <leader>ts :CocList tasks<CR>
 " coc-snippets
