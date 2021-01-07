@@ -308,9 +308,6 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 " Open a new instance of st with the cwd
 nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 
-" Move the next character to the end of the line with ctrl+9
-inoremap <C-u> <ESC>lx$p
-
 " Opening a terminal window
 noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
@@ -527,6 +524,7 @@ Plug 'theniceboy/argtextobj.vim'
 Plug 'rhysd/clever-f.vim'
 Plug 'chrisbra/NrrwRgn'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'theniceboy/pair-maker.vim'
 
 " For general writing
 " Plug 'junegunn/goyo.vim'
