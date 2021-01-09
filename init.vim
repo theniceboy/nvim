@@ -170,9 +170,6 @@ vnoremap <LEADER>tt :s/    /\t/g
 " Folding
 noremap <silent> <LEADER>o za
 
-" Open up lazygit
-noremap \g :Git 
-noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
 " nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
 
 
@@ -446,6 +443,7 @@ Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 "Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
+Plug 'kdheepak/lazygit.nvim'
 
 " Autoformat
 Plug 'google/vim-maktaba'
@@ -1369,6 +1367,16 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+
+" ===
+" === lazygit.nvim
+" ===
+noremap <c-g> :LazyGit<CR>
+let g:lazygit_floating_window_winblend = 0 " transparency of floating window
+let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating window
+let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
+let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
 
 
 " ===================== End of Plugin Settings =====================
