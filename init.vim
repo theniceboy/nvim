@@ -520,9 +520,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'svermeulen/vim-subversive'
 Plug 'theniceboy/argtextobj.vim'
 Plug 'rhysd/clever-f.vim'
-Plug 'chrisbra/NrrwRgn'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'theniceboy/pair-maker.vim'
+Plug 'theniceboy/vim-move'
 
 " For general writing
 " Plug 'junegunn/goyo.vim'
@@ -1327,11 +1327,9 @@ vmap <LEADER>cu g<
 
 
 " ===
-" === NrrwRgn
+" === vim-move
 " ===
-let g:nrrw_rgn_nomap_nr = 1
-let g:nrrw_rgn_nomap_Nr = 1
-noremap <c-y> :NR<CR>
+let g:move_key_modifier = 'C'
 
 
 " ===
