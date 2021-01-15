@@ -524,6 +524,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'theniceboy/pair-maker.vim'
 Plug 'theniceboy/vim-move'
 " Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'Yggdroot/indentLine'
 
 " For general writing
 " Plug 'junegunn/goyo.vim'
