@@ -248,6 +248,7 @@ noremap <LEADER>u <C-w>k
 noremap <LEADER>e <C-w>j
 noremap <LEADER>n <C-w>h
 noremap <LEADER>i <C-w>l
+noremap qf <C-w>o
 
 " Disable the default s key
 noremap s <nop>
