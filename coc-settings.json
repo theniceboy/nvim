@@ -89,7 +89,7 @@
 	"explorer.file.column.git.showIgnored": true,
 	"explorer.keyMappingMode": "none",
 	"explorer.buffer.showHiddenBuffers": false,
-	"explorer.keyMappings": {
+	"explorer.keyMappings.global": {
 		"u": "nodePrev",
 		"e": "nodeNext",
 		"h": "toggleSelection",
