@@ -179,7 +179,7 @@ class ${1:name} extends StatefulWidget {
 }
 class _${1:index}State extends State<${1:index}> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return ${2:Container()};
   }
 }
@@ -190,7 +190,7 @@ snippet sl "New Stateless Widget" b
 class ${1:name} extends StatelessWidget {
   ${1:name}({});
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return ${2:Container()};
   }
 }
@@ -219,7 +219,7 @@ endsnippet
 snippet listv "ListView.builder"
 ListView.builder(
   itemCount: ${1:1},
-  itemBuilder: (BuildContext context, int index) {
+  itemBuilder: (context, index) {
     return ${2:Container()};
   },
 )
@@ -229,7 +229,7 @@ snippet future "Future Builder"
 FutureBuilder(
   future: ${1:Future},
   initialData: ${2:InitialData},
-  builder: (BuildContext context, AsyncSnapshot snapshot) {
+  builder: (context, snapshot) {
     if (snapshot.connectionState == ConnectionState.done)
       return ${3:Container();}
     return ${4:Container();}
