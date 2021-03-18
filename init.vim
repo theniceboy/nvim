@@ -211,7 +211,11 @@ noremap <C-U> 5<C-y>
 noremap <C-E> 5<C-e>
 
 
+
 source $XDG_CONFIG_HOME/nvim/cursor.vim
+
+"If you use Qwerty keyboard, uncomment the next line.
+"source $XDG_CONFIG_HOME/nvim/cursor_for_qwerty.vim
 
 " ===
 " === Insert Mode Cursor Movement
