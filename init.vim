@@ -357,8 +357,10 @@ func! CompileRunGcc()
 		:res -15
 		:term ./%<
 	elseif &filetype == 'java'
-		exec "!javac %"
-		exec "!time java %<"
+		set splitbelow
+		:sp
+		:res -5
+		term javac % && time java %<
 	elseif &filetype == 'sh'
 		:!time bash %
 	elseif &filetype == 'python'
