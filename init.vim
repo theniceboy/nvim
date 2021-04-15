@@ -646,6 +646,7 @@ nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 let g:coc_global_extensions = [
 	\ 'coc-css',
 	\ 'coc-diagnostic',
+	\ 'coc-eslint',
 	\ 'coc-explorer',
 	\ 'coc-flutter-tools',
 	\ 'coc-gitignore',
