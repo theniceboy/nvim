@@ -18,6 +18,22 @@ snippet ef "Empty Arrow Function"
 }
 endsnippet
 
+snippet af "Async Arrow Function"
+async (${1}) => {
+	${0}
+}
+endsnippet
+
+snippet c "Comment Block"
+/*
+ * ${0}
+*/
+endsnippet
+
+snippet pm "@param"
+@param ${1:parameter}: ${0:description}
+endsnippet
+
 # React & JSX
 
 snippet t "Tag"
@@ -35,7 +51,7 @@ ${0}
 endsnippet
 
 snippet ti "Tag Inline"
-<${1:br} />
+<${1} />
 ${0}
 endsnippet
 
