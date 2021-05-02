@@ -820,7 +820,7 @@ let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 let g:Lf_WildIgnore = {
         \ 'dir': ['.git', 'vendor', 'node_modules'],
-        \ 'file': ['__vim_project_root']
+        \ 'file': ['__vim_project_root', 'class']
         \}
 let g:Lf_UseMemoryCache = 0
 let g:Lf_UseCache = 0
