@@ -12,8 +12,14 @@ snippet f "Arrow Function"
 }
 endsnippet
 
-snippet ef "Empty Arrow Function"
-() => {
+snippet cf "Constant Function"
+const ${1:funcName} = () => {
+	${0}
+}
+endsnippet
+
+snippet ef "Export Function"
+export function ${1:functionName}() {
 	${0}
 }
 endsnippet
