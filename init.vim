@@ -662,6 +662,7 @@ let g:coc_global_extensions = [
 	\ 'coc-stylelint',
 	\ 'coc-syntax',
 	\ 'coc-tailwindcss',
+	\ 'https://github.com/rodrigore/coc-tailwind-intellisense',
 	\ 'coc-tasks',
 	\ 'coc-translator',
 	\ 'coc-tslint-plugin',
