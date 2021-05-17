@@ -651,6 +651,7 @@ let g:coc_global_extensions = [
 	\ 'coc-flutter-tools',
 	\ 'coc-gitignore',
 	\ 'coc-html',
+	\ 'coc-import-cost',
 	\ 'coc-json',
 	\ 'coc-lists',
 	\ 'coc-prettier',

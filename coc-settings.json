@@ -61,6 +61,11 @@
 	"list.previewHighlightGroup": "Statement",
 	"list.nextKeymap": "<C-e>",
 	"list.previousKeymap": "<C-u>",
+	"importCost.bundleSizeDecoration": "both",
+	"importCost.typescriptExtensions": ["\\.tsx?$"],
+	"importCost.javascriptExtensions": ["\\.jsx?$"],
+	"importCost.showCalculatingDecoration": true,
+	"importCost.debug": false,
 	"snippets.ultisnips.directories": [
 		"$HOME/.config/nvim/Ultisnips/",
 		"$HOME/.config/nvim/plugged/vim-snippets/UltiSnips/"
