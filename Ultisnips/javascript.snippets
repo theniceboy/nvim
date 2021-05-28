@@ -12,6 +12,12 @@ snippet f "Arrow Function"
 }
 endsnippet
 
+snippet fn "Empty Function"
+function ${1:functionName}() {
+	${0}
+}
+endsnippet
+
 snippet cf "Constant Function"
 const ${1:funcName} = () => {
 	${0}
@@ -24,13 +30,39 @@ export function ${1:functionName}() {
 }
 endsnippet
 
+snippet eaf "Export Async Function"
+export async function ${1:functionName}() {
+	${0}
+}
+endsnippet
+
+snippet ssr "NextJS ServerSide Rendering"
+export async function getServerSideProps() {
+	return {
+		props: {
+			//
+		},
+	};
+}
+endsnippet
+
+snippet ssg "NextJS ServerSide Generation"
+export async function getStaticProps() {
+	return {
+		props: {
+			//
+		},
+	};
+}
+endsnippet
+
 snippet af "Async Arrow Function"
 async (${1}) => {
 	${0}
 }
 endsnippet
 
-snippet aff "Async Function"
+snippet afn "Async Function"
 async function ${1:FunctionName}() {
 	${0}
 }
@@ -387,4 +419,14 @@ endsnippet
 
 snippet us.rf "useRef" w
 const $1 = useRef($2)${0:;}
+endsnippet
+
+snippet test "Test"
+test("${1:test}", ${2:async}() => {
+	${3:// ...}
+});
+endsnippet
+
+snippet ex "Expect"
+expect(${1:1+1}).toBe(${2:2});
 endsnippet
