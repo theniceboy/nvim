@@ -87,6 +87,7 @@
 	"yank.enableCompletion": false,
 	"typescript.suggestionActions.enabled": true,
 	"typescript.format.enabled": true,
+	"jest.watch": false,
 	"explorer.width": 38,
 	"explorer.quitOnOpen": true,
 	"explorer.sources": [

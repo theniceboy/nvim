@@ -652,6 +652,7 @@ let g:coc_global_extensions = [
 	\ 'coc-gitignore',
 	\ 'coc-html',
 	\ 'coc-import-cost',
+	\ 'coc-jest',
 	\ 'coc-json',
 	\ 'coc-lists',
 	\ 'coc-prettier',
@@ -663,7 +664,6 @@ let g:coc_global_extensions = [
 	\ 'coc-stylelint',
 	\ 'coc-syntax',
 	\ 'coc-tailwindcss',
-	\ 'https://github.com/rodrigore/coc-tailwind-intellisense',
 	\ 'coc-tasks',
 	\ 'coc-translator',
 	\ 'coc-tslint-plugin',
@@ -671,7 +671,8 @@ let g:coc_global_extensions = [
 	\ 'coc-vetur',
 	\ 'coc-vimlsp',
 	\ 'coc-yaml',
-	\ 'coc-yank']
+	\ 'coc-yank',
+	\ 'https://github.com/rodrigore/coc-tailwind-intellisense']
 inoremap <silent><expr> <TAB>
 	\ pumvisible() ? "\<C-n>" :
 	\ <SID>check_back_space() ? "\<TAB>" :
