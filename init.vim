@@ -157,6 +157,9 @@ vnoremap Y "+y
 nnoremap < <<
 nnoremap > >>
 
+" Delete find pair
+nnoremap dy d%
+
 " Search
 noremap <LEADER><CR> :nohlsearch<CR>
 
@@ -287,6 +290,7 @@ noremap <LEADER>q <C-w>j:q<CR>
 " ===
 " Create a new tab with tu
 noremap tu :tabe<CR>
+noremap tU :tab split<CR>
 " Move around tabs with tn and ti
 noremap tn :-tabnext<CR>
 noremap ti :+tabnext<CR>
