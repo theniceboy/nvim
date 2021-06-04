@@ -21,6 +21,9 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+if isdirectory('~/.config/nvim/plugged')
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 " ===
 " === Create a _machine_specific.vim file to adjust machine specific stuff, like python interpreter location
