@@ -21,7 +21,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-if isdirectory('~/.config/nvim/plugged')
+if empty(glob('~/.config/nvim/plugged/wildfire.vim/autoload/wildfire.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
