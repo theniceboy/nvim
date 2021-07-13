@@ -1,5 +1,5 @@
 {
-	"coc.preferences.hoverTarget": "preview",
+	"coc.preferences.semanticTokensHighlights": false,
 	"coc.preferences.enableFloatHighlight": true,
 	"coc.preferences.snippetStatusText": "Ⓢ ",
 	"coc.preferences.extensionUpdateCheck": "daily",
@@ -76,6 +76,7 @@
 		"html",
 		"css",
 		"json",
+		"java",
 		"python",
 		"vue",
 		"svelte",
@@ -155,6 +156,7 @@
 	"flutter.UIPath": true,
 	"flutter.openDevLogSplitCommand": "botright 12split",
 	"flutter.lsp.initialization.onlyAnalyzeProjectsWithOpenFiles": false,
+	"flutter.trace.server": "off",
 	"tslint.autoFixOnSave": false,
 	"python.autoComplete.addBrackets": true,
 	"python.jediEnabled": false,
