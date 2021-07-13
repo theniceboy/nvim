@@ -56,6 +56,10 @@ export async function getStaticProps() {
 }
 endsnippet
 
+snippet rs "res.status"
+res.status(${1:200}).send("${2:text}")${0}
+endsnippet
+
 snippet af "Async Arrow Function"
 async (${1}) => {
 	${0}
@@ -66,6 +70,20 @@ snippet afn "Async Function"
 async function ${1:FunctionName}() {
 	${0}
 }
+endsnippet
+
+snippet try "Try Catch"
+try {
+	//
+} catch (e) {
+	console.error(e);
+}
+endsnippet
+
+snippet eh "Error Handler"
+return await errorHandler(async () => {
+	${0:// Todo}
+});
 endsnippet
 
 snippet c "Comment Block"

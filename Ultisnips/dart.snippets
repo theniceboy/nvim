@@ -1,3 +1,8 @@
+snippet imat "Import Material"
+import 'package:flutter/material.dart';
+
+endsnippet
+
 snippet wh "Width and height"
 width: ${1},
 height: ${0},
@@ -19,6 +24,26 @@ snippet pav "Padding Vertical"
 padding: EdgeInsets.only(${1:top: ${2:0}}${3:, bottom: ${4:0}}),
 endsnippet
 
+snippet pah "Padding Horizontal"
+padding: EdgeInsets.only(left: ${1:0}, right: ${1}),${0}
+endsnippet
+
+snippet pat "Padding Top"
+padding: EdgeInsets.only(top: ${0:0}),
+endsnippet
+
+snippet pab "Padding Bottom"
+padding: EdgeInsets.only(bottom: ${0:0}),
+endsnippet
+
+snippet pal "Padding Left"
+padding: EdgeInsets.only(left: ${0:0}),
+endsnippet
+
+snippet par "Padding Right"
+padding: EdgeInsets.only(right: ${0:0}),
+endsnippet
+
 snippet mar "Margin"
 margin: EdgeInsets.only(${1:left: ${2:0}}${3:, right: ${4:0}}${5:, top: ${6:0}}${7:, bottom: ${8:0}}),
 endsnippet
@@ -28,11 +53,27 @@ margin: EdgeInsets.all(${1:8.0}),
 endsnippet
 
 snippet marh "Margin Horizontal"
-margin: EdgeInsets.only(${1:left: ${2:0}}${3:, right: ${4:0}}),
+margin: EdgeInsets.only(left: ${1:0}, right: ${1}),${0}
+endsnippet
+
+snippet mart "Margin Top"
+margin: EdgeInsets.only(top: ${0:0}),
+endsnippet
+
+snippet marb "Margin Bottom"
+margin: EdgeInsets.only(bottom: ${0:0}),
+endsnippet
+
+snippet marl "Margin Left"
+margin: EdgeInsets.only(left: ${0:0}),
+endsnippet
+
+snippet marr "Margin Right"
+margin: EdgeInsets.only(right: ${0:0}),
 endsnippet
 
 snippet marv "Margin Vertical"
-margin: EdgeInsets.only(${1:top: ${2:0}}${3:, bottom: ${4:0}}),
+margin: EdgeInsets.only(top: ${1:0}, bottom: ${1}),${0}
 endsnippet
 
 snippet br "BorderRadius"
@@ -60,6 +101,14 @@ border: Border.all(
   width: ${1},
   color: ${2},
 ),
+endsnippet
+
+snippet mai "MainAxis"
+mainAxisAlignment: MainAxisAlignment.${0}
+endsnippet
+
+snippet crs "CrossAxis"
+crossAxisAlignment: CrossAxisAlignment.${0}
 endsnippet
 
 snippet row "Row"
@@ -142,6 +191,14 @@ snippet ts "Text with text style"
 Text(${1}, style: ${2}),${0}
 endsnippet
 
+snippet rts "Rich Text with text style"
+RichText(
+  text: TextSpan(children: [
+    TextSpan(text: ${1}, style: ${2}),${0}
+  ]),
+),
+endsnippet
+
 snippet ss "TextStyle"
 TextStyle(
   color: ${1},
@@ -203,8 +260,8 @@ endsnippet
 snippet inits "initState"
 @override
 void initState() {
+	${0}
   super.initState();
-  ${0}
 }
 endsnippet
 
