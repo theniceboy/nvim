@@ -121,7 +121,7 @@ noremap ; :
 
 " Save & quit
 noremap Q :q<CR>
-noremap <C-q> :qa<CR>
+" noremap <C-q> :qa<CR>
 noremap S :w<CR>
 
 " Open the vimrc file anytime
