@@ -3,9 +3,39 @@ import 'package:flutter/material.dart';
 
 endsnippet
 
+snippet fn "Async Function"
+void ${1:func}() {
+  ${0}
+}
+
+endsnippet
+snippet afn "Async Function"
+Future<void> ${1:func}() async {
+  ${0}
+}
+
+endsnippet
+
+snippet msa "MaterialStateProperty.all"
+MaterialStateProperty.all(${0}),
+endsnippet
+
+snippet msr "MaterialStateProperty.resolveWith"
+MaterialStateProperty.resolveWith<${1}>((states) => states.contains(MaterialState.pressed) ? null : null),
+endsnippet
+
 snippet wh "Width and height"
 width: ${1},
 height: ${0},
+endsnippet
+
+snippet iwh "Infinity Width and height"
+width: double.infinity,
+height: double.infinity,
+endsnippet
+
+snippet oprs "onPressed"
+final void Function() onPressed;
 endsnippet
 
 snippet pa "Padding"
@@ -207,12 +237,22 @@ TextStyle(
 );${0}
 endsnippet
 
+
+snippet nbuilder "NotifierBuilder"
+return NotifierBuilder(
+  notifier: null,
+  builder: (context) {
+    return Container();
+  },
+);
+endsnippet
+
 snippet sw "SizedBox with width"
-SizedBox(width: ${1}),${0}
+const SizedBox(width: ${1}),${0}
 endsnippet
 
 snippet sh "SizedBox with height"
-SizedBox(height: ${1}),${0}
+const SizedBox(height: ${1}),${0}
 endsnippet
 
 snippet swh "SizedBox with width and height"
@@ -394,6 +434,10 @@ endsnippet
 
 snippet f "Function"
 () => 
+endsnippet
+
+snippet adelay "await Future.delayed"
+await Future.delayed(const Duration(milliseconds: ${1:300}));
 endsnippet
 
 snippet delay "Future.delayed"
