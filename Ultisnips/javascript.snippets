@@ -448,3 +448,35 @@ endsnippet
 snippet ex "Expect"
 expect(${1:1+1}).toBe(${2:2});
 endsnippet
+
+
+snippet route "New Route"
+import express from "express";
+
+const ${1:some}Routes = express.Router();
+
+${0:// TODO}
+
+export default ${1:some}Routes;
+endsnippet
+
+snippet l "log"
+log(${0});
+endsnippet
+
+snippet ehs "errorHandlers.silent"
+await errorHandlers.silent(async () => {
+	${0:// todo}
+});
+endsnippet
+
+snippet eha "errorHandlers.safe"
+await errorHandlers.safe({
+	action: async () => {
+		${0:// todo}
+	},
+	teardown: async () => {
+		// todo
+	},
+});
+endsnippet
