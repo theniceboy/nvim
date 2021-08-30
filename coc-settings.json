@@ -1,4 +1,6 @@
 {
+	"prisma.prismaFmtBinPath":"",
+	"prismaLanguageServer.prismaFmtBinPath":"",
 	"coc.preferences.semanticTokensHighlights": false,
 	"coc.preferences.enableFloatHighlight": true,
 	"coc.preferences.snippetStatusText": "Ⓢ ",
