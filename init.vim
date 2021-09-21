@@ -651,7 +651,6 @@ let g:coc_global_extensions = [
 	\ 'coc-prettier',
 	\ 'coc-prisma',
 	\ 'coc-pyright',
-	\ 'coc-python',
 	\ 'coc-snippets',
 	\ 'coc-sourcekit',
 	\ 'coc-stylelint',
