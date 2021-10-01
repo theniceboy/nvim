@@ -348,6 +348,12 @@ func! CompileRunGcc()
 		:sp
 		:res -15
 		:term ./%<
+	elseif &filetype == 'cs'
+		set splitbelow
+		silent! exec "!mcs %"
+		:sp
+		:res -5
+		:term mono %<.exe
 	elseif &filetype == 'java'
 		set splitbelow
 		:sp
@@ -648,6 +654,7 @@ let g:coc_global_extensions = [
 	\ 'coc-jest',
 	\ 'coc-json',
 	\ 'coc-lists',
+	\ 'coc-omnisharp',
 	\ 'coc-prettier',
 	\ 'coc-prisma',
 	\ 'coc-pyright',
@@ -1086,30 +1093,7 @@ autocmd Filetype cs nnoremap <buffer> <LEADER>rn :OmniSharpRename<CR><C-N>:res +
 
 sign define OmniSharpCodeActions text=💡
 
-augroup OSCountCodeActions
-	autocmd!
-	autocmd FileType cs set signcolumn=yes
-	autocmd CursorHold *.cs call OSCountCodeActions()
-augroup END
-
-function! OSCountCodeActions() abort
-	if bufname('%') ==# '' || OmniSharp#FugitiveCheck() | return | endif
-	if !OmniSharp#IsServerRunning() | return | endif
-	let opts = {
-				\ 'CallbackCount': function('s:CBReturnCount'),
-				\ 'CallbackCleanup': {-> execute('sign unplace 99')}
-				\}
-	call OmniSharp#CountCodeActions(opts)
-endfunction
-
-function! s:CBReturnCount(count) abort
-	if a:count
-		let l = getpos('.')[1]
-		let f = expand('%:p')
-		execute ':sign place 99 line='.l.' name=OmniSharpCodeActions file='.f
-	endif
-endfunction
-
+let g:coc_sources_disable_map = { 'cs': ['cs', 'cs-1', 'cs-2', 'cs-3'] }
 
 " ===
 " === vim-easymotion

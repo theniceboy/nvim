@@ -82,6 +82,7 @@
 		"vue",
 		"svelte",
 		"c",
+		"cs",
 		"prisma"
 	],
 	"yaml.format.enable": true,
