@@ -401,54 +401,6 @@ snippet rs "React useState"
 const [$1, set${1}] = useState(${0:''})
 endsnippet
 
-snippet us.e "useEffect" w
-useEffect(() => {
-  $1
-})${0:;}
-endsnippet
-
-snippet us.er "useEffect with return" w
-useEffect(() => {
-  $1
-	return () => {
-    $2
-	};
-})${0:;}
-endsnippet
-
-snippet us.c "useContext" w
-const $1 = useContext($2)${0:;}
-endsnippet
-
-snippet us.r "useReducer" w
-const [$1, dispatch] = useReducer($1Reducer, ${2:${VISUAL:initialState}})
-const $1Reducer = (state, action) => {
-	switch (action.type) {
-		default:
-			return state;
-	}
-}${0:;}
-endsnippet
-
-snippet us.cb "useCallback" w
-useCallback(
-	() => {
-		$1
-	},
-	[$2],
-)${0:;}
-endsnippet
-
-snippet us.m "useMemo" w
-const $1 = useMemo(() => {
-	$2
-}, [$3])${0:;}
-endsnippet
-
-snippet us.rf "useRef" w
-const $1 = useRef($2)${0:;}
-endsnippet
-
 snippet test "Test"
 test("${1:test}", ${2:async}() => {
 	${3:// ...}
