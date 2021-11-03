@@ -175,7 +175,6 @@
 	"json.format.enable": true,
 	"eslint.autoFixOnSave": false,
 	"prettier.printWidth": 100,
-	"prettier.eslintIntegration": true,
 	"prettier.disableLanguages": [],
 	"prettier.formatterPriority": 1,
 	"prettier.useTabs": true,
