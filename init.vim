@@ -647,6 +647,7 @@ let g:coc_global_extensions = [
 	\ 'coc-gitignore',
 	\ 'coc-html',
 	\ 'coc-import-cost',
+	\ 'coc-java',
 	\ 'coc-jest',
 	\ 'coc-json',
 	\ 'coc-lists',
