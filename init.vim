@@ -534,7 +534,7 @@ Plug 'theniceboy/vim-move'
 Plug 'Yggdroot/indentLine'
 
 " For general writing
-" Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'
 "Plug 'reedes/vim-wordy'
 "Plug 'ron89/thesaurus_query.vim'
 
