@@ -654,7 +654,7 @@ let g:coc_global_extensions = [
 	\ 'coc-lists',
 	\ 'coc-omnisharp',
 	\ 'coc-prettier',
-	\ 'https://github.com/theniceboy/coc-prisma',
+	\ 'coc-prisma',
 	\ 'coc-pyright',
 	\ 'coc-snippets',
 	\ 'coc-sourcekit',
