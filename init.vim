@@ -494,7 +494,6 @@ Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
 
 " Flutter
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'f-person/pubspec-assist-nvim', { 'for' : ['pubspec.yaml'] }
 
 " Swift
 Plug 'keith/swift.vim'
