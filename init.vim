@@ -340,8 +340,10 @@ noremap r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'c'
-		exec "!g++ % -o %<"
-		exec "!time ./%<"
+		set splitbelow
+		:sp
+		:res -5
+		term gcc -ansi -Wall % -o %<.o && time ./%<.o
 	elseif &filetype == 'cpp'
 		set splitbelow
 		exec "!g++ -std=c++11 % -Wall -o %<"
@@ -1330,10 +1332,11 @@ let g:agit_no_default_mappings = 1
 " ===
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"typescript", "dart", "java"},     -- one of "all", "language", or a list of languages
+  -- one of "all", "language", or a list of languages
+  ensure_installed = {"typescript", "dart", "java", "c", "prisma", "bash"},
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
+    disable = { "rust" },  -- list of language that will be disabled
   },
 }
 EOF
