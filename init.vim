@@ -228,13 +228,6 @@ cnoremap <M-w> <S-Right>
 
 
 " ===
-" === Searching
-" ===
-noremap - N
-noremap = n
-
-
-" ===
 " === Window management
 " ===
 " Use <space> + new arrow keys for moving the cursor around windows
@@ -395,6 +388,9 @@ endfunc
 
 call plug#begin('$HOME/.config/nvim/plugged')
 
+Plug 'ibhagwan/fzf-lua'
+Plug 'kyazdani42/nvim-web-devicons'
+
 " Plug 'LoricAndre/fzterm.nvim'
 
 " Testing my own plugin
@@ -403,6 +399,10 @@ call plug#begin('$HOME/.config/nvim/plugged')
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
+
+Plug 'abecodes/tabout.nvim'
+Plug 'petertriho/nvim-scrollbar'
+Plug 'kevinhwang91/nvim-hlslens'
 
 " Pretty Dress
 Plug 'theniceboy/nvim-deus'
@@ -421,7 +421,6 @@ Plug 'RRethy/vim-illuminate'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'kevinhwang91/rnvimr'
 Plug 'airblade/vim-rooter'
 Plug 'pechorin/any-jump.vim'
@@ -765,14 +764,6 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 " ===
 " === FZF
 " ===
-nnoremap <c-p> :Leaderf file<CR>
-" noremap <silent> <C-p> :Files<CR>
-noremap <silent> <C-f> :Rg<CR>
-noremap <silent> <C-h> :History<CR>
-"noremap <C-t> :BTags<CR>
-" noremap <silent> <C-l> :Lines<CR>
-noremap <silent> <C-w> :Buffers<CR>
-noremap <leader>; :History:<CR>
 
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -797,30 +788,6 @@ command! BD call fzf#run(fzf#wrap({
 noremap <c-d> :BD<CR>
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
-
-
-" ===
-" === Leaderf
-" ===
-" let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_PreviewCode = 1
-let g:Lf_ShowHidden = 1
-let g:Lf_ShowDevIcons = 1
-let g:Lf_CommandMap = {
-\   '<C-k>': ['<C-u>'],
-\   '<C-j>': ['<C-e>'],
-\   '<C-]>': ['<C-v>'],
-\   '<C-p>': ['<C-n>'],
-\}
-let g:Lf_UseVersionControlTool = 0
-let g:Lf_IgnoreCurrentBufferName = 1
-let g:Lf_WildIgnore = {
-        \ 'dir': ['.git', 'vendor', 'node_modules'],
-        \ 'file': ['__vim_project_root', 'class']
-        \}
-let g:Lf_UseMemoryCache = 0
-let g:Lf_UseCache = 0
 
 
 " ===
@@ -941,7 +908,7 @@ let g:bullets_enabled_file_types = [
 " === Vista.vim
 " ===
 noremap <LEADER>v :Vista!!<CR>
-noremap <c-t> :silent! Vista finder coc<CR>
+" noremap <c-t> :silent! Vista finder coc<CR>
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'coc'
 let g:vista_fzf_preview = ['right:50%']
@@ -1342,6 +1309,182 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 
+" ===
+" === tabout
+" ===
+lua <<EOF
+require'tabout'.setup {
+  tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
+  backwards_tabkey = '<S-Tab>', -- key to trigger backwards tabout, set to an empty string to disable
+  act_as_tab = true, -- shift content if tab out is not possible
+  act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+  enable_backwards = true, -- well ...
+  completion = true, -- if the tabkey is used in a completion pum
+  tabouts = {
+    {open = "'", close = "'"},
+    {open = '"', close = '"'},
+    {open = '`', close = '`'},
+    {open = '(', close = ')'},
+    {open = '[', close = ']'},
+    {open = '{', close = '}'}
+  },
+  ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+  exclude = {} -- tabout will ignore these filetypes
+}
+EOF
+
+
+" ===
+" === 
+" ===
+lua <<EOF
+require("scrollbar").setup()
+require("scrollbar.handlers.search").setup()
+require("scrollbar").setup({
+    show = true,
+    handle = {
+        text = " ",
+        color = "purple",
+        hide_if_all_visible = true,
+    },
+    handlers = {
+        diagnostic = true,
+        search = true,
+    },
+})
+EOF
+
+
+" ===
+" === nvim-hlslens
+" ===
+noremap <silent> = <Cmd>execute('normal! ' . v:count1 . 'n')<CR>
+            \<Cmd>lua require('hlslens').start()<CR>
+noremap <silent> - <Cmd>execute('normal! ' . v:count1 . 'N')<CR>
+            \<Cmd>lua require('hlslens').start()<CR>
+noremap * *<Cmd>lua require('hlslens').start()<CR>
+noremap # #<Cmd>lua require('hlslens').start()<CR>
+noremap g* g*<Cmd>lua require('hlslens').start()<CR>
+noremap g# g#<Cmd>lua require('hlslens').start()<CR>
+
+
+" ===
+" === fzf-lua
+" ===
+noremap <silent> <C-p> :FzfLua files<CR>
+noremap <silent> <C-f> :FzfLua live_grep<CR>
+noremap <silent> <C-h> :FzfLua oldfiles cwd=~<CR>
+noremap <silent> <C-a> :FzfLua builtin<CR>
+noremap <silent> <C-t> :FzfLua lines<CR>
+noremap <silent> <C-x> :FzfLua resume<CR>
+noremap <silent> z= :FzfLua spell_suggest<CR>
+noremap <silent> <C-w> :FzfLua buffers<CR>
+noremap <leader>; :History:<CR>
+augroup fzf_commands
+  autocmd!
+  autocmd FileType fzf tnoremap <silent> <buffer> <c-j> <down>
+  autocmd FileType fzf tnoremap <silent> <buffer> <c-k> <up>
+augroup end
+lua <<EOF
+require'fzf-lua'.setup {
+	global_resume = true,
+	global_resume_query = true,
+	winopts = {
+		height = 0.95,
+		width = 0.95,
+		preview = {
+			scrollbar = 'float',
+		},
+		fullscreen = false,
+		vertical       = 'down:45%',      -- up|down:size
+		horizontal     = 'right:60%',     -- right|left:size
+		hidden         = 'nohidden',
+		title = true,
+	},
+	keymap = {
+		-- These override the default tables completely
+		-- no need to set to `false` to disable a bind
+		-- delete or modify is sufficient
+		builtin = {
+			["<c-f>"]      = "toggle-fullscreen",
+			["<c-r>"]      = "toggle-preview-wrap",
+			["<c-p>"]      = "toggle-preview",
+			["<c-y>"]      = "preview-page-down",
+			["<c-l>"]      = "preview-page-up",
+			["<S-left>"]   = "preview-page-reset",
+		},
+		fzf = {
+			["esc"]        = "abort",
+			["ctrl-h"]     = "unix-line-discard",
+			["ctrl-k"]     = "half-page-down",
+			["ctrl-b"]     = "half-page-up",
+			["ctrl-n"]     = "beginning-of-line",
+			["ctrl-a"]     = "end-of-line",
+			["alt-a"]      = "toggle-all",
+			["f3"]         = "toggle-preview-wrap",
+			["f4"]         = "toggle-preview",
+			["shift-down"] = "preview-page-down",
+			["shift-up"]   = "preview-page-up",
+			["ctrl-e"]     = "down",
+			["ctrl-u"]     = "up",
+		},
+	},
+  previewers = {
+    cat = {
+      cmd             = "cat",
+      args            = "--number",
+    },
+    bat = {
+      cmd             = "bat",
+      args            = "--style=numbers,changes --color always",
+      theme           = 'Coldark-Dark', -- bat preview theme (bat --list-themes)
+      config          = nil,            -- nil uses $BAT_CONFIG_PATH
+    },
+    head = {
+      cmd             = "head",
+      args            = nil,
+    },
+    git_diff = {
+      cmd_deleted     = "git diff --color HEAD --",
+      cmd_modified    = "git diff --color HEAD",
+      cmd_untracked   = "git diff --color --no-index /dev/null",
+      -- pager        = "delta",      -- if you have `delta` installed
+    },
+    man = {
+      cmd             = "man -c %s | col -bx",
+    },
+    builtin = {
+      syntax          = true,         -- preview syntax highlight?
+      syntax_limit_l  = 0,            -- syntax limit (lines), 0=nolimit
+      syntax_limit_b  = 1024*1024,    -- syntax limit (bytes), 0=nolimit
+    },
+  },
+  files = {
+    -- previewer      = "bat",          -- uncomment to override previewer
+                                        -- (name from 'previewers' table)
+                                        -- set to 'false' to disable
+    prompt            = 'Files❯ ',
+    multiprocess      = true,           -- run command in a separate process
+    git_icons         = true,           -- show git icons?
+    file_icons        = true,           -- show file icons?
+    color_icons       = true,           -- colorize file|git icons
+    -- executed command priority is 'cmd' (if exists)
+    -- otherwise auto-detect prioritizes `fd`:`rg`:`find`
+    -- default options are controlled by 'fd|rg|find|_opts'
+    -- NOTE: 'find -printf' requires GNU find
+    -- cmd            = "find . -type f -printf '%P\n'",
+    find_opts         = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
+    rg_opts           = "--color=never --files --hidden --follow -g '!.git'",
+    fd_opts           = "--color=never --type f --hidden --follow --exclude .git",
+  },
+  buffers = {
+    prompt            = 'Buffers❯ ',
+    file_icons        = true,         -- show file icons?
+    color_icons       = true,         -- colorize file|git icons
+    sort_lastused     = true,         -- sort buffers() by last used
+  },
+}
+EOF
 " ===
 " === lazygit.nvim
 " ===
