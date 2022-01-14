@@ -357,8 +357,11 @@ endsnippet
 
 snippet try "try catch"
 try {
-} catch (e) {
-}${0}
+  ${0}
+} catch (e, stack) {
+  print(e);
+  print(stack);
+}
 endsnippet
 
 snippet for "standard for loop without brackets"
