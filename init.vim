@@ -1348,7 +1348,7 @@ noremap g# g#<Cmd>lua require('hlslens').start()<CR>
 noremap <silent> <C-p> :FzfLua files<CR>
 noremap <silent> <C-f> :FzfLua live_grep<CR>
 noremap <silent> <C-h> :FzfLua oldfiles cwd=~<CR>
-noremap <silent> <C-a> :FzfLua builtin<CR>
+noremap <silent> <C-q> :FzfLua builtin<CR>
 noremap <silent> <C-t> :FzfLua lines<CR>
 noremap <silent> <C-x> :FzfLua resume<CR>
 noremap <silent> z= :FzfLua spell_suggest<CR>
