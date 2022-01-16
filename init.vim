@@ -1350,7 +1350,7 @@ noremap <silent> <C-f> :FzfLua live_grep<CR>
 noremap <silent> <C-h> :FzfLua oldfiles cwd=~<CR>
 noremap <silent> <C-q> :FzfLua builtin<CR>
 noremap <silent> <C-t> :FzfLua lines<CR>
-noremap <silent> <C-x> :FzfLua resume<CR>
+" noremap <silent> <C-x> :FzfLua resume<CR>
 noremap <silent> z= :FzfLua spell_suggest<CR>
 noremap <silent> <C-w> :FzfLua buffers<CR>
 noremap <leader>; :History:<CR>
