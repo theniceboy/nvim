@@ -408,7 +408,7 @@ Plug 'theniceboy/nvim-deus'
 "Plug 'arzg/vim-colors-xcode'
 
 " Status line
-Plug 'theniceboy/eleline.vim'
+Plug 'theniceboy/eleline.vim', { 'branch': 'no-scrollbar' }
 Plug 'ojroques/vim-scrollstatus'
 
 " General Highlighter
