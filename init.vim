@@ -203,7 +203,7 @@ noremap <C-E> 5<C-e>
 
 
 
-source $XDG_CONFIG_HOME/nvim/cursor.vim
+" source $XDG_CONFIG_HOME/nvim/cursor.vim
 
 "If you use Qwerty keyboard, uncomment the next line.
 "source $XDG_CONFIG_HOME/nvim/cursor_for_qwerty.vim
@@ -388,6 +388,7 @@ endfunc
 
 call plug#begin('$HOME/.config/nvim/plugged')
 
+Plug 'ggandor/lightspeed.nvim'
 Plug 'ibhagwan/fzf-lua'
 Plug 'kyazdani42/nvim-web-devicons'
 
@@ -1459,6 +1460,8 @@ require'fzf-lua'.setup {
   },
 }
 EOF
+
+
 " ===
 " === lazygit.nvim
 " ===
@@ -1467,6 +1470,37 @@ let g:lazygit_floating_window_winblend = 0 " transparency of floating window
 let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating window
 let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
 let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
+
+
+" ===
+" === lightspeed
+" ===
+nmap <expr> f reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_f" : "f"
+nmap <expr> F reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_F" : "F"
+nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "t"
+nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
+nmap <buffer> <nowait> [ <Plug>Lightspeed_S
+nmap <nowait> ' <Plug>Lightspeed_s
+lua <<EOF
+require'lightspeed'.setup {
+  ignore_case = true,
+  -- exit_after_idle_msecs = { unlabeled = 1000, labeled = nil },
+  -- --- s/x ---
+  -- jump_to_unique_chars = { safety_timeout = 400 },
+  -- match_only_the_start_of_same_char_seqs = true,
+  force_beacons_into_match_width = true,
+  -- -- Display characters in a custom way in the highlighted matches.
+  -- substitute_chars = { ['\r'] = '¬', },
+  -- -- Leaving the appropriate list empty effectively disables "smart" mode,
+  -- -- and forces auto-jump to be on or off.
+  safe_labels= {"a", "r", "s", "t", "n", "e", "i", "o", "w", "f", "u", "y", "x", 'c', "v", "k", "m"},
+  -- labels = {},
+  special_keys = {
+    next_match_group = '<space>',
+    prev_match_group = '<tab>',
+  },
+}
+EOF
 
 
 " ===================== End of Plugin Settings =====================
