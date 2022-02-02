@@ -765,7 +765,7 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 " === FZF
 " ===
 
-let g:fzf_preview_window = 'right:60%'
+let g:fzf_preview_window = 'right:40%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
 function! s:list_buffers()
@@ -787,7 +787,7 @@ command! BD call fzf#run(fzf#wrap({
 
 noremap <c-d> :BD<CR>
 
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }
 
 
 " ===
@@ -1347,7 +1347,7 @@ noremap g# g#<Cmd>lua require('hlslens').start()<CR>
 " === fzf-lua
 " ===
 noremap <silent> <C-p> :FzfLua files<CR>
-noremap <silent> <C-f> :FzfLua live_grep<CR>
+noremap <silent> <C-f> :Rg<CR>
 noremap <silent> <C-h> :FzfLua oldfiles cwd=~<CR>
 noremap <silent> <C-q> :FzfLua builtin<CR>
 noremap <silent> <C-t> :FzfLua lines<CR>
