@@ -80,6 +80,7 @@
 		"vue",
 		"svelte",
 		"c",
+		"cpp",
 		"cs",
 		"prisma"
 	],
