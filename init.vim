@@ -203,7 +203,7 @@ noremap <C-E> 5<C-e>
 
 
 
-" source $XDG_CONFIG_HOME/nvim/cursor.vim
+source $XDG_CONFIG_HOME/nvim/cursor.vim
 
 "If you use Qwerty keyboard, uncomment the next line.
 "source $XDG_CONFIG_HOME/nvim/cursor_for_qwerty.vim
@@ -1479,8 +1479,8 @@ nmap <expr> f reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_f" : "
 nmap <expr> F reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_F" : "F"
 nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "t"
 nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
-autocmd BufEnter * nmap <buffer> <nowait> [ <Plug>Lightspeed_S
-nmap <nowait> ' <Plug>Lightspeed_s
+autocmd BufEnter * nmap <buffer> <nowait> { <Plug>Lightspeed_S
+nmap <nowait> " <Plug>Lightspeed_s
 lua <<EOF
 require'lightspeed'.setup {
   ignore_case = true,
