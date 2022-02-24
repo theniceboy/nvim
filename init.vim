@@ -21,7 +21,9 @@ if empty(glob($HOME.'/.config/nvim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+let g:nvim_plugins_installation_completed=1
 if empty(glob($HOME.'/.config/nvim/plugged/wildfire.vim/autoload/wildfire.vim'))
+	let g:nvim_plugins_installation_completed=0
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -1283,7 +1285,7 @@ let g:agit_no_default_mappings = 1
 " ===
 " === nvim-treesitter
 " ===
-if !empty(glob($HOME.'/.config/nvim/plugged/nvim-treesitter/lua/nvim-treesitter.lua'))
+if g:nvim_plugins_installation_completed == 1
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
 	-- one of "all", "language", or a list of languages
@@ -1300,6 +1302,7 @@ endif
 " ===
 " === 
 " ===
+if g:nvim_plugins_installation_completed == 1
 lua <<EOF
 require("scrollbar").setup()
 require("scrollbar.handlers.search").setup()
@@ -1316,6 +1319,7 @@ require("scrollbar").setup({
     },
 })
 EOF
+endif
 
 
 " ===
@@ -1348,6 +1352,7 @@ augroup fzf_commands
   autocmd FileType fzf tnoremap <silent> <buffer> <c-j> <down>
   autocmd FileType fzf tnoremap <silent> <buffer> <c-k> <up>
 augroup end
+if g:nvim_plugins_installation_completed == 1
 lua <<EOF
 require'fzf-lua'.setup {
 	global_resume = true,
@@ -1448,6 +1453,7 @@ require'fzf-lua'.setup {
   },
 }
 EOF
+endif
 
 
 " ===
@@ -1469,6 +1475,7 @@ nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "
 nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
 " autocmd BufEnter * map <buffer> <nowait> { <Plug>Lightspeed_S
 map <nowait> " <Plug>Lightspeed_omni_s
+if g:nvim_plugins_installation_completed == 1
 lua <<EOF
 require'lightspeed'.setup {
   ignore_case = true,
@@ -1489,6 +1496,7 @@ require'lightspeed'.setup {
   },
 }
 EOF
+endif
 
 
 " ===================== End of Plugin Settings =====================
