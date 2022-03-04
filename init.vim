@@ -129,6 +129,10 @@ noremap S :w<CR>
 " Open the vimrc file anytime
 noremap <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
 noremap <LEADER>rv :e .nvimrc<CR>
+augroup NVIMRC
+    autocmd!
+    autocmd BufWritePost *.nvimrc exec ":so %"
+augroup END
 
 " Undo operations
 noremap l u
