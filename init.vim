@@ -431,9 +431,6 @@ Plug 'kevinhwang91/rnvimr'
 Plug 'airblade/vim-rooter'
 Plug 'pechorin/any-jump.vim'
 
-" Taglist
-Plug 'liuchengxu/vista.vim'
-
 " Debugger
 " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
 
@@ -571,13 +568,6 @@ Plug 'wincent/terminus'
 " Other useful utilities
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 " Plug 'makerj/vim-pdf'
-"Plug 'xolox/vim-session'
-"Plug 'xolox/vim-misc' " vim-session dep
-
-" Dependencies
-" Plug 'MarcWeber/vim-addon-mw-utils'
-" Plug 'kana/vim-textobj-user'
-" Plug 'roxma/nvim-yarp'
 
 
 call plug#end()
@@ -895,27 +885,6 @@ let g:bullets_enabled_file_types = [
 			\ 'scratch'
 			\]
 
-
-" ===
-" === Vista.vim
-" ===
-noremap <LEADER>v :Vista!!<CR>
-" noremap <c-t> :silent! Vista finder coc<CR>
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'coc'
-let g:vista_fzf_preview = ['right:50%']
-let g:vista#renderer#enable_icon = 1
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
-" function! NearestMethodOrFunction() abort
-" 	return get(b:, 'vista_nearest_method_or_function', '')
-" endfunction
-" set statusline+=%{NearestMethodOrFunction()}
-" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-
-let g:scrollstatus_size = 15
 
 " ===
 " === fzf-gitignore
