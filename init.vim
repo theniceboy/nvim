@@ -545,7 +545,8 @@ Plug 'junegunn/goyo.vim'
 " Plug 'MattesGroeger/vim-bookmarks'
 
 " Find & Replace
-Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
+Plug 'nvim-lua/plenary.nvim' " nvim-spectre dep
+Plug 'nvim-pack/nvim-spectre'
 
 " Documentation
 "Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
@@ -856,12 +857,10 @@ let g:VM_maps["Redo"]               = '<C-r>'
 
 
 " ===
-" === Far.vim
+" === nvim-spectre
 " ===
-noremap <LEADER>f :F  **/*<left><left><left><left><left>
-let g:far#mapping = {
-		\ "replace_undo" : ["l"],
-		\ }
+nnoremap <LEADER>f <cmd>lua require('spectre').open()<CR>
+vnoremap <LEADER>f <cmd>lua require('spectre').open_visual()<CR>
 
 
 " ===
