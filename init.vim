@@ -21,7 +21,9 @@ if empty(glob($HOME.'/.config/nvim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+let g:nvim_plugins_installation_completed=1
 if empty(glob($HOME.'/.config/nvim/plugged/wildfire.vim/autoload/wildfire.vim'))
+	let g:nvim_plugins_installation_completed=0
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -120,13 +122,17 @@ let mapleader=" "
 noremap ; :
 
 " Save & quit
-noremap Q :q<CR>
+nnoremap Q :q<CR>
 " noremap <C-q> :qa<CR>
-noremap S :w<CR>
+nnoremap S :w<CR>
 
 " Open the vimrc file anytime
-noremap <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
-noremap <LEADER>rv :e .nvimrc<CR>
+nnoremap <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
+nnoremap <LEADER>rv :e .nvimrc<CR>
+augroup NVIMRC
+    autocmd!
+    autocmd BufWritePost *.nvimrc exec ":so %"
+augroup END
 
 " Undo operations
 noremap l u
@@ -140,10 +146,6 @@ nnoremap Y y$
 
 " Copy to system clipboard
 vnoremap Y "+y
-
-" Indentation
-nnoremap < <<
-nnoremap > >>
 
 " Delete find pair
 nnoremap dy d%
@@ -225,13 +227,6 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-w> <S-Right>
-
-
-" ===
-" === Searching
-" ===
-noremap - N
-noremap = n
 
 
 " ===
@@ -343,7 +338,7 @@ func! CompileRunGcc()
 		set splitbelow
 		:sp
 		:res -5
-		term gcc -ansi -Wall % -o %< && time ./%<
+		term gcc % -o %< && time ./%<
 	elseif &filetype == 'cpp'
 		set splitbelow
 		exec "!g++ -std=c++11 % -Wall -o %<"
@@ -395,6 +390,10 @@ endfunc
 
 call plug#begin('$HOME/.config/nvim/plugged')
 
+Plug 'ggandor/lightspeed.nvim'
+Plug 'ibhagwan/fzf-lua'
+Plug 'kyazdani42/nvim-web-devicons'
+
 " Plug 'LoricAndre/fzterm.nvim'
 
 " Testing my own plugin
@@ -404,12 +403,15 @@ call plug#begin('$HOME/.config/nvim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
 
+Plug 'petertriho/nvim-scrollbar'
+Plug 'kevinhwang91/nvim-hlslens'
+
 " Pretty Dress
 Plug 'theniceboy/nvim-deus'
 "Plug 'arzg/vim-colors-xcode'
 
 " Status line
-Plug 'theniceboy/eleline.vim'
+Plug 'theniceboy/eleline.vim', { 'branch': 'no-scrollbar' }
 Plug 'ojroques/vim-scrollstatus'
 
 " General Highlighter
@@ -421,13 +423,9 @@ Plug 'RRethy/vim-illuminate'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'kevinhwang91/rnvimr'
 Plug 'airblade/vim-rooter'
 Plug 'pechorin/any-jump.vim'
-
-" Taglist
-Plug 'liuchengxu/vista.vim'
 
 " Debugger
 " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
@@ -543,7 +541,8 @@ Plug 'junegunn/goyo.vim'
 " Plug 'MattesGroeger/vim-bookmarks'
 
 " Find & Replace
-Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
+Plug 'nvim-lua/plenary.nvim' " nvim-spectre dep
+Plug 'nvim-pack/nvim-spectre'
 
 " Documentation
 "Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
@@ -566,13 +565,6 @@ Plug 'wincent/terminus'
 " Other useful utilities
 Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 " Plug 'makerj/vim-pdf'
-"Plug 'xolox/vim-session'
-"Plug 'xolox/vim-misc' " vim-session dep
-
-" Dependencies
-" Plug 'MarcWeber/vim-addon-mw-utils'
-" Plug 'kana/vim-textobj-user'
-" Plug 'roxma/nvim-yarp'
 
 
 call plug#end()
@@ -588,21 +580,7 @@ set lazyredraw
 " ===
 set termguicolors " enable true colors support
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"set background=dark
-"let ayucolor="mirage"
-"let g:oceanic_next_terminal_bold = 1
-"let g:oceanic_next_terminal_italic = 1
-"let g:one_allow_italics = 1
-
-"color dracula
-"color one
-color deus
-"color gruvbox
-"let ayucolor="light"
-"color ayu
-"color xcodelighthc
-"set background=light
-"set cursorcolumn
+silent! color deus
 
 hi NonText ctermfg=gray guifg=grey10
 "hi SpecialKey ctermfg=blue guifg=grey70
@@ -765,16 +743,8 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 " ===
 " === FZF
 " ===
-nnoremap <c-p> :Leaderf file<CR>
-" noremap <silent> <C-p> :Files<CR>
-noremap <silent> <C-f> :Rg<CR>
-noremap <silent> <C-h> :History<CR>
-"noremap <C-t> :BTags<CR>
-" noremap <silent> <C-l> :Lines<CR>
-noremap <silent> <C-w> :Buffers<CR>
-noremap <leader>; :History:<CR>
 
-let g:fzf_preview_window = 'right:60%'
+let g:fzf_preview_window = 'right:40%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
 function! s:list_buffers()
@@ -796,31 +766,7 @@ command! BD call fzf#run(fzf#wrap({
 
 noremap <c-d> :BD<CR>
 
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
-
-
-" ===
-" === Leaderf
-" ===
-" let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_PreviewCode = 1
-let g:Lf_ShowHidden = 1
-let g:Lf_ShowDevIcons = 1
-let g:Lf_CommandMap = {
-\   '<C-k>': ['<C-u>'],
-\   '<C-j>': ['<C-e>'],
-\   '<C-]>': ['<C-v>'],
-\   '<C-p>': ['<C-n>'],
-\}
-let g:Lf_UseVersionControlTool = 0
-let g:Lf_IgnoreCurrentBufferName = 1
-let g:Lf_WildIgnore = {
-        \ 'dir': ['.git', 'vendor', 'node_modules'],
-        \ 'file': ['__vim_project_root', 'class']
-        \}
-let g:Lf_UseMemoryCache = 0
-let g:Lf_UseCache = 0
+let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }
 
 
 " ===
@@ -907,12 +853,10 @@ let g:VM_maps["Redo"]               = '<C-r>'
 
 
 " ===
-" === Far.vim
+" === nvim-spectre
 " ===
-noremap <LEADER>f :F  **/*<left><left><left><left><left>
-let g:far#mapping = {
-		\ "replace_undo" : ["l"],
-		\ }
+nnoremap <LEADER>f <cmd>lua require('spectre').open()<CR>
+vnoremap <LEADER>f <cmd>lua require('spectre').open_visual()<CR>
 
 
 " ===
@@ -936,27 +880,6 @@ let g:bullets_enabled_file_types = [
 			\ 'scratch'
 			\]
 
-
-" ===
-" === Vista.vim
-" ===
-noremap <LEADER>v :Vista!!<CR>
-noremap <c-t> :silent! Vista finder coc<CR>
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'coc'
-let g:vista_fzf_preview = ['right:50%']
-let g:vista#renderer#enable_icon = 1
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
-" function! NearestMethodOrFunction() abort
-" 	return get(b:, 'vista_nearest_method_or_function', '')
-" endfunction
-" set statusline+=%{NearestMethodOrFunction()}
-" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-
-let g:scrollstatus_size = 15
 
 " ===
 " === fzf-gitignore
@@ -1330,16 +1253,175 @@ let g:agit_no_default_mappings = 1
 " ===
 " === nvim-treesitter
 " ===
+if g:nvim_plugins_installation_completed == 1
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  -- one of "all", "language", or a list of languages
-  ensure_installed = {"typescript", "dart", "java", "c", "prisma", "bash"},
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "rust" },  -- list of language that will be disabled
+	-- one of "all", "language", or a list of languages
+	ensure_installed = {"typescript", "dart", "java", "c", "prisma", "bash"},
+	highlight = {
+		enable = true,              -- false will disable the whole extension
+		disable = { "rust" },  -- list of language that will be disabled
+	},
+}
+EOF
+endif
+
+
+" ===
+" === 
+" ===
+if g:nvim_plugins_installation_completed == 1
+lua <<EOF
+require("scrollbar").setup()
+require("scrollbar.handlers.search").setup()
+require("scrollbar").setup({
+    show = true,
+    handle = {
+        text = " ",
+        color = "purple",
+        hide_if_all_visible = true,
+    },
+    handlers = {
+        diagnostic = true,
+        search = true,
+    },
+})
+EOF
+endif
+
+
+" ===
+" === nvim-hlslens
+" ===
+noremap <silent> = <Cmd>execute('normal! ' . v:count1 . 'n')<CR>
+            \<Cmd>lua require('hlslens').start()<CR>
+noremap <silent> - <Cmd>execute('normal! ' . v:count1 . 'N')<CR>
+            \<Cmd>lua require('hlslens').start()<CR>
+noremap * *<Cmd>lua require('hlslens').start()<CR>
+noremap # #<Cmd>lua require('hlslens').start()<CR>
+noremap g* g*<Cmd>lua require('hlslens').start()<CR>
+noremap g# g#<Cmd>lua require('hlslens').start()<CR>
+
+
+" ===
+" === fzf-lua
+" ===
+noremap <silent> <C-p> :FzfLua files<CR>
+noremap <silent> <C-f> :Rg<CR>
+noremap <silent> <C-h> :FzfLua oldfiles cwd=~<CR>
+noremap <silent> <C-q> :FzfLua builtin<CR>
+noremap <silent> <C-t> :FzfLua lines<CR>
+" noremap <silent> <C-x> :FzfLua resume<CR>
+noremap <silent> z= :FzfLua spell_suggest<CR>
+noremap <silent> <C-w> :FzfLua buffers<CR>
+noremap <leader>; :History:<CR>
+augroup fzf_commands
+  autocmd!
+  autocmd FileType fzf tnoremap <silent> <buffer> <c-j> <down>
+  autocmd FileType fzf tnoremap <silent> <buffer> <c-k> <up>
+augroup end
+if g:nvim_plugins_installation_completed == 1
+lua <<EOF
+require'fzf-lua'.setup {
+	global_resume = true,
+	global_resume_query = true,
+	winopts = {
+		height = 0.95,
+		width = 0.95,
+		preview = {
+			scrollbar = 'float',
+		},
+		fullscreen = false,
+		vertical       = 'down:45%',      -- up|down:size
+		horizontal     = 'right:60%',     -- right|left:size
+		hidden         = 'nohidden',
+		title = true,
+	},
+	keymap = {
+		-- These override the default tables completely
+		-- no need to set to `false` to disable a bind
+		-- delete or modify is sufficient
+		builtin = {
+			["<c-f>"]      = "toggle-fullscreen",
+			["<c-r>"]      = "toggle-preview-wrap",
+			["<c-p>"]      = "toggle-preview",
+			["<c-y>"]      = "preview-page-down",
+			["<c-l>"]      = "preview-page-up",
+			["<S-left>"]   = "preview-page-reset",
+		},
+		fzf = {
+			["esc"]        = "abort",
+			["ctrl-h"]     = "unix-line-discard",
+			["ctrl-k"]     = "half-page-down",
+			["ctrl-b"]     = "half-page-up",
+			["ctrl-n"]     = "beginning-of-line",
+			["ctrl-a"]     = "end-of-line",
+			["alt-a"]      = "toggle-all",
+			["f3"]         = "toggle-preview-wrap",
+			["f4"]         = "toggle-preview",
+			["shift-down"] = "preview-page-down",
+			["shift-up"]   = "preview-page-up",
+			["ctrl-e"]     = "down",
+			["ctrl-u"]     = "up",
+		},
+	},
+  previewers = {
+    cat = {
+      cmd             = "cat",
+      args            = "--number",
+    },
+    bat = {
+      cmd             = "bat",
+      args            = "--style=numbers,changes --color always",
+      theme           = 'Coldark-Dark', -- bat preview theme (bat --list-themes)
+      config          = nil,            -- nil uses $BAT_CONFIG_PATH
+    },
+    head = {
+      cmd             = "head",
+      args            = nil,
+    },
+    git_diff = {
+      cmd_deleted     = "git diff --color HEAD --",
+      cmd_modified    = "git diff --color HEAD",
+      cmd_untracked   = "git diff --color --no-index /dev/null",
+      -- pager        = "delta",      -- if you have `delta` installed
+    },
+    man = {
+      cmd             = "man -c %s | col -bx",
+    },
+    builtin = {
+      syntax          = true,         -- preview syntax highlight?
+      syntax_limit_l  = 0,            -- syntax limit (lines), 0=nolimit
+      syntax_limit_b  = 1024*1024,    -- syntax limit (bytes), 0=nolimit
+    },
+  },
+  files = {
+    -- previewer      = "bat",          -- uncomment to override previewer
+                                        -- (name from 'previewers' table)
+                                        -- set to 'false' to disable
+    prompt            = 'Files❯ ',
+    multiprocess      = true,           -- run command in a separate process
+    git_icons         = true,           -- show git icons?
+    file_icons        = true,           -- show file icons?
+    color_icons       = true,           -- colorize file|git icons
+    -- executed command priority is 'cmd' (if exists)
+    -- otherwise auto-detect prioritizes `fd`:`rg`:`find`
+    -- default options are controlled by 'fd|rg|find|_opts'
+    -- NOTE: 'find -printf' requires GNU find
+    -- cmd            = "find . -type f -printf '%P\n'",
+    find_opts         = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
+    rg_opts           = "--color=never --files --hidden --follow -g '!.git'",
+    fd_opts           = "--color=never --type f --hidden --follow --exclude .git",
+  },
+  buffers = {
+    prompt            = 'Buffers❯ ',
+    file_icons        = true,         -- show file icons?
+    color_icons       = true,         -- colorize file|git icons
+    sort_lastused     = true,         -- sort buffers() by last used
   },
 }
 EOF
+endif
 
 
 " ===
@@ -1350,6 +1432,39 @@ let g:lazygit_floating_window_winblend = 0 " transparency of floating window
 let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating window
 let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
 let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
+
+
+" ===
+" === lightspeed
+" ===
+nmap <expr> f reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_f" : "f"
+nmap <expr> F reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_F" : "F"
+nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "t"
+nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
+" autocmd BufEnter * map <buffer> <nowait> { <Plug>Lightspeed_S
+map <nowait> " <Plug>Lightspeed_omni_s
+if g:nvim_plugins_installation_completed == 1
+lua <<EOF
+require'lightspeed'.setup {
+  ignore_case = true,
+  -- exit_after_idle_msecs = { unlabeled = 1000, labeled = nil },
+  -- --- s/x ---
+  -- jump_to_unique_chars = { safety_timeout = 400 },
+  -- match_only_the_start_of_same_char_seqs = true,
+  force_beacons_into_match_width = true,
+  -- -- Display characters in a custom way in the highlighted matches.
+  -- substitute_chars = { ['\r'] = '¬', },
+  -- -- Leaving the appropriate list empty effectively disables "smart" mode,
+  -- -- and forces auto-jump to be on or off.
+  safe_labels= {"a", "r", "s", "t", "n", "e", "i", "o", "w", "f", "u", "y", "x", 'c', "v", "k", "m"},
+  -- labels = {},
+  special_keys = {
+    next_match_group = '<space>',
+    prev_match_group = '<tab>',
+  },
+}
+EOF
+endif
 
 
 " ===================== End of Plugin Settings =====================

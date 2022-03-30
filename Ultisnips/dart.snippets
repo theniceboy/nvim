@@ -243,12 +243,12 @@ endsnippet
 
 
 snippet nbuilder "NotifierBuilder"
-return NotifierBuilder(
+NotifierBuilder(
   notifier: null,
   builder: (context) {
     return Container();
   },
-);
+)
 endsnippet
 
 snippet sw "SizedBox with width"
@@ -357,8 +357,11 @@ endsnippet
 
 snippet try "try catch"
 try {
-} catch (e) {
-}${0}
+  ${0}
+} catch (e, stack) {
+  print(e);
+  print(stack);
+}
 endsnippet
 
 snippet for "standard for loop without brackets"
@@ -448,4 +451,8 @@ snippet delay "Future.delayed"
 Future.delayed(const Duration(milliseconds: ${1:300})).then((_) {
 	${2}
 });
+endsnippet
+
+snippet now "DateTime.now()"
+DateTime.now()
 endsnippet
