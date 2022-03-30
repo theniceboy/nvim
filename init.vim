@@ -122,13 +122,13 @@ let mapleader=" "
 noremap ; :
 
 " Save & quit
-noremap Q :q<CR>
+nnoremap Q :q<CR>
 " noremap <C-q> :qa<CR>
-noremap S :w<CR>
+nnoremap S :w<CR>
 
 " Open the vimrc file anytime
-noremap <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
-noremap <LEADER>rv :e .nvimrc<CR>
+nnoremap <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
+nnoremap <LEADER>rv :e .nvimrc<CR>
 augroup NVIMRC
     autocmd!
     autocmd BufWritePost *.nvimrc exec ":so %"
@@ -146,10 +146,6 @@ nnoremap Y y$
 
 " Copy to system clipboard
 vnoremap Y "+y
-
-" Indentation
-nnoremap < <<
-nnoremap > >>
 
 " Delete find pair
 nnoremap dy d%
