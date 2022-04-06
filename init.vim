@@ -147,6 +147,9 @@ nnoremap Y y$
 " Copy to system clipboard
 vnoremap Y "+y
 
+" Find pair
+noremap ,. %
+
 " Delete find pair
 nnoremap dy d%
 
