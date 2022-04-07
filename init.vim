@@ -324,7 +324,6 @@ Plug 'theniceboy/nvim-deus'
 
 " Status line
 Plug 'theniceboy/eleline.vim', { 'branch': 'no-scrollbar' }
-Plug 'ojroques/vim-scrollstatus'
 
 " General Highlighter
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
@@ -978,16 +977,20 @@ lua <<EOF
 require("scrollbar").setup()
 require("scrollbar.handlers.search").setup()
 require("scrollbar").setup({
-    show = true,
-    handle = {
-        text = " ",
-        color = "purple",
-        hide_if_all_visible = true,
-    },
-    handlers = {
-        diagnostic = true,
-        search = true,
-    },
+	show = true,
+	handle = {
+		text = " ",
+		color = "#928374",
+		hide_if_all_visible = true,
+	},
+	marks = {
+		Search = { color = "yellow" },
+		Misc = { color = "purple" },
+	},
+	handlers = {
+		diagnostic = true,
+		search = true,
+	},
 })
 EOF
 endif
