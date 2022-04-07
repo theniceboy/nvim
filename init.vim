@@ -379,6 +379,11 @@ func! CompileRunGcc()
 		set splitbelow
 		:sp
 		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
+	elseif &filetype == 'racket'
+		set splitbelow
+		:sp
+		:res -5
+		term racket %
 	elseif &filetype == 'go'
 		set splitbelow
 		:sp
@@ -509,6 +514,7 @@ Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] 
 Plug 'dkarter/bullets.vim'
 
 " Other filetypes
+Plug 'wlangstroth/vim-racket'
 " Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
 
 " Editor Enhancement

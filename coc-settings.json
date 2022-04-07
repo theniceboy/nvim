@@ -82,6 +82,7 @@
 		"c",
 		"cpp",
 		"cs",
+		"racket",
 		"prisma"
 	],
 	"yaml.format.enable": true,
@@ -223,6 +224,17 @@
 			"args": ["start"],
 			"filetypes": ["sh"],
 			"ignoredRootPaths": []
+		},
+		"racket": {
+			"command": "racket",
+			"args": [
+				"--lib",
+				"racket-langserver"
+			],
+			"filetypes": [
+				"scheme",
+				"racket"
+			]
 		},
 		"ccls": {
 			"command": "ccls",
