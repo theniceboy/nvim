@@ -398,10 +398,6 @@ endfunc
 
 call plug#begin('$HOME/.config/nvim/plugged')
 
-Plug 'ggandor/lightspeed.nvim'
-Plug 'ibhagwan/fzf-lua'
-Plug 'kyazdani42/nvim-web-devicons'
-
 " Plug 'LoricAndre/fzterm.nvim'
 
 " Testing my own plugin
@@ -429,6 +425,7 @@ Plug 'RRethy/vim-illuminate'
 " File navigation
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ibhagwan/fzf-lua'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'kevinhwang91/rnvimr'
@@ -518,6 +515,7 @@ Plug 'wlangstroth/vim-racket'
 " Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
 
 " Editor Enhancement
+Plug 'ggandor/lightspeed.nvim'
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi'
