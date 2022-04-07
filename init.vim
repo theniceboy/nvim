@@ -782,6 +782,15 @@ let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }
 let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlP'
 
+" ===
+" === wildfire
+" ===
+map <c-b> <Plug>(wildfire-quick-select)
+let g:wildfire_objects = {
+    \ "*" : ["i'", 'i"', "i)", "i]", "i}", "it"],
+    \ "html,xml" : ["at", "it"],
+\ }
+
 
 " ===
 " === vim-bookmarks
