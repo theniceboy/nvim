@@ -229,14 +229,8 @@
 		},
 		"racket": {
 			"command": "racket",
-			"args": [
-				"--lib",
-				"racket-langserver"
-			],
-			"filetypes": [
-				"scheme",
-				"racket"
-			]
+			"args": ["--lib", "racket-langserver"],
+			"filetypes": ["scheme", "racket"]
 		},
 		"ccls": {
 			"command": "ccls",
