@@ -1,0 +1,38 @@
+snippet ssg "NextJS ServerSide Generation"
+export async function getStaticProps() {
+	return {
+		props: {
+			//
+		},
+	};
+}
+endsnippet
+
+snippet t "Tag"
+<${1:div}>
+	${2}
+</${1}>
+${0}
+endsnippet
+
+snippet ta "Tag with Attributes"
+<${1:div} ${2:className=""}>
+	${3}
+</${1}>
+${0}
+endsnippet
+
+snippet tn "Tag with class Names"
+<${1:div} className="${2}">
+	${0}
+</${1}>
+endsnippet
+
+snippet ti "Tag Inline"
+<${1} />
+${0}
+endsnippet
+
+snippet br "<br />"
+<br />
+endsnippet
