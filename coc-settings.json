@@ -72,9 +72,11 @@
 	"coc.preferences.formatOnSaveFiletypes": [
 		"javascript",
 		"typescript",
+		"typescriptreact",
 		"html",
 		"css",
 		"json",
+		"jsonc",
 		"java",
 		"python",
 		"vue",
