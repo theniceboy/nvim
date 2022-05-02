@@ -433,7 +433,6 @@ Plug 'theniceboy/wildfire.vim' " in Visual mode, type k' to select all text in '
 Plug 'junegunn/vim-after-object' " da= to delete what's after =
 Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
 Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
-Plug 'easymotion/vim-easymotion'
 " Plug 'Konfekt/FastFold'
 "Plug 'junegunn/vim-peekaboo'
 "Plug 'wellle/context.vim'
