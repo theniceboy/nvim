@@ -47,15 +47,11 @@ padding: EdgeInsets.all(${1:8.0}),
 endsnippet
 
 snippet pah "Padding Horizontal"
-padding: EdgeInsets.only(${1:left: ${2:0}}${3:, right: ${4:0}}),
+padding: EdgeInsets.symmetric(horizontal: ${0:0}),
 endsnippet
 
 snippet pav "Padding Vertical"
-padding: EdgeInsets.only(${1:top: ${2:0}}${3:, bottom: ${4:0}}),
-endsnippet
-
-snippet pah "Padding Horizontal"
-padding: EdgeInsets.only(left: ${1:0}, right: ${1}),${0}
+padding: EdgeInsets.symmetric(vertical: ${0:0}),
 endsnippet
 
 snippet pat "Padding Top"
@@ -83,7 +79,11 @@ margin: EdgeInsets.all(${1:8.0}),
 endsnippet
 
 snippet marh "Margin Horizontal"
-margin: EdgeInsets.only(left: ${1:0}, right: ${1}),${0}
+margin: EdgeInsets.symmetric(horizontal: ${0:0}),
+endsnippet
+
+snippet marv "Margin Vertical"
+margin: EdgeInsets.symmetric(vertical: ${0:0}),
 endsnippet
 
 snippet mart "Margin Top"
