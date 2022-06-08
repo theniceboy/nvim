@@ -314,6 +314,9 @@ endfunc
 " ==================== Install Plugins with Vim-Plug ====================
 call plug#begin('$HOME/.config/nvim/plugged')
 
+" Github Copilot
+Plug 'github/copilot.vim'
+
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
