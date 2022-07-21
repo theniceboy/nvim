@@ -3,17 +3,35 @@ import 'package:flutter/material.dart';
 
 endsnippet
 
+snippet context "BuildContext"
+BuildContext context
+endsnippet
+
 snippet fn "Async Function"
 void ${1:func}() {
   ${0}
 }
 
 endsnippet
+
 snippet afn "Async Function"
 Future<void> ${1:func}() async {
   ${0}
 }
+endsnippet
 
+snippet wfunc "Widget Function"
+Widget build${1:Widget}() {
+  return ${0:Container()};
+}
+endsnippet
+
+snippet el "} else {"
+} else {
+endsnippet
+
+snippet elif "} else if () {"
+} else if (${0}) {
 endsnippet
 
 snippet msa "MaterialStateProperty.all"
@@ -139,6 +157,10 @@ endsnippet
 
 snippet crs "CrossAxis"
 crossAxisAlignment: CrossAxisAlignment.${0}
+endsnippet
+
+snippet mainmin "MainAxisSize.min"
+mainAxisSize: MainAxisSize.min
 endsnippet
 
 snippet row "Row"
