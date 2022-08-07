@@ -114,6 +114,7 @@ noremap K I
 vnoremap Y "+y
 " Find pair
 noremap ,. %
+vnoremap ki $%
 " Search
 noremap <LEADER><CR> :nohlsearch<CR>
 " Adjacent duplicate words
