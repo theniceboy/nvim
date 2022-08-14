@@ -126,7 +126,7 @@ vnoremap <LEADER>tt :s/    /\t/g
 noremap <silent> <LEADER>o za
 
 " insert a pair of {} and go to the next line
-inoremap <c-y> <ESC>A{}<ESC>i<CR><ESC>ko
+inoremap <c-y> <ESC>A {}<ESC>i<CR><ESC>ko
 
 " ==================== Cursor Movement ====================
 " New cursor movement (the default arrow keys are used for resizing windows)
