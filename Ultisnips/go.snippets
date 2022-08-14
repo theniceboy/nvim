@@ -5,6 +5,12 @@ if err != nil {
 ${0}
 endsnippet
 
+snippet noe "utils.NoError"
+if utils.NoError(err) {
+	${0}
+}
+endsnippet
+
 snippet forr "For loop range"
 for _, ${1:thing} := range ${2:things} {
 	${3://TODO}
