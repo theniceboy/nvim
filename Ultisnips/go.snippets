@@ -5,7 +5,7 @@ if err != nil {
 ${0}
 endsnippet
 
-snippet noe "utils.NoError"
+snippet no "utils.NoError"
 if utils.NoError(err) {
 	${0}
 }
@@ -32,6 +32,18 @@ endsnippet
 
 snippet st "Println"
 fmt.Println(${1})${0}
+endsnippet
+
+snippet lt "Log Println"
+log.Println(${1})${0}
+endsnippet
+
+snippet sf "Printf"
+fmt.Printf("${1}\n")${0}
+endsnippet
+
+snippet lf "Log Printf"
+log.Printf("${1}\n")${0}
 endsnippet
 
 snippet fn "Function"
