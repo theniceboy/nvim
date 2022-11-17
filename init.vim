@@ -112,6 +112,7 @@ noremap k i
 noremap K I
 " Copy to system clipboard
 vnoremap Y "+y
+vnoremap p "_dP
 " Find pair
 noremap ,. %
 vnoremap ki $%
