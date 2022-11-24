@@ -362,7 +362,7 @@ Plug 'mbbill/undotree'
 Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 Plug 'theniceboy/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 "Plug 'mhinz/vim-signify'
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'cohama/agit.vim'
 Plug 'kdheepak/lazygit.nvim'
 
@@ -504,21 +504,24 @@ hi NonText ctermfg=gray guifg=grey10
 let g:airline_powerline_fonts = 0
 
 
-" ==================== GitGutter ====================
-" let g:gitgutter_signs = 0
-let g:gitgutter_sign_allow_clobber = 0
-let g:gitgutter_map_keys = 0
-let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_preview_win_floating = 1
-let g:gitgutter_sign_added = '▎'
-let g:gitgutter_sign_modified = '░'
-let g:gitgutter_sign_removed = '▏'
-let g:gitgutter_sign_removed_first_line = '▔'
-let g:gitgutter_sign_modified_removed = '▒'
-nnoremap <LEADER>gf :GitGutterFold<CR>
-nnoremap H :GitGutterPreviewHunk<CR>
-nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
-nnoremap <LEADER>g= :GitGutterNextHunk<CR>
+" ==================== gitsigns.nvim ====================
+lua <<EOF
+require('gitsigns').setup({
+	signs = {
+    add          = { hl = 'GitSignsAdd'   , text = '▎', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'    },
+    change       = { hl = 'GitSignsChange', text = '░', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn' },
+    delete       = { hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn' },
+    topdelete    = { hl = 'GitSignsDelete', text = '▔', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn' },
+    changedelete = { hl = 'GitSignsChange', text = '▒', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn' },
+    untracked    = { hl = 'GitSignsAdd'   , text = '┆', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'    },
+  },
+})
+EOF
+nnoremap H :Gitsigns preview_hunk_inline<CR>
+nnoremap <LEADER>gr :Gitsigns reset_hunk<CR>
+nnoremap <LEADER>gb :Gitsigns blame_line<CR>
+nnoremap <LEADER>g- :Gitsigns prev_hunk<CR>
+nnoremap <LEADER>g= :Gitsigns next_hunk<CR>
 
 
 " ==================== coc.nvim ====================
@@ -997,7 +1000,10 @@ require("scrollbar").setup({
 		Misc = { color = "purple" },
 	},
 	handlers = {
+		cursor = true,
 		diagnostic = true,
+		gitsigns = true,
+		handle = true,
 		search = true,
 	},
 })
