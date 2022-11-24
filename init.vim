@@ -1179,6 +1179,15 @@ require'lightspeed'.setup {
 EOF
 endif
 
+" ==================== copilot.nvim ====================
+let g:copilot_enabled = 0
+nnoremap <silent> <leader>go :Copilot<CR>
+nnoremap <silent> <leader>ge :Copilot enable<CR>
+nnoremap <silent> <leader>gd :Copilot disable<CR>
+inoremap <c-p> <Plug>(copilot-suggest)
+inoremap <c-n> <Plug>(copilot-next)
+inoremap <c-l> <Plug>(copilot-previous)
+
 
 " ==================== Terminal Colors ====================
 let g:terminal_color_0  = '#000000'
