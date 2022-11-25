@@ -317,6 +317,8 @@ endfunc
 " ==================== Install Plugins with Vim-Plug ====================
 call plug#begin('$HOME/.config/nvim/plugged')
 
+Plug 'itchyny/vim-cursorword'
+
 " Github Copilot
 Plug 'github/copilot.vim'
 
