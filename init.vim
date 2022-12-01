@@ -249,11 +249,11 @@ noremap \s :%s//g<left><left>
 " set wrap
 noremap <LEADER>sw :set wrap<CR>
 " press f10 to show hlgroup
-function! SynGroup()
-	let l:s = synID(line('.'), col('.'), 1)
-	echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-endfun
-map <F10> :call SynGroup()<CR>
+" function! SynGroup()
+" 	let l:s = synID(line('.'), col('.'), 1)
+" 	echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+" endfun
+map <F10> :TSHighlightCapturesUnderCursor<CR>
 
 " Compile function
 noremap r :call CompileRunGcc()<CR>
