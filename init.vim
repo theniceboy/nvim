@@ -410,9 +410,6 @@ Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
 "Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
 "Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
 
-" Flutter
-Plug 'dart-lang/dart-vim-plugin'
-
 " Swift
 Plug 'keith/swift.vim'
 Plug 'arzg/vim-swift'
@@ -934,12 +931,6 @@ noremap gp :AsyncRun git push<CR>
 
 " ==================== AsyncTasks ====================
 let g:asyncrun_open = 6
-
-
-" ==================== dart-vim-plugin ====================
-let g:dart_style_guide = 2
-let g:dart_format_on_save = 1
-let g:dartfmt_options = ["-l 100"]
 
 
 " ==================== tcomment_vim ====================

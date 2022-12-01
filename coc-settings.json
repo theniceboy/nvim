@@ -85,7 +85,8 @@
 		"cpp",
 		"cs",
 		"racket",
-		"prisma"
+		"prisma",
+		"dart"
 	],
 	"yaml.format.enable": true,
 	"signature.target": "float",
@@ -161,6 +162,7 @@
 	"flutter.openDevLogSplitCommand": "botright 12split",
 	"flutter.lsp.initialization.onlyAnalyzeProjectsWithOpenFiles": false,
 	"flutter.trace.server": "off",
+	"dart.lineLength": 100,
 	"tslint.autoFixOnSave": false,
 	"python.autoComplete.addBrackets": true,
 	"python.jediEnabled": false,
