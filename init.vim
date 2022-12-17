@@ -410,6 +410,9 @@ Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
 "Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
 "Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
 
+" Dart
+Plug 'dart-lang/dart-vim-plugin', { 'for': ['dart', 'vim-plug'] }
+
 " Swift
 Plug 'keith/swift.vim'
 Plug 'arzg/vim-swift'
@@ -1212,6 +1215,11 @@ require("colorizer").setup {
 	buftypes = {},
 }
 EOF
+
+
+" ==================== dart-vim-plugin ====================
+let g:dart_corelib_highlight = v:false
+let g:dart_format_on_save = v:false
 
 
 " ==================== Terminal Colors ====================
