@@ -1173,11 +1173,13 @@ EOF
 endif
 
 " ==================== copilot.nvim ====================
-let g:copilot_enabled = 0
+let g:copilot_enabled = 1
 nnoremap <silent> <leader>go :Copilot<CR>
 nnoremap <silent> <leader>ge :Copilot enable<CR>
 nnoremap <silent> <leader>gd :Copilot disable<CR>
-inoremap <c-p> <Plug>(copilot-suggest)
+" inoremap <c-p> <Plug>(copilot-suggest)
+imap <silent><script><expr> <C-C> copilot#Accept("")
+let g:copilot_no_tab_map = v:true
 inoremap <c-n> <Plug>(copilot-next)
 inoremap <c-l> <Plug>(copilot-previous)
 
