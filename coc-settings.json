@@ -86,7 +86,8 @@
 		"cs",
 		"racket",
 		"prisma",
-		"dart"
+		"dart",
+		"terraform"
 	],
 	"yaml.format.enable": true,
 	"signature.target": "float",
@@ -233,6 +234,13 @@
 			"command": "racket",
 			"args": ["--lib", "racket-langserver"],
 			"filetypes": ["scheme", "racket"]
+		},
+		"terraform": {
+			"command": "terraform-ls",
+			"args": ["serve"],
+			"filetypes": ["terraform", "tf"],
+			"initializationOptions": {},
+			"settings": {}
 		},
 		"ccls": {
 			"command": "ccls",

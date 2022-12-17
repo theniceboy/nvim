@@ -423,6 +423,7 @@ Plug 'dkarter/bullets.vim'
 " Other filetypes
 Plug 'wlangstroth/vim-racket'
 " Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
+Plug 'hashivim/vim-terraform'
 
 " Editor Enhancement
 Plug 'petertriho/nvim-scrollbar'
