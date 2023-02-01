@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 endsnippet
 
-snippet context "BuildContext"
+snippet context "BuildContext" i
 BuildContext context
 endsnippet
 
@@ -256,11 +256,7 @@ RichText(
 endsnippet
 
 snippet ss "TextStyle"
-TextStyle(
-  color: ${1},
-  fontSize: ${2},
-  fontWeight: w[${3}]
-);${0}
+TStyle(c: ${1}, s: ${2:14}, w: F.w${3:5})${0}
 endsnippet
 
 
@@ -481,4 +477,46 @@ endsnippet
 
 snippet rt "required this."
 required this.${1}, ${0}
+endsnippet
+
+snippet postr "Positioned top right"
+Positioned(
+  top: ${1:0},
+  right: ${2:0},
+  child: ${3:Container()},
+),
+endsnippet
+
+snippet posbl "Positioned bottom left"
+Positioned(
+  bottom: ${1:0},
+  left: ${2:0},
+  child: ${3:Container()},
+),
+endsnippet
+
+snippet posbr "Positioned bottom right"
+Positioned(
+  bottom: ${1:0},
+  right: ${2:0},
+  child: ${3:Container()},
+),
+endsnippet
+
+snippet postl "Positioned top left"
+Positioned(
+  top: ${1:0},
+  left: ${2:0},
+  child: ${3:Container()},
+),
+endsnippet
+
+snippet fa "fix add type"
+// FIX:ADDTYPE
+endsnippet
+
+snippet .f "fix add type" i
+.forEach((${1:item}) {
+	${0:// TODO}
+});
 endsnippet
