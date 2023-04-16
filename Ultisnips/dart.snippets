@@ -479,6 +479,42 @@ snippet rt "required this."
 required this.${1}, ${0}
 endsnippet
 
+snippet posr "Positioned right"
+Positioned(
+  top: ${1:0},
+  right: ${2:0},
+  bottom: ${3:0},
+  child: ${0:Container()},
+),
+endsnippet
+
+snippet posl "Positioned left"
+Positioned(
+  top: ${1:0},
+  left: ${2:0},
+  bottom: ${3:0},
+  child: ${0:Container()},
+),
+endsnippet
+
+snippet post "Positioned top"
+Positioned(
+  top: ${1:0},
+  left: ${2:0},
+  right: ${3:0},
+  child: ${0:Container()},
+),
+endsnippet
+
+snippet posb "Positioned bottom"
+Positioned(
+  bottom: ${1:0},
+  left: ${2:0},
+  right: ${3:0},
+  child: ${0:Container()},
+),
+endsnippet
+
 snippet postr "Positioned top right"
 Positioned(
   top: ${1:0},
@@ -512,7 +548,7 @@ Positioned(
 endsnippet
 
 snippet fa "fix add type"
-// FIX:ADDTYPE
+// TYPEADD
 endsnippet
 
 snippet .f "fix add type" i
