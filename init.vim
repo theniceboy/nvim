@@ -338,7 +338,7 @@ Plug 'NvChad/nvim-colorizer.lua'
 Plug 'RRethy/vim-illuminate'
 
 " File navigation
-Plug 'ibhagwan/fzf-lua', { 'commit': 'e23ccf6e09240314c636408b446fb47a40ba6f25' }
+Plug 'ibhagwan/fzf-lua'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'kevinhwang91/rnvimr'
@@ -1049,7 +1049,6 @@ require'fzf-lua'.setup {
 		vertical       = 'down:45%',      -- up|down:size
 		horizontal     = 'right:60%',     -- right|left:size
 		hidden         = 'nohidden',
-		title = true,
 	},
 	keymap = {
 		-- These override the default tables completely
