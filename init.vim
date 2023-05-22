@@ -339,6 +339,7 @@ Plug 'RRethy/vim-illuminate'
 Plug 'ibhagwan/fzf-lua'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'theniceboy/joshuto.nvim'
 Plug 'kevinhwang91/rnvimr'
 Plug 'airblade/vim-rooter'
 Plug 'pechorin/any-jump.vim'
@@ -895,7 +896,7 @@ let g:rnvimr_pick_enable = 1
 let g:rnvimr_draw_border = 0
 " let g:rnvimr_bw_enable = 1
 highlight link RnvimrNormal CursorLine
-nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+nnoremap <silent> <LEADER>R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
 let g:rnvimr_action = {
             \ '<C-t>': 'NvimEdit tabedit',
             \ '<C-x>': 'NvimEdit split',
@@ -1236,6 +1237,12 @@ let g:terminal_color_12 = '#CAA9FA'
 let g:terminal_color_13 = '#FF92D0'
 let g:terminal_color_14 = '#9AEDFE'
 
+
+" ==================== joshuto.nvim ====================
+noremap <silent> R :Joshuto<CR>
+let g:joshuto_floating_window_winblend = 0
+let g:joshuto_floating_window_scaling_factor = 1.0
+let g:joshuto_use_neovim_remote = 1 " for neovim-remote support
 
 " ==================== Necessary Commands to Execute ====================
 exec "nohlsearch"
