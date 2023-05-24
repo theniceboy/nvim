@@ -315,6 +315,12 @@ endfunc
 " ==================== Install Plugins with Vim-Plug ====================
 call plug#begin('$HOME/.config/nvim/plugged')
 
+" Fcitx
+" Plug 'lilydjwg/fcitx.vim', { 'branch': 'fcitx' }
+
+" Fcitx5
+Plug 'lilydjwg/fcitx.vim', { 'branch': 'fcitx5' }
+
 Plug 'itchyny/vim-cursorword'
 
 " Github Copilot
