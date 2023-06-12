@@ -1,0 +1,14 @@
+{
+	"workspace": {
+		"library": [
+			"/opt/homebrew/share/nvim/runtime/lua",
+			"/opt/homebrew/share/nvim/runtime/lua/vim",
+			"/opt/homebrew/share/nvim/runtime/lua/vim/lsp"
+		],
+		"maxPreload": 2000,
+		"preloadFileSize": 1000
+	},
+    "diagnostics.globals": [
+        "compileRun"
+    ]
+}

@@ -33,6 +33,7 @@ function M.swap_ternary()
 	local ternary_node = get_ternary_node(node)
 
 	if not ternary_node then
+		print("No ternary expression found")
 		return
 	end
 
