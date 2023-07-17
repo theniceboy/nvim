@@ -1,5 +1,5 @@
 return {
-	'akinsho/flutter-tools.nvim',
+	'theniceboy/flutter-tools.nvim',
 	ft = 'dart',
 	dependencies = {
 		'nvim-lua/plenary.nvim',
