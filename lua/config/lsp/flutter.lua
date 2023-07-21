@@ -1,5 +1,23 @@
 return {
+	preview_stack_trace = function()
+		local line = vim.api.nvim_get_current_line()
+		local pattern = '%(package:[^/]+/([^:]+):(%d+):(%d+)%)'
+		local filepath, line_nr, col_nr = line:match(pattern)
+		if filepath and line_nr and col_nr then
+			vim.cmd(":wincmd k")
+			vim.cmd('e ' .. filepath)
+			vim.api.nvim_win_set_cursor(0, { tonumber(line_nr), tonumber(col_nr) })
+			vim.cmd(":wincmd j")
+		end
+	end,
 	setup = function(lsp)
+		vim.cmd([[
+		  augroup flutter_log_keybinds_autocmd_group
+			  autocmd!
+			  autocmd BufEnter __FLUTTER_DEV_LOG__ nnoremap <buffer> p :lua require("config.lsp.flutter").preview_stack_trace()<CR>
+			augroup END
+		]])
+
 		local dart_lsp = lsp.build_options('dartls', {})
 
 		require('flutter-tools').setup({

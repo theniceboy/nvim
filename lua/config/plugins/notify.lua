@@ -8,7 +8,7 @@ return {
 				vim.api.nvim_win_set_config(win, { border = "none" })
 			end,
 			background_colour = "#202020",
-			fps = 30,
+			fps = 60,
 			level = 2,
 			minimum_width = 50,
 			render = "compact",
