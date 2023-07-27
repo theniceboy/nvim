@@ -292,11 +292,11 @@ endsnippet
 
 snippet sf "New Stateful Widget" b
 class ${1:name} extends StatefulWidget {
-  ${1:name}({super.key});
+  $1({super.key});
   @override
-  _${1:WidgetName}State createState() => _${1:WidgetName}State();
+  _$1State createState() => _$1State();
 }
-class _${1:index}State extends State<${1:index}> {
+class _$1State extends State<$1> {
   @override
   Widget build(context) {
     return ${2:Container()};
@@ -307,7 +307,7 @@ endsnippet
 
 snippet sl "New Stateless Widget" b
 class ${1:name} extends StatelessWidget {
-  ${1:name}({super.key});
+  $1({super.key});
   @override
   Widget build(context) {
     return ${2:Container()};
