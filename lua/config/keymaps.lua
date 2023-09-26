@@ -73,6 +73,7 @@ local nmappings = {
 
 	-- Other
 	{ from = "<leader>sw",    to = ":set wrap<CR>" },
+	{ from = "<leader>sc",    to = ":set spell!<CR>" },
 	{ from = "<leader><CR>",  to = ":nohlsearch<CR>" },
 	{ from = "<f10>",         to = ":TSHighlightCapturesUnderCursor<CR>" },
 	{ from = "<leader>o",     to = "za" },

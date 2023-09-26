@@ -129,10 +129,10 @@ M.config = {
 			-- ts.load_extension("ui-select")
 			ts.load_extension("flutter")
 			local tsdap = ts.extensions.dap;
-			vim.keymap.set("n", "<leader>'v", tsdap.variables, m)
-			vim.keymap.set("n", "<leader>'a", tsdap.commands, m)
-			vim.keymap.set("n", "<leader>'b", tsdap.list_breakpoints, m)
-			vim.keymap.set("n", "<leader>'f", tsdap.frames, m)
+			-- vim.keymap.set("n", "<leader>'v", tsdap.variables, m)
+			-- vim.keymap.set("n", "<leader>'a", tsdap.commands, m)
+			-- vim.keymap.set("n", "<leader>'b", tsdap.list_breakpoints, m)
+			-- vim.keymap.set("n", "<leader>'f", tsdap.frames, m)
 		end
 	},
 	{
