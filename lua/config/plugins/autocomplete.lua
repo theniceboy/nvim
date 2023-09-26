@@ -9,6 +9,32 @@ local limitStr = function(str)
 	return str
 end
 
+local lspkind_comparator = function(conf)
+	local lsp_types = require('cmp.types').lsp
+	return function(entry1, entry2)
+		if entry1.source.name ~= 'nvim_lsp' then
+			if entry2.source.name == 'nvim_lsp' then
+				return false
+			else
+				return nil
+			end
+		end
+		local kind1 = lsp_types.CompletionItemKind[entry1:get_kind()]
+		local kind2 = lsp_types.CompletionItemKind[entry2:get_kind()]
+
+		local priority1 = conf.kind_priority[kind1] or 0
+		local priority2 = conf.kind_priority[kind2] or 0
+		if priority1 == priority2 then
+			return nil
+		end
+		return priority2 < priority1
+	end
+end
+
+local label_comparator = function(entry1, entry2)
+	return entry1.completion_item.label < entry2.completion_item.label
+end
+
 local M = {}
 M.config = {
 	"hrsh7th/nvim-cmp",
@@ -64,7 +90,7 @@ local setCompHL = function()
 	vim.api.nvim_set_hl(0, "CmpItemKindModule", { fg = fgdark, bg = "#A377BF" })
 	vim.api.nvim_set_hl(0, "CmpItemKindOperator", { fg = fgdark, bg = "#A377BF" })
 
-	vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = fgdark, bg = "#7E8294" })
+	vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = fgdark, bg = "#cccccc" })
 	vim.api.nvim_set_hl(0, "CmpItemKindFile", { fg = fgdark, bg = "#7E8294" })
 
 	vim.api.nvim_set_hl(0, "CmpItemKindUnit", { fg = fgdark, bg = "#D4A959" })
@@ -103,6 +129,45 @@ M.configfunc = function()
 				side_padding = 0,
 			},
 			documentation = cmp.config.window.bordered(),
+		},
+		sorting = {
+			comparators = {
+				-- label_comparator,
+				cmp.config.compare.offset,
+				cmp.config.compare.exact,
+				cmp.config.compare.score,
+				cmp.config.compare.recently_used,
+				lspkind_comparator({
+					kind_priority = {
+						Field = 3,
+						-- Variable = 2,
+						-- Property = 11,
+						-- Constant = 10,
+						-- Enum = 10,
+						-- EnumMember = 10,
+						-- Event = 10,
+						-- Function = 10,
+						-- Method = 10,
+						-- Operator = 10,
+						-- Reference = 10,
+						-- Struct = 10,
+						-- File = 8,
+						-- Folder = 8,
+						-- Class = 5,
+						-- Color = 5,
+						-- Module = 5,
+						-- Keyword = 2,
+						-- Constructor = 1,
+						-- Interface = 1,
+						-- Snippet = 0,
+						-- Text = 1,
+						-- TypeParameter = 1,
+						-- Unit = 1,
+						-- Value = 1,
+					},
+				}),
+				cmp.config.compare.kind,
+			},
 		},
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
@@ -151,6 +216,7 @@ M.configfunc = function()
 				end
 			}),
 			['<c-y>'] = cmp.mapping({ i = function(fallback) fallback() end }),
+			['<c-u>'] = cmp.mapping({ i = function(fallback) fallback() end }),
 			['<CR>'] = cmp.mapping({
 				i = function(fallback)
 					if cmp.visible() and cmp.get_active_entry() then

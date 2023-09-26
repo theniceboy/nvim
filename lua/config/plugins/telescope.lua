@@ -33,7 +33,11 @@ M.config = {
 			vim.keymap.set('n', '<c-_>', builtin.current_buffer_fuzzy_find, m)
 			vim.keymap.set('n', 'z=', builtin.spell_suggest, m)
 
-			vim.keymap.set('n', '<leader>d', builtin.diagnostics, m)
+			vim.keymap.set('n', '<leader>d', function()
+				builtin.diagnostics({
+					severity_sort = true,
+				})
+			end, m)
 			-- vim.keymap.set('n', 'gd', builtin.lsp_definitions, m)
 			-- vim.keymap.set('n', '<c-t>', builtin.lsp_document_symbols, {})
 			vim.keymap.set('n', 'gi', builtin.git_status, m)

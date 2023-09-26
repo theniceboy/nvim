@@ -8,7 +8,7 @@ local compileRun = function()
 	-- check file type
 	local ft = vim.bo.filetype
 	if ft == "dart" then
-		vim.cmd(":FlutterRun -d " .. vim.g.flutter_default_device .. " " .. vim.g.flutter_run_args .. "<CR>")
+		vim.cmd(":FlutterRun -d " .. vim.g.flutter_default_device .. " " .. vim.g.flutter_run_args)
 	elseif ft == "markdown" then
 		vim.cmd(":InstantMarkdownPreview<CR>")
 	elseif ft == 'javascript' then

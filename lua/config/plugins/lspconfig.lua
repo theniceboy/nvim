@@ -64,7 +64,9 @@ M.config = {
 				lsp.default_keymaps({ buffer = bufnr })
 				client.server_capabilities.semanticTokensProvider = nil
 				require("config.plugins.autocomplete").configfunc()
-				-- require("lsp_signature").on_attach(F.signature_config, bufnr)
+				if vim.bo[bufnr].filetype ~= "dart" then
+					require("lsp_signature").on_attach(F.signature_config, bufnr)
+				end
 				-- require("lsp-inlayhints").on_attach(client, bufnr)
 				-- vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
 				-- vim.api.nvim_create_autocmd("InsertEnter", {
@@ -193,9 +195,10 @@ end
 F.configureDocAndSignature = function()
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 		vim.lsp.handlers.signature_help, {
-			silent = true,
+			-- silent = true,
 			focusable = false,
 			border = "rounded",
+			zindex = 60,
 		}
 	)
 	local group = vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
@@ -205,12 +208,15 @@ F.configureDocAndSignature = function()
 			vim.diagnostic.open_float(0, {
 				scope = "cursor",
 				focusable = false,
+				zindex = 10,
 				close_events = {
 					"CursorMoved",
 					"CursorMovedI",
 					"BufHidden",
 					"InsertCharPre",
+					"InsertEnter",
 					"WinLeave",
+					"ModeChanged",
 				},
 			})
 		end,
