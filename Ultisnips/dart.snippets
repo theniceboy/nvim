@@ -451,6 +451,10 @@ snippet st "print();"
 print(${0});
 endsnippet
 
+snippet stb "print('-------');"
+print("------------------------------------------------");
+endsnippet
+
 snippet sbj "Behavior subject"
 Stream<${1:int}> get ${2:my}Stream => _${2:my}Subject.stream;
 BehaviorSubject<${1}> _${2:my}Subject;
@@ -555,4 +559,24 @@ snippet .f "fix add type" i
 .forEach((${1:item}) {
 	${0:// TODO}
 });
+endsnippet
+
+snippet btn "Text Button" i
+TextButton(
+	child: ${0:Text("Button")},
+	onPressed: () {},
+	style: TextButton.styleFrom(
+		foregroundColor: Colors.black,
+		backgroundColor: Colors.white,
+	),
+)
+endsnippet
+
+snippet th "try throw stack" i
+try {
+  throw "${0:test}";
+} catch (e, stack) {
+  print(e);
+  print(stack);
+}
 endsnippet

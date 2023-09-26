@@ -30,9 +30,23 @@ if err != nil {
 ${0}
 endsnippet
 
-snippet ie "Check Error"
+snippet iep "Panic if error"
 if err != nil {
 	panic(err)
+}
+${0}
+endsnippet
+
+snippet iel "Log if error"
+if err != nil {
+	log.Println(err)
+}
+${0}
+endsnippet
+
+snippet ier "Return if error"
+if err != nil {
+	return err
 }
 ${0}
 endsnippet
@@ -59,10 +73,6 @@ func ${1:function}() {
 }
 endsnippet
 
-snippet lt "Log Println"
-log.Println(${1})${0}
-endsnippet
-
 snippet start "Starting code"
 package main
 
@@ -81,4 +91,16 @@ endsnippet
 
 snippet fa "fix add type"
 // TYPEADD
+endsnippet
+
+snippet gof "go func() {} ()"
+go func() {
+	${0}
+}()
+endsnippet
+
+snippet df "defer func() {} ()"
+defer func() {
+	${0}
+}()
 endsnippet
