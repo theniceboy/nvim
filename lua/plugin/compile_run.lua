@@ -11,6 +11,9 @@ local compileRun = function()
 		vim.cmd(":FlutterRun -d " .. vim.g.flutter_default_device .. " " .. vim.g.flutter_run_args .. "<CR>")
 	elseif ft == "markdown" then
 		vim.cmd(":InstantMarkdownPreview<CR>")
+	elseif ft == 'javascript' then
+		split()
+		vim.cmd("term node %")
 	elseif ft == 'lua' then
 		split()
 		vim.cmd("term luajit %")

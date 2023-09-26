@@ -54,6 +54,7 @@ M.config = {
 				'eslint',
 				'gopls',
 				'jsonls',
+				'html',
 			})
 
 			-- F.configureInlayHints()
@@ -113,7 +114,7 @@ M.config = {
 			require("config.lsp.lua").setup(lspconfig, lsp)
 			require("config.lsp.json").setup(lspconfig, lsp)
 			require("config.lsp.flutter").setup(lsp)
-			-- require("config.lsp.html").setup(lspconfig, lsp)
+			require("config.lsp.html").setup(lspconfig, lsp)
 
 			lsp.setup()
 			require("fidget").setup({})
@@ -135,6 +136,8 @@ M.config = {
 				json = true,
 				go = true,
 				lua = true,
+				html = true,
+				javascript = true,
 			}
 
 			vim.api.nvim_create_autocmd("BufWritePre", {
