@@ -55,6 +55,7 @@ M.config = {
 				'gopls',
 				'jsonls',
 				'html',
+				'clangd',
 			})
 
 			-- F.configureInlayHints()
@@ -138,6 +139,10 @@ M.config = {
 				lua = true,
 				html = true,
 				javascript = true,
+				c = true,
+				cpp = true,
+				objc = true,
+				objcpp = true,
 			}
 
 			vim.api.nvim_create_autocmd("BufWritePre", {
