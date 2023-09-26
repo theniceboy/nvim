@@ -1,6 +1,6 @@
 return {
 	"theniceboy/joshuto.nvim",
-	very_lazy = true,
+	lazy = true,
 	cmd = "Joshuto",
 	config = function()
 		-- let g:joshuto_floating_window_winblend = 0
