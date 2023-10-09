@@ -73,6 +73,8 @@ M.config = {
 							["<C-l>"] = "preview_scrolling_up",
 							["<C-y>"] = "preview_scrolling_down",
 							["<esc>"] = "close",
+							["<C-n>"] = require('telescope.actions').cycle_history_next,
+							["<C-p>"] = require('telescope.actions').cycle_history_prev,
 						}
 					},
 					color_devicons = true,

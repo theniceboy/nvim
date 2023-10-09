@@ -19,7 +19,9 @@ return {
 					"bash",
 					"go",
 					"lua",
-					"vim"
+					"kdl",
+					"vim",
+					"terraform",
 				},
 				highlight = {
 					enable = true,

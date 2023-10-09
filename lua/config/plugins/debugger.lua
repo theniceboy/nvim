@@ -78,7 +78,8 @@ return {
 					type = "codelldb",
 					request = "launch",
 					program = function()
-						return vim.fn.getcwd() .. '/' .. vim.fn.expand("%:r")
+						local exe = vim.g.c_debug_program or vim.fn.expand("%:r")
+						return vim.fn.getcwd() .. '/' .. exe
 					end,
 					cwd = '${workspaceFolder}',
 					stopOnEntry = false,
