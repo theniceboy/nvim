@@ -20,6 +20,8 @@ local compileRun = function()
 	elseif ft == 'lua' then
 		split()
 		vim.cmd("term luajit %")
+	elseif ft == 'tex' then
+		vim.cmd(":VimtexCompile")
 	end
 end
 

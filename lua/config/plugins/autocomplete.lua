@@ -9,26 +9,34 @@ local limitStr = function(str)
 	return str
 end
 
-local lspkind_comparator = function(conf)
-	local lsp_types = require('cmp.types').lsp
-	return function(entry1, entry2)
-		if entry1.source.name ~= 'nvim_lsp' then
-			if entry2.source.name == 'nvim_lsp' then
-				return false
-			else
-				return nil
-			end
-		end
-		local kind1 = lsp_types.CompletionItemKind[entry1:get_kind()]
-		local kind2 = lsp_types.CompletionItemKind[entry2:get_kind()]
-
-		local priority1 = conf.kind_priority[kind1] or 0
-		local priority2 = conf.kind_priority[kind2] or 0
-		if priority1 == priority2 then
-			return nil
-		end
-		return priority2 < priority1
+local dartColonFirst = function(entry1, entry2)
+	if vim.bo.filetype ~= "dart" then
+		return nil
 	end
+	local entry1EndsWithColon = string.find(entry1.completion_item.label, ":") and entry1.source.name == 'nvim_lsp'
+	local entry2EndsWithColon = string.find(entry2.completion_item.label, ":") and entry2.source.name == 'nvim_lsp'
+	if entry1EndsWithColon and not entry2EndsWithColon then
+		return true
+	elseif not entry1EndsWithColon and entry2EndsWithColon then
+		return false
+	end
+	return nil
+end
+
+local dartColonFirst = function(entry1, entry2)
+	if vim.bo.filetype ~= "python" then
+		return nil
+	end
+	local entry1StartsWithUnderscore = string.sub(entry1.completion_item.label, 1, 1) == "_" and
+			entry1.source.name == 'nvim_lsp'
+	local entry2StartsWithUnderscore = string.sub(entry2.completion_item.label, 1, 1) == "_" and
+			entry2.source.name == 'nvim_lsp'
+	if entry1StartsWithUnderscore and not entry2StartsWithUnderscore then
+		return false
+	elseif not entry1StartsWithUnderscore and entry2StartsWithUnderscore then
+		return true
+	end
+	return nil
 end
 
 local label_comparator = function(entry1, entry2)
@@ -106,6 +114,20 @@ local setCompHL = function()
 	vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = fgdark, bg = "#58B5A8" })
 end
 
+local moveCursorBeforeComma = function()
+	if vim.bo.filetype ~= "dart" then
+		return
+	end
+	vim.defer_fn(function()
+		local line = vim.api.nvim_get_current_line()
+		local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+		local char = line:sub(col - 2, col)
+		if char == ": ," then
+			vim.api.nvim_win_set_cursor(0, { row, col - 1 })
+		end
+	end, 100)
+end
+
 M.configfunc = function()
 	local lspkind = require("lspkind")
 	vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
@@ -133,39 +155,11 @@ M.configfunc = function()
 		sorting = {
 			comparators = {
 				-- label_comparator,
+				dartColonFirst,
 				cmp.config.compare.offset,
 				cmp.config.compare.exact,
 				cmp.config.compare.score,
 				cmp.config.compare.recently_used,
-				lspkind_comparator({
-					kind_priority = {
-						Field = 3,
-						-- Variable = 2,
-						-- Property = 11,
-						-- Constant = 10,
-						-- Enum = 10,
-						-- EnumMember = 10,
-						-- Event = 10,
-						-- Function = 10,
-						-- Method = 10,
-						-- Operator = 10,
-						-- Reference = 10,
-						-- Struct = 10,
-						-- File = 8,
-						-- Folder = 8,
-						-- Class = 5,
-						-- Color = 5,
-						-- Module = 5,
-						-- Keyword = 2,
-						-- Constructor = 1,
-						-- Interface = 1,
-						-- Snippet = 0,
-						-- Text = 1,
-						-- TypeParameter = 1,
-						-- Unit = 1,
-						-- Value = 1,
-					},
-				}),
 				cmp.config.compare.kind,
 			},
 		},
@@ -230,8 +224,10 @@ M.configfunc = function()
 				i = function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+						moveCursorBeforeComma()
 					elseif has_words_before() then
 						cmp.complete()
+						moveCursorBeforeComma()
 					else
 						fallback()
 					end
@@ -241,6 +237,7 @@ M.configfunc = function()
 				i = function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+						moveCursorBeforeComma()
 					else
 						fallback()
 					end

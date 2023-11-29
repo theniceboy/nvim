@@ -8,5 +8,6 @@ tmp/
 .netrwhist
 _machine_specific.vim
 .vim-bookmarks
+_local_plugins/
 
 lua/config/machine_specific.lua

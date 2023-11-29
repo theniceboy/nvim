@@ -22,6 +22,9 @@ return {
 					"kdl",
 					"vim",
 					"terraform",
+					"dockerfile",
+					"yaml",
+					"python",
 				},
 				highlight = {
 					enable = true,

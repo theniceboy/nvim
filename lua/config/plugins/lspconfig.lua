@@ -56,6 +56,11 @@ M.config = {
 				'jsonls',
 				'html',
 				'clangd',
+				'dockerls',
+				'ansiblels',
+				'terraformls',
+				'texlab',
+				'pyright',
 			})
 
 			-- F.configureInlayHints()
@@ -145,6 +150,9 @@ M.config = {
 				cpp = true,
 				objc = true,
 				objcpp = true,
+				dockerfile = true,
+				terraform = true,
+				tex = true,
 			}
 
 			vim.api.nvim_create_autocmd("BufWritePre", {

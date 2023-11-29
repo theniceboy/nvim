@@ -35,7 +35,7 @@ return {
 				end,
 				capabilities = dart_lsp.capabilities,
 				settings = {
-					enableSnippets = false,
+					enableSnippets = true,
 					showTodos = true,
 					completeFunctionCalls = true,
 					analysisExcludedFolders = {
