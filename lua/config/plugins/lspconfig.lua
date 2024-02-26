@@ -2,6 +2,8 @@ local M = {}
 
 local F = {}
 
+local documentation_window_open = false
+
 M.config = {
 	{
 		'weilbith/nvim-code-action-menu',
@@ -42,6 +44,7 @@ M.config = {
 				"lvimuser/lsp-inlayhints.nvim",
 				branch = "anticonceal",
 			},
+			"MunifTanjim/prettier.nvim",
 			-- "mjlbach/lsp_signature.nvim",
 		},
 
@@ -139,6 +142,46 @@ M.config = {
 			F.configureDocAndSignature()
 			F.configureKeybinds()
 
+			local prettier = require("prettier")
+
+			prettier.setup({
+				bin = 'prettierd',
+				filetypes = {
+					"css",
+					"graphql",
+					"html",
+					"javascript",
+					"javascriptreact",
+					"json",
+					"less",
+					"markdown",
+					"scss",
+					"typescript",
+					"typescriptreact",
+					"yaml",
+				},
+				cli_options = {
+					arrow_parens = "always",
+					bracket_spacing = true,
+					bracket_same_line = false,
+					embedded_language_formatting = "auto",
+					end_of_line = "lf",
+					html_whitespace_sensitivity = "css",
+					-- jsx_bracket_same_line = false,
+					jsx_single_quote = false,
+					print_width = 80,
+					prose_wrap = "preserve",
+					quote_props = "as-needed",
+					semi = true,
+					single_attribute_per_line = false,
+					single_quote = false,
+					tab_width = 2,
+					trailing_comma = "es5",
+					use_tabs = false,
+					vue_indent_script_and_style = false,
+				},
+			})
+
 			local format_on_save_filetypes = {
 				dart = true,
 				json = true,
@@ -146,6 +189,8 @@ M.config = {
 				lua = true,
 				html = true,
 				javascript = true,
+				typescript = true,
+				typescriptreact = true,
 				c = true,
 				cpp = true,
 				objc = true,
@@ -213,20 +258,22 @@ F.configureDocAndSignature = function()
 	vim.api.nvim_create_autocmd({ "CursorHold" }, {
 		pattern = "*",
 		callback = function()
-			vim.diagnostic.open_float(0, {
-				scope = "cursor",
-				focusable = false,
-				zindex = 10,
-				close_events = {
-					"CursorMoved",
-					"CursorMovedI",
-					"BufHidden",
-					"InsertCharPre",
-					"InsertEnter",
-					"WinLeave",
-					"ModeChanged",
-				},
-			})
+			if not documentation_window_open then
+				vim.diagnostic.open_float(0, {
+					scope = "cursor",
+					focusable = false,
+					zindex = 10,
+					close_events = {
+						"CursorMoved",
+						"CursorMovedI",
+						"BufHidden",
+						"InsertCharPre",
+						"InsertEnter",
+						"WinLeave",
+						"ModeChanged",
+					},
+				})
+			end
 		end,
 		group = group,
 	})
@@ -248,6 +295,18 @@ F.configureDocAndSignature = function()
 	-- lspsignature.setup(F.signature_config)
 end
 
+local documentation_window_open_index = 0
+local function show_documentation()
+	documentation_window_open_index = documentation_window_open_index + 1
+	local current_index = documentation_window_open_index
+	documentation_window_open = true
+	vim.defer_fn(function()
+		if current_index == documentation_window_open_index then
+			documentation_window_open = false
+		end
+	end, 500)
+	vim.lsp.buf.hover()
+end
 
 F.configureKeybinds = function()
 	vim.api.nvim_create_autocmd('LspAttach', {
@@ -255,7 +314,7 @@ F.configureKeybinds = function()
 		callback = function(event)
 			local opts = { buffer = event.buf, noremap = true, nowait = true }
 
-			vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, opts)
+			vim.keymap.set('n', '<leader>h', show_documentation, opts)
 			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 			vim.keymap.set('n', 'gD', ':tab sp<CR><cmd>lua vim.lsp.buf.definition()<cr>', opts)
 			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)

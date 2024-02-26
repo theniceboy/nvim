@@ -12,6 +12,7 @@ return {
 					"html",
 					"javascript",
 					"typescript",
+					"tsx",
 					"query",
 					"dart",
 					"java",
