@@ -4,6 +4,7 @@ local M = {}
 M.config = {
 	{
 		"nvim-telescope/telescope.nvim",
+		dir = "/Users/david/.config/nvim/_local_plugins/telescope.nvim",
 		-- tag = '0.1.1',
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -118,7 +119,7 @@ M.config = {
 				}
 			})
 
-			ts.load_extension("yank_history")
+			ts.load_extension('neoclip')
 			ts.load_extension('dap')
 			ts.load_extension('telescope-tabs')
 			ts.load_extension('fzf')

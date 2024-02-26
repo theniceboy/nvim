@@ -83,7 +83,7 @@ return {
 		config = function()
 			local substitute = require("substitute")
 			substitute.setup({
-				on_substitute = require("yanky.integration").substitute(),
+				-- on_substitute = require("yanky.integration").substitute(),
 				highlight_substituted_text = {
 					enabled = true,
 					timer = 200,
