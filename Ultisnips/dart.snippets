@@ -64,6 +64,10 @@ snippet paa "Padding All"
 padding: EdgeInsets.all(${1:8.0}),
 endsnippet
 
+snippet paz "Padding Zero"
+padding: EdgeInsets.zero,
+endsnippet
+
 snippet pah "Padding Horizontal"
 padding: EdgeInsets.symmetric(horizontal: ${0:0}),
 endsnippet
@@ -552,10 +556,10 @@ Positioned(
 endsnippet
 
 snippet fa "fix add type"
-// TYPEADD
+// FIXTYPE
 endsnippet
 
-snippet .f "fix add type" i
+snippet .f "For each" i
 .forEach((${1:item}) {
 	${0:// TODO}
 });
@@ -579,4 +583,10 @@ try {
   print(e);
   print(stack);
 }
+endsnippet
+
+snippet tra "handleException"
+await handleException(() async {
+  ${0}
+});
 endsnippet
