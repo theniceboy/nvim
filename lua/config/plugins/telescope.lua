@@ -4,7 +4,7 @@ local M = {}
 M.config = {
 	{
 		"nvim-telescope/telescope.nvim",
-		dir = "/Users/david/.config/nvim/_local_plugins/telescope.nvim",
+		-- dir = "/Users/david/.config/nvim/_local_plugins/telescope.nvim",
 		-- tag = '0.1.1',
 		dependencies = {
 			"nvim-lua/plenary.nvim",
