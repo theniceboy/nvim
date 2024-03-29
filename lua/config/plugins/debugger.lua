@@ -19,7 +19,12 @@ return {
 				end
 			},
 			"theHamsta/nvim-dap-virtual-text",
-			"rcarriga/nvim-dap-ui",
+			{
+				"rcarriga/nvim-dap-ui",
+				dependencies = {
+					"nvim-neotest/nvim-nio",
+				},
+			},
 			"nvim-dap-virtual-text",
 			"nvim-telescope/telescope-dap.nvim",
 		},
