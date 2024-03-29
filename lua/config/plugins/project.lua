@@ -8,7 +8,7 @@ return {
 			vim.api.nvim_create_autocmd("VimEnter", {
 				pattern = "*",
 				callback = function()
-					-- source .nvim.lua at project root
+					-- source .vim.lua at project root
 					vim.cmd([[silent! source .vim.lua]])
 				end,
 			})

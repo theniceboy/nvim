@@ -2,7 +2,12 @@ return {
 	"rcarriga/nvim-notify",
 	config = function()
 		local notify = require("notify")
-		vim.notify = notify
+		vim.notify = function(msg, ...)
+			if string.match(msg, "error drawing label for") then
+				return
+			end
+			require("notify")(msg, ...)
+		end
 		notify.setup({
 			on_open = function(win)
 				vim.api.nvim_win_set_config(win, { border = "none" })
