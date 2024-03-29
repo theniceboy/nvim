@@ -1,6 +1,6 @@
 local m = { noremap = true }
 return {
-	"ibhagwan/fzf-lua",
+	"theniceboy/fzf-lua",
 	keys = { "<c-f>" },
 	config = function()
 		local fzf = require('fzf-lua')
