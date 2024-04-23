@@ -42,13 +42,13 @@ return {
 						vim.fn.expand '$HOME/.pub-cache',
 						vim.fn.expand '$HOME/fvm',
 					},
-					lineLength = 100,
+					lineLength = vim.g.flutter_format_line_length,
 				},
 			},
 			dev_log = {
 				enabled = true,
 				notify_errors = true, -- if there is an error whilst running then notify the user
-				open_cmd = "e",   -- command to use to open the log buffer
+				open_cmd = "botright 40vnew",
 			},
 			debugger = {
 				-- integrate with nvim dap + install dart code debugger

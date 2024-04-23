@@ -11,5 +11,6 @@ vim.g.mkdp_browserfunc = 'open '
 
 vim.g.flutter_default_device = 'macos'
 vim.g.flutter_run_args = ''
+vim.g.flutter_format_line_length = 100
 
 vim.g.codelldb_path = '/Users/david/prog/codellvm/extension/adapter/codelldb'

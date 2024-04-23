@@ -68,6 +68,22 @@ return {
 	{
 		"fedepujol/move.nvim",
 		config = function()
+			require('move').setup({
+				line = {
+					enable = true,
+					indent = true
+				},
+				block = {
+					enable = true,
+					indent = true
+				},
+				word = {
+					enable = false,
+				},
+				char = {
+					enable = false
+				}
+			})
 			local opts = { noremap = true, silent = true }
 			-- Normal-mode commands
 			vim.keymap.set('n', '<c-y>', ':MoveLine(1)<CR>', opts)
