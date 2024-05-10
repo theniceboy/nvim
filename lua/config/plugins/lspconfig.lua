@@ -47,6 +47,7 @@ M.config = {
 			"MunifTanjim/prettier.nvim",
 			-- "mjlbach/lsp_signature.nvim",
 			"airblade/vim-rooter",
+			"b0o/schemastore.nvim",
 		},
 
 		config = function()
@@ -65,6 +66,7 @@ M.config = {
 				'terraformls',
 				'texlab',
 				'pyright',
+				'yamlls',
 			})
 
 			-- F.configureInlayHints()
@@ -128,7 +130,67 @@ M.config = {
 			require("config.lsp.flutter").setup(lsp)
 			require("config.lsp.html").setup(lspconfig, lsp)
 
+			require 'lspconfig'.terraformls.setup {}
+			vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+				pattern = { "*.tf", "*.tfvars", "*.lua" },
+				callback = function()
+					vim.lsp.buf.format()
+				end,
+			})
+			require 'lspconfig'.yamlls.setup({
+				settings = {
+					redhat = {
+						telemetry = {
+							enabled = false
+						}
+					},
+					yaml = {
+						schemaStore = {
+							enable = false,
+							url = "",
+						},
+						-- schemas = require('schemastore').yaml.schemas(),
+						validate = false,
+						customTags = {
+							"!fn",
+							"!And",
+							"!If",
+							"!Not",
+							"!Equals",
+							"!Or",
+							"!FindInMap sequence",
+							"!Base64",
+							"!Cidr",
+							"!Ref",
+							"!Sub",
+							"!GetAtt",
+							"!GetAZs",
+							"!ImportValue",
+							"!Select",
+							"!Split",
+							"!Join sequence"
+						}
+					},
+				}
+			})
+
 			lsp.setup()
+
+
+			-- Neovim hasn't added foldingRange to default capabilities, users must add it manually
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities.textDocument.foldingRange = {
+				dynamicRegistration = false,
+				lineFoldingOnly = true
+			}
+			local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+			for _, ls in ipairs(language_servers) do
+				require('lspconfig')[ls].setup({
+					capabilities = capabilities
+					-- you can add other fields for setting up lsp server in this table
+				})
+			end
+
 			require("fidget").setup({})
 
 			local lsp_defaults = lspconfig.util.default_config
