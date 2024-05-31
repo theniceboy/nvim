@@ -11,7 +11,7 @@ M.config = {
 	},
 	{
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
+		branch = 'v3.x',
 		dependencies = {
 			{
 				"folke/trouble.nvim",
@@ -40,10 +40,6 @@ M.config = {
 			"folke/neodev.nvim",
 			"ray-x/lsp_signature.nvim",
 			"ldelossa/nvim-dap-projects",
-			{
-				"lvimuser/lsp-inlayhints.nvim",
-				branch = "anticonceal",
-			},
 			"MunifTanjim/prettier.nvim",
 			-- "mjlbach/lsp_signature.nvim",
 			"airblade/vim-rooter",
@@ -54,7 +50,8 @@ M.config = {
 			local lsp = require('lsp-zero').preset({})
 			M.lsp = lsp
 
-			lsp.ensure_installed({
+			require('mason').setup({})
+			require('mason-lspconfig').setup({
 				'tsserver',
 				'eslint',
 				'gopls',
@@ -69,8 +66,6 @@ M.config = {
 				'yamlls',
 			})
 
-			-- F.configureInlayHints()
-
 			lsp.on_attach(function(client, bufnr)
 				lsp.default_keymaps({ buffer = bufnr })
 				client.server_capabilities.semanticTokensProvider = nil
@@ -78,20 +73,6 @@ M.config = {
 				-- if vim.bo[bufnr].filetype ~= "dart" then
 				require("lsp_signature").on_attach(F.signature_config, bufnr)
 				-- end
-				-- require("lsp-inlayhints").on_attach(client, bufnr)
-				-- vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
-				-- vim.api.nvim_create_autocmd("InsertEnter", {
-				-- 	buffer = bufnr,
-				-- 	callback = function() vim.lsp.inlay_hint(bufnr, false) end,
-				-- 	group = "lsp_augroup",
-				-- })
-				-- vim.lsp.inlay_hint(bufnr, true)
-				-- vim.api.nvim_create_autocmd("InsertLeave", {
-				-- 	buffer = bufnr,
-				-- 	callback = function() vim.lsp.inlay_hint(bufnr, true) end,
-				-- 	group = "lsp_augroup",
-				-- })
-				-- vim.cmd('highlight! link LspInlayHint Comment')
 				vim.diagnostic.config({
 					severity_sort = true,
 					underline = true,
@@ -100,14 +81,14 @@ M.config = {
 					update_in_insert = false,
 					float = true,
 				})
-			end)
 
-			lsp.set_sign_icons({
-				error = '✘',
-				warn = '▲',
-				hint = '⚑',
-				info = '»'
-			})
+				lsp.set_sign_icons({
+					error = '✘',
+					warn = '▲',
+					hint = '⚑',
+					info = '»'
+				})
+			end)
 
 			lsp.set_server_config({
 				on_init = function(client)
@@ -276,37 +257,6 @@ M.config = {
 		end
 	},
 }
-
-F.configureInlayHints = function()
-	require("lsp-inlayhints").setup({
-		inlay_hints = {
-			parameter_hints = {
-				show = true,
-				prefix = "<- ",
-				separator = ", ",
-				remove_colon_start = false,
-				remove_colon_end = true,
-			},
-			type_hints = {
-				-- type and other hints
-				show = true,
-				prefix = "",
-				separator = ", ",
-				remove_colon_start = false,
-				remove_colon_end = false,
-			},
-			only_current_line = false,
-			-- separator between types and parameter hints. Note that type hints are
-			-- shown before parameter
-			labels_separator = "  ",
-			-- whether to align to the length of the longest line in the file
-			max_len_align = false,
-			-- padding from the left if max_len_align is true
-			max_len_align_padding = 1,
-			highlight = "Comment",
-		},
-	})
-end
 
 F.configureDocAndSignature = function()
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
