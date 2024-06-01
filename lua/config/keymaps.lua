@@ -101,7 +101,7 @@ end
 
 -- close win below
 vim.keymap.set("n", "<leader>q", function()
-	vim.cmd("TroubleClose")
+	require("trouble").close()
 	local wins = vim.api.nvim_tabpage_list_wins(0)
 	if #wins > 1 then
 		run_vim_shortcut([[<C-w>j:q<CR>]])
