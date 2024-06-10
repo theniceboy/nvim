@@ -36,7 +36,7 @@ M.config = {
 
 			vim.keymap.set('n', '<leader>d', function()
 				builtin.diagnostics({
-					severity_sort = true,
+					sort_by = "severity"
 				})
 			end, m)
 			-- vim.keymap.set('n', 'gd', builtin.lsp_definitions, m)
