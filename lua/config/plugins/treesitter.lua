@@ -6,7 +6,10 @@ return {
 		priority = 1000,
 		build = ":TSUpdate",
 		config = function()
+			vim.opt.smartindent = false
 			require("nvim-treesitter.configs").setup({
+				auto_install = true,
+				sync_install = false,
 				ensure_installed = {
 					"markdown",
 					"html",
@@ -33,7 +36,7 @@ return {
 					disable = {}, -- list of language that will be disabled
 				},
 				indent = {
-					enable = false
+					enable = true
 				},
 				incremental_selection = {
 					enable = true,
