@@ -1,26 +1,25 @@
 return {
-	{
-		"kevinhwang91/nvim-hlslens",
-		config = function()
-			require('hlslens').setup({
-				build_position_cb = function(plist, _, _, _)
-					require("scrollbar.handlers.search").handler.show(plist.start_pos)
-				end,
-			})
-			local kopts = { noremap = true, silent = true }
-			vim.api.nvim_set_keymap('n', '=',
-				[[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
-				kopts)
-			vim.api.nvim_set_keymap('n', '-',
-				[[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
-				kopts)
-			vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-			vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-			vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-			vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-			vim.api.nvim_set_keymap('n', '<Leader><CR>', '<Cmd>noh<CR>', kopts)
-		end
-	},
+	-- {
+	-- 	"kevinhwang91/nvim-hlslens",
+	-- 	dir = "~/.config/nvim/_local_plugins/nvim-hlslens",
+	-- 	lazy = false,
+	-- 	enabled = true,
+	-- 	keys = {
+	-- 		{
+	-- 			"=",
+	-- 			[[<cmd>execute('normal! ' . v:count1 . 'n')<cr>]] .. [[<cmd>lua require("hlslens").start()<cr>]],
+	-- 		},
+	-- 		{
+	-- 			"-",
+	-- 			[[<cmd>execute('normal! ' . v:count1 . 'N')<cr>]] .. [[<cmd>lua require("hlslens").start()<cr>]],
+	-- 		},
+	-- 		{ "*",  "*" .. [[<cmd>lua require("hlslens").start()<cr>]] },
+	-- 		{ "#",  "#" .. [[<cmd>lua require("hlslens").start()<cr>]] },
+	-- 		{ "g*", "g*" .. [[<cmd>lua require("hlslens").start()<cr>]] },
+	-- 		{ "g#", "g#" .. [[<cmd>lua require("hlslens").start()<cr>]] },
+	-- 	},
+	-- 	config = true,
+	-- },
 	{
 		"pechorin/any-jump.vim",
 		config = function()

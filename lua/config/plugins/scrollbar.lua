@@ -1,7 +1,7 @@
 return {
 	"petertriho/nvim-scrollbar",
 	dependencies = {
-		"kevinhwang91/nvim-hlslens",
+		-- "kevinhwang91/nvim-hlslens",
 	},
 	config = function()
 		local group = vim.api.nvim_create_augroup("scrollbar_set_git_colors", {})
@@ -28,7 +28,7 @@ hi! ScrollbarGitDeleteHandle guifg=#FF7B7B ]])
 				hide_if_all_visible = true,
 			},
 			marks = {
-				Search = { color = "yellow" },
+				-- Search = { color = "yellow" },
 				Misc = { color = "purple" },
 			},
 			handlers = {
@@ -36,7 +36,7 @@ hi! ScrollbarGitDeleteHandle guifg=#FF7B7B ]])
 				diagnostic = true,
 				gitsigns = true,
 				handle = true,
-				search = true,
+				search = false,
 			},
 		})
 	end,
