@@ -111,6 +111,17 @@ M.config = {
 			require("config.lsp.flutter").setup(lsp)
 			require("config.lsp.html").setup(lspconfig, lsp)
 
+			require 'lspconfig'.tsserver.setup {
+				init_options = {
+					plugins = {
+					},
+				},
+				filetypes = {
+					"javascript",
+					"typescript",
+				},
+			}
+
 			require 'lspconfig'.terraformls.setup {}
 			vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 				pattern = { "*.tf", "*.tfvars", "*.lua" },
@@ -154,6 +165,8 @@ M.config = {
 					},
 				}
 			})
+
+			require 'lspconfig'.gopls.setup {}
 
 			lsp.setup()
 
