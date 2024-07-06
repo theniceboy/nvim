@@ -10,6 +10,8 @@ fun! s:MakePair()
 endfun
 inoremap <c-u> <ESC>:call <SID>MakePair()<CR>
 ]])
+local ctrlu = require("plugin.ctrlu").ctrlu
+vim.keymap.set("i", "<C-u>", ctrlu, { silent = true })
 
 return {
 	{
