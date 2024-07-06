@@ -111,6 +111,9 @@ M.config = {
 			require("config.lsp.flutter").setup(lsp)
 			require("config.lsp.html").setup(lspconfig, lsp)
 
+			require 'lspconfig'.html.setup {}
+			require 'lspconfig'.pyright.setup {}
+
 			require 'lspconfig'.tsserver.setup {
 				init_options = {
 					plugins = {
