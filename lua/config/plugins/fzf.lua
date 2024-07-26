@@ -96,6 +96,9 @@ return {
 				color_icons   = true, -- colorize file|git icons
 				sort_lastused = true, -- sort buffers() by last used
 			},
+			grep = {
+				rg_opts = "--color=always --smart-case --ignore-file=.fzfignore",
+			},
 		})
 	end
 
