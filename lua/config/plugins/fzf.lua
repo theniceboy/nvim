@@ -70,6 +70,8 @@ return {
 					syntax         = true,   -- preview syntax highlight?
 					syntax_limit_l = 0,      -- syntax limit (lines), 0=nolimit
 					syntax_limit_b = 1024 * 1024, -- syntax limit (bytes), 0=nolimit
+					jump_to_line   = true,
+					title          = false,
 				},
 			},
 			files = {
@@ -97,7 +99,9 @@ return {
 				sort_lastused = true, -- sort buffers() by last used
 			},
 			grep = {
-				rg_opts = "--color=always --smart-case --ignore-file=.fzfignore",
+				rg_opts = "--color=always --line-number --column --smart-case --ignore-file=.fzfignore",
+				previewer = "builtin",
+				jump_to_line = true,
 			},
 		})
 	end
