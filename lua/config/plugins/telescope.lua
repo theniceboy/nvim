@@ -51,6 +51,12 @@ M.config = {
 			M.ts = ts
 			ts.setup({
 				defaults = {
+					file_ignore_patterns = {
+						"node_modules",
+						"build",
+						"dist",
+						"%.pub%-cache",
+					},
 					vimgrep_arguments = {
 						"rg",
 						"--color=never",
