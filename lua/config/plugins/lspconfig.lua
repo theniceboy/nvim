@@ -52,18 +52,20 @@ M.config = {
 
 			require('mason').setup({})
 			require('mason-lspconfig').setup({
-				'tsserver',
-				'eslint',
-				'gopls',
-				'jsonls',
-				'html',
-				'clangd',
-				'dockerls',
-				'ansiblels',
-				'terraformls',
-				'texlab',
-				'pyright',
-				'yamlls',
+				ensure_installed = {
+					'tsserver',
+					'eslint',
+					'gopls',
+					'jsonls',
+					'html',
+					'clangd',
+					'dockerls',
+					'ansiblels',
+					'terraformls',
+					'texlab',
+					'pyright',
+					'yamlls',
+				}
 			})
 
 			lsp.on_attach(function(client, bufnr)
@@ -130,6 +132,16 @@ M.config = {
 				pattern = { "*.tf", "*.tfvars", "*.lua" },
 				callback = function()
 					vim.lsp.buf.format()
+				end,
+			})
+
+			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+				pattern = { "*.hcl" },
+				callback = function()
+					local bufnr = vim.api.nvim_get_current_buf()
+					local filename = vim.api.nvim_buf_get_name(bufnr)
+					vim.fn.system(string.format("packer fmt %s", vim.fn.shellescape(filename)))
+					vim.cmd("edit!")
 				end,
 			})
 			require 'lspconfig'.yamlls.setup({
@@ -256,7 +268,7 @@ M.config = {
 				objc = true,
 				objcpp = true,
 				dockerfile = true,
-				terraform = true,
+				terraform = false,
 				tex = true,
 			}
 
