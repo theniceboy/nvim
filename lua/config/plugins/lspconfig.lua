@@ -44,6 +44,14 @@ M.config = {
 			-- "mjlbach/lsp_signature.nvim",
 			"airblade/vim-rooter",
 			"b0o/schemastore.nvim",
+			{
+				'laytan/tailwind-sorter.nvim',
+				dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim' },
+				build = 'cd formatter && npm ci && npm run build',
+				config = {
+					on_save_enabled = true,
+				}
+			},
 		},
 
 		config = function()
@@ -65,6 +73,7 @@ M.config = {
 					'texlab',
 					'pyright',
 					'yamlls',
+					'tailwindcss',
 				}
 			})
 
@@ -115,6 +124,7 @@ M.config = {
 
 			require 'lspconfig'.html.setup {}
 			require 'lspconfig'.pyright.setup {}
+			require 'lspconfig'.tailwindcss.setup {}
 
 			require 'lspconfig'.tsserver.setup {
 				init_options = {
