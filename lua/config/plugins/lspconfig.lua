@@ -40,7 +40,7 @@ M.config = {
 			"folke/neodev.nvim",
 			"ray-x/lsp_signature.nvim",
 			"ldelossa/nvim-dap-projects",
-			"MunifTanjim/prettier.nvim",
+			-- "MunifTanjim/prettier.nvim",
 			-- "mjlbach/lsp_signature.nvim",
 			"airblade/vim-rooter",
 			"b0o/schemastore.nvim",
@@ -61,6 +61,8 @@ M.config = {
 			require('mason').setup({})
 			require('mason-lspconfig').setup({
 				ensure_installed = {
+					"biome",
+					"cssls",
 					'tsserver',
 					'eslint',
 					'gopls',
@@ -126,16 +128,9 @@ M.config = {
 			require 'lspconfig'.pyright.setup {}
 			require 'lspconfig'.tailwindcss.setup {}
 
-			require 'lspconfig'.tsserver.setup {
-				init_options = {
-					plugins = {
-					},
-				},
-				filetypes = {
-					"javascript",
-					"typescript",
-				},
-			}
+			require 'lspconfig'.tsserver.setup {}
+			require 'lspconfig'.biome.setup {}
+			require 'lspconfig'.cssls.setup {}
 
 			require 'lspconfig'.terraformls.setup {}
 			vim.api.nvim_create_autocmd({ "BufWritePre" }, {
@@ -224,52 +219,13 @@ M.config = {
 			F.configureDocAndSignature()
 			F.configureKeybinds()
 
-			local prettier = require("prettier")
-
-			prettier.setup({
-				bin = 'prettierd',
-				filetypes = {
-					"css",
-					"graphql",
-					"html",
-					"javascript",
-					"javascriptreact",
-					"json",
-					"less",
-					"markdown",
-					"scss",
-					"typescript",
-					"typescriptreact",
-					"yaml",
-				},
-				cli_options = {
-					arrow_parens = "always",
-					bracket_spacing = true,
-					bracket_same_line = false,
-					embedded_language_formatting = "auto",
-					end_of_line = "lf",
-					html_whitespace_sensitivity = "css",
-					-- jsx_bracket_same_line = false,
-					jsx_single_quote = false,
-					print_width = 80,
-					prose_wrap = "preserve",
-					quote_props = "as-needed",
-					semi = true,
-					single_attribute_per_line = false,
-					single_quote = false,
-					tab_width = 2,
-					trailing_comma = "es5",
-					use_tabs = false,
-					vue_indent_script_and_style = false,
-				},
-			})
-
 			local format_on_save_filetypes = {
 				dart = true,
 				json = true,
 				go = true,
 				lua = true,
 				html = true,
+				css = true,
 				javascript = true,
 				typescript = true,
 				typescriptreact = true,
