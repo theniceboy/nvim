@@ -44,7 +44,6 @@ require("lazy").setup({
 	require("config.plugins.flutter"),
 	require("config.plugins.go"),
 	require("config.plugins.treesitter"),
-	require("config.plugins.joshuto"),
 	require("config.plugins.comment"),
 	require("config.plugins.surround"),
 	require("config.plugins.project"),
@@ -64,6 +63,7 @@ require("lazy").setup({
 	require("config.plugins.winbar"),
 	require("config.plugins.leap"),
 	require("config.plugins.tex"),
+	require("config.plugins.yazi"),
 	{ "dstein64/vim-startuptime" },
 }, {
 })
