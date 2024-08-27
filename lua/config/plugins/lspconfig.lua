@@ -76,6 +76,7 @@ M.config = {
 					'pyright',
 					'yamlls',
 					'tailwindcss',
+					'taplo',
 				}
 			})
 
@@ -131,6 +132,8 @@ M.config = {
 			require 'lspconfig'.tsserver.setup {}
 			require 'lspconfig'.biome.setup {}
 			require 'lspconfig'.cssls.setup {}
+
+			require 'lspconfig'.taplo.setup {}
 
 			require 'lspconfig'.terraformls.setup {}
 			vim.api.nvim_create_autocmd({ "BufWritePre" }, {
@@ -236,6 +239,7 @@ M.config = {
 				dockerfile = true,
 				terraform = false,
 				tex = true,
+				toml = true,
 			}
 
 			vim.api.nvim_create_autocmd("BufWritePre", {
