@@ -107,6 +107,10 @@ M.config = {
 			lsp.set_server_config({
 				on_init = function(client)
 					client.server_capabilities.semanticTokensProvider = nil
+					-- disable tsserver formatting
+					if client.name == "tsserver" then
+						client.server_capabilities.document_formatting = false
+					end
 				end,
 			})
 
