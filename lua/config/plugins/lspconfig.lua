@@ -81,6 +81,10 @@ M.config = {
 			})
 
 			lsp.on_attach(function(client, bufnr)
+				if client.name == "tsserver" then
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentRangeFormattingProvider = false
+				end
 				lsp.default_keymaps({ buffer = bufnr })
 				client.server_capabilities.semanticTokensProvider = nil
 				require("config.plugins.autocomplete").configfunc()
@@ -107,10 +111,6 @@ M.config = {
 			lsp.set_server_config({
 				on_init = function(client)
 					client.server_capabilities.semanticTokensProvider = nil
-					-- disable tsserver formatting
-					if client.name == "tsserver" then
-						client.server_capabilities.document_formatting = false
-					end
 				end,
 			})
 
