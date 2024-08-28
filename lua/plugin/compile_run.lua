@@ -25,6 +25,9 @@ local compileRun = function()
 	elseif ft == 'python' then
 		split()
 		vim.cmd("term python3 %")
+	elseif ft == 'sh' then
+		split()
+		vim.cmd("term bash %")
 	end
 end
 
