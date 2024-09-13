@@ -36,7 +36,11 @@ return {
 					disable = {}, -- list of language that will be disabled
 				},
 				indent = {
-					enable = true
+					enable = true,
+					disable = function(lang, bufnr)
+						local disallowed_filetypes = { "yaml" }
+						return vim.tbl_contains(disallowed_filetypes, lang)
+					end,
 				},
 				incremental_selection = {
 					enable = true,
