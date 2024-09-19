@@ -38,7 +38,7 @@ return {
 				indent = {
 					enable = true,
 					disable = function(lang, bufnr)
-						local disallowed_filetypes = { "yaml" }
+						local disallowed_filetypes = { "yaml", "dart" }
 						return vim.tbl_contains(disallowed_filetypes, lang)
 					end,
 				},
