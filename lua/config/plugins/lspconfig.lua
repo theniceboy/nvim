@@ -63,7 +63,7 @@ M.config = {
 				ensure_installed = {
 					"biome",
 					"cssls",
-					'tsserver',
+					'ts_ls',
 					'eslint',
 					'gopls',
 					'jsonls',
@@ -81,7 +81,7 @@ M.config = {
 			})
 
 			lsp.on_attach(function(client, bufnr)
-				if client.name == "tsserver" then
+				if client.name == "ts_ls" then
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentRangeFormattingProvider = false
 				end
@@ -133,7 +133,7 @@ M.config = {
 			require 'lspconfig'.pyright.setup {}
 			require 'lspconfig'.tailwindcss.setup {}
 
-			require 'lspconfig'.tsserver.setup {}
+			require 'lspconfig'.ts_ls.setup {}
 			require 'lspconfig'.biome.setup {}
 			require 'lspconfig'.cssls.setup {}
 
