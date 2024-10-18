@@ -48,7 +48,7 @@ M.config = {
 				'laytan/tailwind-sorter.nvim',
 				dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim' },
 				build = 'cd formatter && npm ci && npm run build',
-				config = {
+				opts = {
 					on_save_enabled = true,
 				}
 			},
