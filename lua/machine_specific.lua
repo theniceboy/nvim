@@ -2,7 +2,7 @@
 
 vim.g.snips_author = 'David Chen'
 
-vim.g.python3_host_prog = '/usr/bin/python3'
+vim.g.python3_host_prog = vim.fn.expand('$HOME/.local/share/nvim/venv/bin/python3')
 
 vim.g.mkdp_browser = 'chromium'
 vim.g.mkdp_browserfunc = 'open '

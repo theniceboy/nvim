@@ -1,58 +1,88 @@
+local parsers = {
+	"markdown",
+	"markdown_inline",
+	"html",
+	"javascript",
+	"typescript",
+	"tsx",
+	"query",
+	"dart",
+	"java",
+	"c",
+	"prisma",
+	"bash",
+	"go",
+	"lua",
+	"kdl",
+	"vim",
+	"hcl",
+	"terraform",
+	"dockerfile",
+	"yaml",
+	"python",
+}
+
+local filetypes = {
+	"markdown",
+	"html",
+	"javascript",
+	"typescript",
+	"typescriptreact",
+	"tsx",
+	"query",
+	"dart",
+	"java",
+	"c",
+	"prisma",
+	"bash",
+	"sh",
+	"zsh",
+	"go",
+	"lua",
+	"kdl",
+	"vim",
+	"hcl",
+	"terraform",
+	"dockerfile",
+	"yaml",
+	"python",
+}
+
+local indent_disabled = {
+	dart = true,
+	yaml = true,
+}
+
 return {
-	"nvim-treesitter/playground",
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		lazy = false,
 		priority = 1000,
-		build = ":TSUpdate",
+		build = function()
+			local treesitter = require("nvim-treesitter")
+			treesitter.install(parsers, { summary = true }):wait(300000)
+			treesitter.update(parsers, { summary = true }):wait(300000)
+		end,
 		config = function()
 			vim.opt.smartindent = false
-			require("nvim-treesitter.configs").setup({
-				auto_install = true,
-				sync_install = false,
-				ensure_installed = {
-					"markdown",
-					"html",
-					"javascript",
-					"typescript",
-					"tsx",
-					"query",
-					"dart",
-					"java",
-					"c",
-					"prisma",
-					"bash",
-					"go",
-					"lua",
-					"kdl",
-					"vim",
-					"terraform",
-					"dockerfile",
-					"yaml",
-					"python",
-				},
-				highlight = {
-					enable = true,
-					disable = {}, -- list of language that will be disabled
-				},
-				indent = {
-					enable = true,
-					disable = function(lang, bufnr)
-						local disallowed_filetypes = { "yaml", "dart" }
-						return vim.tbl_contains(disallowed_filetypes, lang)
-					end,
-				},
-				incremental_selection = {
-					enable = true,
-					keymaps = {
-						init_selection    = "<c-n>",
-						node_incremental  = "<c-n>",
-						node_decremental  = "<c-h>",
-						scope_incremental = "<c-l>",
-					},
-				}
+
+			require("nvim-treesitter").setup({})
+
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = filetypes,
+				callback = function(args)
+					pcall(vim.treesitter.start, args.buf)
+
+					if indent_disabled[vim.bo[args.buf].filetype] then
+						vim.bo[args.buf].indentexpr = ""
+						return
+					end
+
+					vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end,
 			})
-		end
+		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",

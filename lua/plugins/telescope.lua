@@ -25,10 +25,6 @@ M.config = {
 		},
 		config = function()
 			local builtin = require('telescope.builtin')
-			vim.keymap.set('n', '<c-p>', builtin.find_files, m)
-			-- vim.keymap.set('n', '<c-f>', function()
-			-- 	builtin.grep_string({ search = "" })
-			-- end, m)
 			vim.keymap.set('n', '<leader>rs', builtin.resume, m)
 			vim.keymap.set('n', '<c-w>', builtin.buffers, m)
 			vim.keymap.set('n', '<c-h>', builtin.oldfiles, m)

@@ -5,13 +5,47 @@ return {
 	keys = { "<c-f>" },
 	config = function()
 		local fzf = require('fzf-lua')
+
+		local function project_cwd()
+			local buf_name = vim.api.nvim_buf_get_name(0)
+			if buf_name == "" then
+				buf_name = vim.fn.expand('#:p')
+			end
+			local start_path = buf_name ~= "" and vim.fs.dirname(buf_name) or vim.fn.getcwd()
+			local marker = vim.fs.find({ '.fzfignore', '.git' }, { path = start_path, upward = true })[1]
+			if marker then
+				return vim.fs.dirname(marker)
+			end
+			return vim.fn.getcwd()
+		end
+
+		local function grep_opts_for(cwd)
+			local rg_opts = "--color=always --line-number --column --smart-case"
+			local ignore_file = cwd .. '/.fzfignore'
+			if vim.fn.filereadable(ignore_file) == 1 then
+				rg_opts = rg_opts .. ' --ignore-file=' .. vim.fn.shellescape(ignore_file)
+			end
+			return rg_opts
+		end
+
 		vim.keymap.set('n', '<c-f>', function()
 			-- fzf.live_grep_resume({ multiprocess = true, debug = true })
-			fzf.grep({ search = "", fzf_opts = { ['--layout'] = 'default' } })
+			local cwd = project_cwd()
+			fzf.grep({
+				search = "",
+				cwd = cwd,
+				rg_opts = grep_opts_for(cwd),
+				fzf_opts = { ['--layout'] = 'default' },
+			})
 		end, m)
 		vim.keymap.set('x', '<c-f>', function()
 			-- fzf.live_grep_resume({ multiprocess = true, debug = true })
-			fzf.grep_visual({ fzf_opts = { ['--layout'] = 'default' } })
+			local cwd = project_cwd()
+			fzf.grep_visual({
+				cwd = cwd,
+				rg_opts = grep_opts_for(cwd),
+				fzf_opts = { ['--layout'] = 'default' },
+			})
 		end, m)
 		fzf.setup({
 			global_resume = true,
@@ -84,6 +118,7 @@ return {
 				git_icons    = true, -- show git icons?
 				file_icons   = true, -- show file icons?
 				color_icons  = true, -- colorize file|git icons
+				-- cwd_prompt   = false, -- don't show cwd in prompt
 				-- executed command priority is 'cmd' (if exists)
 				-- otherwise auto-detect prioritizes `fd`:`rg`:`find`
 				-- default options are controlled by 'fd|rg|find|_opts'

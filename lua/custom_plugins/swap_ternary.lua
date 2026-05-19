@@ -2,8 +2,6 @@
 
 local ts = require('vim.treesitter')
 local get_node_text = ts.get_node_text
-local ts_utils = require("nvim-treesitter.ts_utils") -- requires nvim-treesitter
-local parsers = require("nvim-treesitter.parsers")
 
 local M = {}
 
@@ -22,14 +20,13 @@ end
 
 function M.swap_ternary()
 	local bufnr = vim.api.nvim_get_current_buf()
-	local lang = parsers.get_buf_lang(bufnr)
 
-	if not parsers.has_parser(lang) then
+	if not pcall(vim.treesitter.get_parser, bufnr) then
 		print("No treesitter parser for current language")
 		return
 	end
 
-	local node = ts_utils.get_node_at_cursor(0)
+	local node = ts.get_node({ bufnr = bufnr, ignore_injections = false })
 	local ternary_node = get_ternary_node(node)
 
 	if not ternary_node then

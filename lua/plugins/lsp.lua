@@ -10,18 +10,11 @@ return {
 			},
 		},
 	},
-	{
-		"ray-x/lsp_signature.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("lsp_signature").setup({
-				bind = true,
-				handler_opts = {
-					border = "rounded"
-				}
-			})
-		end
-	},
+		{
+			"ray-x/lsp_signature.nvim",
+			-- Do not call setup() globally. We'll attach per-LSP in lsp/init.lua
+			event = "VeryLazy",
+		},
 	{
 		"j-hui/fidget.nvim",
 		opts = {}

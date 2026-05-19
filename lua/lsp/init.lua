@@ -51,6 +51,27 @@ local autocomplete_configured = false
 vim.api.nvim_create_autocmd('LspAttach', {
 	desc = 'LSP actions',
 	callback = function(event)
+		-- Attach lsp_signature only if the server for this buffer supports it.
+		local client = vim.lsp.get_client_by_id(event.data and event.data.client_id or 0)
+		local bufnr = event.buf
+		local ft = vim.bo[bufnr].filetype
+		local function can_attach_signature()
+			if not client or not client.supports_method then return false end
+			if not client:supports_method('textDocument/signatureHelp') then return false end
+			-- Known server/filetype gaps (server claims support but errors):
+			if client.name == 'terraformls' and (ft == 'hcl' or ft == 'terraform-vars') then
+				return false
+			end
+			return true
+		end
+		if can_attach_signature() then
+			pcall(function()
+				require('lsp_signature').on_attach({
+					bind = true,
+					handler_opts = { border = 'rounded' },
+				}, bufnr)
+			end)
+		end
 		-- Configure autocomplete once (not per buffer)
 		if not autocomplete_configured then
 			local ok, err = pcall(require("plugins.autocomplete").configfunc)

@@ -46,7 +46,8 @@ function M.setup()
 	-- Terraform Language Server
 	vim.lsp.config('terraformls', {
 		cmd = { 'terraform-ls', 'serve' },
-		filetypes = { 'terraform', 'hcl' },
+		-- Restrict to Terraform files only; terraform-ls is not a general HCL server.
+		filetypes = { 'terraform' },
 		root_markers = { '.terraform', '.git' },
 	})
 
@@ -54,10 +55,10 @@ function M.setup()
 	vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		pattern = {
 			"*/playbooks/*.yml",
-			"*/playbooks/*.yaml", 
+			"*/playbooks/*.yaml",
 			"*/roles/*/tasks/*.yml",
 			"*/roles/*/tasks/*.yaml",
-			"*/roles/*/handlers/*.yml", 
+			"*/roles/*/handlers/*.yml",
 			"*/roles/*/handlers/*.yaml",
 			"*/group_vars/*",
 			"*/host_vars/*"
@@ -133,9 +134,9 @@ function M.setup()
 		end,
 	})
 
-	-- Packer formatting for HCL files
+	-- Packer formatting for Packer HCL only
 	vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-		pattern = { "*.hcl" },
+		pattern = { "*.pkr.hcl", "*.pkrvars.hcl" },
 		callback = function()
 			local bufnr = vim.api.nvim_get_current_buf()
 			local filename = vim.api.nvim_buf_get_name(bufnr)
@@ -146,4 +147,3 @@ function M.setup()
 end
 
 return M
-

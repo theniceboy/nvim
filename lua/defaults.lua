@@ -104,3 +104,13 @@ end
 require("machine_specific")
 
 vim.cmd([[command! SudoSave w !sudo tee % > /dev/null]])
+
+-- Filetype detection for HashiCorp Packer HCL files
+pcall(function()
+    vim.filetype.add({
+        pattern = {
+            [".*%.pkr%.hcl"] = "hcl",
+            [".*%.pkrvars%.hcl"] = "hcl",
+        },
+    })
+end)

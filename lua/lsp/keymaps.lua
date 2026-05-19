@@ -8,7 +8,7 @@ end
 
 -- Buffer-specific LSP keymaps (set on LspAttach)
 function M.setup(bufnr)
-	bufnr = bufnr or 0  -- Default to current buffer if not provided
+	bufnr = bufnr or 0 -- Default to current buffer if not provided
 	local opts = { buffer = bufnr, noremap = true, silent = true }
 
 	-- Definitions, references, etc.
@@ -18,7 +18,18 @@ function M.setup(bufnr)
 	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 	vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-	vim.keymap.set('i', '<c-f>', vim.lsp.buf.signature_help, opts)
+	vim.keymap.set('i', '<c-f>', function()
+		local bufnr = bufnr or 0
+		local ft = vim.bo[bufnr].filetype
+		for _, client in pairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+			if client.supports_method and client:supports_method('textDocument/signatureHelp') then
+				if not (client.name == 'terraformls' and (ft == 'hcl' or ft == 'terraform-vars')) then
+					return vim.lsp.buf.signature_help()
+				end
+			end
+		end
+		-- No eligible client: do nothing silently
+	end, opts)
 
 	-- Workspace management
 	vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)

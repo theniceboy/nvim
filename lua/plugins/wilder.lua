@@ -15,7 +15,7 @@ return {
 				highlights = {
 					border = 'Normal', -- highlight to use for the border
 				},
-				left = { ' ', wilder.popupmenu_devicons() },
+				left = { ' ' },
 				right = { ' ', wilder.popupmenu_scrollbar() },
 				border = 'rounded',
 				max_height = '75%',  -- max height of the palette
